@@ -485,6 +485,19 @@ class _RegistrationPageCopyWidgetState
                             });
                             if (PasswordController.text ==
                                 ConfirmPasswordController.text) {
+                              try {
+                                if (FirebaseAuth.instance.currentUser == null) {
+                                  //Sending otp
+                                  sendOTP();
+                                  //Opening Bottom Sheet
+                                  showModalBottomSheet(
+                                      context: context,
+                                      builder: (context) =>
+                                          _buildBottomSheet(context));
+                                  if(await validateOTP()){
+                                    print("bottom sheet ka neechy ");
+                                  }
+
                                   // scaffoldKey.currentState.showBottomSheet(
                                   //     (context) => _buildBottomSheet(context));
                                   //Validating otp
