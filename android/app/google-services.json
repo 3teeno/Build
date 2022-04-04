@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "637101543789",
+    "firebase_url": "https://buildit-construction-app-default-rtdb.firebaseio.com",
+    "project_id": "buildit-construction-app",
+    "storage_bucket": "buildit-construction-app.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:637101543789:android:8c642f37f47a0846e14a64",
+        "android_client_info": {
+          "package_name": "com.flutterflow.buildit"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "637101543789-9npc155c0t5nsgclacmik9go1bddk557.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDmZrg8OCpkd3BkYdRD-0TRKCZvv94-vT4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "637101543789-9npc155c0t5nsgclacmik9go1bddk557.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "637101543789-jnlfrj1rkugej937kt57sgr6dlo1pf4j.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.flutterflow.buildit"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
