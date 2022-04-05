@@ -54,6 +54,7 @@ class _RegistrationPageCopyWidgetState
     PasswordController = TextEditingController();
     passwordVisibility1 = false;
     ConfirmPasswordController = TextEditingController();
+    otpControllet= TextEditingController();
     passwordVisibility2 = false;
   }
 
@@ -71,19 +72,18 @@ class _RegistrationPageCopyWidgetState
   }
 
   Future<bool> validateOTP() {
-    print
-      (otpControllet.value.text);
-    return Future.value(true);
+    print(" Hello : "+ otpControllet.value.text);
+    //return Future.value(true);
     // print(emailAuth.validateOtp(
     //     recipientMail: EmailController.value.text,
     //     userOtp: otpControllet.value.text));
-    // if (emailAuth.validateOtp(
-    //     recipientMail: EmailController.value.text,
-    //     userOtp: otpControllet.value.text)) {
-    //   return true;
-    // } else {
-    //   return false;
-    // }
+    if (emailAuth.validateOtp(
+        recipientMail: EmailController.value.text,
+        userOtp: otpControllet.value.text)) {
+      return Future.value(true);
+    } else {
+      return Future.value(true);
+    }
   }
 
   Container _buildBottomSheet(BuildContext context) {
@@ -104,13 +104,15 @@ class _RegistrationPageCopyWidgetState
           ),
           TextFormField(
             keyboardType: TextInputType.number,
+
             validator: (value) {
-              if (value == null || value.isEmpty) {
+              if (value == null ) {
                 return 'Please enter OTP';
               }
               return null;
             },
             controller: otpControllet,
+
             decoration: InputDecoration(
                 border: OutlineInputBorder(), labelText: "Enter OTP"),
           ),
@@ -119,8 +121,9 @@ class _RegistrationPageCopyWidgetState
           ),
           FFButtonWidget(
             onPressed: () async {
-              if(await validateOTP()){
+              if(await emailAuth.validateOtp(recipientMail: EmailController.value.text, userOtp: otpControllet.value.text)){
                 Navigator.pop(context);
+                addUser();
               }
             },
             text: 'Verify OTP',
@@ -146,9 +149,9 @@ class _RegistrationPageCopyWidgetState
 
   bool loading = false;
   CollectionReference user = FirebaseFirestore.instance.collection('users');
+  FirebaseAuth.
   Future<void> addUser() {
-    return user
-        .add({
+    user.add({
           'name': FullNameController.text,
           'email': EmailController.text,
           'phone': PhoneController.text,
@@ -487,14 +490,15 @@ class _RegistrationPageCopyWidgetState
                                 ConfirmPasswordController.text) {
                               try {
                                 if (FirebaseAuth.instance.currentUser == null) {
-                                  //Sending otp
-                                  sendOTP();
                                   //Opening Bottom Sheet
                                   showModalBottomSheet(
                                       context: context,
                                       builder: (context) =>
                                           _buildBottomSheet(context));
-                                  if(await validateOTP()){
+                                  //Sending otp
+                                  sendOTP();
+                                  if(await emailAuth.validateOtp(recipientMail: EmailController.value.text, userOtp: otpControllet.value.text)){
+                                    Fluttertoast.showToast(msg: "Maa aa gaya");
                                     print("bottom sheet ka neechy ");
                                   }
 

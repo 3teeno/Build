@@ -236,53 +236,53 @@ class _logInState extends State<logIn> {
                                   repeat: true)
                               : FFButtonWidget(
                                   onPressed: () async {
-                                    if (!_formKey.currentState.validate()) {
-                                      return null;
-                                    }
-                                    setState(() {
-                                      loading = true;
-                                    });
-                                    if(FirebaseAuth.instance.currentUser.emailVerified){
-                                      scaffoldKey.currentState.showSnackBar(SnackBar(duration: Duration(milliseconds: 10000),content: Text("Email is verified")));
-                                    }
-                                    try {
-                                      await FirebaseAuth.instance
-                                          .signInWithEmailAndPassword(
-                                              email:
-                                                  emailController.text.trim(),
-                                              password: passwordController.text
-                                                  .trim());
-                                      scaffoldKey.currentState.showSnackBar(
-                                          SnackBar(
-                                              content: Text(
-                                                  'Logged In Successfully!')));
-
-                                      //check which user login
-                                      Navigator.pushReplacement(
-                                          context,
+                                    // if (!_formKey.currentState.validate()) {
+                                    //   return null;
+                                    // }
+                                    // setState(() {
+                                    //   loading = true;
+                                    // });
+                                    // if(FirebaseAuth.instance.currentUser.emailVerified){
+                                    //   scaffoldKey.currentState.showSnackBar(SnackBar(duration: Duration(milliseconds: 10000),content: Text("Email is verified")));
+                                    // }
+                                    // try {
+                                    //   await FirebaseAuth.instance
+                                    //       .signInWithEmailAndPassword(
+                                    //           email:
+                                    //               emailController.text.trim(),
+                                    //           password: passwordController.text
+                                    //               .trim());
+                                    //   scaffoldKey.currentState.showSnackBar(
+                                    //       SnackBar(
+                                    //           content: Text(
+                                    //               'Logged In Successfully!')));
+                                    //
+                                    //   //check which user login
+                                    //   Navigator.pushReplacement(
+                                    //       context,
                                           MaterialPageRoute(
                                               builder: (context) =>
-                                                  HomePageWidget()));
-                                    } on FirebaseAuthException catch (e) {
-                                      if (e.code == "user-not-found") {
-                                        scaffoldKey.currentState.showSnackBar(
-                                            SnackBar(
-                                                content:
-                                                    Text('No user found')));
-                                        setState(() {
-                                          loading = false;
-                                        });
-                                      }
-                                      if (e.code == "wrong-password") {
-                                        scaffoldKey.currentState.showSnackBar(
-                                            SnackBar(
-                                                content: Text(
-                                                    'Wrong password entered')));
-                                        setState(() {
-                                          loading = false;
-                                        });
-                                      }
-                                    }
+                                                  HomePageWidget());
+                                    // } on FirebaseAuthException catch (e) {
+                                    //   if (e.code == "user-not-found") {
+                                    //     scaffoldKey.currentState.showSnackBar(
+                                    //         SnackBar(
+                                    //             content:
+                                    //                 Text('No user found')));
+                                    //     setState(() {
+                                    //       loading = false;
+                                    //     });
+                                    //   }
+                                    //   if (e.code == "wrong-password") {
+                                    //     scaffoldKey.currentState.showSnackBar(
+                                    //         SnackBar(
+                                    //             content: Text(
+                                    //                 'Wrong password entered')));
+                                    //     setState(() {
+                                    //       loading = false;
+                                    //     });
+                                    //   }
+                                    // }
                                   },
                                   text: 'Sign In',
                                   options: FFButtonOptions(
