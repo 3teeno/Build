@@ -149,7 +149,7 @@ class _RegistrationPageCopyWidgetState
 
   bool loading = false;
   CollectionReference user = FirebaseFirestore.instance.collection('users');
-  FirebaseAuth.
+//  FirebaseAuth.
   Future<void> addUser() {
     user.add({
           'name': FullNameController.text,
