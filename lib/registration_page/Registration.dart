@@ -148,17 +148,25 @@ class _RegistrationPageCopyWidgetState
   }
 
   bool loading = false;
-  CollectionReference user = FirebaseFirestore.instance.collection('users');
-//  FirebaseAuth.
-  Future<void> addUser() {
-    user.add({
+  FirebaseFirestore user =  FirebaseFirestore.instance;
+  FirebaseAuth autherize = FirebaseAuth.instance;
+  Future<void> addUser() async {
+    print("Before creation");
+    User credentials;
+    await autherize.createUserWithEmailAndPassword(email: EmailController.text, password: PasswordController.text)
+        .then((userCredential)=>
+        {
+          user.collection('users').doc(userCredential.user.uid).set({
           'name': FullNameController.text,
           'email': EmailController.text,
           'phone': PhoneController.text,
           'type': dropDownValue
-        })
-        .then((value) => print("User Added"))
-        .catchError((error) => print("User not added $error"));
+          }).then((value) => print("User Added"))
+              .catchError((error) => print("User not added $error"))
+        }
+    );
+
+
   }
 
   @override

@@ -96,9 +96,9 @@ class Database {
     final allData = querySnapshot.docs.map((doc) => doc.data()).toList();
     print(allData);
     //Idhar Aja
-    List MyVendorsLists = allData;
-    print(MyVendorsLists[0]);
-    print(MyVendorsLists);
+    // List MyVendorsLists = allData;
+    // print(MyVendorsLists[0]);
+    // print(MyVendorsLists);
     return allData ;
   }
 
