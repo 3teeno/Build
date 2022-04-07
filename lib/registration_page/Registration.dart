@@ -165,6 +165,11 @@ class _RegistrationPageCopyWidgetState
               .catchError((error) => print("User not added $error"))
         }
     );
+    Navigator.pushReplacement(
+        context,
+        MaterialPageRoute(
+            builder: (context) =>
+                LoginPageWidget()));
 
 
   }

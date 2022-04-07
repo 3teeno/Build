@@ -17,14 +17,14 @@ import 'homepage_header.dart';
 import 'marketPlaceCard.dart';
 import 'dart:math';
 
-class HomePageWidget extends StatefulWidget {
-  const HomePageWidget({Key key}) : super(key: key);
+class AdminHomePageWidget extends StatefulWidget {
+  const AdminHomePageWidget({Key key}) : super(key: key);
 
   @override
-  _HomePageWidgetState createState() => _HomePageWidgetState();
+  _AdminHomePageWidgetState createState() => _AdminHomePageWidgetState();
 }
 
-class _HomePageWidgetState extends State<HomePageWidget> {
+class _AdminHomePageWidgetState extends State<AdminHomePageWidget> {
   //This is the function for Service list extraction
   Future<List> vendor_list = Database.receiveData();
   TextEditingController textController;
@@ -78,7 +78,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                       onPressed: () {
                         print('Build Your Home(Button pressed)');
                       },
-                      text: 'Customer Build Your Home',
+                      text: 'Admin Build Your Home',
                       options: FFButtonOptions(
                         width: MediaQuery.of(context).size.width,
                         height: 45,

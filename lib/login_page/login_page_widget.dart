@@ -62,7 +62,8 @@ class _LoginPageWidgetState extends State<LoginPageWidget> {
             return Center(child: Text("Failed To Authenticate"));
           } else if (snapshot.hasData) {
             //Already Logged in State
-            return HomePageWidget();
+            FirebaseAuth.instance.signOut();
+            return logIn();
           } else
             return logIn();
         });

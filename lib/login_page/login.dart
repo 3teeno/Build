@@ -1,6 +1,8 @@
 import 'package:build_i_t/backend/backend.dart';
+import 'package:build_i_t/home_page/AdminHomePage.dart';
 
 import 'package:build_i_t/home_page/CustomerHomePage.dart';
+import 'package:build_i_t/home_page/VendorHomePage.dart';
 import 'package:build_i_t/main.dart';
 import 'package:build_i_t/search_page/search_page_widget.dart';
 import 'package:fluttertoast/fluttertoast.dart';
@@ -258,8 +260,8 @@ class _logInState extends State<logIn> {
 
 
                                       print('Logged In Successfully!');
-
-                                      if(data.get('type').toString()=='Customer') {
+                                      print(data.get('type').toString() +""+ dropDownValue);
+                                      if(data.get('type').toString()=='Customer'&&dropDownValue=='Customer') {
                                         //check which user login
                                         Navigator.pushReplacement(
                                             context,
@@ -267,9 +269,26 @@ class _logInState extends State<logIn> {
                                                 builder: (context) =>
                                                     HomePageWidget()));
                                       }
+                                      else if(data.get('type').toString()=='Vendor'&&dropDownValue=='Vendor') {
+                                        //check which user login
+                                        Navigator.pushReplacement(
+                                            context,
+                                            MaterialPageRoute(
+                                                builder: (context) =>
+                                                    VendorHomePageWidget()));
+                                      }
+                                      else if(data.get('type').toString()=='Admin'&&dropDownValue=='Admin') {
+                                        //check which user login
+                                        Navigator.pushReplacement(
+                                            context,
+                                            MaterialPageRoute(
+                                                builder: (context) =>
+                                                    AdminHomePageWidget()));
+                                      }
                                       else
                                         {
                                           print("Ma tu nai jaon ga");
+                                          FirebaseAuth.instance.signOut();
                                         }
                                     } on FirebaseAuthException catch (e) {
                                       if (e.code == "user-not-found") {
