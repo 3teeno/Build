@@ -16,14 +16,14 @@ import 'package:provider/provider.dart';
 import 'package:firebase_core/firebase_core.dart';
 
 
-class menuBar extends StatefulWidget {
-  const menuBar({Key key}) : super(key: key);
+class Vendor_menuBar extends StatefulWidget {
+  const Vendor_menuBar({Key key}) : super(key: key);
 
   @override
-  _menuBarState createState() => _menuBarState();
+  _Vendor_menuBarState createState() => _Vendor_menuBarState();
 }
 
-class _menuBarState extends State<menuBar> {
+class _Vendor_menuBarState extends State<Vendor_menuBar> {
   @override
   Widget build(BuildContext context) {
     return Drawer(
@@ -39,8 +39,8 @@ class _menuBarState extends State<menuBar> {
                 padding: EdgeInsetsDirectional.fromSTEB(0, 10, 0, 0),
                 child: Lottie.network(
                   'https://assets3.lottiefiles.com/packages/lf20_byuzwmds.json',
-                  width: 250,
-                  height: 220,
+                  width: 200,
+                  height: 180,
                   fit: BoxFit.cover,
                   animate: true,
                 ),
@@ -79,7 +79,53 @@ class _menuBarState extends State<menuBar> {
                         height: 50,
                         decoration: BoxDecoration(
                           color: Color(0xFF282828),
-                          borderRadius: BorderRadius.circular(10),
+                          borderRadius: BorderRadius.circular(5),
+                        ),
+                        child: Padding(
+                          padding:
+                          EdgeInsetsDirectional.fromSTEB(10, 0, 10, 0),
+                          child: Row(
+                            mainAxisSize: MainAxisSize.max,
+                            children: [
+                              Icon(
+                                Icons.home,
+                                color: Colors.white,
+                                size: 24,
+                              ),
+                              Padding(
+                                padding: EdgeInsetsDirectional.fromSTEB(
+                                    10, 0, 0, 0),
+                                child: Text(
+                                  'Home',
+                                  style: FlutterFlowTheme.bodyText1.override(
+                                    fontFamily: 'Poppins',
+                                    color: Colors.white,
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                  Padding(
+                    padding: EdgeInsetsDirectional.fromSTEB(10, 0, 10, 5),
+                    child: InkWell(
+                      onTap: () async {
+                        await Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => HomePageWidget(),
+                          ),
+                        );
+                      },
+                      child: Container(
+                        width: MediaQuery.of(context).size.width,
+                        height: 50,
+                        decoration: BoxDecoration(
+                          color: Color(0xFF282828),
+                          borderRadius: BorderRadius.circular(5),
                         ),
                         child: Padding(
                           padding:
@@ -126,7 +172,7 @@ class _menuBarState extends State<menuBar> {
                         height: 50,
                         decoration: BoxDecoration(
                           color: Color(0xFF282828),
-                          borderRadius: BorderRadius.circular(10),
+                          borderRadius: BorderRadius.circular(5),
                         ),
                         child: Padding(
                           padding:
@@ -163,7 +209,7 @@ class _menuBarState extends State<menuBar> {
                       height: 50,
                       decoration: BoxDecoration(
                         color: Color(0xFF282828),
-                        borderRadius: BorderRadius.circular(10),
+                        borderRadius: BorderRadius.circular(5),
                       ),
                       child: Padding(
                         padding: EdgeInsetsDirectional.fromSTEB(10, 0, 10, 0),
@@ -207,7 +253,7 @@ class _menuBarState extends State<menuBar> {
                         height: 50,
                         decoration: BoxDecoration(
                           color: Color(0xFF282828),
-                          borderRadius: BorderRadius.circular(10),
+                          borderRadius: BorderRadius.circular(5),
                         ),
                         child: Padding(
                           padding:
@@ -216,7 +262,7 @@ class _menuBarState extends State<menuBar> {
                             mainAxisSize: MainAxisSize.max,
                             children: [
                               Icon(
-                                Icons.chat,
+                                Icons.design_services,
                                 color: Colors.white,
                                 size: 24,
                               ),
@@ -244,7 +290,7 @@ class _menuBarState extends State<menuBar> {
                       height: 50,
                       decoration: BoxDecoration(
                         color: Color(0xFF282828),
-                        borderRadius: BorderRadius.circular(10),
+                        borderRadius: BorderRadius.circular(5),
                       ),
                       child: Padding(
                         padding: EdgeInsetsDirectional.fromSTEB(10, 0, 10, 0),
@@ -252,7 +298,7 @@ class _menuBarState extends State<menuBar> {
                           mainAxisSize: MainAxisSize.max,
                           children: [
                             Icon(
-                              Icons.support_agent_rounded,
+                              Icons.store,
                               color: Colors.white,
                               size: 24,
                             ),
@@ -260,7 +306,7 @@ class _menuBarState extends State<menuBar> {
                               padding:
                               EdgeInsetsDirectional.fromSTEB(10, 0, 0, 0),
                               child: Text(
-                                'Customer Support',
+                                'Store',
                                 style: FlutterFlowTheme.bodyText1.override(
                                   fontFamily: 'Poppins',
                                   color: Colors.white,
@@ -279,7 +325,7 @@ class _menuBarState extends State<menuBar> {
                       height: 50,
                       decoration: BoxDecoration(
                         color: Color(0xFF282828),
-                        borderRadius: BorderRadius.circular(10),
+                        borderRadius: BorderRadius.circular(5),
                       ),
                       child: Padding(
                         padding: EdgeInsetsDirectional.fromSTEB(10, 0, 10, 0),
@@ -333,3 +379,4 @@ class _menuBarState extends State<menuBar> {
     );
   }
 }
+

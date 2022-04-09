@@ -1,4 +1,4 @@
-import 'package:build_i_t/MenuBar/menubar_top.dart';
+import 'package:build_i_t/MenuBar/menubar_customer.dart';
 import 'package:build_i_t/VendorServicesModel.dart';
 import 'package:build_i_t/all_market_places/Search_Material.dart';
 import 'package:build_i_t/all_service_providers/search_serviceProviders.dart';
@@ -55,7 +55,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
     return Scaffold(
       key: scaffoldKey,
       backgroundColor: Color(0xFFF6EFDE),
-      drawer: menuBar(),
+      drawer: Customer_menuBar(),
       body: SafeArea(
         child: Column(
           mainAxisSize: MainAxisSize.max,
@@ -78,7 +78,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                       onPressed: () {
                         print('Build Your Home(Button pressed)');
                       },
-                      text: 'Customer Build Your Home',
+                      text: 'Customer :  ${user.displayName}',
                       options: FFButtonOptions(
                         width: MediaQuery.of(context).size.width,
                         height: 45,
