@@ -122,8 +122,9 @@ class _RegistrationPageCopyWidgetState
           FFButtonWidget(
             onPressed: () async {
               if(await emailAuth.validateOtp(recipientMail: EmailController.value.text, userOtp: otpControllet.value.text)){
-                Navigator.pop(context);
                 addUser();
+                Navigator.pop(context);
+
               }
             },
             text: 'Verify OTP',
@@ -152,19 +153,19 @@ class _RegistrationPageCopyWidgetState
   FirebaseAuth autherize = FirebaseAuth.instance;
   Future<void> addUser() async {
     print("Before creation");
-    User credentials;
-    await autherize.createUserWithEmailAndPassword(email: EmailController.text, password: PasswordController.text)
-        .then((userCredential)=>
-        {
-          user.collection('users').doc(userCredential.user.uid).set({
-          'name': FullNameController.text,
-          'email': EmailController.text,
-          'phone': PhoneController.text,
-          'type': dropDownValue
-          }).then((value) => print("User Added"))
-              .catchError((error) => print("User not added $error"))
-        }
-    );
+
+    UserCredential credentials=await autherize.createUserWithEmailAndPassword(email: EmailController.text, password: PasswordController.text);
+    String uid=credentials.user.uid;
+    print("ID of user= "+uid);
+
+    user.collection('users').doc(uid).set({
+      'name': FullNameController.text,
+      'email': EmailController.text,
+      'phone': PhoneController.text,
+      'type': dropDownValue
+    }).then((value) => print("User Added"))
+        .catchError((error) => print("User not added $error"));
+    print('After creation');
     Navigator.pushReplacement(
         context,
         MaterialPageRoute(

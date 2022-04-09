@@ -251,45 +251,44 @@ class _logInState extends State<logIn> {
                                                   emailController.text.trim(),
                                               password: passwordController.text
                                                   .trim());
-                                      CollectionReference user=FirebaseFirestore.instance.collection("users");
-                                      user.doc(FirebaseAuth.instance.currentUser.uid);
-                                      DocumentSnapshot data=await FirebaseFirestore.instance
-                                          .collection('users')
-                                          .doc(FirebaseAuth.instance.currentUser.uid)
-                                          .get();
-
-
-                                      print('Logged In Successfully!');
-                                      print(data.get('type').toString() +""+ dropDownValue);
-                                      if(data.get('type').toString()=='Customer'&&dropDownValue=='Customer') {
-                                        //check which user login
-                                        Navigator.pushReplacement(
-                                            context,
-                                            MaterialPageRoute(
-                                                builder: (context) =>
-                                                    HomePageWidget()));
-                                      }
-                                      else if(data.get('type').toString()=='Vendor'&&dropDownValue=='Vendor') {
-                                        //check which user login
-                                        Navigator.pushReplacement(
-                                            context,
-                                            MaterialPageRoute(
-                                                builder: (context) =>
-                                                    VendorHomePageWidget()));
-                                      }
-                                      else if(data.get('type').toString()=='Admin'&&dropDownValue=='Admin') {
-                                        //check which user login
-                                        Navigator.pushReplacement(
-                                            context,
-                                            MaterialPageRoute(
-                                                builder: (context) =>
-                                                    AdminHomePageWidget()));
-                                      }
-                                      else
-                                        {
+                                      print(FirebaseAuth.instance.currentUser.uid);
+                                      if(FirebaseAuth.instance.currentUser.uid!=null) {
+                                        DocumentSnapshot data = await FirebaseFirestore.instance.collection('users')
+                                            .doc(FirebaseAuth.instance.currentUser.uid).get();
+                                        print('Logged In Successfully!');
+                                        //print(data.get('type').toString() +""+ dropDownValue);
+                                        if (data.get('type').toString() ==
+                                            'Customer') {
+                                          //check which user login
+                                          Navigator.pushReplacement(
+                                              context,
+                                              MaterialPageRoute(
+                                                  builder: (context) =>
+                                                      HomePageWidget()));
+                                        }
+                                        else if (data.get('type').toString() ==
+                                            'Vendor') {
+                                          //check which user login
+                                          Navigator.pushReplacement(
+                                              context,
+                                              MaterialPageRoute(
+                                                  builder: (context) =>
+                                                      VendorHomePageWidget()));
+                                        }
+                                        else if (data.get('type').toString() ==
+                                            'Admin') {
+                                          //check which user login
+                                          Navigator.pushReplacement(
+                                              context,
+                                              MaterialPageRoute(
+                                                  builder: (context) =>
+                                                      AdminHomePageWidget()));
+                                        }
+                                        else {
                                           print("Ma tu nai jaon ga");
                                           FirebaseAuth.instance.signOut();
                                         }
+                                      }
                                     } on FirebaseAuthException catch (e) {
                                       if (e.code == "user-not-found") {
                                         scaffoldKey.currentState.showSnackBar(
