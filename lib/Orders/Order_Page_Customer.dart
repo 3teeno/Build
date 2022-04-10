@@ -338,11 +338,8 @@ class _Order_Page_CustomerState extends State<Order_Page_Customer> {
         child: const Text('Spent', style: TextStyle(fontSize: 20)),
         decoration: BoxDecoration(
             color: Colors.white,
-            borderRadius: BorderRadius.only(
-                topLeft: Radius.circular(5),
-                topRight: Radius.circular(5),
-                bottomLeft: Radius.circular(5),
-                bottomRight: Radius.circular(5)),
+            border: Border(top: BorderSide(width: 5.0,color: Colors.red),),
+
             boxShadow: [
               BoxShadow(
                 color: Colors.grey.withOpacity(0.5),
@@ -357,11 +354,7 @@ class _Order_Page_CustomerState extends State<Order_Page_Customer> {
         child: const Text('Help', style: TextStyle(fontSize: 20)),
         decoration: BoxDecoration(
             color: Colors.white,
-            borderRadius: BorderRadius.only(
-                topLeft: Radius.circular(5),
-                topRight: Radius.circular(5),
-                bottomLeft: Radius.circular(5),
-                bottomRight: Radius.circular(5)),
+            border: Border(top: BorderSide(width: 5.0,color: Colors.red),),
             boxShadow: [
               BoxShadow(
                 color: Colors.grey.withOpacity(0.5),
