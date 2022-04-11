@@ -33,7 +33,7 @@ class _Order_Page_CustomerState extends State<Order_Page_Customer> {
                   maxCrossAxisExtent: 200.0,
                   children: <Widget>[
                   InkWell(
-                    splashColor: Colors.orange,
+                    splashColor: Colors.blue,
                     onTap: () async {
                       await Navigator.push(
                           context,
@@ -46,7 +46,7 @@ class _Order_Page_CustomerState extends State<Order_Page_Customer> {
                       padding: const EdgeInsets.all(8),
                       child: const Text('Active', style: TextStyle(fontSize: 20)),
                       decoration: BoxDecoration(
-                          color: Colors.white,
+                          color: Colors.white.withOpacity(0.9),
                           border: Border(
                           top: BorderSide(width: 5.0, color: Colors.blue),
                           ),
@@ -66,7 +66,7 @@ class _Order_Page_CustomerState extends State<Order_Page_Customer> {
                     ),
                   ),
                   InkWell(
-                    splashColor: Colors.orange,
+                    splashColor: Colors.green,
                     onTap: () async {
                       await Navigator.push(
                         context,
@@ -79,7 +79,7 @@ class _Order_Page_CustomerState extends State<Order_Page_Customer> {
                       padding: const EdgeInsets.all(8),
                       child: const Text('Pending', style: TextStyle(fontSize: 20)),
                       decoration: BoxDecoration(
-                          color: Colors.white,
+                        color: Colors.white.withOpacity(0.9),
                           border: Border(
                             top: BorderSide(width: 5.0, color: Colors.green),
                           ),
@@ -90,7 +90,7 @@ class _Order_Page_CustomerState extends State<Order_Page_Customer> {
                           // bottomRight: Radius.circular(5)),
                           boxShadow: [
                             BoxShadow(
-                              color: Colors.grey.withOpacity(0.5),
+                              color: Colors.grey.withOpacity(0.2),
                               spreadRadius: 1,
                               blurRadius: 20,
                               offset: Offset(0, 3),
@@ -114,8 +114,7 @@ class _Order_Page_CustomerState extends State<Order_Page_Customer> {
                         //     bottomRight: Radius.circular(5)),
                         boxShadow: [
                           BoxShadow(
-                            color: Colors.grey.withOpacity(0.5),
-                            spreadRadius: 1,
+                            color: Colors.grey.withOpacity(0.2),                            spreadRadius: 1,
                             blurRadius: 20,
                             offset: Offset(0, 3),
                           ),
@@ -136,8 +135,7 @@ class _Order_Page_CustomerState extends State<Order_Page_Customer> {
                         //     bottomRight: Radius.circular(5)),
                         boxShadow: [
                           BoxShadow(
-                            color: Colors.grey.withOpacity(0.5),
-                            spreadRadius: 1,
+                            color: Colors.grey.withOpacity(0.2),                            spreadRadius: 1,
                             blurRadius: 20,
                             offset: Offset(0, 3),
                           ),
@@ -153,8 +151,7 @@ class _Order_Page_CustomerState extends State<Order_Page_Customer> {
                         ),
                         boxShadow: [
                           BoxShadow(
-                            color: Colors.grey.withOpacity(0.5),
-                            spreadRadius: 1,
+                            color: Colors.grey.withOpacity(0.2),                            spreadRadius: 1,
                             blurRadius: 20,
                             offset: Offset(0, 3),
                           ),
@@ -170,8 +167,7 @@ class _Order_Page_CustomerState extends State<Order_Page_Customer> {
                         ),
                         boxShadow: [
                           BoxShadow(
-                            color: Colors.grey.withOpacity(0.5),
-                            spreadRadius: 1,
+                            color: Colors.grey.withOpacity(0.2),                            spreadRadius: 1,
                             blurRadius: 20,
                             offset: Offset(0, 3),
                           ),

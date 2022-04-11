@@ -107,7 +107,8 @@ class _Active_Orders_PageState extends State<Active_Orders_Page> {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: <Widget>[
                 TextButton(
-                  child: Text("Deliver Now"),
+
+                  child: Text("Pending"),
                   style: TextButton.styleFrom(
                     primary: Colors.orange,
                     backgroundColor: Colors.orange[50],

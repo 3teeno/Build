@@ -150,7 +150,7 @@ class _Delivered_Orders_PageState extends State<Delivered_Orders_Page> {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: <Widget>[
                 TextButton(
-                  child:  Text("Check Feedback"),
+                  child:  Text("Give Feedback"),
                   style: TextButton.styleFrom(
                     primary: Colors.orange,
                     backgroundColor: Colors.orange[50],
