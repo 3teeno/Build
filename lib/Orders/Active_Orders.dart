@@ -43,15 +43,9 @@ class _Active_Orders_PageState extends State<Active_Orders_Page> {
         Order_Duration: "3 days",
         Order_Price: "PKR 1040"),
   ];
+  Order myx = Order();
 
-  List Order_Grids = [
-    "Active",
-    "Delivered",
-    "Pending",
-    "Feedback",
-    "Spent",
-    "Help"
-  ];
+
 
   Widget Order_Card_Template_Active(myorder) {
     return Card(

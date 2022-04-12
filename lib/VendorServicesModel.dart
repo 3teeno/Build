@@ -7,6 +7,7 @@ import 'package:flutter/material.dart';
 final FirebaseFirestore _firestore = FirebaseFirestore.instance;
 final FirebaseAuth auth = FirebaseAuth.instance;
 final User user = auth.currentUser;
+
 Future<List<dynamic>> getCollection(CollectionReference collection) async {
   try {
     QuerySnapshot snapshot = await collection.get();
@@ -17,15 +18,11 @@ Future<List<dynamic>> getCollection(CollectionReference collection) async {
     return null;
   }
 }
-final CollectionReference _mainCollection = _firestore.collection('Vendor_Services');
+final CollectionReference _mainCollection = _firestore.collection('Services');
+
 class Database {
   static String userUid;
-  static Future<void> addItem({
-    String Service_Name,
-    String Service_Description,
-    String Service_HourlyRate,
-    String Service_Category,
-  }) async {
+  static Future<void> addItem({String Service_Name, String Service_Description, String Service_HourlyRate, String Service_Category,}) async {
     DocumentReference documentReferencer = _mainCollection.doc();
     Map<String, dynamic> data = <String, dynamic>{
       "S_Name": Service_Name,
@@ -56,7 +53,6 @@ class Database {
     // final FirebaseFirestore find_data =  _firestore.collection("Vendor_Services").where('S_uid',isEqualTo: user.uid).
     // snapshots().listen(
     // (data) => print('grower ${data.docs[0]['S_uid']}')) as FirebaseFirestore;
-
     DocumentReference documentReferencer = _mainCollection.doc(mydoc);
     Map<String, dynamic> data = <String, dynamic>{
       "S_Name": Service_Name,

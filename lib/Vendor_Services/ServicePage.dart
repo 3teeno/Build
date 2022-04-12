@@ -301,7 +301,6 @@ class _Services_CRUDState extends State<Services_CRUD> {
                         onPressed: () {
                           if(task == "New Service")
                           {
-
                             Database.addItem(
                                 Service_Name: Service_Name.text.toString(),
                                 Service_Description: Service_Description.text.toString(),

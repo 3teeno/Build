@@ -114,7 +114,8 @@ class _Order_Page_CustomerState extends State<Order_Page_Customer> {
                         //     bottomRight: Radius.circular(5)),
                         boxShadow: [
                           BoxShadow(
-                            color: Colors.grey.withOpacity(0.2),                            spreadRadius: 1,
+                            color: Colors.grey.withOpacity(0.2),
+                            spreadRadius: 1,
                             blurRadius: 20,
                             offset: Offset(0, 3),
                           ),

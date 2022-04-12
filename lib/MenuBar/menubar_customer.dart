@@ -14,6 +14,7 @@ import 'package:build_i_t/home_page/CustomerHomePage.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:lottie/lottie.dart';
 import 'package:provider/provider.dart';
+import 'package:build_i_t/Orders/Order_Firestore.dart';
 import 'package:firebase_core/firebase_core.dart';
 
 
@@ -211,7 +212,8 @@ class _Customer_menuBarState extends State<Customer_menuBar> {
                         await Navigator.push(
                           context,
                           MaterialPageRoute(
-                            builder: (context) => Order_Page_Customer(),
+                            // builder: (context) => Order_Page_Customer(), //official
+                            builder: (context) => Order_Firestore_CRUDS(), //temporary
                           ),
                         );
                       },
