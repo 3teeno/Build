@@ -49,6 +49,7 @@ class _Customer_menuBarState extends State<Customer_menuBar> {
               ),
             ),
             Align(
+
               alignment: AlignmentDirectional(0, 0.5),
               child: Padding(
                 padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 20),

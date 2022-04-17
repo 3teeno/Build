@@ -18,26 +18,19 @@ class Order_Firestore_CRUDS extends StatefulWidget {
 
 class _Order_Firestore_CRUDSState extends State<Order_Firestore_CRUDS> {
 
-// Order order_obj= Order(
-//   Order_Description:"Order_Description",
-//   Order_Duration:"Order_Duration",
-//   Order_Hash:"Order_Hash",
-//   Order_Price:"Order_Price",
-//   Order_Title:"Order_Title",
-//   Order_Vendor_id:"Order_Vendor_id",
-// );
-
 final TextEditingController _DescriptionController = TextEditingController();
 final TextEditingController _DurationController = TextEditingController();
 final TextEditingController _PriceController = TextEditingController();
 final TextEditingController _TitleController = TextEditingController();
 final TextEditingController _VendoridController = TextEditingController();
 final TextEditingController _HashController = TextEditingController();
-
+List docs = [];
+Order myorder;
 @override
   Widget build(BuildContext context) {
-    String newm;
-    List<int> mylist;
+    String new_hash;
+    Random random = new Random();
+    int random_hash = random.nextInt(9999)+999;
     return Scaffold(
       appBar: AppBar(title: Text("Order CRUDS"),),
       backgroundColor: Colors.blue[200],
@@ -46,17 +39,17 @@ final TextEditingController _HashController = TextEditingController();
           child: Column(
             children: [
               TextButton(onPressed: () => {
+                random_hash = random.nextInt(9999)+999,
+                new_hash = random_hash.toString(),
                 Order.add_order(
                   Order_Description: _DescriptionController.text.toString(),
                   Order_Duration: _DurationController.text.toString(),
-                  Order_Hash: "1234".toString(),
+                  Order_Hash: new_hash.toString(),
                   Order_Vendor_id: user.uid.toString(),
                   Order_Price: _PriceController.text.toString(),
                   Order_Title: _TitleController.text.toString(),
                 ),
                 print("Add Orders Pressed"),
-
-                
 
               }, child: Text("Add"),style: ButtonStyle( backgroundColor:MaterialStateProperty.all<Color>(Colors.white),minimumSize: MaterialStateProperty.all(Size(200.0, 40.0))),),
               SizedBox(width: 50.0, height: 10.0,),
@@ -64,7 +57,7 @@ final TextEditingController _HashController = TextEditingController();
                 Order.update_order(
                   Order_Description: _DescriptionController.text.toString(),
                   Order_Duration: _DurationController.text.toString(),
-                  Order_Hash: "1234".toString(),
+                  Order_Hash: new_hash.toString(),
                   Order_Vendor_id: user.uid.toString(),
                   Order_Price: _PriceController.text.toString(),
                   Order_Title: _TitleController.text.toString(),
@@ -75,14 +68,21 @@ final TextEditingController _HashController = TextEditingController();
               TextButton(onPressed: () => {print("Delete Orders Pressed")}, child: Text("Delete"),style: ButtonStyle( backgroundColor:MaterialStateProperty.all<Color>(Colors.white),minimumSize: MaterialStateProperty.all(Size(200.0, 40.0))),),
               SizedBox(width: 50.0, height: 10.0,),
               TextButton(onPressed: () => {
+
                 print("Fetch Orders Pressed"),
+                Order.fetch_order().then((value) => {
+                  setState((){
+                    docs=value; })}),
                   // Navigator.push(
                   // context,
                   // MaterialPageRoute(
                   //   builder: (context) => Active_Orders_Page(),
                   // ),)
+                print("Checking the final final"),
+                // print(docs),
               },
                 child: Text("Fetch My Orders"),style: ButtonStyle( backgroundColor:MaterialStateProperty.all<Color>(Colors.white),minimumSize: MaterialStateProperty.all(Size(200.0, 40.0))),),
+
               SizedBox(width: 50.0, height: 10.0,),
               TextFormField(
 
@@ -240,6 +240,7 @@ final TextEditingController _HashController = TextEditingController();
               SizedBox(width: 50.0, height: 10.0,),
             ],
           ),
+
         ),
       ),
     );

@@ -1,3 +1,4 @@
+import 'package:build_i_t/backend/backend.dart';
 import 'package:flutter/material.dart';
 import 'Model_Orders.dart';
 
@@ -9,43 +10,41 @@ class Active_Orders_Page extends StatefulWidget {
 }
 class _Active_Orders_PageState extends State<Active_Orders_Page> {
 
-  List<Order> orders = [
-    Order(
-        Order_Hash: '#14251',
-        Order_Title: "Painting Service",
-        Order_Description:
-        "I will paint your entire house that includes 3 Rooms , 1 Dining etc",
-        Order_Duration: "5 days",
-        Order_Price: "PKR 1040"),
-    Order(
-        Order_Hash: '#19421',
-        Order_Title: "Cleaning Service",
-        Order_Description:
-        "I will clean your entire house that includes 3 Rooms , 1 Dining etc",
-        Order_Duration: "7 days",
-        Order_Price: "PKR 9640"),
-    Order(
-        Order_Hash: '#11251',
-        Order_Title: "Electrician Service",
-        Order_Description: "I will fix electricity of your house",
-        Order_Duration: "3 days",
-        Order_Price: "PKR 1040"),
-    Order(
-        Order_Hash: '#11251',
-        Order_Title: "Electrician Service",
-        Order_Description: "I will fix electricity of your house",
-        Order_Duration: "3 days",
-        Order_Price: "PKR 1040"),
-    Order(
-        Order_Hash: '#11251',
-        Order_Title: "Electrician Service",
-        Order_Description: "I will fix electricity of your house",
-        Order_Duration: "3 days",
-        Order_Price: "PKR 1040"),
-  ];
-  Order myx = Order();
-
-
+  // List<Order> orders = [
+  //   Order(
+  //       Order_Hash: '#14251',
+  //       Order_Title: "Painting Service",
+  //       Order_Description:
+  //       "I will paint your entire house that includes 3 Rooms , 1 Dining etc",
+  //       Order_Duration: "5 days",
+  //       Order_Price: "PKR 1040"),
+  //   Order(
+  //       Order_Hash: '#19421',
+  //       Order_Title: "Cleaning Service",
+  //       Order_Description:
+  //       "I will clean your entire house that includes 3 Rooms , 1 Dining etc",
+  //       Order_Duration: "7 days",
+  //       Order_Price: "PKR 9640"),
+  //   Order(
+  //       Order_Hash: '#11251',
+  //       Order_Title: "Electrician Service",
+  //       Order_Description: "I will fix electricity of your house",
+  //       Order_Duration: "3 days",
+  //       Order_Price: "PKR 1040"),
+  //   Order(
+  //       Order_Hash: '#11251',
+  //       Order_Title: "Electrician Service",
+  //       Order_Description: "I will fix electricity of your house",
+  //       Order_Duration: "3 days",
+  //       Order_Price: "PKR 1040"),
+  //   Order(
+  //       Order_Hash: '#11251',
+  //       Order_Title: "Electrician Service",
+  //       Order_Description: "I will fix electricity of your house",
+  //       Order_Duration: "3 days",
+  //       Order_Price: "PKR 1040"),
+  // ];
+  List docs=[];
 
   Widget Order_Card_Template_Active(myorder) {
     return Card(
@@ -162,21 +161,40 @@ class _Active_Orders_PageState extends State<Active_Orders_Page> {
       ),
     );
   }
-
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
         home: Scaffold(
-          appBar: AppBar(
-             title: Text("Active Orders"),
-             backgroundColor: Colors.green,
-          ),
-           body: SingleChildScrollView(
-             child: Column(
-              children: orders.map((myorder) => Order_Card_Template_Active(myorder)).toList(),
-             ),
-           )
+            appBar: AppBar(
+              title: Text("Active Orders"),
+              backgroundColor: Colors.green,
+            ),
+            body: SingleChildScrollView(
+              child: Column(
+                // children: orders.map((myorder) => Order_Card_Template_Active(myorder)).toList(),
+              ),
+            )
         )
     );
   }
 }
+
+
+
+//Previous Widget
+// Widget build(BuildContext context) {
+//   return MaterialApp(
+//       home: Scaffold(
+//           appBar: AppBar(
+//             title: Text("Active Orders"),
+//             backgroundColor: Colors.green,
+//           ),
+//           body: SingleChildScrollView(
+//             child: Column(
+//               children: orders.map((myorder) => Order_Card_Template_Active(myorder)).toList(),
+//             ),
+//           )
+//       )
+//   );
+// }
+// }

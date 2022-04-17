@@ -3,6 +3,7 @@ import 'dart:collection';
 import 'package:build_i_t/main.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 
 final FirebaseFirestore _firestore = FirebaseFirestore.instance;
@@ -20,6 +21,7 @@ class Order {
   String Order_Price;
   String Order_Vendor_id; //Currently Used as Userid
   String Order_Status;
+  String Order_Customer_id;
 
   Order({this.Order_Hash, this.Order_Title, this.Order_Description, this.Order_Duration, this.Order_Price, this.Order_Vendor_id }) {
     this.Order_Hash = Order_Hash;
@@ -28,8 +30,8 @@ class Order {
     this.Order_Duration = Order_Duration;
     this.Order_Description = Order_Description;
     this.Order_Vendor_id = user.uid;
+    this.Order_Customer_id = user.uid;
   }
-
   static Future<void> add_order({String Order_Hash,String Order_Vendor_id, String Order_Title, String Order_Description, String Order_Duration, String Order_Price}) async
   {
     DocumentReference documentReferencer = _mainCollection.doc();
@@ -65,7 +67,6 @@ class Order {
       print(element.reference.id);})
     });
 
-
     DocumentReference documentReferencer = _mainCollection.doc();
     Map<String, dynamic> data = <String, dynamic>{
       "Order_Hash" : Order_Hash,
@@ -74,6 +75,7 @@ class Order {
       "Order_Duration": Order_Duration,
       "Order_Price": Order_Price,
       "Order_Vendor_id":Order_Vendor_id,
+      "Order_User_id":user.uid
     };
     await documentReferencer
         .update(data)
@@ -81,14 +83,18 @@ class Order {
         .catchError((e) => print(e));
   }
 
-  Future<List> fetch_order() async
+  static Future<List> fetch_order() async
   {
     QuerySnapshot querySnapshot;
-    List docs;
+    List docs=[];
+    print("Tryna Fetch");
     try {
-      querySnapshot = await _firestore.collection("orders").get();
-      if (querySnapshot.docs.isNotEmpty) {
-        for (var doc in querySnapshot.docs.toList()) {
+      Query query = await _mainCollection.where(
+          'Order_Vendor_id', isEqualTo: user.uid);
+      query.get().then((querySnapshot) =>
+      {
+        querySnapshot.docs.toList().forEach((doc) {
+          // print(doc['Order_Hash']);
           Map my_orders = {
             "Vendor_id": doc.id,
             "Order_Hash": doc['Order_Hash'],
@@ -99,11 +105,10 @@ class Order {
             "Order_Status": doc['Order_Status'],
           };
           docs.add(my_orders);
-        }
-        print(docs);
-        return docs;
-
-      }
+          // print(my_orders);
+        })
+      });
+      return docs;
     }
     catch (e) {
       print(e);
