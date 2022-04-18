@@ -1,3 +1,4 @@
+import 'package:build_i_t/Chat/Chat_Model.dart';
 import 'package:build_i_t/backend/backend.dart';
 import 'package:build_i_t/home_page/AdminHomePage.dart';
 
@@ -8,6 +9,7 @@ import 'package:build_i_t/search_page/search_page_widget.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:lottie/lottie.dart';
 import 'package:provider/provider.dart';
+import '../Chat/chat_home.dart';
 import '../authentication_service.dart';
 import '../flutter_flow/flutter_flow_drop_down.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
@@ -367,6 +369,34 @@ class _logInState extends State<logIn> {
                             },
                             child: Text(
                               'Register?',
+                              style: FlutterFlowTheme.title2.override(
+                                fontFamily: 'Poppins',
+                                fontSize: 16,
+                              ),
+                            ),
+                          ),
+                        ),
+
+
+
+
+                        //for bebugging chat
+                        Padding(
+                          padding: EdgeInsetsDirectional.fromSTEB(0, 5, 0, 0),
+                          child: InkWell(
+                            onTap: () async {
+                              await Navigator.push(
+                              context,
+                              PageTransition(
+                                type: PageTransitionType.rightToLeft,
+                                duration: Duration(milliseconds: 300),
+                                reverseDuration: Duration(milliseconds: 300),
+                                child: ChatScreen(),
+                              ),
+                            );
+                            },
+                            child: Text(
+                              'Chatt?',
                               style: FlutterFlowTheme.title2.override(
                                 fontFamily: 'Poppins',
                                 fontSize: 16,
