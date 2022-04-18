@@ -1,5 +1,6 @@
 import 'package:build_i_t/Orders/Order_Page_Customer.dart';
 import 'package:build_i_t/Vendor_Services/ServicePage.dart';
+import 'package:build_i_t/chat_main/chat_main_widget.dart';
 import 'package:build_i_t/flutter_flow/flutter_flow_theme.dart';
 import 'package:build_i_t/flutter_flow/flutter_flow_util.dart';
 import 'package:build_i_t/login_page/Google_signIn.dart';
@@ -16,6 +17,7 @@ import 'package:lottie/lottie.dart';
 import 'package:provider/provider.dart';
 import 'package:build_i_t/Orders/Order_Firestore.dart';
 import 'package:firebase_core/firebase_core.dart';
+
 
 
 class Customer_menuBar extends StatefulWidget {
@@ -163,12 +165,12 @@ class _Customer_menuBarState extends State<Customer_menuBar> {
                     child: InkWell(
                       onTap: () async {
                         print("Chat button navigation");
-                        // await Navigator.push(
-                        //   context,
-                        //   MaterialPageRoute(
-                        //     builder: (context) => ChatInboxWidget(),
-                        //   ),
-                        // );
+                        await Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => ChatMainWidget(),
+                          ),
+                        );
                       },
                       child: Container(
                         width: MediaQuery.of(context).size.width,

@@ -61,6 +61,7 @@ class _RegistrationPageCopyWidgetState
   }
 
   void sendOTP() async {
+    print("In send otp");
     emailAuth = new EmailAuth(
       sessionName: "Sample session",
     );
@@ -162,10 +163,13 @@ class _RegistrationPageCopyWidgetState
     print("ID of user= "+uid);
 
     await FirebaseFirestore.instance.collection('users').doc(uid).set({
-      'name': FullNameController.text,
+      'displayName': FullNameController.text,
       'email': EmailController.text,
       'phone': PhoneController.text,
-      'type': dropDownValue
+      'userRole': dropDownValue,
+      'uid': uid,
+      'photoUrl' : "https://www.w3schools.com/howto/img_avatar.png"
+
     }).then((value) => print("User Added"))
         .catchError((error) => print("User not added $error"));
     print('After creation');
