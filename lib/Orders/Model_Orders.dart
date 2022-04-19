@@ -5,6 +5,8 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
+import '../auth/firebase_user_provider.dart';
+
 
 final FirebaseFirestore _firestore = FirebaseFirestore.instance;
 final FirebaseAuth auth = FirebaseAuth.instance;
@@ -92,7 +94,7 @@ class Order {
     print("Fetching From Firestore");
     try {
       Query query = await _mainCollection.where(
-          'Order_Vendor_id', isEqualTo: user.uid);
+          'Order_Vendor_id', isEqualTo: currentUser.user.uid);
       await query.get().then((querySnapshot) =>
       {
         querySnapshot.docs.toList().forEach((doc) {

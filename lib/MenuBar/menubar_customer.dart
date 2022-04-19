@@ -1,5 +1,6 @@
 import 'package:build_i_t/Orders/Order_Page_Customer.dart';
 import 'package:build_i_t/Vendor_Services/ServicePage.dart';
+import 'package:build_i_t/auth/firebase_user_provider.dart';
 import 'package:build_i_t/chat_main/chat_main_widget.dart';
 import 'package:build_i_t/flutter_flow/flutter_flow_theme.dart';
 import 'package:build_i_t/flutter_flow/flutter_flow_util.dart';
@@ -17,6 +18,8 @@ import 'package:lottie/lottie.dart';
 import 'package:provider/provider.dart';
 import 'package:build_i_t/Orders/Order_Firestore.dart';
 import 'package:firebase_core/firebase_core.dart';
+
+import '../Orders/Model_Orders.dart';
 
 
 
@@ -37,31 +40,23 @@ class _Customer_menuBarState extends State<Customer_menuBar> {
         child: Column(
           mainAxisSize: MainAxisSize.max,
           children: [
-            Align(
-              alignment: AlignmentDirectional(0.5, 2),
-              child: Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(0, 10, 0, 0),
-                child: Lottie.network(
-                  'https://assets3.lottiefiles.com/packages/lf20_byuzwmds.json',
-                  width: 200,
-                  height: 180,
-                  fit: BoxFit.cover,
-                  animate: true,
-                ),
+            Padding(
+              padding: EdgeInsetsDirectional.fromSTEB(0, 20, 0, 0),
+              child: Lottie.asset(
+                'assets/lottie_animations/menu_user.json',
+                width: 130,
+                height: 100,
+                fit: BoxFit.cover,
+                animate: true,
               ),
             ),
-            Align(
-
-              alignment: AlignmentDirectional(0, 0.5),
-              child: Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 20),
-                child: Image.asset(
-                  'assets/images/BuildIt.png',
-                  width: MediaQuery.of(context).size.width * 0.5,
-                  height: 30,
-                  fit: BoxFit.contain,
-                ),
-              ),
+            Padding(
+              padding: EdgeInsetsDirectional.fromSTEB(0, 40, 0, 10),
+              child: Text("Name :  ${currentUser.user.displayName}")
+            ),
+            Padding(
+                padding: EdgeInsetsDirectional.fromSTEB(0,0, 0, 20),
+                child: Text("Email :  ${currentUser.user.email}")
             ),
             SingleChildScrollView(
               child: Column(
@@ -215,8 +210,7 @@ class _Customer_menuBarState extends State<Customer_menuBar> {
                         await Navigator.push(
                           context,
                           MaterialPageRoute(
-                            // builder: (context) => Order_Page_Customer(), //official
-                            builder: (context) => Order_Firestore_CRUDS(), //temporary
+                            builder: (context) => Order_Page_Customer(), //official
                           ),
                         );
                       },
@@ -315,6 +309,7 @@ class _Customer_menuBarState extends State<Customer_menuBar> {
                                 onTap: ()
                                 async {
                                   await FirebaseAuth.instance.signOut();
+                                  currentUser=null;
                                   // final provider = Provider.of<GoogleSignInProvider>(context,listen: false);
                                   // await provider.logout();
                                   await Navigator.push(
