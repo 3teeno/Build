@@ -159,6 +159,10 @@ class _RegistrationPageCopyWidgetState
 
     UserCredential credentials=await autherize.createUserWithEmailAndPassword(email: EmailController.text, password: PasswordController.text);
     autherize.signInWithEmailAndPassword(email: EmailController.text, password: PasswordController.text);
+    autherize.currentUser.updateDisplayName(FullNameController.text);
+    autherize.currentUser.updateEmail(EmailController.text);
+    //autherize.currentUser.updatePhoneNumber(PhoneController.text);
+    autherize.currentUser.updatePhotoURL("https://www.w3schools.com/howto/img_avatar.png");
     String uid=credentials.user.uid;
     print("ID of user= "+uid);
 

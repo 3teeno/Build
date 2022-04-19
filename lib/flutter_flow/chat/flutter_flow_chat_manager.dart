@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:stream_transform/stream_transform.dart';
 
 import 'index.dart';
@@ -155,12 +156,17 @@ class FFChatManager {
     if (chatRef != null) {
       return chatRef;
     }
+    var data = FirebaseFirestore.instance
+        .collection('users').doc(
+        'e1ODy2TLc0NaAHAOrAfYposrHmL2');
+    print(otherUser);
 
     // Determine who is userA and userB deterministically by uid.
-    final users = [otherUser, currentUserReference];
+    final users = [otherUser, UsersRecord.collection.doc(FirebaseAuth.instance.currentUser.uid)];
 
-    users.sort((a, b) => a.id.compareTo(b.id));
-
+    //users.sort((a, b) => a.id.compareTo(b.id));
+    print("Hello world");
+    print(users);
     var chat = await queryChatsRecord(
             queryBuilder: (q) => q
                 .where('user_a', isEqualTo: users.first)

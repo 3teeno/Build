@@ -9,6 +9,8 @@ import 'package:build_i_t/home_page/CustomerHomePage.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:lottie/lottie.dart';
 import 'package:provider/provider.dart';
+import 'auth/auth_util.dart';
+import 'auth/firebase_user_provider.dart';
 import 'flutter_flow/flutter_flow_theme.dart';
 import 'flutter_flow/flutter_flow_theme.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -30,7 +32,15 @@ class MyApp extends StatefulWidget {
 
 class _MyAppState extends State<MyApp> {
   final Future<FirebaseApp> _initialization = Firebase.initializeApp();
+  Stream<ChatFirebaseUser> userStream;
+  ChatFirebaseUser initialUser;
+  final authUserSub = authenticatedUserStream.listen((_) {});
+  void initState() {
+    super.initState();
+    userStream = chatFirebaseUserStream()
+      ..listen((user) => initialUser ?? setState(() => initialUser = user));
 
+  }
   @override
   Widget build(BuildContext context) {
     return FutureBuilder(

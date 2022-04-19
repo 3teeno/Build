@@ -1,4 +1,5 @@
 import 'package:build_i_t/Chat/Chat_Model.dart';
+import 'package:build_i_t/auth/auth_util.dart';
 import 'package:build_i_t/backend/backend.dart';
 import 'package:build_i_t/home_page/AdminHomePage.dart';
 
@@ -10,6 +11,8 @@ import 'package:fluttertoast/fluttertoast.dart';
 import 'package:lottie/lottie.dart';
 import 'package:provider/provider.dart';
 import '../Chat/chat_home.dart';
+import '../auth/email_auth.dart';
+import '../auth/firebase_user_provider.dart';
 import '../authentication_service.dart';
 import '../flutter_flow/flutter_flow_drop_down.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
@@ -247,17 +250,23 @@ class _logInState extends State<logIn> {
                                       loading = true;
                                     });
                                     try {
-                                      await FirebaseAuth.instance
+                                      final user = await FirebaseAuth.instance
                                           .signInWithEmailAndPassword(
                                               email:
                                                   emailController.text.trim(),
                                               password: passwordController.text
                                                   .trim());
+
+
+
                                       print(FirebaseAuth.instance.currentUser.uid);
                                       if(FirebaseAuth.instance.currentUser.uid!=null) {
                                         DocumentSnapshot data = await FirebaseFirestore.instance.collection('users')
                                             .doc(FirebaseAuth.instance.currentUser.uid).get();
                                         print('Logged In Successfully!');
+                                        print(currentUser.user);
+                                        print(currentUserReference);
+                                        //currentUser=ChatFirebaseUser(user.user);
                                         //print(data.get('type').toString() +""+ dropDownValue);
                                         if (data['userRole'].toString() ==
                                             'Customer') {
