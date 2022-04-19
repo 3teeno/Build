@@ -63,17 +63,17 @@ class _HomePageWidgetState extends State<HomePageWidget> {
 
         stream: UsersRecord.getDocument(userdata),
         builder: (context, snapshot) {
-          print(snapshot.data);
+          //print(snapshot.data);
           // Customize what your widget looks like when it's loading.
-          if (!snapshot.hasData) {
-            return Center(
-              child: SizedBox(
-                width: 50,
-                height: 50,
-                child: Text("No user Found")
-              ),
-            );
-          }
+          // if (!snapshot.hasData) {
+          //   return Center(
+          //     child: SizedBox(
+          //       width: 50,
+          //       height: 50,
+          //       child: Text("No user Found")
+          //     ),
+          //   );
+          // }
           return Scaffold(
             key: scaffoldKey,
             backgroundColor: Color(0xFFF6EFDE),
