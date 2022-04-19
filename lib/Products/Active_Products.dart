@@ -16,7 +16,7 @@ class _Active_Products_PageState extends State<Active_Products_Page> {
   Future<void> initialise() async {
     await Order.fetch_order().then ((value) => setState((){ mydocs=value; } ) );
     if(mydocs.isEmpty)
-      {print("Empty Products");}
+      {print("Empty Products Against Vendor");}
     for (var i = 0; i < mydocs.length; i++) {
       Order temp = Order(
         Order_Hash: mydocs[i]['Order_Hash'],

@@ -1,5 +1,6 @@
 import 'package:build_i_t/Orders/Order_Page_Customer.dart';
 import 'package:build_i_t/Vendor_Services/ServicePage.dart';
+import 'package:build_i_t/auth/firebase_user_provider.dart';
 import 'package:build_i_t/chat_main/chat_main_widget.dart';
 import 'package:build_i_t/flutter_flow/flutter_flow_theme.dart';
 import 'package:build_i_t/flutter_flow/flutter_flow_util.dart';
@@ -51,11 +52,11 @@ class _Customer_menuBarState extends State<Customer_menuBar> {
             ),
             Padding(
               padding: EdgeInsetsDirectional.fromSTEB(0, 40, 0, 10),
-              child: Text("Name :  ${user.displayName}")
+              child: Text("Name :  ${currentUser.user.displayName}")
             ),
             Padding(
                 padding: EdgeInsetsDirectional.fromSTEB(0,0, 0, 20),
-                child: Text("Email :  ${user.email}")
+                child: Text("Email :  ${currentUser.user.email}")
             ),
             SingleChildScrollView(
               child: Column(
@@ -210,7 +211,6 @@ class _Customer_menuBarState extends State<Customer_menuBar> {
                           context,
                           MaterialPageRoute(
                             builder: (context) => Order_Page_Customer(), //official
-                            //builder: (context) => Order_Firestore_CRUDS(), //temporary
                           ),
                         );
                       },
@@ -309,6 +309,7 @@ class _Customer_menuBarState extends State<Customer_menuBar> {
                                 onTap: ()
                                 async {
                                   await FirebaseAuth.instance.signOut();
+                                  currentUser=null;
                                   // final provider = Provider.of<GoogleSignInProvider>(context,listen: false);
                                   // await provider.logout();
                                   await Navigator.push(

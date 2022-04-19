@@ -15,6 +15,8 @@ class _Active_Orders_PageState extends State<Active_Orders_Page> {
   List mydocs = [];
   Future<void> initialise() async {
     await Order.fetch_order().then ((value) => setState((){ mydocs=value; } ) );
+    print(currentUser.user.uid);
+    print(user.uid);
     for (var i = 0; i < mydocs.length; i++) {
       Order temp = Order(
         Order_Hash: mydocs[i]['Order_Hash'],
