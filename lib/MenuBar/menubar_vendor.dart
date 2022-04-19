@@ -15,6 +15,8 @@ import 'package:lottie/lottie.dart';
 import 'package:provider/provider.dart';
 import 'package:firebase_core/firebase_core.dart';
 
+import '../chat_main/chat_main_widget.dart';
+
 
 class Vendor_menuBar extends StatefulWidget {
   const Vendor_menuBar({Key key}) : super(key: key);
@@ -160,12 +162,12 @@ class _Vendor_menuBarState extends State<Vendor_menuBar> {
                     child: InkWell(
                       onTap: () async {
                         print("Chat button navigation");
-                        // await Navigator.push(
-                        //   context,
-                        //   MaterialPageRoute(
-                        //     builder: (context) => ChatInboxWidget(),
-                        //   ),
-                        // );
+                        await Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => ChatMainWidget(),
+                          ),
+                        );
                       },
                       child: Container(
                         width: MediaQuery.of(context).size.width,

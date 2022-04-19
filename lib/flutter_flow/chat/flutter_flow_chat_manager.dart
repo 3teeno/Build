@@ -164,7 +164,7 @@ class FFChatManager {
     // Determine who is userA and userB deterministically by uid.
     final users = [otherUser, UsersRecord.collection.doc(FirebaseAuth.instance.currentUser.uid)];
 
-    //users.sort((a, b) => a.id.compareTo(b.id));
+    users.sort((a, b) => a.id.compareTo(b.id));
     print("Hello world");
     print(users);
     var chat = await queryChatsRecord(

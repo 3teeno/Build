@@ -49,18 +49,6 @@ class _ChatMainWidgetState extends State<ChatMainWidget> {
             elevation: 4,
           ),
           backgroundColor: FlutterFlowTheme.background,
-          floatingActionButton: FloatingActionButton(
-            onPressed: () {
-              print('FloatingActionButton pressed ...');
-            },
-            backgroundColor: FlutterFlowTheme.primaryColor,
-            elevation: 8,
-            child: Icon(
-              Icons.add_comment_rounded,
-              color: FlutterFlowTheme.tertiaryColor,
-              size: 30,
-            ),
-          ),
           body: SafeArea(
             child: Column(
               mainAxisSize: MainAxisSize.max,
@@ -77,7 +65,10 @@ class _ChatMainWidgetState extends State<ChatMainWidget> {
                     ),
                     builder: (context, snapshot) {
                       // Customize what your widget looks like when it's loading.
+                      print(currentUserReference);
+                      print(snapshot.data);
                       if (!snapshot.hasData) {
+
                         return Center(
                           child: SizedBox(
                             width: 50,
