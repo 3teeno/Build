@@ -259,7 +259,7 @@ class _logInState extends State<logIn> {
                                             .doc(FirebaseAuth.instance.currentUser.uid).get();
                                         print('Logged In Successfully!');
                                         //print(data.get('type').toString() +""+ dropDownValue);
-                                        if (data.get('userRole').toString() ==
+                                        if (data['userRole'].toString() ==
                                             'Customer') {
                                           //check which user login
                                           Navigator.pushReplacement(
@@ -268,7 +268,7 @@ class _logInState extends State<logIn> {
                                                   builder: (context) =>
                                                       HomePageWidget()));
                                         }
-                                        else if (data.get('userRole').toString() ==
+                                        else if (data['userRole'].toString() ==
                                             'Vendor') {
                                           //check which user login
                                           Navigator.pushReplacement(
@@ -277,7 +277,7 @@ class _logInState extends State<logIn> {
                                                   builder: (context) =>
                                                       VendorHomePageWidget()));
                                         }
-                                        else if (data.get('userRole').toString() ==
+                                        else if (data['userRole'].toString() ==
                                             'Admin') {
                                           //check which user login
                                           Navigator.pushReplacement(
