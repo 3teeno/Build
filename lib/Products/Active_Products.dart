@@ -1,16 +1,16 @@
-import 'package:build_i_t/backend/backend.dart';
 import 'package:flutter/material.dart';
-import '../auth/firebase_user_provider.dart';
-import 'Model_Orders.dart';
+import 'package:build_i_t/Products/Model_Products.dart';
 
+import '../Orders/Model_Orders.dart';
 
-class Active_Orders_Page extends StatefulWidget {
-  const Active_Orders_Page({Key key}) : super(key: key);
+class Active_Products_Page extends StatefulWidget {
+  const Active_Products_Page({Key key}) : super(key: key);
 
   @override
-  State<Active_Orders_Page> createState() => _Active_Orders_PageState();
+  State<Active_Products_Page> createState() => _Active_Products_PageState();
 }
-class _Active_Orders_PageState extends State<Active_Orders_Page> {
+
+class _Active_Products_PageState extends State<Active_Products_Page> {
   List<Order> orders = [];
   List mydocs = [];
   Future<void> initialise() async {
@@ -30,7 +30,7 @@ class _Active_Orders_PageState extends State<Active_Orders_Page> {
     print("Init is called ");
     initialise();
   }
-  Widget Order_Card_Template_Active(myorder) {
+  Widget Product_Card_Template_Active(myorder) {
     return InkWell(
       onTap: () => {print("Order Hash : "+myorder.Order_Hash)},
       enableFeedback: true,
@@ -154,19 +154,19 @@ class _Active_Orders_PageState extends State<Active_Orders_Page> {
 
   @override
   Widget build(BuildContext context) {
-      return MaterialApp(
-          home: Scaffold(
-              appBar: AppBar(
-                title: Text("Active Orders"),
-                leading: IconButton(icon:Icon(Icons.arrow_back),onPressed: ()=>Navigator.pop(context) ,),
-                backgroundColor: Color(0xFF123456),
+    return MaterialApp(
+        home: Scaffold(
+            appBar: AppBar(
+              title: Text("Active Products"),
+              leading: IconButton(icon:Icon(Icons.arrow_back),onPressed: ()=>Navigator.pop(context) ,),
+              backgroundColor: Color(0xFF123456),
+            ),
+            body: SingleChildScrollView(
+              child: Column(
+                children: orders.map((myorder) => Product_Card_Template_Active(myorder)).toList(),
               ),
-              body: SingleChildScrollView(
-                child: Column(
-                  children: orders.map((myorder) => Order_Card_Template_Active(myorder)).toList(),
-                ),
-              )
-          )
-      );
-    }
+            )
+        )
+    );
   }
+}
