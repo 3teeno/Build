@@ -510,7 +510,7 @@ class _RegistrationPageCopyWidgetState
                             if (PasswordController.text ==
                                 ConfirmPasswordController.text) {
                               try {
-                                if (FirebaseAuth.instance.currentUser == null) {
+                                //if (FirebaseAuth.instance.currentUser == null) {
                                   //Opening Bottom Sheet
                                   showModalBottomSheet(
                                       context: context,
@@ -521,7 +521,7 @@ class _RegistrationPageCopyWidgetState
                                   if(await emailAuth.validateOtp(recipientMail: EmailController.value.text, userOtp: otpControllet.value.text)){
                                     Fluttertoast.showToast(msg: "Maa aa gaya");
                                     print("bottom sheet ka neechy ");
-                                  }
+                                  //}
 
                                   // scaffoldKey.currentState.showBottomSheet(
                                   //     (context) => _buildBottomSheet(context));
