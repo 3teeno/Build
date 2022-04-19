@@ -64,7 +64,7 @@ class _logInState extends State<logIn> {
         debugShowCheckedModeBanner: false,
         home: Scaffold(
             key: scaffoldKey,
-            backgroundColor: Color(0xFFF6EFDE),
+            backgroundColor: Color(0xFFF2F2F2),
             body: SingleChildScrollView(
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
@@ -93,13 +93,13 @@ class _logInState extends State<logIn> {
                             height: 60,
                             textStyle: FlutterFlowTheme.bodyText1.override(
                               fontFamily: 'Poppins',
-                              color: Colors.white,
+                              color: Colors.black87,
                             ),
-                            fillColor: Color(0xFF282828),
+                            fillColor: Color(0xFFFFFFFF),
                             elevation: 2,
-                            borderColor: Colors.transparent,
+                            borderColor: Colors.black87,
                             borderWidth: 1.5,
-                            borderRadius: 0,
+                            borderRadius: 5,
                             margin:
                                 EdgeInsetsDirectional.fromSTEB(12, 4, 12, 4),
                             hidesUnderline: true,
@@ -296,7 +296,6 @@ class _logInState extends State<logIn> {
                                                       AdminHomePageWidget()));
                                         }
                                         else {
-                                          print("Ma tu nai jaon ga");
                                           FirebaseAuth.instance.signOut();
                                         }
                                       }
@@ -325,11 +324,11 @@ class _logInState extends State<logIn> {
                                   options: FFButtonOptions(
                                     width: MediaQuery.of(context).size.width,
                                     height: 60,
-                                    color: Color(0xFF282828),
+                                    color: Color(0xFF123456),
                                     textStyle:
                                         FlutterFlowTheme.subtitle2.override(
                                       fontFamily: 'Poppins',
-                                      color: Color(0xFFFFB700),
+                                      color: Color(0xFFFFFFFF),
                                     ),
                                     borderSide: BorderSide(
                                       color: Colors.transparent,
@@ -340,7 +339,7 @@ class _logInState extends State<logIn> {
                                 ),
                         ),
                         Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(0, 10, 0, 0),
+                          padding: EdgeInsetsDirectional.fromSTEB(0, 20, 0, 0),
                           child: InkWell(
                             onTap: () async {
                               await Navigator.push(
@@ -363,7 +362,7 @@ class _logInState extends State<logIn> {
                           ),
                         ),
                         Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(0, 5, 0, 0),
+                          padding: EdgeInsetsDirectional.fromSTEB(0, 15, 0, 0),
                           child: InkWell(
                             onTap: () async {
                               await Navigator.push(

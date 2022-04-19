@@ -23,17 +23,16 @@ BuildContext context,
         width: MediaQuery.of(context).size.width,
         height: MediaQuery.of(context).size.height*0.06,
         decoration: BoxDecoration(
-          color: Color(0xFF282828),
+          color: Color(0xFFFFFFFF),
           borderRadius: BorderRadius.circular(10),
         ),
         child: Center(
           child: AutoSizeText(
             serviceName,
-//              'Person Name',
             textAlign: TextAlign.center,
             style: FlutterFlowTheme.bodyText1.override(
               fontFamily: 'Poppins',
-              color: Colors.white,
+              color: Colors.black87,
               fontSize: 10,
               fontWeight: FontWeight.w500,
             ),

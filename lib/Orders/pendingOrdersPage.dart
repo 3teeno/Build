@@ -2,14 +2,14 @@ import 'package:flutter/material.dart';
 import 'Model_Orders.dart';
 
 
-class Delivered_Orders_Page extends StatefulWidget {
-  const Delivered_Orders_Page({Key key}) : super(key: key);
+class pendingOrdersPage extends StatefulWidget {
+  const pendingOrdersPage({Key key}) : super(key: key);
 
   @override
-  State<Delivered_Orders_Page> createState() => _Delivered_Orders_PageState();
+  State<pendingOrdersPage> createState() => _pendingOrdersPageState();
 }
 
-class _Delivered_Orders_PageState extends State<Delivered_Orders_Page> {
+class _pendingOrdersPageState extends State<pendingOrdersPage> {
 
   List<Order> orders = [
     Order(
@@ -83,13 +83,7 @@ class _Delivered_Orders_PageState extends State<Delivered_Orders_Page> {
               color: Colors.grey,
               thickness: 1,
             ),
-            // RatingBar(
-            //
-            //
-            //
-            // )
           ],
-
         ),
       ),
     );
@@ -104,13 +98,27 @@ class _Delivered_Orders_PageState extends State<Delivered_Orders_Page> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: <Widget>[
-            Text(
-              myorder.Order_Hash,
-              style: TextStyle(
-                fontWeight: FontWeight.bold,
-                fontSize: 15.0,
-                color: Colors.blueGrey,
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children:[Text(
+                myorder.Order_Hash,
+                style: TextStyle(
+                  fontWeight: FontWeight.bold,
+                  fontSize: 15.0,
+                  color: Colors.blueGrey,
+                ),
               ),
+
+                Text(
+                  myorder.Order_Duration,
+                  style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                    fontSize: 16.0,
+                    color: Colors.black,
+                  ),
+                ),
+
+              ]
             ),
             SizedBox(height: 6.0),
             Text(
@@ -118,7 +126,7 @@ class _Delivered_Orders_PageState extends State<Delivered_Orders_Page> {
               style: TextStyle(
                 fontWeight: FontWeight.bold,
                 fontSize: 20.0,
-                color: Colors.black,
+                color: Color(0xFF123456),
               ),
             ),
             SizedBox(height: 6.0),
@@ -131,17 +139,6 @@ class _Delivered_Orders_PageState extends State<Delivered_Orders_Page> {
               ),
             ),
             SizedBox(height: 6.0),
-            Align(
-              alignment: Alignment.bottomRight,
-              child: Text(
-                myorder.Order_Duration,
-                style: TextStyle(
-                  fontWeight: FontWeight.bold,
-                  fontSize: 16.0,
-                  color: Colors.black,
-                ),
-              ),
-            ),
             Divider(
               color: Colors.grey,
               thickness: 1,
@@ -149,27 +146,13 @@ class _Delivered_Orders_PageState extends State<Delivered_Orders_Page> {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: <Widget>[
-                TextButton(
-                  child:  Text("Give Feedback"),
-                  style: TextButton.styleFrom(
-                    primary: Colors.orange,
-                    backgroundColor: Colors.orange[50],
-                  ),
-                  onPressed: ()=>
-                  {
-                    print("Show Feedback Button Clicked"),
-                    showDialog(
-                        context: context,
-                        builder: (_) => Feedback_Popup_Template(myorder.Order_Hash)
-                    )
-                  },
-                ),
+                Padding(padding: EdgeInsets.symmetric(vertical: 5),child: Text("Awaiting Approval",style: TextStyle(color: Colors.black87,fontSize: 15,fontFamily: 'Poppins'),)),
                 Text(
                   myorder.Order_Price,
                   style: TextStyle(
                       fontWeight: FontWeight.bold,
                       fontSize: 16.0,
-                      color: Colors.green,
+                      color: Color(0xFF123456),
                       decoration: TextDecoration.lineThrough
                   ),
                 ),
@@ -184,13 +167,13 @@ class _Delivered_Orders_PageState extends State<Delivered_Orders_Page> {
   }
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-        home: SafeArea(
-          child: Scaffold(
+    return SafeArea(
+      child: MaterialApp(
+        debugShowCheckedModeBanner: false,
+          home: Scaffold(
               appBar: AppBar(
                 leading: IconButton(icon:Icon(Icons.arrow_back),onPressed: ()=>Navigator.pop(context) ,),
-                title: Text("Delivered Orders"),
+                title: Text("Pending Orders"),
                 backgroundColor: Color(0xFF123456),
               ),
               body: SingleChildScrollView(
@@ -198,8 +181,8 @@ class _Delivered_Orders_PageState extends State<Delivered_Orders_Page> {
                   children: orders.map((myorder) => Order_Card_Template_Delivered(myorder)).toList(),
                 ),
               )
-          ),
-        )
+          )
+      ),
     );
   }
 }

@@ -38,7 +38,7 @@ class _homePageHeaderState extends State<homePageHeader> {
               maxHeight: 125,
             ),
             decoration: BoxDecoration(
-              color: Color(0xFF282828),
+              color: Color(0xFF123456),
               borderRadius: BorderRadius.circular(10),
             ),
             child: Align(
@@ -111,7 +111,7 @@ class _homePageHeaderState extends State<homePageHeader> {
                 width: MediaQuery.of(context).size.width*0.3,
                 // padding: EdgeInsetsDirectional.fromSTEB(20, 0, 5, 0),
                 height: 50,
-                color: Color(0xFFF4BB03),
+                color: Color(0xFFFFFFFF),
                 textStyle: FlutterFlowTheme.subtitle2.override(
                   fontFamily: 'Poppins',
                   color: Colors.black,
