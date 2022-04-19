@@ -118,7 +118,7 @@ class _Order_Page_CustomerState extends State<Order_Page_Customer> {
           //Completed
           InkWell(
             onTap: (){
-              Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=>Delivered_Orders_Page()));
+              Navigator.push(context, MaterialPageRoute(builder: (context)=>Delivered_Orders_Page()));
             },
             child: Container(
               padding: const EdgeInsets.all(8),

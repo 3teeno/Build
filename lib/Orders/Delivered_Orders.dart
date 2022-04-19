@@ -189,8 +189,9 @@ class _Delivered_Orders_PageState extends State<Delivered_Orders_Page> {
         home: SafeArea(
           child: Scaffold(
               appBar: AppBar(
+                leading: IconButton(icon:Icon(Icons.arrow_back),onPressed: ()=>Navigator.pop(context) ,),
                 title: Text("Delivered Orders"),
-                backgroundColor: Colors.green,
+                backgroundColor: Color(0xFF123456),
               ),
               body: SingleChildScrollView(
                 child: Column(
