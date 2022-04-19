@@ -1,5 +1,6 @@
 import 'package:build_i_t/backend/backend.dart';
 import 'package:flutter/material.dart';
+import '../auth/firebase_user_provider.dart';
 import 'Model_Orders.dart';
 
 
@@ -14,7 +15,6 @@ class _Active_Orders_PageState extends State<Active_Orders_Page> {
   List mydocs = [];
   Future<void> initialise() async {
     await Order.fetch_order().then ((value) => setState((){ mydocs=value; } ) );
-
     for (var i = 0; i < mydocs.length; i++) {
       Order temp = Order(
         Order_Hash: mydocs[i]['Order_Hash'],
@@ -159,7 +159,8 @@ class _Active_Orders_PageState extends State<Active_Orders_Page> {
           home: Scaffold(
               appBar: AppBar(
                 title: Text("Active Orders"),
-                backgroundColor: Colors.green,
+                leading: IconButton(icon:Icon(Icons.arrow_back),onPressed: ()=>Navigator.pop(context) ,),
+                backgroundColor: Color(0xFF123456),
               ),
               body: SingleChildScrollView(
                 child: Column(
