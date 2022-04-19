@@ -554,7 +554,62 @@ class _phasesPageMainState extends State<phasesPageMain> {
                 return Row(
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
-                    Text("nhjv"),
+                  RaisedButton(
+                              color: Color(0xFF282828),
+                              onPressed: () {
+                                setState(() {
+                                  if (_activeStepIndex < stepList().length - 1) {
+                                    _activeStepIndex += 1;
+
+                                  } else {
+                                    print("On the last step now");
+                                    Timer(Duration(seconds: 2), () {
+                                      gotoSecondPhase();
+                                    });
+                                    showDialog(
+                                        context: context,
+                                        builder: (context) {
+                                          return AlertDialog(
+                                            shape: RoundedRectangleBorder(
+                                                borderRadius: BorderRadius.all(
+                                                    Radius.circular(8))),
+                                            contentPadding:
+                                                EdgeInsets.only(top: 10),
+                                            content: Container(
+                                              height: 250,
+                                              child: Column(
+                                                mainAxisAlignment:
+                                                    MainAxisAlignment.center,
+                                                crossAxisAlignment:
+                                                    CrossAxisAlignment.center,
+                                                children: [
+                                                  Lottie.asset(
+                                                      "assets/lottie_animations/welldone.json",
+                                                      height: 200,
+                                                      width: 200,
+                                                      repeat: true),
+                                                  Text(
+                                                    "You have Completed Phase One",
+                                                    style: TextStyle(
+                                                        fontFamily: 'Poppins'),
+                                                  )
+                                                ],
+                                              ),
+                                            ),
+                                          );
+                                        });
+                                  }
+                                });
+                              },
+                              child: (stepList().length - 1 == _activeStepIndex)
+                                  ? Text(
+                                      "Go to Next Phase",
+                                      style: TextStyle(color: Colors.white),
+                                    )
+                                  : Text(
+                                      "Complete",
+                                      style: TextStyle(color: Colors.white),
+                                    )),
 
 
                     SizedBox(

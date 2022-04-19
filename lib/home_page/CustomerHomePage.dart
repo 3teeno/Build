@@ -7,6 +7,7 @@ import 'package:build_i_t/chat_details/chat_details_widget.dart';
 import 'package:build_i_t/home_page/serviceProvidersCard.dart';
 import 'package:build_i_t/search_page/search_page_widget.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import '../Build Your Home/BuildYourHome_Main.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
 import '../flutter_flow/flutter_flow_widgets.dart';
@@ -89,6 +90,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                           child: FFButtonWidget(
                             onPressed: () {
                               print('Build Your Home(Button pressed)');
+                              Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=>startingScreen()));
                             },
                             text: 'Customer :  ${user.displayName}',
                             options: FFButtonOptions(
