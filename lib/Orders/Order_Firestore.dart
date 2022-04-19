@@ -1,5 +1,6 @@
 import 'dart:math';
 
+import 'package:build_i_t/Orders/Order_Page_Customer.dart';
 import 'package:flutter/material.dart';
 import 'Model_Orders.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -24,7 +25,6 @@ final TextEditingController _PriceController = TextEditingController();
 final TextEditingController _TitleController = TextEditingController();
 final TextEditingController _VendoridController = TextEditingController();
 final TextEditingController _HashController = TextEditingController();
-List docs = [];
 Order myorder;
 @override
   Widget build(BuildContext context) {
@@ -70,15 +70,14 @@ Order myorder;
               TextButton(onPressed: () => {
 
                 print("Fetch Orders Pressed"),
-                Order.fetch_order().then((value) => {
-                  setState((){
-                    docs=value; })}),
-                  // Navigator.push(
-                  // context,
-                  // MaterialPageRoute(
-                  //   builder: (context) => Active_Orders_Page(),
-                  // ),)
-                print("Checking the final final"),
+                // Order.fetch_order().then
+                //   ((value) => setState((){ docs=value; } ) ),
+                  Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => Order_Page_Customer(),
+                  ),)
+                // print("Checking the final final"),
                 // print(docs),
               },
                 child: Text("Fetch My Orders"),style: ButtonStyle( backgroundColor:MaterialStateProperty.all<Color>(Colors.white),minimumSize: MaterialStateProperty.all(Size(200.0, 40.0))),),

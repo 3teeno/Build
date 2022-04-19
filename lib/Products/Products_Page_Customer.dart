@@ -1,44 +1,40 @@
-import 'package:build_i_t/Orders/Delivered_Orders.dart';
-import 'package:build_i_t/home_page/CustomerHomePage.dart';
-import 'package:build_i_t/main.dart';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'Model_Orders.dart';
-import 'Active_Orders.dart';
 
-class Order_Page_Customer extends StatefulWidget {
-  const Order_Page_Customer({Key key}) : super(key: key);
+
+class Product_Page_Vendor extends StatefulWidget {
+  const Product_Page_Vendor({Key key}) : super(key: key);
 
   @override
-  State<Order_Page_Customer> createState() => _Order_Page_CustomerState();
+  State<Product_Page_Vendor> createState() => _Product_Page_VendorState();
 }
 
-class _Order_Page_CustomerState extends State<Order_Page_Customer> {
-
+class _Product_Page_VendorState extends State<Product_Page_Vendor> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
         home: Scaffold(
           appBar: AppBar(
-            title: Text("Manage Orders"),
+            title: Text("Manage Products"),
             backgroundColor: Colors.green,
           ),
-             body: Center(
-                child: GridView.extent(
-                  primary: false,
-                  padding: const EdgeInsets.all(16),
-                  crossAxisSpacing: 10,
-                  mainAxisSpacing: 10,
-                  maxCrossAxisExtent: 200.0,
-                  children: <Widget>[
+          body: Center(
+              child: GridView.extent(
+                primary: false,
+                padding: const EdgeInsets.all(16),
+                crossAxisSpacing: 10,
+                mainAxisSpacing: 10,
+                maxCrossAxisExtent: 200.0,
+                children: <Widget>[
                   InkWell(
                     splashColor: Colors.blue,
                     onTap: () async {
                       await Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => Active_Orders_Page(),
-                      ),
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => Active_Orders_Page(),
+                        ),
                       );
                     },
                     child: Container(
@@ -47,7 +43,7 @@ class _Order_Page_CustomerState extends State<Order_Page_Customer> {
                       decoration: BoxDecoration(
                           color: Colors.white.withOpacity(0.9),
                           border: Border(
-                          top: BorderSide(width: 5.0, color: Colors.blue),
+                            top: BorderSide(width: 5.0, color: Colors.blue),
                           ),
                           // borderRadius: BorderRadius.only(
                           //     topLeft: Radius.circular(5),
@@ -78,7 +74,7 @@ class _Order_Page_CustomerState extends State<Order_Page_Customer> {
                       padding: const EdgeInsets.all(8),
                       child: const Text('Pending', style: TextStyle(fontSize: 20)),
                       decoration: BoxDecoration(
-                        color: Colors.white.withOpacity(0.9),
+                          color: Colors.white.withOpacity(0.9),
                           border: Border(
                             top: BorderSide(width: 5.0, color: Colors.green),
                           ),
@@ -176,8 +172,8 @@ class _Order_Page_CustomerState extends State<Order_Page_Customer> {
                           ),
                         ]),
                   ),
-        ],
-      )),
-    ));
+                ],
+              )),
+        ));
   }
 }
