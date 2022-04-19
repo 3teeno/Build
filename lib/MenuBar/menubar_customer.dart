@@ -51,11 +51,11 @@ class _Customer_menuBarState extends State<Customer_menuBar> {
             ),
             Padding(
               padding: EdgeInsetsDirectional.fromSTEB(0, 40, 0, 10),
-              child: Text("Name :  ${user.displayName}")
+              child: Text("${user.displayName}")
             ),
             Padding(
                 padding: EdgeInsetsDirectional.fromSTEB(0,0, 0, 20),
-                child: Text("Email :  ${user.email}")
+                child: Text("${user.email}")
             ),
             SingleChildScrollView(
               child: Column(
@@ -77,7 +77,7 @@ class _Customer_menuBarState extends State<Customer_menuBar> {
                         width: MediaQuery.of(context).size.width,
                         height: 50,
                         decoration: BoxDecoration(
-                          color: Color(0xFF282828),
+                          color: Color(0xFF123456),
                           borderRadius: BorderRadius.circular(5),
                         ),
                         child: Padding(
@@ -123,7 +123,7 @@ class _Customer_menuBarState extends State<Customer_menuBar> {
                         width: MediaQuery.of(context).size.width,
                         height: 50,
                         decoration: BoxDecoration(
-                          color: Color(0xFF282828),
+                          color: Color(0xFF123456),
                           borderRadius: BorderRadius.circular(5),
                         ),
                         child: Padding(
@@ -170,7 +170,7 @@ class _Customer_menuBarState extends State<Customer_menuBar> {
                         width: MediaQuery.of(context).size.width,
                         height: 50,
                         decoration: BoxDecoration(
-                          color: Color(0xFF282828),
+                          color: Color(0xFF123456),
                           borderRadius: BorderRadius.circular(5),
                         ),
                         child: Padding(
@@ -218,7 +218,7 @@ class _Customer_menuBarState extends State<Customer_menuBar> {
                         width: MediaQuery.of(context).size.width,
                         height: 50,
                         decoration: BoxDecoration(
-                          color: Color(0xFF282828),
+                          color: Color(0xFF123456),
                           borderRadius: BorderRadius.circular(5),
                         ),
                         child: Padding(
@@ -254,7 +254,7 @@ class _Customer_menuBarState extends State<Customer_menuBar> {
                       width: MediaQuery.of(context).size.width,
                       height: 50,
                       decoration: BoxDecoration(
-                        color: Color(0xFF282828),
+                        color: Color(0xFF123456),
                         borderRadius: BorderRadius.circular(5),
                       ),
                       child: Padding(
@@ -289,7 +289,7 @@ class _Customer_menuBarState extends State<Customer_menuBar> {
                       width: MediaQuery.of(context).size.width,
                       height: 50,
                       decoration: BoxDecoration(
-                        color: Color(0xFF282828),
+                        color: Color(0xFFF2F2F2),
                         borderRadius: BorderRadius.circular(5),
                       ),
                       child: Padding(
@@ -299,7 +299,7 @@ class _Customer_menuBarState extends State<Customer_menuBar> {
                           children: [
                             Icon(
                               Icons.logout,
-                              color: Colors.white,
+                              color: Colors.black87,
                               size: 24,
                             ),
                             Padding(
@@ -325,7 +325,7 @@ class _Customer_menuBarState extends State<Customer_menuBar> {
                                   'Logout',
                                   style: FlutterFlowTheme.bodyText1.override(
                                     fontFamily: 'Poppins',
-                                    color: Colors.white,
+                                    color: Colors.black87,
                                   ),
                                 ),
                               ),

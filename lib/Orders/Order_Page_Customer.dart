@@ -1,11 +1,11 @@
 import 'package:build_i_t/Orders/Delivered_Orders.dart';
+import 'package:build_i_t/Orders/pendingOrdersPage.dart';
 import 'package:build_i_t/home_page/CustomerHomePage.dart';
 import 'package:build_i_t/main.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'Model_Orders.dart';
 import 'Active_Orders.dart';
-import 'completedOrderPage.dart';
 
 class Order_Page_Customer extends StatefulWidget {
   const Order_Page_Customer({Key key}) : super(key: key);
@@ -18,6 +18,7 @@ class _Order_Page_CustomerState extends State<Order_Page_Customer> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
         home: Scaffold(
       appBar: AppBar(
         leading: IconButton(icon:Icon(Icons.arrow_back),onPressed: ()=>Navigator.pop(context) ,),
@@ -81,7 +82,7 @@ class _Order_Page_CustomerState extends State<Order_Page_Customer> {
               await Navigator.push(
                 context,
                 MaterialPageRoute(
-                  builder: (context) => Delivered_Orders_Page(),
+                  builder: (context) => pendingOrdersPage(),
                 ),
               );
             },
@@ -117,7 +118,7 @@ class _Order_Page_CustomerState extends State<Order_Page_Customer> {
           //Completed
           InkWell(
             onTap: (){
-              Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=>CompletedOrderPage()));
+              Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=>Delivered_Orders_Page()));
             },
             child: Container(
               padding: const EdgeInsets.all(8),

@@ -63,20 +63,9 @@ class _HomePageWidgetState extends State<HomePageWidget> {
 
         stream: UsersRecord.getDocument(userdata),
         builder: (context, snapshot) {
-          //print(snapshot.data);
-          // Customize what your widget looks like when it's loading.
-          // if (!snapshot.hasData) {
-          //   return Center(
-          //     child: SizedBox(
-          //       width: 50,
-          //       height: 50,
-          //       child: Text("No user Found")
-          //     ),
-          //   );
-          // }
           return Scaffold(
             key: scaffoldKey,
-            backgroundColor: Color(0xFFF6EFDE),
+            backgroundColor: Color(0xFFF2F2F2),
             drawer: Customer_menuBar(),
             body: SafeArea(
               child: Column(
@@ -108,10 +97,10 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                   .size
                                   .width,
                               height: 45,
-                              color: Color(0xFF282828),
+                              color: Color(0xFFFFFFFF),
                               textStyle: FlutterFlowTheme.subtitle2.override(
                                 fontFamily: 'Poppins',
-                                color: Color(0xFFFFB700),
+                                color: Color(0xFF000000),
                                 fontWeight: FontWeight.normal,
                               ),
                               borderSide: BorderSide(
