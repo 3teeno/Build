@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
+import '../flutter_flow/flutter_flow_theme.dart';
 import 'Model_Orders.dart';
-
 
 class Delivered_Orders_Page extends StatefulWidget {
   const Delivered_Orders_Page({Key key}) : super(key: key);
@@ -10,20 +10,20 @@ class Delivered_Orders_Page extends StatefulWidget {
 }
 
 class _Delivered_Orders_PageState extends State<Delivered_Orders_Page> {
-
+  TextEditingController feedbackCOntroller;
   List<Order> orders = [
     Order(
         Order_Hash: '#14251',
         Order_Title: "Painting Service",
         Order_Description:
-        "I will paint your entire house that includes 3 Rooms , 1 Dining etc",
+            "I will paint your entire house that includes 3 Rooms , 1 Dining etc",
         Order_Duration: "5 days",
         Order_Price: "PKR 1040"),
     Order(
         Order_Hash: '#19421',
         Order_Title: "Cleaning Service",
         Order_Description:
-        "I will clean your entire house that includes 3 Rooms , 1 Dining etc",
+            "I will clean your entire house that includes 3 Rooms , 1 Dining etc",
         Order_Duration: "7 days",
         Order_Price: "PKR 9640"),
     Order(
@@ -89,14 +89,12 @@ class _Delivered_Orders_PageState extends State<Delivered_Orders_Page> {
             //
             // )
           ],
-
         ),
       ),
     );
   }
 
-  Widget Order_Card_Template_Delivered(myorder)
-  {
+  Widget Order_Card_Template_Delivered(myorder) {
     return Card(
       margin: EdgeInsets.fromLTRB(15.0, 10.0, 15.0, 0),
       child: Padding(
@@ -104,14 +102,24 @@ class _Delivered_Orders_PageState extends State<Delivered_Orders_Page> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: <Widget>[
-            Text(
-              myorder.Order_Hash,
-              style: TextStyle(
-                fontWeight: FontWeight.bold,
-                fontSize: 15.0,
-                color: Colors.blueGrey,
+            Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
+              Text(
+                myorder.Order_Hash,
+                style: TextStyle(
+                  fontWeight: FontWeight.bold,
+                  fontSize: 15.0,
+                  color: Colors.blueGrey,
+                ),
               ),
-            ),
+              Text(
+                myorder.Order_Duration,
+                style: TextStyle(
+                  fontWeight: FontWeight.bold,
+                  fontSize: 16.0,
+                  color: Colors.black,
+                ),
+              ),
+            ]),
             SizedBox(height: 6.0),
             Text(
               (myorder.Order_Title),
@@ -131,17 +139,6 @@ class _Delivered_Orders_PageState extends State<Delivered_Orders_Page> {
               ),
             ),
             SizedBox(height: 6.0),
-            Align(
-              alignment: Alignment.bottomRight,
-              child: Text(
-                myorder.Order_Duration,
-                style: TextStyle(
-                  fontWeight: FontWeight.bold,
-                  fontSize: 16.0,
-                  color: Colors.black,
-                ),
-              ),
-            ),
             Divider(
               color: Colors.grey,
               thickness: 1,
@@ -150,18 +147,106 @@ class _Delivered_Orders_PageState extends State<Delivered_Orders_Page> {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: <Widget>[
                 TextButton(
-                  child:  Text("Give Feedback"),
+                  child: Text("Give Feedback"),
                   style: TextButton.styleFrom(
-                    primary: Colors.orange,
-                    backgroundColor: Colors.orange[50],
+                    primary: Color(0xFF123456),
+                    backgroundColor: Color(0xFFF2F2F2),
                   ),
-                  onPressed: ()=>
-                  {
+                  onPressed: () => {
                     print("Show Feedback Button Clicked"),
                     showDialog(
                         context: context,
-                        builder: (_) => Feedback_Popup_Template(myorder.Order_Hash)
-                    )
+                        builder: (_) => AlertDialog(
+                              title: Text(
+                                'Give Feedback',
+                                style: TextStyle(color: Color(0xFF123456)),
+                              ),
+                              content: TextFormField(
+                                controller: feedbackCOntroller,
+                                obscureText: false,
+                                maxLines: 2,
+                                validator: (value) {
+                                  if (value == null || value.isEmpty) {
+                                    return 'Please enter feedback';
+                                  }
+                                  return null;
+                                },
+                                decoration: InputDecoration(
+                                  isDense: true,
+                                  labelText: 'Feedback',
+                                  labelStyle: FlutterFlowTheme.bodyText1.override(
+                                    fontFamily: 'Poppins',
+                                    color: Color(0xFF282828),
+                                    lineHeight: 2,
+                                  ),
+                                  hintStyle: FlutterFlowTheme.bodyText1.override(
+                                    fontFamily: 'Poppins',
+                                    color: Color(0xFF282828),
+                                    lineHeight: 2,
+                                  ),
+                                  enabledBorder: OutlineInputBorder(
+                                    borderSide: BorderSide(
+                                      color: Color(0xFF282828),
+                                      width: 1,
+                                    ),
+                                    borderRadius: const BorderRadius.only(
+                                      topLeft: Radius.circular(4.0),
+                                      topRight: Radius.circular(4.0),
+                                    ),
+                                  ),
+                                  focusedBorder: OutlineInputBorder(
+                                    borderSide: BorderSide(
+                                      color: Color(0xFF282828),
+                                      width: 2,
+                                    ),
+                                    borderRadius: const BorderRadius.only(
+                                      topLeft: Radius.circular(4.0),
+                                      topRight: Radius.circular(4.0),
+                                    ),
+                                  ),
+                                  filled: true,
+                                  fillColor: Colors.white,
+                                ),
+                                style: FlutterFlowTheme.bodyText1.override(
+                                  fontFamily: 'Poppins',
+                                  color: Color(0xFF282828),
+                                  lineHeight: 2,
+                                ),
+                              ),
+                              actions: [
+                                Row(
+                                  mainAxisAlignment: MainAxisAlignment.end,
+                                  children: [
+                                    TextButton(
+                                      onPressed: () => {
+                                        print("Cancel Dialog Button"),
+                                        Navigator.pop(context)
+                                      },
+                                      child: Text("Cancel"),
+                                      style: TextButton.styleFrom(
+                                          primary: Colors.grey,
+                                          // backgroundColor: Colors.grey[200],
+                                          minimumSize: Size(30, 30)),
+                                    ),
+                                    SizedBox(
+                                      width: 20,
+                                    ),
+                                    TextButton(
+                                      onPressed: () =>
+                                          {print("Order Confirmed Button")},
+                                      child: Text("Submit"),
+                                      style: TextButton.styleFrom(
+                                          primary: Colors.white,
+                                          backgroundColor: Color(0xFF123456),
+                                          minimumSize: Size(60, 30)),
+                                    ),
+                                    SizedBox(
+                                      width: 20,
+                                    ),
+                                  ],
+                                )
+                              ],
+                            ))
                   },
                 ),
                 Text(
@@ -169,37 +254,38 @@ class _Delivered_Orders_PageState extends State<Delivered_Orders_Page> {
                   style: TextStyle(
                       fontWeight: FontWeight.bold,
                       fontSize: 16.0,
-                      color: Colors.green,
-                      decoration: TextDecoration.lineThrough
-                  ),
+                      color: Color(0xFF123456),
+                      decoration: TextDecoration.lineThrough),
                 ),
               ],
             ),
-
           ],
-
         ),
       ),
     );
   }
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      debugShowCheckedModeBanner: false,
+        debugShowCheckedModeBanner: false,
         home: SafeArea(
           child: Scaffold(
               appBar: AppBar(
-                leading: IconButton(icon:Icon(Icons.arrow_back),onPressed: ()=>Navigator.pop(context) ,),
+                leading: IconButton(
+                  icon: Icon(Icons.arrow_back),
+                  onPressed: () => Navigator.pop(context),
+                ),
                 title: Text("Delivered Orders"),
                 backgroundColor: Color(0xFF123456),
               ),
               body: SingleChildScrollView(
                 child: Column(
-                  children: orders.map((myorder) => Order_Card_Template_Delivered(myorder)).toList(),
+                  children: orders
+                      .map((myorder) => Order_Card_Template_Delivered(myorder))
+                      .toList(),
                 ),
-              )
-          ),
-        )
-    );
+              )),
+        ));
   }
 }
