@@ -72,17 +72,11 @@ class DataSearch extends SearchDelegate<String> {
 
   @override
   Widget buildSuggestions(BuildContext context) {
-    List list1;
-    querySnapShot().then((value) => list1=value);
-    print("Hello world");
-    // if(list1.isNotEmpty)
-    // list1.forEach((element) {
-    //   list2.add(element['Product_Title']);
-    // });
-     print("DATA DA"+list1.toString());
-     final list=query.isEmpty? list1:list1.where((p)=>p.toLowerCase().startsWith(query.toLowerCase())).toList();
+    List list2=data.chatnames();
+     final list=query.isEmpty? list2:list2.where((p)=>p.toLowerCase().startsWith(query.toLowerCase())).toList();
+    print(data);
 
-    return ListView.builder(itemBuilder: (context, index) => list1[index],itemCount: list1.length,);
+    return ListView.builder(itemBuilder: (context, index) => marketPlaceCard(title: data.names(),imageUrl: 'https://images.unsplash.com/photo-1541888946425-d81bb19240f5?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80',price: "PKR 500",quantity: "5",context: context,description: data.description()));
     throw UnimplementedError();
   }
 

@@ -70,7 +70,16 @@ class Data {
     ];
     return imagesPerson[random.nextInt(imagesPerson.length)].toString();
   }
-
+String description(){
+    List description=[
+      'The excavator digs where the house will lie. This involves the clearing of trees, debris, and leveling the home site for a foundation.',
+      'After the surveyor pins the home corners of the foundation, our team lays out the foundation',
+      'Following framing are the mechanical rough-ins of your new home Plumbing, HVAC, electrical, media wiring',
+      'nsulation is added between the studs in all exterior walls and between the joists forming the attic.',
+      'The excavator digs where the house will lie. This involves the clearing of trees, debris, and leveling the home site for a foundation.'
+    ];
+    return description[random.nextInt(description.length)].toString();
+}
 
 
 }
