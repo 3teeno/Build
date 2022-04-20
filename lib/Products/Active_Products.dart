@@ -99,8 +99,8 @@ class _Active_Products_PageState extends State<Active_Products_Page> {
                   TextButton(
                     child: Text("Deliver Now"),
                     style: TextButton.styleFrom(
-                      primary: Colors.orange,
-                      backgroundColor: Colors.orange[50],
+                      primary: Color(0xFF115ba6) ,
+                      backgroundColor: Color(0xFFf2f2f2),
                     ),
                     onPressed: () =>
                     {
@@ -172,7 +172,7 @@ class _Active_Products_PageState extends State<Active_Products_Page> {
               appBar: AppBar(
                 title: Text("Active Products"),
                 leading: IconButton(icon:Icon(Icons.arrow_back),onPressed: ()=>Navigator.pop(context) ,),
-                backgroundColor: Color(0xFF123456),
+                backgroundColor: Color(0xFF115ba6),
               ),
               body: SingleChildScrollView(
                 child: Column(
@@ -190,7 +190,7 @@ class _Active_Products_PageState extends State<Active_Products_Page> {
             appBar: AppBar(
               title: Text("Active Products"),
               leading: IconButton(icon:Icon(Icons.arrow_back),onPressed: ()=>Navigator.pop(context) ,),
-              backgroundColor: Color(0xFF123456),
+              backgroundColor: Color(0xFF115ba6),
             ),
             backgroundColor: Colors.grey[400],
             body: Center(
