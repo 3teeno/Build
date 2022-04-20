@@ -95,7 +95,8 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                               String uid=currentUser.user.uid;
                               DocumentReference doc=FirebaseFirestore.instance.doc('users/$uid');
                               DocumentSnapshot snapshot=await doc.get();
-                              if(snapshot['Activated']==0) {
+                              print(snapshot['Activated']);
+                              if(snapshot['Activated']==1) {
                                 Navigator.pushReplacement(context,
                                     MaterialPageRoute(builder: (context) =>
                                         phasesPageMain()));

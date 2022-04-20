@@ -1,9 +1,12 @@
+import 'dart:io';
 import 'dart:math';
 
 import 'package:build_i_t/Products/Active_Products.dart';
 import 'package:build_i_t/Products/Model_Products.dart';
 import 'package:build_i_t/auth/firebase_user_provider.dart';
+import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
+import 'package:image_picker/image_picker.dart';
 
 import '../flutter_flow/flutter_flow_theme.dart';
 
@@ -238,6 +241,17 @@ class _Product_Firestore_CRUDSState extends State<Product_Firestore_CRUDS> {
                 textAlign: TextAlign.start,
               ),
               SizedBox(width: 50.0, height: 10.0,),
+          TextButton(onPressed: () =>() async {
+            print("Picture Upload button pressed");
+            final picker = ImagePicker();
+            final pickedFile = await picker.getImage(source: ImageSource. gallery);
+            File image = new File(pickedFile.path);
+            String path='userImages/$new_hash/';
+            var reference = FirebaseStorage.instance.ref().child(path);
+            reference.putFile(image);
+
+          },
+            child: Text("Upload Pictures"),style: ButtonStyle( backgroundColor:MaterialStateProperty.all<Color>(Colors.white),minimumSize: MaterialStateProperty.all(Size(200.0, 40.0))),),
             ],
           ),
 
