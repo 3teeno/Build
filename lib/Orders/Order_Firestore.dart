@@ -353,7 +353,7 @@ class _Order_Firestore_CRUDSState extends State<Order_Firestore_CRUDS> {
                 Order.update_order(
                   Order_Description: _DescriptionController.text.toString(),
                   Order_Duration: _DurationController.text.toString(),
-                  Order_Hash: new_hash.toString(),
+                  my_hash: new_hash.toString(),
                   Order_Vendor_id: user.uid.toString(),
                   Order_Price: _PriceController.text.toString(),
                   Order_Title: _TitleController.text.toString(),

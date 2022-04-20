@@ -55,10 +55,10 @@ class Order {
         .catchError((e) => print(e));
   }
 
-  static Future<void> update_order({String Order_Hash,String Order_Vendor_id, String Order_Title, String Order_Description, String Order_Duration, String Order_Price}) async
+  static Future<void> update_order({String my_hash,String Order_Vendor_id, String Order_Title, String Order_Description, String Order_Duration, String Order_Price}) async
   {
     QuerySnapshot querySnapshot = await _mainCollection.get();
-    Query query = await _mainCollection.where('Order_Hash',isEqualTo: Order_Hash);
+    Query query = await _mainCollection.where('Order_Hash',isEqualTo: my_hash);
     query.get().then((querySnapshot) => { querySnapshot.docs.forEach((element) {
       print(element.reference.id);})
     });
