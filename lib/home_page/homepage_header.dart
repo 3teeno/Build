@@ -38,7 +38,7 @@ class _homePageHeaderState extends State<homePageHeader> {
               maxHeight: 125,
             ),
             decoration: BoxDecoration(
-              color: Color(0xFF123456),
+              color: Color(0xFF115ba6),
               borderRadius: BorderRadius.circular(10),
             ),
             child: Align(

@@ -1,6 +1,7 @@
 import 'dart:math';
 
 import 'package:build_i_t/all_market_places/singleCardDesign.dart';
+import 'package:build_i_t/home_page/marketPlaceCard.dart';
 import 'package:flutter/material.dart';
 
 import '../data.dart';
@@ -64,13 +65,9 @@ class DataSearch extends SearchDelegate<String>{
     print(list1);
     final list=query.isEmpty? list1:list1.where((p)=>p.toLowerCase().startsWith(query.toLowerCase())).toList();
     print(data);
-    return ListView.builder(itemBuilder: (context,index)=>singleCard(
-        context,
-        ratingBarValue: ratingValue,
-        ratingNo: random.nextInt(5).toDouble(),
-        imageURL: data.imagesServices(),
-        storeName: list[index],
-        storLocation: "Loney Wala"
+    return ListView.builder(itemBuilder: (context,index)=>marketPlaceCard(
+      context: context,
+
     ),
       itemCount: list.length,);
     throw UnimplementedError();

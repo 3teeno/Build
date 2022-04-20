@@ -6,22 +6,28 @@ import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 
 //Market Places
-Widget marketPlaceCard({BuildContext context,String title,String description,String quantity,String price,String imageUrl}){
+Widget marketPlaceCard(
+    {BuildContext context,
+    String title,
+    String description,
+    String quantity,
+    String price,
+    String imageUrl}) {
   return InkWell(
       onTap: () async {
-        // await Navigator.push(
-        //   context,
-        //   PageTransition(
-        //     type: PageTransitionType.scale,
-        //     alignment: Alignment.bottomCenter,
-        //     duration: Duration(milliseconds: 300),
-        //     reverseDuration: Duration(milliseconds: 300),
-        //     child: MarketPlaceWidget(materialName: shopName,Contact: Contact,Email: Email,HRate: HRate,imgaeURL: ImageLink,),
-        //   ),
-        // );
+        await Navigator.push(
+          context,
+          PageTransition(
+            type: PageTransitionType.scale,
+            alignment: Alignment.bottomCenter,
+            duration: Duration(milliseconds: 300),
+            reverseDuration: Duration(milliseconds: 300),
+            child: MarketPlaceWidget(),
+          ),
+        );
       },
-      child:Padding(
-        padding: EdgeInsets.symmetric(horizontal: 20,vertical: 10),
+      child: Padding(
+        padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
         child: Container(
           width: MediaQuery.of(context).size.width,
           height: 150,
@@ -33,7 +39,6 @@ Widget marketPlaceCard({BuildContext context,String title,String description,Str
             mainAxisSize: MainAxisSize.max,
             mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.start,
-
             children: [
               Padding(
                 padding: EdgeInsets.all(5),
@@ -42,7 +47,7 @@ Widget marketPlaceCard({BuildContext context,String title,String description,Str
                   child: Image.network(
                     imageUrl,
 //                'https://images.pexels.com/photos/159306/construction-site-build-construction-work-159306.jpeg?cs=srgb&dl=pexels-pixabay-159306.jpg&fm=jpg',
-                    width: MediaQuery.of(context).size.width*0.4,
+                    width: MediaQuery.of(context).size.width * 0.4,
                     height: MediaQuery.of(context).size.height,
                     fit: BoxFit.cover,
                   ),
@@ -56,23 +61,46 @@ Widget marketPlaceCard({BuildContext context,String title,String description,Str
                     padding: EdgeInsets.all(5),
                     child: Text(
                       title,
-                      style:
-                      FlutterFlowTheme.bodyText1.override(
+                      style: FlutterFlowTheme.bodyText1.override(
                         fontFamily: 'Poppins',
                         color: Colors.black87,
                       ),
                     ),
                   ),
-                  Container(
-                    height: 50,
-                    color: Color(0xFF457896),
-                    width: MediaQuery.of(context).size.width*0.44,
-                  )
+                  Padding(
+                    padding: EdgeInsets.symmetric(horizontal: 5),
+                    child: Container(
+                      height: 80,
+                      width: MediaQuery.of(context).size.width * 0.44,
+                      child: Text(
+                        description,
+                        maxLines: 4,
+                      ),
+                    ),
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Padding(
+                          padding: EdgeInsets.all(5),
+                          child: Text(
+                            price,
+                            style: TextStyle(
+                                fontWeight: FontWeight.bold,
+                                color: Color(0xFF115ba6)),
+                          )),
+                      Text("       "),
+                      Padding(
+                          padding: EdgeInsets.all(5),
+                          child: Text(
+                            quantity,
+                            style: TextStyle(fontWeight: FontWeight.bold),
+                          )),
+
+                    ],
+                  ),
                 ],
               )
-
-
-
             ],
           ),
         ),
