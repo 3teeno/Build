@@ -1,0 +1,298 @@
+import 'dart:math';
+
+import 'package:build_i_t/Orders/Order_Page_Customer.dart';
+import 'package:flutter/material.dart';
+import 'Model_Orders.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'package:build_i_t/flutter_flow/flutter_flow_theme.dart';
+import 'package:build_i_t/flutter_flow/flutter_flow_widgets.dart';
+
+
+String hash;
+String Ordertitle,Orderdescription,orderDuration,orderPrice;
+final scaffoldKey = GlobalKey<ScaffoldState>();
+final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+class add_OrderFireBase extends StatefulWidget {
+  const add_OrderFireBase({Key key, hashCode}) : super(key: key);
+
+  @override
+  State<add_OrderFireBase> createState() =>
+      _add_OrderFireBaseState(hashCode);
+}
+
+class _add_OrderFireBaseState extends State<add_OrderFireBase> {
+  _add_OrderFireBaseState(hashCode) {
+    hash = hashCode.toString();
+  }
+
+  final TextEditingController _DescriptionController = TextEditingController();
+  final TextEditingController _DurationController = TextEditingController();
+  final TextEditingController _PriceController = TextEditingController();
+  final TextEditingController _TitleController = TextEditingController();
+  final TextEditingController _VendoridController = TextEditingController();
+  final TextEditingController _HashController = TextEditingController();
+  Order myorder;
+  @override
+  Widget build(BuildContext context) {
+    String new_hash;
+
+    return SafeArea(
+      child: Scaffold(
+        key: scaffoldKey,
+        appBar: AppBar(
+          title: Text("Add Order"),
+          backgroundColor: Color(0xFF115ba6),
+        ),
+        backgroundColor: Color(0xFFffffff),
+        body: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            TextFormArea(orderTitle: "title here",orderDiscription: "Description here",orderDuration: "Duration here",orderPrice: "Price here",new_hash: new_hash)
+          ],
+        ),
+
+      ),
+    );
+  }
+
+  Widget TextFormArea({String orderTitle,String orderDiscription,String orderDuration,String orderPrice,String new_hash}) {
+    Random random = new Random();
+    int random_hash = random.nextInt(9999) + 999;
+    return Padding(
+      padding: EdgeInsets.symmetric(horizontal: 20,vertical: 10),
+      child: Form(
+        key: _formKey,
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            SizedBox(
+              height: 20,
+            ),
+            TextFormField(
+              controller: _TitleController,
+              obscureText: false,
+              validator: (value){
+                if(value=null){
+                  return "please enter order title";
+                }
+              },
+              decoration: InputDecoration(
+                labelText: "Order Title",
+                labelStyle: FlutterFlowTheme.bodyText1.override(
+                  fontFamily: 'Poppins',
+                  color: Color(0xFF282828),
+                ),
+                hintText: 'I will do this for you....',
+                hintStyle: FlutterFlowTheme.bodyText1.override(
+                  fontFamily: 'Poppins',
+                  color: Color(0xFF282828),
+                ),
+                enabledBorder: OutlineInputBorder(
+                  borderSide: BorderSide(
+                    color: Color(0xFF282828),
+                    width: 1.5,
+                  ),
+                  borderRadius: BorderRadius.circular(0),
+                ),
+                focusedBorder: OutlineInputBorder(
+                  borderSide: BorderSide(
+                    color: Color(0xFF282828),
+                    width: 1.5,
+                  ),
+                  borderRadius: BorderRadius.circular(0),
+                ),
+                filled: true,
+                fillColor: Colors.white,
+              ),
+              style: FlutterFlowTheme.bodyText1.override(
+                fontFamily: 'Poppins',
+                color: Color(0xFF282828),
+              ),
+              textAlign: TextAlign.start,
+            ),
+            SizedBox(
+              width: 50.0,
+              height: 10.0,
+            ),
+            TextFormField(
+              controller: _DescriptionController,
+              obscureText: false,
+              validator: (value){
+                if(value=null){
+                  return "please enter order discription";
+                }
+              },
+              decoration: InputDecoration(
+                labelText: "Order Discription",
+                labelStyle: FlutterFlowTheme.bodyText1.override(
+                  fontFamily: 'Poppins',
+                  color: Color(0xFF282828),
+                ),
+                hintText: 'Add your Description Here',
+                hintStyle: FlutterFlowTheme.bodyText1.override(
+                  fontFamily: 'Poppins',
+                  color: Color(0xFF282828),
+                ),
+                enabledBorder: OutlineInputBorder(
+                  borderSide: BorderSide(
+                    color: Color(0xFF282828),
+                    width: 1.5,
+                  ),
+                  borderRadius: BorderRadius.circular(0),
+                ),
+                focusedBorder: OutlineInputBorder(
+                  borderSide: BorderSide(
+                    color: Color(0xFF282828),
+                    width: 1.5,
+                  ),
+                  borderRadius: BorderRadius.circular(0),
+                ),
+                filled: true,
+                fillColor: Colors.white,
+              ),
+              style: FlutterFlowTheme.bodyText1.override(
+                fontFamily: 'Poppins',
+                color: Color(0xFF282828),
+              ),
+              textAlign: TextAlign.start,
+            ),
+            SizedBox(
+              width: 50.0,
+              height: 10.0,
+            ),
+            TextFormField(
+              controller: _DurationController,
+              obscureText: false,
+              validator: (value){
+                if(value=null){
+                  return "please enter order duration";
+                }
+              },
+              decoration: InputDecoration(
+                labelText: "Order Duration",
+                labelStyle: FlutterFlowTheme.bodyText1.override(
+                  fontFamily: 'Poppins',
+                  color: Color(0xFF282828),
+                ),
+                hintText: '3 Days',
+                hintStyle: FlutterFlowTheme.bodyText1.override(
+                  fontFamily: 'Poppins',
+                  color: Color(0xFF282828),
+                ),
+                enabledBorder: OutlineInputBorder(
+                  borderSide: BorderSide(
+                    color: Color(0xFF282828),
+                    width: 1.5,
+                  ),
+                  borderRadius: BorderRadius.circular(0),
+                ),
+                focusedBorder: OutlineInputBorder(
+                  borderSide: BorderSide(
+                    color: Color(0xFF282828),
+                    width: 1.5,
+                  ),
+                  borderRadius: BorderRadius.circular(0),
+                ),
+                filled: true,
+                fillColor: Colors.white,
+              ),
+              style: FlutterFlowTheme.bodyText1.override(
+                fontFamily: 'Poppins',
+                color: Color(0xFF282828),
+              ),
+              textAlign: TextAlign.start,
+            ),
+            SizedBox(
+              width: 50.0,
+              height: 10.0,
+            ),
+            TextFormField(
+              validator: (value){
+                if(value=null){
+                  return "please enter order price";
+                }
+
+              },
+              controller: _PriceController,
+              obscureText: false,
+              decoration: InputDecoration(
+                labelText: "Order Price",
+                labelStyle: FlutterFlowTheme.bodyText1.override(
+                  fontFamily: 'Poppins',
+                  color: Color(0xFF282828),
+                ),
+                hintText: 'PKR 500',
+                hintStyle: FlutterFlowTheme.bodyText1.override(
+                  fontFamily: 'Poppins',
+                  color: Color(0xFF282828),
+                ),
+                enabledBorder: OutlineInputBorder(
+                  borderSide: BorderSide(
+                    color: Color(0xFF282828),
+                    width: 1.5,
+                  ),
+                  borderRadius: BorderRadius.circular(0),
+                ),
+                focusedBorder: OutlineInputBorder(
+                  borderSide: BorderSide(
+                    color: Color(0xFF282828),
+                    width: 1.5,
+                  ),
+                  borderRadius: BorderRadius.circular(0),
+                ),
+                filled: true,
+                fillColor: Colors.white,
+              ),
+              style: FlutterFlowTheme.bodyText1.override(
+                fontFamily: 'Poppins',
+                color: Color(0xFF282828),
+              ),
+              textAlign: TextAlign.start,
+            ),
+            SizedBox(
+              width: 50.0,
+              height: 10.0,
+            ),
+            //Update Button
+            SizedBox(
+              width: double.infinity,
+              height: 50,
+              child: RaisedButton(
+                color: Color(0xFF115ba6),
+                onPressed: () {
+
+                if (_DescriptionController.text.isEmpty
+                    && _DurationController.text.isEmpty
+                    && _DurationController.text.isEmpty
+                    && _PriceController.text.isEmpty
+                &&_TitleController.text.toString()!=null ) {
+                  random_hash = random.nextInt(9999) + 999;
+                  new_hash = random_hash.toString();
+                  Order.add_order(
+                    Order_Description: _DescriptionController.text.toString(),
+                    Order_Duration: _DurationController.text.toString(),
+                    Order_Hash: new_hash.toString(),
+                    Order_Vendor_id: user.uid.toString(),
+                    Order_Price: _PriceController.text.toString(),
+                    Order_Title: _TitleController.text.toString(),
+                  );
+                  print("Add Orders Pressed");
+                  }else{
+                  scaffoldKey.currentState.showSnackBar(SnackBar(content: Text("Please fill all fields first!")));
+                }
+
+
+                },
+                child: Text("Add Order",style: TextStyle(color: Colors.white),),
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}

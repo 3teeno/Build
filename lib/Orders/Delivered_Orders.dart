@@ -149,7 +149,7 @@ class _Delivered_Orders_PageState extends State<Delivered_Orders_Page> {
                 TextButton(
                   child: Text("Give Feedback"),
                   style: TextButton.styleFrom(
-                    primary: Color(0xFF123456),
+                    primary: Color(0XFF115ba6),
                     backgroundColor: Color(0xFFF2F2F2),
                   ),
                   onPressed: () => {
@@ -159,7 +159,7 @@ class _Delivered_Orders_PageState extends State<Delivered_Orders_Page> {
                         builder: (_) => AlertDialog(
                               title: Text(
                                 'Give Feedback',
-                                style: TextStyle(color: Color(0xFF123456)),
+                                style: TextStyle(color: Color(0XFF115ba6)),
                               ),
                               content: TextFormField(
                                 controller: feedbackCOntroller,
@@ -237,7 +237,7 @@ class _Delivered_Orders_PageState extends State<Delivered_Orders_Page> {
                                       child: Text("Submit"),
                                       style: TextButton.styleFrom(
                                           primary: Colors.white,
-                                          backgroundColor: Color(0xFF123456),
+                                          backgroundColor: Color(0XFF115ba6),
                                           minimumSize: Size(60, 30)),
                                     ),
                                     SizedBox(
@@ -254,7 +254,7 @@ class _Delivered_Orders_PageState extends State<Delivered_Orders_Page> {
                   style: TextStyle(
                       fontWeight: FontWeight.bold,
                       fontSize: 16.0,
-                      color: Color(0xFF123456),
+                      color: Color(0XFF115ba6),
                       decoration: TextDecoration.lineThrough),
                 ),
               ],
@@ -277,7 +277,7 @@ class _Delivered_Orders_PageState extends State<Delivered_Orders_Page> {
                   onPressed: () => Navigator.pop(context),
                 ),
                 title: Text("Delivered Orders"),
-                backgroundColor: Color(0xFF123456),
+                backgroundColor: Color(0XFF115ba6),
               ),
               body: SingleChildScrollView(
                 child: Column(

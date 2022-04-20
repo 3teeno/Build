@@ -126,7 +126,7 @@ class _pendingOrdersPageState extends State<pendingOrdersPage> {
               style: TextStyle(
                 fontWeight: FontWeight.bold,
                 fontSize: 20.0,
-                color: Color(0xFF123456),
+                color: Color(0xFF115ba6),
               ),
             ),
             SizedBox(height: 6.0),
@@ -152,7 +152,7 @@ class _pendingOrdersPageState extends State<pendingOrdersPage> {
                   style: TextStyle(
                       fontWeight: FontWeight.bold,
                       fontSize: 16.0,
-                      color: Color(0xFF123456),
+                      color: Color(0xFF115ba6),
                       decoration: TextDecoration.lineThrough
                   ),
                 ),
@@ -174,7 +174,7 @@ class _pendingOrdersPageState extends State<pendingOrdersPage> {
               appBar: AppBar(
                 leading: IconButton(icon:Icon(Icons.arrow_back),onPressed: ()=>Navigator.pop(context) ,),
                 title: Text("Pending Orders"),
-                backgroundColor: Color(0xFF123456),
+                backgroundColor: Color(0xFF115ba6),
               ),
               body: SingleChildScrollView(
                 child: Column(
