@@ -38,7 +38,7 @@ class _Active_Orders_Page_CustomerState extends State<Active_Orders_Page_Custome
       padding: EdgeInsets.symmetric(vertical: 5),
       child: InkWell(
         onTap: () {
-          Navigator.push(context, MaterialPageRoute(builder: (context)=>Order_Firestore_CRUDS()));
+          Navigator.push(context, MaterialPageRoute(builder: (context)=>Order_Firestore_CRUDS(hashcode: myorder.Order_Hash)));
         },
         enableFeedback: true,
         child: Card(

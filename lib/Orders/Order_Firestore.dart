@@ -14,17 +14,20 @@ String hash;
 String Ordertitle,Orderdescription,orderDuration,orderPrice;
 
 class Order_Firestore_CRUDS extends StatefulWidget {
-  const Order_Firestore_CRUDS({Key key, hashCode}) : super(key: key);
+  final String hashcode;
+  const Order_Firestore_CRUDS({Key key, hashCode, this.hashcode}) : super(key: key);
+
 
   @override
   State<Order_Firestore_CRUDS> createState() =>
-      _Order_Firestore_CRUDSState(hashCode);
+      _Order_Firestore_CRUDSState(hashCode,hashcode);
 }
 
 class _Order_Firestore_CRUDSState extends State<Order_Firestore_CRUDS> {
   bool isEdit=false;
-  _Order_Firestore_CRUDSState(hashCode) {
-    hash = hashCode.toString();
+  String hashcode;
+  _Order_Firestore_CRUDSState(hashCode, String hcode) {
+    this.hashcode=hcode;
     //print(hashCode.hashCode);
   }
   final TextEditingController _DescriptionController = TextEditingController();
@@ -36,9 +39,9 @@ class _Order_Firestore_CRUDSState extends State<Order_Firestore_CRUDS> {
   Order myorder;
   @override
   Widget build(BuildContext context) {
-    String new_hash;
+    String newHash=hashcode;
     Random random = new Random();
-    int random_hash = random.nextInt(9999) + 999;
+    int randomHash = random.nextInt(9999) + 999;
     return SafeArea(
       child: Scaffold(
         appBar: AppBar(
@@ -51,7 +54,7 @@ class _Order_Firestore_CRUDSState extends State<Order_Firestore_CRUDS> {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             isEdit?
-            TextFormArea(orderTitle: "title here",orderDiscription: "Description here",orderDuration: "Duration here",orderPrice: "Price here",new_hash: new_hash):
+            TextFormArea(orderTitle: "title here",orderDiscription: "Description here",orderDuration: "Duration here",orderPrice: "Price here",new_hash: newHash):
             TextArea(orderTitle: "title here",orderDiscription: "Description here",orderDuration: "Duration here",orderPrice: "Price here",),
             Align(
               alignment: Alignment.bottomRight,
