@@ -155,31 +155,7 @@ class _Order_Page_CustomerState extends State<Order_Page_Customer> {
                   ),
 
 
-                  //Feedback
-                  Container(
-                        padding: const EdgeInsets.all(8),
-                        child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.center,
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children:[Image.asset(
-                          "assets/images/feedback.png",
-                          height: 70,
-                        ),
-                          SizedBox(
-                            height: 20,
-                          ) ,Text('Feedback', style: TextStyle(fontSize: 20, fontFamily: 'Poppins'))]),
-                        decoration: BoxDecoration(
-                            color: Colors.white,
-                            borderRadius: BorderRadius.all(Radius.circular(8)),
-                            boxShadow: [
-                              BoxShadow(
-                                color: Colors.grey.withOpacity(0.2),
-                                spreadRadius: 1,
-                                blurRadius: 20,
-                                offset: Offset(0, 3),
-                              ),
-                            ]),
-                      ),
+
                     ],
                   )),
                 ));
