@@ -59,11 +59,10 @@ class _HomePageWidgetState extends State<HomePageWidget> {
     Random random = new Random();
     size = MediaQuery.of(context);
     final userdata = FirebaseFirestore.instance
-        .collection('users').doc(
-        'AF3aPsQsIZRB7RxGduo8wpgKViW2');
+        .collection('users')
+        .doc('AF3aPsQsIZRB7RxGduo8wpgKViW2');
 
     return StreamBuilder<UsersRecord>(
-
         stream: UsersRecord.getDocument(userdata),
         builder: (context, snapshot) {
           return Scaffold(
@@ -87,31 +86,32 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                       children: [
                         //Build Your Home
                         Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(
-                              20, 10, 20, 10),
+                          padding:
+                              EdgeInsetsDirectional.fromSTEB(20, 10, 20, 10),
                           child: FFButtonWidget(
                             onPressed: () async {
                               print('Build Your Home(Button pressed)');
-                              String uid=currentUser.user.uid;
-                              DocumentReference doc=FirebaseFirestore.instance.doc('users/$uid');
-                              DocumentSnapshot snapshot=await doc.get();
-                              if(snapshot['Activated']==0) {
-                                Navigator.pushReplacement(context,
-                                    MaterialPageRoute(builder: (context) =>
-                                        phasesPageMain()));
-                              }
-                              else {
-                                Navigator.pushReplacement(context,
-                                    MaterialPageRoute(builder: (context) =>
-                                        startingScreen()));
+                              String uid = currentUser.user.uid;
+                              DocumentReference doc =
+                                  FirebaseFirestore.instance.doc('users/$uid');
+                              DocumentSnapshot snapshot = await doc.get();
+                              if (snapshot['Activated'] == 0) {
+                                Navigator.pushReplacement(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) =>
+                                            phasesPageMain()));
+                              } else {
+                                Navigator.pushReplacement(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) =>
+                                            startingScreen()));
                               }
                             },
                             text: 'Build Your Home',
                             options: FFButtonOptions(
-                              width: MediaQuery
-                                  .of(context)
-                                  .size
-                                  .width,
+                              width: MediaQuery.of(context).size.width,
                               height: 45,
                               color: Color(0xFFFFFFFF),
                               textStyle: FlutterFlowTheme.subtitle2.override(
@@ -127,56 +127,10 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                             ),
                           ),
                         ),
-
-                        //Services Providers (Text Row)
-                        Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(20, 0, 20, 0),
-                          child: Row(
-                            mainAxisSize: MainAxisSize.max,
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              Padding(
-                                padding: EdgeInsetsDirectional.fromSTEB(
-                                    0, 1, 0, 0),
-                                child: AutoSizeText(
-                                  'Service Providers',
-                                  textAlign: TextAlign.start,
-                                  style: FlutterFlowTheme.title3.override(
-                                    fontFamily: 'Poppins',
-                                    fontSize: 14,
-                                  ),
-                                ),
-                              ),
-                              Padding(
-                                padding: EdgeInsetsDirectional.fromSTEB(
-                                    0, 1, 0, 0),
-                                child: InkWell(
-                                  onTap: () {
-                                    showSearch(
-                                        context: context,
-                                        delegate:
-                                        search_serviceProviders(
-                                            ratingBarValue1));
-                                  },
-                                  child: AutoSizeText(
-                                    'See all',
-                                    textAlign: TextAlign.start,
-                                    style: FlutterFlowTheme.title3.override(
-                                      fontFamily: 'Poppins',
-                                      color: Color(0xFF4F4F4F),
-                                      fontSize: 14,
-                                    ),
-                                  ),
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-
-
-                        serviceProvidersCard(
-                            context,
-                            serviceName: services[0]),
+                        //
+                        // serviceProvidersCard(
+                        //     context,
+                        //     serviceName: services[0]),
                         //Maekrt Places (Text Row)
                         Padding(
                           padding: EdgeInsetsDirectional.fromSTEB(21, 0, 21, 0),
@@ -185,8 +139,8 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
                               Padding(
-                                padding: EdgeInsetsDirectional.fromSTEB(
-                                    0, 1, 0, 0),
+                                padding:
+                                    EdgeInsetsDirectional.fromSTEB(0, 1, 0, 0),
                                 child: AutoSizeText(
                                   'Market Places',
                                   textAlign: TextAlign.start,
@@ -219,8 +173,39 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                             ],
                           ),
                         ),
+
+                        GridView.extent(
+                          primary: false,
+                          padding: const EdgeInsets.all(16),
+                          crossAxisSpacing: 10,
+                          mainAxisSpacing: 10,
+                          maxCrossAxisExtent: 400.0,
+                          children: [
+                            marketPlaceCard(
+                                ratingValue: ratingBarValue1,
+                                ratingNo: random.nextInt(5).toDouble(),
+                                context: context,
+                                ImageLink: data.imagesServices().toString(),
+                                shopName: data.names().toString(),
+                                shopLocation: "Loney Wala",
+                                Email: "abc@gmail.com",
+                                Contact: "+92-13456789",
+                                HRate: random.nextInt(3000).toString()),
+                            marketPlaceCard(
+                                ratingValue: ratingBarValue1,
+                                ratingNo: random.nextInt(5).toDouble(),
+                                context: context,
+                                ImageLink: data.imagesServices().toString(),
+                                shopName: data.names().toString(),
+                                shopLocation: "Loney Wala",
+                                Email: "abc@gmail.com",
+                                Contact: "+92-13456789",
+                                HRate: random.nextInt(3000).toString()),
+                          ],
+                        ),
+
                         SingleChildScrollView(
-                          scrollDirection: Axis.horizontal,
+                          scrollDirection: Axis.vertical,
                           child: Padding(
                             padding: EdgeInsets.all(10),
                             child: Row(
@@ -293,7 +278,6 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                 SizedBox(
                                   width: 10,
                                 ),
-
                               ],
                             ),
                           ),
@@ -310,14 +294,12 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                         await Navigator.push(
                           context,
                           PageTransition(
-                              type: PageTransitionType.rightToLeft,
-                              duration: Duration(milliseconds: 300),
-                              reverseDuration: Duration(milliseconds: 300),
-                              child: ChatDetailsWidget(
-                                chatUser: snapshot.data,
-                              ),
-
-
+                            type: PageTransitionType.rightToLeft,
+                            duration: Duration(milliseconds: 300),
+                            reverseDuration: Duration(milliseconds: 300),
+                            child: ChatDetailsWidget(
+                              chatUser: snapshot.data,
+                            ),
                           ),
                         );
                       },
@@ -334,7 +316,6 @@ class _HomePageWidgetState extends State<HomePageWidget> {
               ),
             ),
           );
-        }
-    );
+        });
   }
 }
