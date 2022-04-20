@@ -32,6 +32,11 @@ class _Product_Firestore_CRUDSState extends State<Product_Firestore_CRUDS> {
   @override
   Widget build(BuildContext context) {
     String new_hash;
+    File image;
+    String path;
+    Reference reference;
+    final picker = ImagePicker();
+    PickedFile pickedFile;
     Random random = new Random();
     int random_hash = random.nextInt(9999)+999;
     return Scaffold(
@@ -44,8 +49,16 @@ class _Product_Firestore_CRUDSState extends State<Product_Firestore_CRUDS> {
               TextButton(onPressed: () => {
                 random_hash = random.nextInt(9999)+999,
                 new_hash = random_hash.toString(),
-                Products.add_product(
+                image = new File(pickedFile.path),
+
+                path='productImages/$new_hash/',
+                print(path),
+                reference = FirebaseStorage.instance.ref().child(path),
+                reference.putFile(image).whenComplete(() => print("Image uploaded")),
+
+        Products.add_product(
                   Product_Hash: new_hash.toString(),
+
                   Product_Title: _TitleController.text.toString(),
                   Product_Description: _DescriptionController.text.toString(),
                   Product_Price: _PriceController.text.toString(),
@@ -130,7 +143,7 @@ class _Product_Firestore_CRUDSState extends State<Product_Firestore_CRUDS> {
                 controller: _DescriptionController,
                 obscureText: false,
                 decoration: InputDecoration(
-                  labelText: 'Order Description',
+                  labelText: 'Product Description',
                   labelStyle: FlutterFlowTheme.bodyText1.override(
                     fontFamily: 'Poppins',
                     color: Color(0xFF282828),
@@ -168,7 +181,7 @@ class _Product_Firestore_CRUDSState extends State<Product_Firestore_CRUDS> {
                 controller: _QuantityController,
                 obscureText: false,
                 decoration: InputDecoration(
-                  labelText: 'Order Duration',
+                  labelText: 'Quantity',
                   labelStyle: FlutterFlowTheme.bodyText1.override(
                     fontFamily: 'Poppins',
                     color: Color(0xFF282828),
@@ -207,7 +220,7 @@ class _Product_Firestore_CRUDSState extends State<Product_Firestore_CRUDS> {
                 controller: _PriceController,
                 obscureText: false,
                 decoration: InputDecoration(
-                  labelText: 'Order Price',
+                  labelText: 'Product Price',
                   labelStyle: FlutterFlowTheme.bodyText1.override(
                     fontFamily: 'Poppins',
                     color: Color(0xFF282828),
@@ -241,14 +254,10 @@ class _Product_Firestore_CRUDSState extends State<Product_Firestore_CRUDS> {
                 textAlign: TextAlign.start,
               ),
               SizedBox(width: 50.0, height: 10.0,),
-          TextButton(onPressed: () =>() async {
+          TextButton(onPressed: () async {
             print("Picture Upload button pressed");
-            final picker = ImagePicker();
-            final pickedFile = await picker.getImage(source: ImageSource. gallery);
-            File image = new File(pickedFile.path);
-            String path='userImages/$new_hash/';
-            var reference = FirebaseStorage.instance.ref().child(path);
-            reference.putFile(image);
+
+            pickedFile = await picker.getImage(source: ImageSource. gallery);
 
           },
             child: Text("Upload Pictures"),style: ButtonStyle( backgroundColor:MaterialStateProperty.all<Color>(Colors.white),minimumSize: MaterialStateProperty.all(Size(200.0, 40.0))),),
