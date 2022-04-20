@@ -110,11 +110,19 @@ class Products {
     }
   }
 
-  static Future<List> delete_product()
+  static Future<List> delete_order(String my_hash) async
   {
-    QuerySnapshot snapshot;
-
-  }
+        String doc_ref;
+        Query query = await _mainCollection.where('Product_Hash', isEqualTo: my_hash);
+        await query.get().then((querySnapshot) =>
+        {
+          querySnapshot.docs.toList().forEach((doc) {
+            doc_ref=doc.reference.id.toString();
+          })});
+        DocumentReference documentReference = _mainCollection.doc(doc_ref);
+        await documentReference.delete().whenComplete(() => print("Product Hash : "+my_hash+"item deleted from the database"))
+            .catchError((e) => print(e));
+      }
 }
 
 

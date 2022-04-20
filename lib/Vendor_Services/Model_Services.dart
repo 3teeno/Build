@@ -69,9 +69,7 @@ class Services {
         .catchError((e) => print(e));
   }
 
-  static Future<void> deleteItem({
-    String docId,
-  }) async {
+  static Future<void> deleteItem({String docId,}) async {
 
     QuerySnapshot query_update = await _mainCollection.get();
     final doc_ref = query_update.docs.map((doc) => doc.reference.id);

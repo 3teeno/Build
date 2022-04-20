@@ -1,4 +1,5 @@
 import 'dart:collection';
+import 'dart:math';
 
 import 'package:build_i_t/main.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -84,8 +85,7 @@ class Order {
     List docs=[];
     print("Fetching From Firestore");
     try {
-      Query query = await _mainCollection.where(
-          'Order_Vendor_id', isEqualTo: currentUser.user.uid);
+      Query query = await _mainCollection.where('Order_Vendor_id', isEqualTo: currentUser.user.uid);
       await query.get().then((querySnapshot) =>
       {
         querySnapshot.docs.toList().forEach((doc) {
@@ -107,7 +107,21 @@ class Order {
       print(e);
     }
   }
+  static Future<List> delete_order(String my_hash) async
+  {
+    String doc_ref;
+    Query query = await _mainCollection.where('Order_Hash', isEqualTo: my_hash);
+    await query.get().then((querySnapshot) =>
+    {
+    querySnapshot.docs.toList().forEach((doc) {
+      doc_ref=doc.reference.id.toString();
+    })});
+    DocumentReference documentReference = _mainCollection.doc(doc_ref);
+    await documentReference.delete().whenComplete(() => print("Order Hash : "+my_hash+"item deleted from the database"))
+    .catchError((e) => print(e));
+    }
 
 }
+
 
 

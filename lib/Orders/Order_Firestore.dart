@@ -46,7 +46,7 @@ class _Order_Firestore_CRUDSState extends State<Order_Firestore_CRUDS> {
     return SafeArea(
       child: Scaffold(
         appBar: AppBar(
-          title: Text(""),
+          title: Text("Modify Order"),
           backgroundColor: Color(0XFF115ba6),
         ),
         backgroundColor: Color(0xFFffffff),
@@ -81,7 +81,10 @@ class _Order_Firestore_CRUDSState extends State<Order_Firestore_CRUDS> {
                             MaterialStateProperty.all<Color>(Colors.grey),
                             minimumSize: MaterialStateProperty.all(Size(200.0, 40.0))),
                       ) :TextButton(
-                        onPressed: () => {print("Delete Orders Pressed")},
+                        onPressed: () => {
+                          print("Delete Orders Pressed"),
+                          Order.delete_order(newHash),
+                        },
                         child: Text("Delete",style: TextStyle(color: Colors.white),),
                         style: ButtonStyle(
                             backgroundColor:
