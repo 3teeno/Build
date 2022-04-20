@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:build_i_t/Products/Model_Products.dart';
 
 import '../Orders/Model_Orders.dart';
+import 'Product_Firestore.dart';
 
 class Active_Products_Page extends StatefulWidget {
   const Active_Products_Page({Key key}) : super(key: key);
@@ -42,7 +43,9 @@ class _Active_Products_PageState extends State<Active_Products_Page> {
   // Product_Images
   Widget Product_Card_Template_Active(my_product) {
     return InkWell(
-      onTap: () => {print("Product Hash : "+my_product.Product_Hash)},
+      onTap: (){
+        Navigator.push(context, MaterialPageRoute(builder: (context)=>Product_Firestore_CRUDS()));
+      },
       enableFeedback: true,
       child: Card(
         margin: EdgeInsets.fromLTRB(15.0, 10.0, 15.0, 0),

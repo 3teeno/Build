@@ -162,43 +162,33 @@ class _VendorHomePageWidgetState extends State<VendorHomePageWidget> {
                       ),
                     ),
                     //New Product
-                    InkWell(
-                      onTap: () async {
-                        await Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => Update_Product_Page(),
-                          ),
-                        );
-                      },
-                      child: Container(
-                        padding: const EdgeInsets.all(8),
-                        child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.center,
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Image.asset(
-                                "assets/images/completed.png",
-                                height: 70,
-                              ),
-                              SizedBox(
-                                height: 10,
-                              ),
-                              Text('Update Product',
-                                style: TextStyle(fontSize: 20, fontFamily: 'Poppins'),textAlign: TextAlign.center,)
-                            ]),
-                        decoration: BoxDecoration(
-                            color: Colors.white,
-                            borderRadius: BorderRadius.all(Radius.circular(8)),
-                            boxShadow: [
-                              BoxShadow(
-                                color: Colors.grey.withOpacity(0.2),
-                                spreadRadius: 1,
-                                blurRadius: 20,
-                                offset: Offset(0, 3),
-                              ),
-                            ]),
-                      ),
+                    Container(
+                      padding: const EdgeInsets.all(8),
+                      child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Image.asset(
+                              "assets/images/completed.png",
+                              height: 70,
+                            ),
+                            SizedBox(
+                              height: 10,
+                            ),
+                            Text('Product Count',
+                              style: TextStyle(fontSize: 20, fontFamily: 'Poppins'),textAlign: TextAlign.center,)
+                          ]),
+                      decoration: BoxDecoration(
+                          color: Colors.white,
+                          borderRadius: BorderRadius.all(Radius.circular(8)),
+                          boxShadow: [
+                            BoxShadow(
+                              color: Colors.grey.withOpacity(0.2),
+                              spreadRadius: 1,
+                              blurRadius: 20,
+                              offset: Offset(0, 3),
+                            ),
+                          ]),
                     ),
                     //Feedback
                     Container(
