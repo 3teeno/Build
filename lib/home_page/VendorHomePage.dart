@@ -168,15 +168,14 @@ class _VendorHomePageWidgetState extends State<VendorHomePageWidget> {
                           crossAxisAlignment: CrossAxisAlignment.center,
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                            Image.asset(
-                              "assets/images/completed.png",
-                              height: 70,
-                            ),
+                            Text('Product Count',
+                              style: TextStyle(fontSize: 20, fontFamily: 'Poppins'),textAlign: TextAlign.center,),
                             SizedBox(
                               height: 10,
                             ),
-                            Text('Product Count',
-                              style: TextStyle(fontSize: 20, fontFamily: 'Poppins'),textAlign: TextAlign.center,)
+                            Text('7',
+                              style: TextStyle(fontSize: 20, fontFamily: 'Poppins',fontWeight: FontWeight.bold),textAlign: TextAlign.center,),
+
                           ]),
                       decoration: BoxDecoration(
                           color: Colors.white,
