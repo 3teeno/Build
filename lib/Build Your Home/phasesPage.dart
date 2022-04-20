@@ -2,13 +2,16 @@ import 'dart:async';
 
 import 'package:build_i_t/Build%20Your%20Home/buildYourHome_Data.dart';
 import 'package:build_i_t/Build%20Your%20Home/phaseTwo.dart';
+import 'package:build_i_t/auth/auth_util.dart';
 import 'package:build_i_t/backend/backend.dart';
 import 'package:build_i_t/home_page/CustomerHomePage.dart';
 import 'package:build_i_t/home_page/homepage_header.dart';
+import 'package:firebase_storage/firebase_storage.dart';
 
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
 
+import '../auth/firebase_user_provider.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 
 import '../flutter_flow/flutter_flow_widgets.dart';
@@ -36,6 +39,10 @@ class _phasesPageMainState extends State<phasesPageMain> {
   void gotoSecondPhase() {
     Navigator.pushReplacement(
         context, MaterialPageRoute(builder: (context) => phasePageTwo()));
+  }
+  void initializer()
+  {
+    print(_activeStepIndex);
   }
 
   Widget textWithWrap(String no) {
@@ -79,6 +86,8 @@ class _phasesPageMainState extends State<phasesPageMain> {
   }
 
   createValues()async{
+    _activeStepIndex=await getCurrentStep();
+    print("Active state:\t"+_activeStepIndex.toString());
     // Query query = await _mainCollection.where('Order_Hash',isEqualTo: '9999');
     // query.get().then((querySnapshot) => { querySnapshot.docs.forEach((element) {
     //   print(element.reference.id);})
@@ -551,15 +560,22 @@ class _phasesPageMainState extends State<phasesPageMain> {
               steps: stepList(),
               elevation: 0,
               controlsBuilder: (context, _) {
+
+                final cuser= currentUser.user;
                 return Row(
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
                   RaisedButton(
                               color: Color(0xFF282828),
-                              onPressed: () {
+                              onPressed: () async {
                                 setState(() {
                                   if (_activeStepIndex < stepList().length - 1) {
                                     _activeStepIndex += 1;
+                                    String uid=currentUser.user.uid;
+                                    DocumentReference doc=FirebaseFirestore.instance.doc('users/$uid');
+                                    doc.update({'Guide_Step':_activeStepIndex});
+                                    print("Updated");
+
 
                                   } else {
                                     print("On the last step now");
@@ -623,6 +639,10 @@ class _phasesPageMainState extends State<phasesPageMain> {
                               setState(() {
                                 if (_activeStepIndex > 0) {
                                   _activeStepIndex -= 1;
+                                  String uid=currentUser.user.uid;
+                                  DocumentReference doc=FirebaseFirestore.instance.doc('users/$uid');
+                                  doc.update({'Guide_Step':_activeStepIndex});
+                                  print("Updated");
                                 } else {
                                   print("On the last step now");
                                 }
@@ -638,5 +658,35 @@ class _phasesPageMainState extends State<phasesPageMain> {
             )),
       ),
     );
+  }
+
+    Future<int> getCurrentStep() async {
+    int x;
+    String uid=currentUser.user.uid;
+    DocumentReference doc=FirebaseFirestore.instance.doc('users/$uid');
+    DocumentSnapshot snapshot=await doc.get();
+
+    // doc.get().then((value) =>(){
+    //   snapshot=value;
+    //   print("Snapshot:"+value.toString());
+    //
+    // });
+    print(doc);
+    print(snapshot);
+    print(snapshot.toString());
+    x=snapshot['Guide_Step'];
+
+    _activeStepIndex=x;
+
+
+      // x=value['Guide_Step'];
+      // print("Hello world"+value.toString());
+      //
+    print("Hello world"+x.toString());
+    // CollectionReference.;
+    // FutureBuilder
+    // var cuser=await currentUserReference.get();
+    // return cuser['Guide_Step'];
+    return x;
   }
 }

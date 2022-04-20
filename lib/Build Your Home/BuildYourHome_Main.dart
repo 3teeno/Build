@@ -2,10 +2,12 @@ import 'dart:async';
 
 import 'package:build_i_t/Build%20Your%20Home/phasesPage.dart';
 import 'package:build_i_t/home_page/CustomerHomePage.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
 
 
+import '../auth/firebase_user_provider.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_widgets.dart';
 
@@ -24,7 +26,6 @@ class _startingScreenState extends State<startingScreen> {
   @override
   void initState() {
     // TODO: implement initState
-
 
 
 
@@ -78,6 +79,10 @@ class _startingScreenState extends State<startingScreen> {
                               setState(() {
                                 showScreen = false;
                               });
+
+                              String uid=currentUser.user.uid;
+                              DocumentReference doc=FirebaseFirestore.instance.doc('users/$uid');
+                              doc.update({'Activated':1});
                               Navigator.pushReplacement(
                                   context,
                                   MaterialPageRoute(

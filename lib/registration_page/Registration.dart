@@ -172,8 +172,9 @@ class _RegistrationPageCopyWidgetState
       'phone': PhoneController.text,
       'userRole': dropDownValue,
       'uid': uid,
-      'photoUrl' : "https://www.w3schools.com/howto/img_avatar.png"
-
+      'photoUrl' : "https://www.w3schools.com/howto/img_avatar.png",
+      'Guide_Step': 0,
+      'Activated': 0
     }).then((value) => print("User Added"))
         .catchError((error) => print("User not added $error"));
     print('After creation');

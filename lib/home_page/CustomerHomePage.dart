@@ -1,3 +1,4 @@
+import 'package:build_i_t/Build%20Your%20Home/phasesPage.dart';
 import 'package:build_i_t/MenuBar/menubar_customer.dart';
 import 'package:build_i_t/VendorServicesModel.dart';
 import 'package:build_i_t/all_market_places/Search_Material.dart';
@@ -8,6 +9,7 @@ import 'package:build_i_t/home_page/serviceProvidersCard.dart';
 import 'package:build_i_t/search_page/search_page_widget.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import '../Build Your Home/BuildYourHome_Main.dart';
+import '../auth/firebase_user_provider.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
 import '../flutter_flow/flutter_flow_widgets.dart';
@@ -58,7 +60,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
     size = MediaQuery.of(context);
     final userdata = FirebaseFirestore.instance
         .collection('users').doc(
-        'I9exw5lGZ1XkamWo91phtUGDWxA2');
+        'AF3aPsQsIZRB7RxGduo8wpgKViW2');
 
     return StreamBuilder<UsersRecord>(
 
@@ -88,11 +90,23 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                           padding: EdgeInsetsDirectional.fromSTEB(
                               20, 10, 20, 10),
                           child: FFButtonWidget(
-                            onPressed: () {
+                            onPressed: () async {
                               print('Build Your Home(Button pressed)');
-                              Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=>startingScreen()));
+                              String uid=currentUser.user.uid;
+                              DocumentReference doc=FirebaseFirestore.instance.doc('users/$uid');
+                              DocumentSnapshot snapshot=await doc.get();
+                              if(snapshot['Activated']==0) {
+                                Navigator.pushReplacement(context,
+                                    MaterialPageRoute(builder: (context) =>
+                                        phasesPageMain()));
+                              }
+                              else {
+                                Navigator.pushReplacement(context,
+                                    MaterialPageRoute(builder: (context) =>
+                                        startingScreen()));
+                              }
                             },
-                            text: 'Customer :  ${user.displayName}',
+                            text: 'Build Your Home',
                             options: FFButtonOptions(
                               width: MediaQuery
                                   .of(context)
