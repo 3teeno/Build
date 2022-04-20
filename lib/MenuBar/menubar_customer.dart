@@ -78,7 +78,7 @@ class _Customer_menuBarState extends State<Customer_menuBar> {
                         width: MediaQuery.of(context).size.width,
                         height: 50,
                         decoration: BoxDecoration(
-                          color: Color(0xFF282828),
+                          color: Color(0xFF115ba6),
                           borderRadius: BorderRadius.circular(5),
                         ),
                         child: Padding(
@@ -124,7 +124,7 @@ class _Customer_menuBarState extends State<Customer_menuBar> {
                         width: MediaQuery.of(context).size.width,
                         height: 50,
                         decoration: BoxDecoration(
-                          color: Color(0xFF282828),
+                          color: Color(0xFF115ba6),
                           borderRadius: BorderRadius.circular(5),
                         ),
                         child: Padding(
@@ -171,7 +171,7 @@ class _Customer_menuBarState extends State<Customer_menuBar> {
                         width: MediaQuery.of(context).size.width,
                         height: 50,
                         decoration: BoxDecoration(
-                          color: Color(0xFF282828),
+                          color: Color(0xFF115ba6),
                           borderRadius: BorderRadius.circular(5),
                         ),
                         child: Padding(
@@ -218,7 +218,7 @@ class _Customer_menuBarState extends State<Customer_menuBar> {
                         width: MediaQuery.of(context).size.width,
                         height: 50,
                         decoration: BoxDecoration(
-                          color: Color(0xFF282828),
+                          color: Color(0xFF115ba6),
                           borderRadius: BorderRadius.circular(5),
                         ),
                         child: Padding(
@@ -248,48 +248,14 @@ class _Customer_menuBarState extends State<Customer_menuBar> {
                       ),
                     ),
                   ),
+                  // 
                   Padding(
                     padding: EdgeInsetsDirectional.fromSTEB(10, 0, 10, 5),
                     child: Container(
                       width: MediaQuery.of(context).size.width,
                       height: 50,
                       decoration: BoxDecoration(
-                        color: Color(0xFF282828),
-                        borderRadius: BorderRadius.circular(5),
-                      ),
-                      child: Padding(
-                        padding: EdgeInsetsDirectional.fromSTEB(10, 0, 10, 0),
-                        child: Row(
-                          mainAxisSize: MainAxisSize.max,
-                          children: [
-                            Icon(
-                              Icons.support_agent_rounded,
-                              color: Colors.white,
-                              size: 24,
-                            ),
-                            Padding(
-                              padding:
-                              EdgeInsetsDirectional.fromSTEB(10, 0, 0, 0),
-                              child: Text(
-                                'Customer Support',
-                                style: FlutterFlowTheme.bodyText1.override(
-                                  fontFamily: 'Poppins',
-                                  color: Colors.white,
-                                ),
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                    ),
-                  ),
-                  Padding(
-                    padding: EdgeInsetsDirectional.fromSTEB(10, 0, 10, 5),
-                    child: Container(
-                      width: MediaQuery.of(context).size.width,
-                      height: 50,
-                      decoration: BoxDecoration(
-                        color: Color(0xFF282828),
+                        color: Color(0xFF115ba6),
                         borderRadius: BorderRadius.circular(5),
                       ),
                       child: Padding(
