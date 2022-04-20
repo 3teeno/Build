@@ -4,13 +4,13 @@ import '../auth/firebase_user_provider.dart';
 import 'Model_Orders.dart';
 
 
-class Active_Orders_Page extends StatefulWidget {
-  const Active_Orders_Page({Key key}) : super(key: key);
+class Active_Orders_Page_Customer extends StatefulWidget {
+  const Active_Orders_Page_Customer({Key key}) : super(key: key);
 
   @override
-  State<Active_Orders_Page> createState() => _Active_Orders_PageState();
+  State<Active_Orders_Page_Customer> createState() => _Active_Orders_Page_CustomerState();
 }
-class _Active_Orders_PageState extends State<Active_Orders_Page> {
+class _Active_Orders_Page_CustomerState extends State<Active_Orders_Page_Customer> {
   List<Order> orders = [];
   List mydocs = [];
   Future<void> initialise() async {
@@ -32,7 +32,7 @@ class _Active_Orders_PageState extends State<Active_Orders_Page> {
     print("Init is called ");
     initialise();
   }
-  Widget Order_Card_Template_Active(myorder) {
+  Widget Order_Card_Template_Active_Customer(myorder) {
     return Padding(
       padding: EdgeInsets.symmetric(vertical: 5),
       child: InkWell(
@@ -95,14 +95,14 @@ class _Active_Orders_PageState extends State<Active_Orders_Page> {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: <Widget>[
                     TextButton(
-                      child: Text("Deliver Now"),
+                      child: Text("Active"),
                       style: TextButton.styleFrom(
                         primary: Color(0xFF123456),
                         backgroundColor: Color(0xFFF2F2F2),
                       ),
                       onPressed: () =>
                       {
-                        print("Deliver Now Button Clicked"),
+                        print("Active Status Button Clicked"),
                         showDialog(
                             context: context,
                             builder: (_) =>
@@ -164,6 +164,8 @@ class _Active_Orders_PageState extends State<Active_Orders_Page> {
 
   @override
   Widget build(BuildContext context) {
+    if(mydocs.isNotEmpty)
+      {
       return MaterialApp(
         debugShowCheckedModeBanner: false,
           home: Scaffold(
@@ -174,10 +176,39 @@ class _Active_Orders_PageState extends State<Active_Orders_Page> {
               ),
               body: SingleChildScrollView(
                 child: Column(
-                  children: orders.map((myorder) => Order_Card_Template_Active(myorder)).toList(),
+                  children: orders.map((myorder) => Order_Card_Template_Active_Customer(myorder)).toList(),
                 ),
               )
           )
       );
     }
+    else {
+      return MaterialApp(
+          debugShowCheckedModeBanner: false,
+          home: Scaffold(
+              appBar: AppBar(
+                title: Text("Active Orders"),
+                leading: IconButton(icon:Icon(Icons.arrow_back),onPressed: ()=>Navigator.pop(context) ,),
+                backgroundColor: Color(0xFF123456),
+              ),
+            backgroundColor: Colors.grey[400],
+            body: Center(
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: <Widget>[
+                  Text(
+                    "No Active Orders Yet",
+                    style: TextStyle(
+                      fontFamily:"Poppins",
+                      fontWeight: FontWeight.normal,
+                      fontSize: 14.0,
+                    ),
+                  )
+                ],
+                ),
+            ),
+          )
+      );
+    }
   }
+}

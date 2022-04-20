@@ -12,15 +12,26 @@ final User user = auth.currentUser;
 final CollectionReference _mainCollection = _firestore.collection('products');
 
 class Products {
-  String Product_Hash;
-  String Product_Title;
-  String Product_Description;
-  String Product_Quantity;
-  String Product_Price;
-  String Product_Vendor_id; //Currently Used as Userid
-  String Product_Category;
-  String Product_Images;
+      String Product_Hash;
+      String Product_Title;
+      String Product_Description;
+      String Product_Quantity;
+      String Product_Price;
+      String Product_Vendor_id; //Currently Used as Userid
+      String Product_Category;
+      String Product_Images;
 
+  Products({this.Product_Hash, this.Product_Description, this.Product_Title, this.Product_Quantity, this.Product_Vendor_id, this.Product_Price, this.Product_Category, this.Product_Images,})
+  {
+      this.Product_Hash=Product_Hash;
+      this.Product_Description=Product_Description;
+      this.Product_Title=Product_Title;
+      this.Product_Quantity=Product_Quantity;
+      this.Product_Vendor_id=Product_Vendor_id;
+      this.Product_Price=Product_Price;
+      this.Product_Category=Product_Category;
+      this.Product_Images=Product_Images;
+  }
    static Future<void> add_product({String Product_Hash,String Product_Title,String Product_Description,String Product_Price,String Product_Quantity,String Product_Vendor_id,String Product_Category,String Product_Images}) async
   {
     DocumentReference documentReferencer = _mainCollection.doc();
@@ -43,34 +54,25 @@ class Products {
   static Future<void> update_product({String Product_Hash,String Product_Title,String Product_Description,String Product_Price,String Product_Quantity,String Product_Vendor_id,String Product_Category,String Product_Images}) async
   {
     QuerySnapshot querySnapshot = await _mainCollection.get();
-    // Query query = await _mainCollection
-    // querySnapshot.docs.where((element) => false)
-    // final doc_ref = querySnapshot.docs.map((doc) => doc.reference.id);
-    // print("MY Reference Id is : ");
-    // print(doc_ref);
-
-    // final FirebaseFirestore find_data = _firestore.collection("orders").where("Order_Hash",isEqualTo:"123456").snapshots().listen(
-    //         (data) => print('grower ${data.docs[0]['Order_Hash']}')) as FirebaseFirestore ;
-
-    Query query = await _mainCollection.where('Order_Hash',isEqualTo: '9999');
+    Query query = await _mainCollection.where('Product_Hash',isEqualTo: Product_Hash);
     query.get().then((querySnapshot) => { querySnapshot.docs.forEach((element) {
       print(element.reference.id);})
     });
 
     DocumentReference documentReferencer = _mainCollection.doc();
     Map<String, dynamic> data = <String, dynamic>{
-      // "Product_Hash" : Product_Hash,  # Not Needed to Update. Fixed Value
       "Product_Title": Product_Title,
       "Product_Description": Product_Description,
       "Product_Quantity": Product_Quantity,
       "Product_Price": Product_Price,
-      // "Product_Vendor_id": Product_Vendor_id, # Not Needed to Update. Fixed Value
       "Product_Category":Product_Category,
       "Product_Images": Product_Images,
+      // "Product_Hash" : Product_Hash,  # Not Needed to Update. Fixed Value
+      // "Product_Vendor_id": Product_Vendor_id, # Not Needed to Update. Fixed Value
     };
     await documentReferencer
         .update(data)
-        .whenComplete(() => print("Updated product to the database"))
+        .whenComplete(() => print("Updated product on the database"))
         .catchError((e) => print(e));
   }
 
@@ -85,8 +87,7 @@ class Products {
       query.get().then((querySnapshot) =>
       {
         querySnapshot.docs.toList().forEach((doc) {
-          // print(doc['Order_Hash']);
-          Map my_orders = {
+          Map my_products = {
             "Product_Hash" : doc['Product_Hash'],
             "Product_Title": doc['Product_Title'],
             "Product_Description": doc['Product_Description'],
@@ -96,8 +97,8 @@ class Products {
             "Product_Category":doc['Product_Category'],
             "Product_Images": doc['Product_Images'],
           };
-          docs.add(my_orders);
-          // print(my_orders);
+          docs.add(my_products);
+          // print(my_products);
         })
       });
       return docs;
@@ -105,6 +106,12 @@ class Products {
     catch (e) {
       print(e);
     }
+  }
+
+  static Future<List> delete_product()
+  {
+    QuerySnapshot snapshot;
+
   }
 }
 

@@ -11,30 +11,38 @@ class Active_Products_Page extends StatefulWidget {
 }
 
 class _Active_Products_PageState extends State<Active_Products_Page> {
-  List<Order> orders = [];
-  List mydocs = [];
+  List<Products> products = [];
+  List my_products = [];
   Future<void> initialise() async {
-    await Order.fetch_order().then ((value) => setState((){ mydocs=value; } ) );
-    if(mydocs.isEmpty)
+    await Products.fetch_product().then ((value) => setState((){ my_products=value; } ) );
+    if(my_products.isEmpty)
       {print("Empty Products Against Vendor");}
-    for (var i = 0; i < mydocs.length; i++) {
-      Order temp = Order(
-        Order_Hash: mydocs[i]['Order_Hash'],
-        Order_Title: mydocs[i]['Order_Title'],
-        Order_Duration: mydocs[i]['Order_Duration'],
-        Order_Description: mydocs[i]['Order_Description'],
-        Order_Price: mydocs[i]['Order_Price'],
-        Order_Status: mydocs[i]['Order_Status'],);
-      orders.add(temp);
+    for (var i = 0; i < my_products.length; i++) {
+      Products temp = Products(
+      Product_Hash: my_products[i]['Product_Hash'],
+      Product_Title:my_products[i]['Product_Title'],
+      Product_Description: my_products[i]['Product_Description'],
+      Product_Quantity: my_products[i]['Product_Quantity'],
+      Product_Price: my_products[i]['Product_Price'],
+      Product_Vendor_id: my_products[i]['Product_Vendor_id'],);
+      products.add(temp);
     }
   }
   Future<void> initState() {
-    print("Init is called ");
+    print("Product Init is called ");
     initialise();
   }
-  Widget Product_Card_Template_Active(myorder) {
+  // Product_Hash
+  // Product_Title
+  // Product_Description
+  // Product_Quantity
+  // Product_Price
+  // Product_Vendor_id
+  // Product_Category
+  // Product_Images
+  Widget Product_Card_Template_Active(my_product) {
     return InkWell(
-      onTap: () => {print("Order Hash : "+myorder.Order_Hash)},
+      onTap: () => {print("Product Hash : "+my_product.Product_Hash)},
       enableFeedback: true,
       child: Card(
         margin: EdgeInsets.fromLTRB(15.0, 10.0, 15.0, 0),
@@ -44,7 +52,7 @@ class _Active_Products_PageState extends State<Active_Products_Page> {
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: <Widget>[
               Text(
-                myorder.Order_Hash,
+                my_product.Product_Hash,
                 style: TextStyle(
                   fontWeight: FontWeight.bold,
                   fontSize: 15.0,
@@ -53,7 +61,7 @@ class _Active_Products_PageState extends State<Active_Products_Page> {
               ),
               SizedBox(height: 6.0),
               Text(
-                (myorder.Order_Title),
+                (my_product.Product_Title),
                 style: TextStyle(
                   fontWeight: FontWeight.bold,
                   fontSize: 20.0,
@@ -62,7 +70,7 @@ class _Active_Products_PageState extends State<Active_Products_Page> {
               ),
               SizedBox(height: 6.0),
               Text(
-                myorder.Order_Description,
+                my_product.Product_Description,
                 style: TextStyle(
                   fontWeight: FontWeight.bold,
                   fontSize: 16.0,
@@ -73,7 +81,7 @@ class _Active_Products_PageState extends State<Active_Products_Page> {
               Align(
                 alignment: Alignment.bottomRight,
                 child: Text(
-                  myorder.Order_Duration==null?'Loading':myorder.Order_Duration,
+                  my_product.Product_Quantity==null?'Loading':my_product.Product_Quantity,
                   style: TextStyle(
                     fontWeight: FontWeight.bold,
                     fontSize: 16.0,
@@ -101,7 +109,7 @@ class _Active_Products_PageState extends State<Active_Products_Page> {
                           context: context,
                           builder: (_) =>
                               AlertDialog(
-                                title: Text('Confirm Order'),
+                                title: Text('Confirm Product'),
                                 content:
                                 Text('If you have completed the work as per '
                                     'clients requirements.You may deliver'),
@@ -124,7 +132,7 @@ class _Active_Products_PageState extends State<Active_Products_Page> {
                                       ),
                                       TextButton(
                                         onPressed: () =>
-                                        {print("Order Confirmed Button")},
+                                        {print("Product Confirmed Button")},
                                         child: Text("Confirm"),
                                         style: TextButton.styleFrom(
                                             primary: Colors.white,
@@ -138,7 +146,7 @@ class _Active_Products_PageState extends State<Active_Products_Page> {
                     },
                   ),
                   Text(
-                    myorder.Order_Price,
+                    my_product.Product_Price,
                     style: TextStyle(
                       fontWeight: FontWeight.bold,
                       fontSize: 16.0,
@@ -156,19 +164,52 @@ class _Active_Products_PageState extends State<Active_Products_Page> {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-        home: Scaffold(
+    if(my_products.isNotEmpty)
+    {
+      return MaterialApp(
+          debugShowCheckedModeBanner: false,
+          home: Scaffold(
+              appBar: AppBar(
+                title: Text("Active Products"),
+                leading: IconButton(icon:Icon(Icons.arrow_back),onPressed: ()=>Navigator.pop(context) ,),
+                backgroundColor: Color(0xFF123456),
+              ),
+              body: SingleChildScrollView(
+                child: Column(
+                  children: products.map((my_product) => Product_Card_Template_Active(my_product)).toList(),
+                ),
+              )
+          )
+      );
+    }
+    else
+    {
+      return MaterialApp(
+          debugShowCheckedModeBanner: false,
+          home: Scaffold(
             appBar: AppBar(
               title: Text("Active Products"),
               leading: IconButton(icon:Icon(Icons.arrow_back),onPressed: ()=>Navigator.pop(context) ,),
               backgroundColor: Color(0xFF123456),
             ),
-            body: SingleChildScrollView(
-              child: Column(
-                children: orders.map((myorder) => Product_Card_Template_Active(myorder)).toList(),
+            backgroundColor: Colors.grey[400],
+            body: Center(
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: <Widget>[
+                  Text(
+                    "No Active Products Yet",
+                    style: TextStyle(
+                      fontFamily:"Poppins",
+                      fontWeight: FontWeight.normal,
+                      fontSize: 14.0,
+                    ),
+                  )
+                ],
               ),
-            )
-        )
-    );
+            ),
+          )
+      );
+    }
   }
 }
