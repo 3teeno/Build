@@ -63,19 +63,11 @@ Widget marketPlaceCard({BuildContext context,String title,String description,Str
                       ),
                     ),
                   ),
-                  Padding(
-                    padding: EdgeInsets.all(5),
-                    child: Text(
-                      description,
-                      maxLines: 4,
-                      style: FlutterFlowTheme.bodyText1
-                          .override(
-                        fontFamily: 'Poppins',
-                        color: Color(0xFF000000),
-                        fontSize: 12,
-                      ),
-                    ),
-                  ),
+                  Container(
+                    height: 50,
+                    color: Color(0xFF457896),
+                    width: MediaQuery.of(context).size.width*0.44,
+                  )
                 ],
               )
 

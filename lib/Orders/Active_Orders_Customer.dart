@@ -2,6 +2,7 @@ import 'package:build_i_t/backend/backend.dart';
 import 'package:flutter/material.dart';
 import '../auth/firebase_user_provider.dart';
 import 'Model_Orders.dart';
+import 'Order_Firestore.dart';
 
 
 class Active_Orders_Page_Customer extends StatefulWidget {
@@ -36,7 +37,9 @@ class _Active_Orders_Page_CustomerState extends State<Active_Orders_Page_Custome
     return Padding(
       padding: EdgeInsets.symmetric(vertical: 5),
       child: InkWell(
-        onTap: () => {print("Order Hash : "+myorder.Order_Hash)},
+        onTap: () {
+          Navigator.push(context, MaterialPageRoute(builder: (context)=>Order_Firestore_CRUDS()));
+        },
         enableFeedback: true,
         child: Card(
           margin: EdgeInsets.fromLTRB(15.0, 10.0, 15.0, 0),
