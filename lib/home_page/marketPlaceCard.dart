@@ -52,26 +52,35 @@ Widget marketPlaceCard({BuildContext context,String title,String description,Str
                 mainAxisAlignment: MainAxisAlignment.start,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text(
-                    title,
-                    style:
-                    FlutterFlowTheme.bodyText1.override(
-                      fontFamily: 'Poppins',
-                      color: Colors.black87,
+                  Padding(
+                    padding: EdgeInsets.all(5),
+                    child: Text(
+                      title,
+                      style:
+                      FlutterFlowTheme.bodyText1.override(
+                        fontFamily: 'Poppins',
+                        color: Colors.black87,
+                      ),
                     ),
                   ),
-                  Text(
-                    description,
-                    maxLines: 4,
-                    style: FlutterFlowTheme.bodyText1
-                        .override(
-                      fontFamily: 'Poppins',
-                      color: Color(0xFF000000),
-                      fontSize: 12,
+                  Padding(
+                    padding: EdgeInsets.all(5),
+                    child: Text(
+                      description,
+                      maxLines: 4,
+                      style: FlutterFlowTheme.bodyText1
+                          .override(
+                        fontFamily: 'Poppins',
+                        color: Color(0xFF000000),
+                        fontSize: 12,
+                      ),
                     ),
                   ),
                 ],
               )
+
+
+
             ],
           ),
         ),
