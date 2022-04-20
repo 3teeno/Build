@@ -115,6 +115,25 @@ class Products {
     QuerySnapshot snapshot;
 
   }
+
+     static Future<List> querySnapShot() async {
+        List docs=[];
+        QuerySnapshot querySnapshot;
+        querySnapshot= await _firestore.collection('products').get();
+        print(querySnapshot.docs.first.data());
+        if(await querySnapshot.docs.isNotEmpty)
+        {
+          for(var my_product in querySnapshot.docs.toList())
+          {
+            Map tempo = {
+              "Product_Title":my_product['Product_Title'],
+            };
+            docs.add(tempo);
+          }
+          return docs;
+        }
+      }
+
 }
 
 

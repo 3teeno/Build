@@ -7,7 +7,6 @@ import 'package:flutter/material.dart';
 
 final FirebaseFirestore _firestore = FirebaseFirestore.instance;
 final FirebaseAuth auth = FirebaseAuth.instance;
-final User user = auth.currentUser;
 
 Future<List<dynamic>> getCollection(CollectionReference collection) async {
   try {
