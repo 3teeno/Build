@@ -57,16 +57,7 @@ class Order {
   static Future<void> update_order({String Order_Hash,String Order_Vendor_id, String Order_Title, String Order_Description, String Order_Duration, String Order_Price}) async
   {
     QuerySnapshot querySnapshot = await _mainCollection.get();
-    // Query query = await _mainCollection
-    // querySnapshot.docs.where((element) => false)
-    // final doc_ref = querySnapshot.docs.map((doc) => doc.reference.id);
-    // print("MY Reference Id is : ");
-    // print(doc_ref);
-
-    // final FirebaseFirestore find_data = _firestore.collection("orders").where("Order_Hash",isEqualTo:"123456").snapshots().listen(
-    //         (data) => print('grower ${data.docs[0]['Order_Hash']}')) as FirebaseFirestore ;
-
-    Query query = await _mainCollection.where('Order_Hash',isEqualTo: '9999');
+    Query query = await _mainCollection.where('Order_Hash',isEqualTo: Order_Hash);
     query.get().then((querySnapshot) => { querySnapshot.docs.forEach((element) {
       print(element.reference.id);})
     });
@@ -77,9 +68,9 @@ class Order {
       "Order_Description": Order_Description,
       "Order_Duration": Order_Duration,
       "Order_Type" : "Service",
+      //"Order_User_id":user.uid
       // "Order_Hash" : Order_Hash, # Not Needed to Update. Fixed Value
       // "Order_Vendor_id":Order_Vendor_id, # Not Needed to Update. Fixed Value
-      "Order_User_id":user.uid
     };
     await documentReferencer
         .update(data)
@@ -98,7 +89,6 @@ class Order {
       await query.get().then((querySnapshot) =>
       {
         querySnapshot.docs.toList().forEach((doc) {
-          // print(doc['Order_Hash']);
           Map my_orders = {
             "Vendor_id": doc.id,
             "Order_Hash": doc['Order_Hash'],

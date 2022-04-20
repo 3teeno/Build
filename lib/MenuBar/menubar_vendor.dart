@@ -1,3 +1,4 @@
+import 'package:build_i_t/Orders/Order_Page_Vendor.dart';
 import 'package:build_i_t/Products/Products_Page_Customer.dart';
 import 'package:build_i_t/Vendor_Services/ServicePage.dart';
 import 'package:build_i_t/flutter_flow/flutter_flow_theme.dart';
@@ -205,35 +206,47 @@ class _Vendor_menuBarState extends State<Vendor_menuBar> {
                   ),
                   Padding(
                     padding: EdgeInsetsDirectional.fromSTEB(10, 0, 10, 5),
-                    child: Container(
-                      width: MediaQuery.of(context).size.width,
-                      height: 50,
-                      decoration: BoxDecoration(
-                        color: Color(0xFF282828),
-                        borderRadius: BorderRadius.circular(5),
-                      ),
-                      child: Padding(
-                        padding: EdgeInsetsDirectional.fromSTEB(10, 0, 10, 0),
-                        child: Row(
-                          mainAxisSize: MainAxisSize.max,
-                          children: [
-                            Icon(
-                              Icons.border_all_outlined,
-                              color: Colors.white,
-                              size: 24,
-                            ),
-                            Padding(
-                              padding:
-                              EdgeInsetsDirectional.fromSTEB(10, 0, 0, 0),
-                              child: Text(
-                                'Orders',
-                                style: FlutterFlowTheme.bodyText1.override(
-                                  fontFamily: 'Poppins',
-                                  color: Colors.white,
+                    child: InkWell(
+                      onTap: () async {
+                        print("Order button navigation");
+                        await Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => Order_Page_Vendor(),
+                          ),
+                        );
+                      },
+                      child: Container(
+                        width: MediaQuery.of(context).size.width,
+                        height: 50,
+                        decoration: BoxDecoration(
+                          color: Color(0xFF282828),
+                          borderRadius: BorderRadius.circular(5),
+                        ),
+                        child: Padding(
+                          padding:
+                          EdgeInsetsDirectional.fromSTEB(10, 0, 10, 0),
+                          child: Row(
+                            mainAxisSize: MainAxisSize.max,
+                            children: [
+                              Icon(
+                                Icons.border_all_outlined,
+                                color: Colors.white,
+                                size: 24,
+                              ),
+                              Padding(
+                                padding: EdgeInsetsDirectional.fromSTEB(
+                                    10, 0, 0, 0),
+                                child: Text(
+                                  'Orders',
+                                  style: FlutterFlowTheme.bodyText1.override(
+                                    fontFamily: 'Poppins',
+                                    color: Colors.white,
+                                  ),
                                 ),
                               ),
-                            ),
-                          ],
+                            ],
+                          ),
                         ),
                       ),
                     ),
