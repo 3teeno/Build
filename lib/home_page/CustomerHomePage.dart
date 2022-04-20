@@ -198,6 +198,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                       imageUrl: "https://images.pexels.com/photos/159306/construction-site-build-construction-work-159306.jpeg?cs=srgb&dl=pexels-pixabay-159306.jpg&fm=jpg",
                       description: e.Product_Description,
                       title: e.Product_Title,
+                      vendorID: e.Product_Vendor_id,
                       context: context)).toList(),
                     ),
                 ]),
