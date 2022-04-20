@@ -70,7 +70,7 @@ Map<String,dynamic> byhd = {
     "isExpanded": true,
     "title": "Insulation",
     "isComplete":false,
-    "data":' Insulation is added between the studs in all exterior walls and between the joists forming the attic. Gaps between framing and around windows are then sealed to eliminate potential leaks.',},
+    "data":'Insulation is added between the studs in all exterior walls and between the joists forming the attic. Gaps between framing and around windows are then sealed to eliminate potential leaks.',},
   "11":{
     "isExpanded": true,
     "title": "Drywall",
