@@ -97,7 +97,7 @@ class _Active_Orders_Page_CustomerState extends State<Active_Orders_Page_Custome
                     TextButton(
                       child: Text("Active"),
                       style: TextButton.styleFrom(
-                        primary: Color(0xFF123456),
+                        primary: Color(0xFF115ba6),
                         backgroundColor: Color(0xFFF2F2F2),
                       ),
                       onPressed: () =>
@@ -107,7 +107,7 @@ class _Active_Orders_Page_CustomerState extends State<Active_Orders_Page_Custome
                             context: context,
                             builder: (_) =>
                                 AlertDialog(
-                                  title: Text('Confirm Order',style: TextStyle(color: Color(0xFF123456)),),
+                                  title: Text('Confirm Order',style: TextStyle(color: Color(0xFF115ba6)),),
                                   content:
                                   Text('''If you have completed the work as per clients requirements. You may deliver''',textAlign: TextAlign.start,),
                                   actions: [
@@ -134,7 +134,7 @@ class _Active_Orders_Page_CustomerState extends State<Active_Orders_Page_Custome
                                           child: Text("Confirm"),
                                           style: TextButton.styleFrom(
                                               primary: Colors.white,
-                                              backgroundColor: Color(0xFF123456),
+                                              backgroundColor: Color(0xFF115ba6),
                                               minimumSize: Size(60, 30)),
                                         ),
                                         SizedBox(width: 20,),
@@ -149,7 +149,7 @@ class _Active_Orders_Page_CustomerState extends State<Active_Orders_Page_Custome
                       style: TextStyle(
                         fontWeight: FontWeight.bold,
                         fontSize: 16.0,
-                        color: Color(0xFF123456),
+                        color: Color(0xFF115ba6),
                       ),
                     ),
                   ],
@@ -172,7 +172,7 @@ class _Active_Orders_Page_CustomerState extends State<Active_Orders_Page_Custome
               appBar: AppBar(
                 title: Text("Active Orders"),
                 leading: IconButton(icon:Icon(Icons.arrow_back),onPressed: ()=>Navigator.pop(context) ,),
-                backgroundColor: Color(0xFF123456),
+                backgroundColor: Color(0xFF115ba6),
               ),
               body: SingleChildScrollView(
                 child: Column(
@@ -189,7 +189,7 @@ class _Active_Orders_Page_CustomerState extends State<Active_Orders_Page_Custome
               appBar: AppBar(
                 title: Text("Active Orders"),
                 leading: IconButton(icon:Icon(Icons.arrow_back),onPressed: ()=>Navigator.pop(context) ,),
-                backgroundColor: Color(0xFF123456),
+                backgroundColor: Color(0xFF115ba6),
               ),
             backgroundColor: Colors.grey[400],
             body: Center(

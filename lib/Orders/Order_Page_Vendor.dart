@@ -23,7 +23,7 @@ class _Order_Page_VendorState extends State<Order_Page_Vendor> {
               onPressed: () => Navigator.pop(context),),
             elevation: 0,
             title: Text("Manage Orders"),
-            backgroundColor: Color(0xFF123456),
+            backgroundColor: Color(0xFF115ba6),
           ),
           body: Center(
               child: GridView.extent(
@@ -35,7 +35,7 @@ class _Order_Page_VendorState extends State<Order_Page_Vendor> {
                 children: <Widget>[
                   //Active Orders
                   InkWell(
-                    splashColor: Color(0xFF123456),
+                    splashColor: Color(0xFF115ba6),
                     onTap: () async {
                       await Navigator.push(
                         context,

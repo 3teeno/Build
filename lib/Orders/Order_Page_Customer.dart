@@ -1,4 +1,5 @@
 import 'package:build_i_t/Orders/Delivered_Orders.dart';
+import 'package:build_i_t/Orders/Order_Firestore_add.dart';
 import 'package:build_i_t/Orders/pendingOrdersPage.dart';
 import 'package:build_i_t/home_page/CustomerHomePage.dart';
 import 'package:build_i_t/main.dart';
@@ -23,8 +24,12 @@ class _Order_Page_CustomerState extends State<Order_Page_Customer> {
             leading: IconButton(icon:Icon(Icons.arrow_back),onPressed: ()=>Navigator.pop(context) ,),
             elevation: 0,
             title: Text("Manage Orders"),
-            backgroundColor: Color(0xFF123456),
+            backgroundColor: Color(0xFF115ba6),
       ),
+            floatingActionButton: FloatingActionButton(onPressed: (){
+              Navigator.push(context, MaterialPageRoute(builder: (context)=>add_OrderFireBase()));
+            },
+            child: Icon(Icons.add,color: Colors.white,),foregroundColor: Color(0xFF115ba6)),
             body: Center(
                 child: GridView.extent(
                   primary: false,
@@ -35,7 +40,7 @@ class _Order_Page_CustomerState extends State<Order_Page_Customer> {
                 children: <Widget>[
                   //Active Orders
                   InkWell(
-                    splashColor: Color(0xFF123456),
+                    splashColor: Color(0xFF115ba6),
                     onTap: () async {
                       await Navigator.push(
                         context,
