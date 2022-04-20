@@ -28,7 +28,8 @@ class _Order_Firestore_CRUDSState extends State<Order_Firestore_CRUDS> {
   String hashcode;
   _Order_Firestore_CRUDSState(hashCode, String hcode) {
     this.hashcode=hcode;
-    //print(hashCode.hashCode);
+    print("I have recieved the hash : ");
+    print(hashcode);
   }
   final TextEditingController _DescriptionController = TextEditingController();
   final TextEditingController _DurationController = TextEditingController();
