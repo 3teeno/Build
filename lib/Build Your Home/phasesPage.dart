@@ -42,6 +42,7 @@ class _phasesPageMainState extends State<phasesPageMain> {
   }
   void initializer()
   {
+    getCurrentStep();
     print(_activeStepIndex);
   }
 
