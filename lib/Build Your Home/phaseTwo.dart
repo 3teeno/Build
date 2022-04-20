@@ -90,17 +90,7 @@ class _phasePageTwoState extends State<phasePageTwo> {
             content: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Container(
-                  width: MediaQuery.of(context).size.width,
-                  height: 150,
-                  decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(8),
-                      color: Color(0xFF123456)),
-                  child: Image.asset(
-                    "assets/images/phase_one_main_image.jpg",
-                    fit: BoxFit.cover,
-                  ),
-                ),
+
                 //Text Show less column
                 textWithWrap("2"),
               ],
@@ -110,17 +100,7 @@ class _phasePageTwoState extends State<phasePageTwo> {
             content: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Container(
-                  width: MediaQuery.of(context).size.width,
-                  height: 150,
-                  decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(8),
-                      color: Color(0xFF123456)),
-                  child: Image.asset(
-                    "assets/images/phase_one_main_image.jpg",
-                    fit: BoxFit.cover,
-                  ),
-                ),
+
                 //Text Show less column
                 textWithWrap("3"),
               ],
@@ -130,17 +110,7 @@ class _phasePageTwoState extends State<phasePageTwo> {
             content: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Container(
-                  width: MediaQuery.of(context).size.width,
-                  height: 150,
-                  decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(8),
-                      color: Color(0xFF123456)),
-                  child: Image.asset(
-                    "assets/images/phase_one_main_image.jpg",
-                    fit: BoxFit.cover,
-                  ),
-                ),
+
                 //Text Show less column
                 textWithWrap("4"),
               ],
@@ -150,17 +120,7 @@ class _phasePageTwoState extends State<phasePageTwo> {
             content: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Container(
-                  width: MediaQuery.of(context).size.width,
-                  height: 150,
-                  decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(8),
-                      color: Color(0xFF123456)),
-                  child: Image.asset(
-                    "assets/images/phase_one_main_image.jpg",
-                    fit: BoxFit.cover,
-                  ),
-                ),
+
                 //Text Show less column
                 textWithWrap("5"),
               ],
@@ -170,17 +130,7 @@ class _phasePageTwoState extends State<phasePageTwo> {
             content: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Container(
-                  width: MediaQuery.of(context).size.width,
-                  height: 150,
-                  decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(8),
-                      color: Color(0xFF123456)),
-                  child: Image.asset(
-                    "assets/images/phase_one_main_image.jpg",
-                    fit: BoxFit.cover,
-                  ),
-                ),
+
                 //Text Show less column
                 textWithWrap("6"),
               ],
@@ -190,17 +140,7 @@ class _phasePageTwoState extends State<phasePageTwo> {
             content: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Container(
-                  width: MediaQuery.of(context).size.width,
-                  height: 150,
-                  decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(8),
-                      color: Color(0xFF123456)),
-                  child: Image.asset(
-                    "assets/images/phase_one_main_image.jpg",
-                    fit: BoxFit.cover,
-                  ),
-                ),
+
                 //Text Show less column
                 textWithWrap("7"),
               ],
@@ -210,17 +150,7 @@ class _phasePageTwoState extends State<phasePageTwo> {
             content: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Container(
-                  width: MediaQuery.of(context).size.width,
-                  height: 150,
-                  decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(8),
-                      color: Color(0xFF123456)),
-                  child: Image.asset(
-                    "assets/images/phase_one_main_image.jpg",
-                    fit: BoxFit.cover,
-                  ),
-                ),
+
                 //Text Show less column
                 textWithWrap("8"),
               ],
@@ -230,17 +160,7 @@ class _phasePageTwoState extends State<phasePageTwo> {
             content: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Container(
-                  width: MediaQuery.of(context).size.width,
-                  height: 150,
-                  decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(8),
-                      color: Color(0xFF123456)),
-                  child: Image.asset(
-                    "assets/images/phase_one_main_image.jpg",
-                    fit: BoxFit.cover,
-                  ),
-                ),
+
                 //Text Show less column
                 textWithWrap("9"),
               ],
@@ -270,17 +190,7 @@ class _phasePageTwoState extends State<phasePageTwo> {
             content: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Container(
-                  width: MediaQuery.of(context).size.width,
-                  height: 150,
-                  decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(8),
-                      color: Color(0xFF123456)),
-                  child: Image.asset(
-                    "assets/images/phase_one_main_image.jpg",
-                    fit: BoxFit.cover,
-                  ),
-                ),
+
                 //Text Show less column
                 textWithWrap("11"),
               ],
@@ -290,17 +200,7 @@ class _phasePageTwoState extends State<phasePageTwo> {
             content: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Container(
-                  width: MediaQuery.of(context).size.width,
-                  height: 150,
-                  decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(8),
-                      color: Color(0xFF123456)),
-                  child: Image.asset(
-                    "assets/images/phase_one_main_image.jpg",
-                    fit: BoxFit.cover,
-                  ),
-                ),
+
                 //Text Show less column
                 textWithWrap("12"),
               ],
@@ -310,17 +210,6 @@ class _phasePageTwoState extends State<phasePageTwo> {
             content: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Container(
-                  width: MediaQuery.of(context).size.width,
-                  height: 150,
-                  decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(8),
-                      color: Color(0xFF123456)),
-                  child: Image.asset(
-                    "assets/images/phase_one_main_image.jpg",
-                    fit: BoxFit.cover,
-                  ),
-                ),
                 //Text Show less column
                 textWithWrap("13"),
               ],
@@ -336,7 +225,7 @@ class _phasePageTwoState extends State<phasePageTwo> {
             onPressed: () => Navigator.push(context,
                 MaterialPageRoute(builder: (context) => HomePageWidget())),
           ),
-          backgroundColor: Color(0xFFF6EFDE),
+          backgroundColor: Color(0xFFffffff),
           elevation: 0,
           title: Text(
             "Build Your Home",
@@ -346,11 +235,11 @@ class _phasePageTwoState extends State<phasePageTwo> {
             ),
           ),
         ),
-        backgroundColor: Color(0xFFF6EFDE),
+        backgroundColor: Color(0xFFffffff),
         body: Theme(
             data: ThemeData(
                 colorScheme: Theme.of(context).colorScheme.copyWith(
-                    primary: Color(0xFFF6EFDE), secondary: Color(0xFFF6EFDE))),
+                    primary: Color(0xFFffffff), secondary: Color(0xFFffffff))),
             child: Stepper(
               currentStep: _activeStepIndex,
               steps: stepList(),
@@ -393,7 +282,7 @@ class _phasePageTwoState extends State<phasePageTwo> {
                                                 width: 200,
                                                 repeat: true),
                                             Text(
-                                              "You have Completed Phase One",
+                                              "You have Completed Phase Two",
                                               style: TextStyle(
                                                   fontFamily: 'Poppins'),
                                             )
@@ -409,7 +298,7 @@ class _phasePageTwoState extends State<phasePageTwo> {
                       )
                     else
                       RaisedButton(
-                          color: Color(0xFF282828),
+                          color: Color(0xFF115ba6),
                           onPressed: () {
                             setState(() {
                               // byhdTwo[(_activeStepIndex+1).toString()]["isComplete"]=true;
@@ -445,7 +334,7 @@ class _phasePageTwoState extends State<phasePageTwo> {
                                                   width: 200,
                                                   repeat: true),
                                               Text(
-                                                "You have Completed Phase One",
+                                                "You have Completed Phase Two",
                                                 style: TextStyle(
                                                     fontFamily: 'Poppins'),
                                               )

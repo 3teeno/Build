@@ -44,7 +44,7 @@ class _startingScreenState extends State<startingScreen> {
   Widget build(BuildContext context) {
     return (loading)
         ? Container(
-            color: Color(0xFFF6EFDE),
+            color: Color(0xFFFFFFFF),
             child: Center(
                 child: CircularProgressIndicator(
               color: Colors.black87,
@@ -52,7 +52,7 @@ class _startingScreenState extends State<startingScreen> {
         : SafeArea(
             child: showScreen
                 ? Scaffold(
-                    backgroundColor: Color(0xFFF6EFDE),
+                    backgroundColor: Color(0xFFFFFFFF),
                     body: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
@@ -92,10 +92,10 @@ class _startingScreenState extends State<startingScreen> {
                             options: FFButtonOptions(
                               width: MediaQuery.of(context).size.width * 0.5,
                               height: 45,
-                              color: Color(0xFF282828),
+                              color: Color(0xFF115ba6),
                               textStyle: FlutterFlowTheme.subtitle2.override(
                                 fontFamily: 'Poppins',
-                                color: Color(0xFFFFB700),
+                                color: Color(0xFFFFFFFF),
                                 fontWeight: FontWeight.normal,
                               ),
                               borderSide: BorderSide(

@@ -4,11 +4,11 @@ class Data {
   Random random = new Random();
   List chatnames(){
     List data1=[
-      'ALi',
-      'Mateen',
-      'Junaid',
-      'Danial',
-      'Mapal'
+      'Cement',
+      'Pipes',
+      'Bricks',
+      'Snetry',
+      'Paint'
     ];
     return data1;
   }

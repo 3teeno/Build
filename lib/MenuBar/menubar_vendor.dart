@@ -37,21 +37,18 @@ class _Vendor_menuBarState extends State<Vendor_menuBar> {
         child: Column(
           mainAxisSize: MainAxisSize.max,
           children: [
-            Align(
-              alignment: AlignmentDirectional(0.5, 2),
-              child: Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(0, 10, 0, 0),
-                child: Lottie.network(
-                  'https://assets3.lottiefiles.com/packages/lf20_byuzwmds.json',
-                  width: 200,
-                  height: 180,
-                  fit: BoxFit.cover,
-                  animate: true,
-                ),
+            Padding(
+              padding: EdgeInsetsDirectional.fromSTEB(0, 20, 0, 0),
+              child: Lottie.asset(
+                'assets/lottie_animations/abstract.json',
+                width: 150,
+                height: 180,
+                fit: BoxFit.cover,
+                animate: true,
               ),
             ),
             Align(
-              alignment: AlignmentDirectional(0, 0.5),
+              alignment: AlignmentDirectional(0.2, 5),
               child: Padding(
                 padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 20),
                 child: Image.asset(
@@ -82,7 +79,7 @@ class _Vendor_menuBarState extends State<Vendor_menuBar> {
                         width: MediaQuery.of(context).size.width,
                         height: 50,
                         decoration: BoxDecoration(
-                          color: Color(0xFF282828),
+                          color: Color(0xFF115ba6),
                           borderRadius: BorderRadius.circular(5),
                         ),
                         child: Padding(
@@ -128,7 +125,7 @@ class _Vendor_menuBarState extends State<Vendor_menuBar> {
                         width: MediaQuery.of(context).size.width,
                         height: 50,
                         decoration: BoxDecoration(
-                          color: Color(0xFF282828),
+                          color: Color(0xFF115ba6),
                           borderRadius: BorderRadius.circular(5),
                         ),
                         child: Padding(
@@ -175,7 +172,7 @@ class _Vendor_menuBarState extends State<Vendor_menuBar> {
                         width: MediaQuery.of(context).size.width,
                         height: 50,
                         decoration: BoxDecoration(
-                          color: Color(0xFF282828),
+                          color: Color(0xFF115ba6),
                           borderRadius: BorderRadius.circular(5),
                         ),
                         child: Padding(
@@ -222,7 +219,7 @@ class _Vendor_menuBarState extends State<Vendor_menuBar> {
                         width: MediaQuery.of(context).size.width,
                         height: 50,
                         decoration: BoxDecoration(
-                          color: Color(0xFF282828),
+                          color: Color(0xFF115ba6),
                           borderRadius: BorderRadius.circular(5),
                         ),
                         child: Padding(
@@ -268,7 +265,7 @@ class _Vendor_menuBarState extends State<Vendor_menuBar> {
                         width: MediaQuery.of(context).size.width,
                         height: 50,
                         decoration: BoxDecoration(
-                          color: Color(0xFF282828),
+                          color: Color(0xFF115ba6),
                           borderRadius: BorderRadius.circular(5),
                         ),
                         child: Padding(
@@ -314,7 +311,7 @@ class _Vendor_menuBarState extends State<Vendor_menuBar> {
                         width: MediaQuery.of(context).size.width,
                         height: 50,
                         decoration: BoxDecoration(
-                          color: Color(0xFF282828),
+                          color: Color(0xFF115ba6),
                           borderRadius: BorderRadius.circular(5),
                         ),
                         child: Padding(
@@ -351,7 +348,7 @@ class _Vendor_menuBarState extends State<Vendor_menuBar> {
                       width: MediaQuery.of(context).size.width,
                       height: 50,
                       decoration: BoxDecoration(
-                        color: Color(0xFF282828),
+                        color: Color(0xFF115ba6),
                         borderRadius: BorderRadius.circular(5),
                       ),
                       child: Padding(

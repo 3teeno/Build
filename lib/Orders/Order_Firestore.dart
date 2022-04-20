@@ -50,56 +50,221 @@ class _Order_Firestore_CRUDSState extends State<Order_Firestore_CRUDS> {
           backgroundColor: Color(0XFF115ba6),
         ),
         backgroundColor: Color(0xFFffffff),
-        body: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            isEdit?
-            TextFormArea(orderTitle: "title here",orderDiscription: "Description here",orderDuration: "Duration here",orderPrice: "Price here",new_hash: newHash):
-            TextArea(orderTitle: "title here",orderDiscription: "Description here",orderDuration: "Duration here",orderPrice: "Price here",),
-            Align(
-              alignment: Alignment.bottomRight,
-              child: Padding(
-                padding: EdgeInsets.symmetric(horizontal: 20,vertical: 10),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    SizedBox(
-                      width: MediaQuery.of(context).size.width*0.4,
-                      child: RaisedButton(onPressed: (){setState(() {
-                        isEdit=!isEdit;
-                      });}, child: isEdit? Text("Close"):Text("Edit"),color: Color(0xFFF2F2F2),elevation: 0,),
+        body: Padding(
+          padding: EdgeInsets.symmetric(horizontal: 20,vertical: 8),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              SizedBox(
+                height: 20,
+              ),
+              TextFormField(
+                controller: _TitleController,
+                obscureText: false,
+                decoration: InputDecoration(
+                  labelText: "Order Title",
+                  labelStyle: FlutterFlowTheme.bodyText1.override(
+                    fontFamily: 'Poppins',
+                    color: Color(0xFF282828),
+                  ),
+                  hintText: 'I will do this for you....',
+                  hintStyle: FlutterFlowTheme.bodyText1.override(
+                    fontFamily: 'Poppins',
+                    color: Color(0xFF282828),
+                  ),
+                  enabledBorder: OutlineInputBorder(
+                    borderSide: BorderSide(
+                      color: Color(0xFF282828),
+                      width: 1.5,
                     ),
-                    SizedBox(
-                      width: MediaQuery.of(context).size.width*0.4,
-                      child: isEdit?TextButton(
-
-                        onPressed: () => {print("Disbaled Delete Button")},
-                        child: Text("Delete",style: TextStyle(color: Colors.white),),
-                        style: ButtonStyle(
-                            backgroundColor:
-                            MaterialStateProperty.all<Color>(Colors.grey),
-                            minimumSize: MaterialStateProperty.all(Size(200.0, 40.0))),
-                      ) :TextButton(
-                        onPressed: () => {
-                          print("Delete Orders Pressed"),
-                          Order.delete_order(newHash),
-                        },
-                        child: Text("Delete",style: TextStyle(color: Colors.white),),
-                        style: ButtonStyle(
-                            backgroundColor:
-                            MaterialStateProperty.all<Color>(Colors.redAccent),
-                            minimumSize: MaterialStateProperty.all(Size(200.0, 40.0))),
-                      ),
+                    borderRadius: BorderRadius.circular(0),
+                  ),
+                  focusedBorder: OutlineInputBorder(
+                    borderSide: BorderSide(
+                      color: Color(0xFF282828),
+                      width: 1.5,
                     ),
-                  ],
+                    borderRadius: BorderRadius.circular(0),
+                  ),
+                  filled: true,
+                  fillColor: Colors.white,
+                ),
+                style: FlutterFlowTheme.bodyText1.override(
+                  fontFamily: 'Poppins',
+                  color: Color(0xFF282828),
+                ),
+                textAlign: TextAlign.start,
+              ),
+              SizedBox(
+                width: 50.0,
+                height: 10.0,
+              ),
+              TextFormField(
+                controller: _DescriptionController,
+                obscureText: false,
+                decoration: InputDecoration(
+                  labelText: "Order Discription",
+                  labelStyle: FlutterFlowTheme.bodyText1.override(
+                    fontFamily: 'Poppins',
+                    color: Color(0xFF282828),
+                  ),
+                  hintText: 'Add your Description Here',
+                  hintStyle: FlutterFlowTheme.bodyText1.override(
+                    fontFamily: 'Poppins',
+                    color: Color(0xFF282828),
+                  ),
+                  enabledBorder: OutlineInputBorder(
+                    borderSide: BorderSide(
+                      color: Color(0xFF282828),
+                      width: 1.5,
+                    ),
+                    borderRadius: BorderRadius.circular(0),
+                  ),
+                  focusedBorder: OutlineInputBorder(
+                    borderSide: BorderSide(
+                      color: Color(0xFF282828),
+                      width: 1.5,
+                    ),
+                    borderRadius: BorderRadius.circular(0),
+                  ),
+                  filled: true,
+                  fillColor: Colors.white,
+                ),
+                style: FlutterFlowTheme.bodyText1.override(
+                  fontFamily: 'Poppins',
+                  color: Color(0xFF282828),
+                ),
+                textAlign: TextAlign.start,
+              ),
+              SizedBox(
+                width: 50.0,
+                height: 10.0,
+              ),
+              TextFormField(
+                controller: _DurationController,
+                obscureText: false,
+                decoration: InputDecoration(
+                  labelText: "Order Duration",
+                  labelStyle: FlutterFlowTheme.bodyText1.override(
+                    fontFamily: 'Poppins',
+                    color: Color(0xFF282828),
+                  ),
+                  hintText: '3 Days',
+                  hintStyle: FlutterFlowTheme.bodyText1.override(
+                    fontFamily: 'Poppins',
+                    color: Color(0xFF282828),
+                  ),
+                  enabledBorder: OutlineInputBorder(
+                    borderSide: BorderSide(
+                      color: Color(0xFF282828),
+                      width: 1.5,
+                    ),
+                    borderRadius: BorderRadius.circular(0),
+                  ),
+                  focusedBorder: OutlineInputBorder(
+                    borderSide: BorderSide(
+                      color: Color(0xFF282828),
+                      width: 1.5,
+                    ),
+                    borderRadius: BorderRadius.circular(0),
+                  ),
+                  filled: true,
+                  fillColor: Colors.white,
+                ),
+                style: FlutterFlowTheme.bodyText1.override(
+                  fontFamily: 'Poppins',
+                  color: Color(0xFF282828),
+                ),
+                textAlign: TextAlign.start,
+              ),
+              SizedBox(
+                width: 50.0,
+                height: 10.0,
+              ),
+              TextFormField(
+                controller: _PriceController,
+                obscureText: false,
+                decoration: InputDecoration(
+                  labelText: "Order Price",
+                  labelStyle: FlutterFlowTheme.bodyText1.override(
+                    fontFamily: 'Poppins',
+                    color: Color(0xFF282828),
+                  ),
+                  hintText: 'PKR 500',
+                  hintStyle: FlutterFlowTheme.bodyText1.override(
+                    fontFamily: 'Poppins',
+                    color: Color(0xFF282828),
+                  ),
+                  enabledBorder: OutlineInputBorder(
+                    borderSide: BorderSide(
+                      color: Color(0xFF282828),
+                      width: 1.5,
+                    ),
+                    borderRadius: BorderRadius.circular(0),
+                  ),
+                  focusedBorder: OutlineInputBorder(
+                    borderSide: BorderSide(
+                      color: Color(0xFF282828),
+                      width: 1.5,
+                    ),
+                    borderRadius: BorderRadius.circular(0),
+                  ),
+                  filled: true,
+                  fillColor: Colors.white,
+                ),
+                style: FlutterFlowTheme.bodyText1.override(
+                  fontFamily: 'Poppins',
+                  color: Color(0xFF282828),
+                ),
+                textAlign: TextAlign.start,
+              ),
+              SizedBox(
+                width: 50.0,
+                height: 10.0,
+              ),
+              //Update Button
+              SizedBox(
+                width: double.infinity,
+                height: 50,
+                child: RaisedButton(
+                  color: Color(0XFF115ba6),
+                  onPressed: () => {
+                    Order.update_order(
+                      Order_Description: _DescriptionController.text.toString(),
+                      Order_Duration: _DurationController.text.toString(),
+                      my_hash: newHash.toString(),
+                      Order_Vendor_id: user.uid.toString(),
+                      Order_Price: _PriceController.text.toString(),
+                      Order_Title: _TitleController.text.toString(),
+                    ),
+                    print("Update Orders Pressed")
+                  },
+                  child: Text("Update",style: TextStyle(color: Colors.white),),
                 ),
               ),
-            )
+              SizedBox(
+                width: 50.0,
+                height: 10.0,
+              ),
+              SizedBox(
+                width: MediaQuery.of(context).size.width,
+                child: TextButton(
+                  onPressed: () => {
+                    print("Delete Orders Pressed"),
+                    Order.delete_order(newHash),
+                  },
+                  child: Text("Delete",style: TextStyle(color: Colors.white),),
+                  style: ButtonStyle(
+                      backgroundColor:
+                      MaterialStateProperty.all<Color>(Colors.redAccent),
+                      minimumSize: MaterialStateProperty.all(Size(200.0, 40.0))),
+                ),
+              )
 
 
 
-          ],
+            ],
+          ),
         ),
 
       ),
@@ -176,193 +341,7 @@ class _Order_Firestore_CRUDSState extends State<Order_Firestore_CRUDS> {
         mainAxisAlignment: MainAxisAlignment.start,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          SizedBox(
-            height: 20,
-          ),
-          TextFormField(
-            controller: _TitleController,
-            obscureText: false,
-            decoration: InputDecoration(
-              labelText: "Order Title",
-              labelStyle: FlutterFlowTheme.bodyText1.override(
-                fontFamily: 'Poppins',
-                color: Color(0xFF282828),
-              ),
-              hintText: 'I will do this for you....',
-              hintStyle: FlutterFlowTheme.bodyText1.override(
-                fontFamily: 'Poppins',
-                color: Color(0xFF282828),
-              ),
-              enabledBorder: OutlineInputBorder(
-                borderSide: BorderSide(
-                  color: Color(0xFF282828),
-                  width: 1.5,
-                ),
-                borderRadius: BorderRadius.circular(0),
-              ),
-              focusedBorder: OutlineInputBorder(
-                borderSide: BorderSide(
-                  color: Color(0xFF282828),
-                  width: 1.5,
-                ),
-                borderRadius: BorderRadius.circular(0),
-              ),
-              filled: true,
-              fillColor: Colors.white,
-            ),
-            style: FlutterFlowTheme.bodyText1.override(
-              fontFamily: 'Poppins',
-              color: Color(0xFF282828),
-            ),
-            textAlign: TextAlign.start,
-          ),
-          SizedBox(
-            width: 50.0,
-            height: 10.0,
-          ),
-          TextFormField(
-            controller: _DescriptionController,
-            obscureText: false,
-            decoration: InputDecoration(
-              labelText: "Order Discription",
-              labelStyle: FlutterFlowTheme.bodyText1.override(
-                fontFamily: 'Poppins',
-                color: Color(0xFF282828),
-              ),
-              hintText: 'Add your Description Here',
-              hintStyle: FlutterFlowTheme.bodyText1.override(
-                fontFamily: 'Poppins',
-                color: Color(0xFF282828),
-              ),
-              enabledBorder: OutlineInputBorder(
-                borderSide: BorderSide(
-                  color: Color(0xFF282828),
-                  width: 1.5,
-                ),
-                borderRadius: BorderRadius.circular(0),
-              ),
-              focusedBorder: OutlineInputBorder(
-                borderSide: BorderSide(
-                  color: Color(0xFF282828),
-                  width: 1.5,
-                ),
-                borderRadius: BorderRadius.circular(0),
-              ),
-              filled: true,
-              fillColor: Colors.white,
-            ),
-            style: FlutterFlowTheme.bodyText1.override(
-              fontFamily: 'Poppins',
-              color: Color(0xFF282828),
-            ),
-            textAlign: TextAlign.start,
-          ),
-          SizedBox(
-            width: 50.0,
-            height: 10.0,
-          ),
-          TextFormField(
-            controller: _DurationController,
-            obscureText: false,
-            decoration: InputDecoration(
-              labelText: "Order Duration",
-              labelStyle: FlutterFlowTheme.bodyText1.override(
-                fontFamily: 'Poppins',
-                color: Color(0xFF282828),
-              ),
-              hintText: '3 Days',
-              hintStyle: FlutterFlowTheme.bodyText1.override(
-                fontFamily: 'Poppins',
-                color: Color(0xFF282828),
-              ),
-              enabledBorder: OutlineInputBorder(
-                borderSide: BorderSide(
-                  color: Color(0xFF282828),
-                  width: 1.5,
-                ),
-                borderRadius: BorderRadius.circular(0),
-              ),
-              focusedBorder: OutlineInputBorder(
-                borderSide: BorderSide(
-                  color: Color(0xFF282828),
-                  width: 1.5,
-                ),
-                borderRadius: BorderRadius.circular(0),
-              ),
-              filled: true,
-              fillColor: Colors.white,
-            ),
-            style: FlutterFlowTheme.bodyText1.override(
-              fontFamily: 'Poppins',
-              color: Color(0xFF282828),
-            ),
-            textAlign: TextAlign.start,
-          ),
-          SizedBox(
-            width: 50.0,
-            height: 10.0,
-          ),
-          TextFormField(
-            controller: _PriceController,
-            obscureText: false,
-            decoration: InputDecoration(
-              labelText: "Order Price",
-              labelStyle: FlutterFlowTheme.bodyText1.override(
-                fontFamily: 'Poppins',
-                color: Color(0xFF282828),
-              ),
-              hintText: 'PKR 500',
-              hintStyle: FlutterFlowTheme.bodyText1.override(
-                fontFamily: 'Poppins',
-                color: Color(0xFF282828),
-              ),
-              enabledBorder: OutlineInputBorder(
-                borderSide: BorderSide(
-                  color: Color(0xFF282828),
-                  width: 1.5,
-                ),
-                borderRadius: BorderRadius.circular(0),
-              ),
-              focusedBorder: OutlineInputBorder(
-                borderSide: BorderSide(
-                  color: Color(0xFF282828),
-                  width: 1.5,
-                ),
-                borderRadius: BorderRadius.circular(0),
-              ),
-              filled: true,
-              fillColor: Colors.white,
-            ),
-            style: FlutterFlowTheme.bodyText1.override(
-              fontFamily: 'Poppins',
-              color: Color(0xFF282828),
-            ),
-            textAlign: TextAlign.start,
-          ),
-          SizedBox(
-            width: 50.0,
-            height: 10.0,
-          ),
-          //Update Button
-          SizedBox(
-            width: double.infinity,
-            height: 50,
-            child: RaisedButton(
-              color: Color(0XFF115ba6),
-              onPressed: () => {
-                Order.update_order(
-                  Order_Description: _DescriptionController.text.toString(),
-                  Order_Duration: _DurationController.text.toString(),
-                  my_hash: new_hash.toString(),
-                  Order_Vendor_id: user.uid.toString(),
-                  Order_Price: _PriceController.text.toString(),
-                  Order_Title: _TitleController.text.toString(),
-                ),
-                print("Update Orders Pressed")
-              },
-              child: Text("Update",style: TextStyle(color: Colors.white),),
-            ),
-          ),
+
         ],
       ),
     );

@@ -129,48 +129,48 @@ class _phasesPageMainState extends State<phasesPageMain> {
 
 
 
-  Widget callingActionButton(String value, int index) {
-    return Padding(
-      padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 5),
-      child: FFButtonWidget(
-        onPressed: () async {
-          //first button
-          if (index == 1) {
-            //checking null or zero
-
-            // final snapshot =
-            //     await databaseReference.child("byhd").child("1").get();
-            // if (snapshot.exists) {
-            //   if (snapshot.value == 0) {
-            //     databaseReference.child("byhd").child("1").set(1);
-            //   }
-            //   print(snapshot.value);
-            // } else {}
-          }
-          // Navigator.pushReplacement(
-          //     context,
-          //     MaterialPageRoute(
-          //         builder: (context) => HomePageWidget()));
-        },
-        text: value,
-        options: FFButtonOptions(
-          width: MediaQuery.of(context).size.width * 0.43,
-          height: 35,
-          color: Color(0xFF282828),
-          textStyle: FlutterFlowTheme.subtitle2.override(
-            fontFamily: 'Poppins',
-            color: Color(0xFFFFB700),
-            fontWeight: FontWeight.normal,
-          ),
-          borderSide: BorderSide(
-            color: Colors.transparent,
-            width: 1,
-          ),
-          borderRadius: 2,
-        ),
-      ),
-    );
-  }
+  // Widget callingActionButton(String value, int index) {
+  //   return Padding(
+  //     padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 5),
+  //     child: FFButtonWidget(
+  //       onPressed: () async {
+  //         //first button
+  //         if (index == 1) {
+  //           //checking null or zero
+  //
+  //           // final snapshot =
+  //           //     await databaseReference.child("byhd").child("1").get();
+  //           // if (snapshot.exists) {
+  //           //   if (snapshot.value == 0) {
+  //           //     databaseReference.child("byhd").child("1").set(1);
+  //           //   }
+  //           //   print(snapshot.value);
+  //           // } else {}
+  //         }
+  //         // Navigator.pushReplacement(
+  //         //     context,
+  //         //     MaterialPageRoute(
+  //         //         builder: (context) => HomePageWidget()));
+  //       },
+  //       text: value,
+  //       options: FFButtonOptions(
+  //         width: MediaQuery.of(context).size.width * 0.43,
+  //         height: 35,
+  //         color: Color(0xFF115ba6),
+  //         textStyle: FlutterFlowTheme.subtitle2.override(
+  //           fontFamily: 'Poppins',
+  //           color: Color(0xFFFFB700),
+  //           fontWeight: FontWeight.normal,
+  //         ),
+  //         borderSide: BorderSide(
+  //           color: Colors.transparent,
+  //           width: 1,
+  //         ),
+  //         borderRadius: 2,
+  //       ),
+  //     ),
+  //   );
+  // }
 
   List<Step> stepList() => [
         //Phase One
@@ -192,7 +192,7 @@ class _phasesPageMainState extends State<phasesPageMain> {
                         Lottie.asset("assets/lottie_animations/planning.json")),
                 //Text Show less column
                 textWithWrap("1"),
-                callingActionButton("Find Contractor", 1)
+                //callingActionButton("Find Contractor", 1)
               ],
             )),
         Step(
@@ -222,7 +222,7 @@ class _phasesPageMainState extends State<phasesPageMain> {
                 ),
                 //Text Show less column
                 textWithWrap("3"),
-                callingActionButton("Find Excavator", 2),
+                //callingActionButton("Find Excavator", 2),
               ],
             )),
         Step(
@@ -416,119 +416,7 @@ class _phasesPageMainState extends State<phasesPageMain> {
 
 
   Widget getCompleteWidget(int _activeIndex) {
-    // DatabaseReference reference = FirebaseDatabase.instance.ref("byhd");
-    // if(reference==null){
-    //
-    // }
 
-
-//     final value=getData(_activeIndex);
-// print(getData(_activeIndex));
-//     return Text(value.toString());
-//     print(value);
-    // if (value == 1) {
-    //   return RaisedButton(
-    //     color: Colors.lightGreen,
-    //     onPressed: () {
-    //       setState(() {
-    //         if (_activeStepIndex < stepList().length - 1) {
-    //           _activeStepIndex += 1;
-    //         } else {
-    //           print("On the last step now");
-    //           Timer(Duration(seconds: 2), () {
-    //             gotoSecondPhase();
-    //           });
-    //           showDialog(
-    //               context: context,
-    //               builder: (context) {
-    //                 return AlertDialog(
-    //                   shape: RoundedRectangleBorder(
-    //                       borderRadius: BorderRadius.all(Radius.circular(8))),
-    //                   contentPadding: EdgeInsets.only(top: 10),
-    //                   content: Container(
-    //                     height: 250,
-    //                     child: Column(
-    //                       mainAxisAlignment: MainAxisAlignment.center,
-    //                       crossAxisAlignment: CrossAxisAlignment.center,
-    //                       children: [
-    //                         Lottie.asset(
-    //                             "assets/lottie_animations/welldone.json",
-    //                             height: 200,
-    //                             width: 200,
-    //                             repeat: true),
-    //                         Text(
-    //                           "You have Completed Phase One",
-    //                           style: TextStyle(fontFamily: 'Poppins'),
-    //                         )
-    //                       ],
-    //                     ),
-    //                   ),
-    //                 );
-    //               });
-    //         }
-    //       });
-    //     },
-    //     child: Text("Completed"),
-    //   );
-    // }
-    // if(value==0){
-    //   return RaisedButton(
-    //             color: Color(0xFF282828),
-    //             onPressed: () {
-    //               setState(() {
-    //                 if (_activeStepIndex < stepList().length - 1) {
-    //                   _activeStepIndex += 1;
-    //                   reference.set(1);
-    //                 } else {
-    //                   print("On the last step now");
-    //                   Timer(Duration(seconds: 2), () {
-    //                     gotoSecondPhase();
-    //                   });
-    //                   showDialog(
-    //                       context: context,
-    //                       builder: (context) {
-    //                         return AlertDialog(
-    //                           shape: RoundedRectangleBorder(
-    //                               borderRadius: BorderRadius.all(
-    //                                   Radius.circular(8))),
-    //                           contentPadding:
-    //                               EdgeInsets.only(top: 10),
-    //                           content: Container(
-    //                             height: 250,
-    //                             child: Column(
-    //                               mainAxisAlignment:
-    //                                   MainAxisAlignment.center,
-    //                               crossAxisAlignment:
-    //                                   CrossAxisAlignment.center,
-    //                               children: [
-    //                                 Lottie.asset(
-    //                                     "assets/lottie_animations/welldone.json",
-    //                                     height: 200,
-    //                                     width: 200,
-    //                                     repeat: true),
-    //                                 Text(
-    //                                   "You have Completed Phase One",
-    //                                   style: TextStyle(
-    //                                       fontFamily: 'Poppins'),
-    //                                 )
-    //                               ],
-    //                             ),
-    //                           ),
-    //                         );
-    //                       });
-    //                 }
-    //               });
-    //             },
-    //             child: (stepList().length - 1 == _activeStepIndex)
-    //                 ? Text(
-    //                     "Go to Next Phase",
-    //                     style: TextStyle(color: Colors.white),
-    //                   )
-    //                 : Text(
-    //                     "Complete",
-    //                     style: TextStyle(color: Colors.white),
-    //                   ));
-    // }
   }
 
   @override
@@ -541,7 +429,7 @@ class _phasesPageMainState extends State<phasesPageMain> {
             onPressed: () => Navigator.push(context,
                 MaterialPageRoute(builder: (context) => HomePageWidget())),
           ),
-          backgroundColor: Color(0xFFF6EFDE),
+          backgroundColor: Color(0xFFffffff),
           elevation: 0,
           title: Text(
             "Build Your Home",
@@ -551,7 +439,7 @@ class _phasesPageMainState extends State<phasesPageMain> {
             ),
           ),
         ),
-        backgroundColor: Color(0xFFF6EFDE),
+        backgroundColor: Color(0xFFffffff),
         body: Theme(
             data: ThemeData(
                 colorScheme: Theme.of(context).colorScheme.copyWith(
@@ -566,72 +454,131 @@ class _phasesPageMainState extends State<phasesPageMain> {
                 return Row(
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
-                  RaisedButton(
-                              color: Color(0xFF282828),
-                              onPressed: () async {
-                                setState(() {
-                                  if (_activeStepIndex < stepList().length - 1) {
-                                    _activeStepIndex += 1;
-                                    String uid=currentUser.user.uid;
-                                    DocumentReference doc=FirebaseFirestore.instance.doc('users/$uid');
-                                    doc.update({'Guide_Step':_activeStepIndex});
-                                    print("Updated");
+                    if (byhdTwo[(_activeStepIndex + 1).toString()]
+                    ["isComplete"])
+                      RaisedButton(
+                        color: Colors.lightGreen,
+                        onPressed: () {
+                          setState(() {
+                            if (_activeStepIndex < stepList().length - 1) {
+                              _activeStepIndex += 1;
+                            } else {
+                              print("On the last step now");
+                              Timer(Duration(seconds: 2), () {
+                                gotoSecondPhase();
+                              });
+                              showDialog(
+                                  context: context,
+                                  builder: (context) {
+                                    return AlertDialog(
+                                      shape: RoundedRectangleBorder(
+                                          borderRadius: BorderRadius.all(
+                                              Radius.circular(8))),
+                                      contentPadding: EdgeInsets.only(top: 10),
+                                      content: Container(
+                                        height: 250,
+                                        child: Column(
+                                          mainAxisAlignment:
+                                          MainAxisAlignment.center,
+                                          crossAxisAlignment:
+                                          CrossAxisAlignment.center,
+                                          children: [
+                                            Lottie.asset(
+                                                "assets/lottie_animations/welldone.json",
+                                                height: 200,
+                                                width: 200,
+                                                repeat: true),
+                                            Text(
+                                              "You have Completed Phase One",
+                                              style: TextStyle(
+                                                  fontFamily: 'Poppins'),
+                                            )
+                                          ],
+                                        ),
+                                      ),
+                                    );
+                                  });
+                            }
+                          });
+                        },
+                        child: (stepList().length - 1 == _activeStepIndex)
+                ? Text(
+                "Go to Next Phase",
+                style: TextStyle(color: Colors.white),
+                )
+                    : Text(
+                "Complete",
+                style: TextStyle(color: Colors.white),
+                ),
+                      )
+                    else
+                      RaisedButton(
+                          color: Color(0xFF115ba6),
+                          onPressed: () {
+                            setState(() {
+                              // byhdTwo[(_activeStepIndex+1).toString()]["isComplete"]=true;
+                              byhdTwo[(_activeStepIndex + 1).toString()]
+                                  .update("isComplete", (value) => true);
+                              if (_activeStepIndex < stepList().length - 1) {
+                                _activeStepIndex += 1;
+                                String uid=currentUser.user.uid;
+                                DocumentReference doc=FirebaseFirestore.instance.doc('users/$uid');
+                                doc.update({'Guide_Step':_activeStepIndex});
+                                print("Updated");
 
-
-                                  } else {
-                                    print("On the last step now");
-                                    Timer(Duration(seconds: 2), () {
-                                      gotoSecondPhase();
-                                    });
-                                    showDialog(
-                                        context: context,
-                                        builder: (context) {
-                                          return AlertDialog(
-                                            shape: RoundedRectangleBorder(
-                                                borderRadius: BorderRadius.all(
-                                                    Radius.circular(8))),
-                                            contentPadding:
-                                                EdgeInsets.only(top: 10),
-                                            content: Container(
-                                              height: 250,
-                                              child: Column(
-                                                mainAxisAlignment:
-                                                    MainAxisAlignment.center,
-                                                crossAxisAlignment:
-                                                    CrossAxisAlignment.center,
-                                                children: [
-                                                  Lottie.asset(
-                                                      "assets/lottie_animations/welldone.json",
-                                                      height: 200,
-                                                      width: 200,
-                                                      repeat: true),
-                                                  Text(
-                                                    "You have Completed Phase One",
-                                                    style: TextStyle(
-                                                        fontFamily: 'Poppins'),
-                                                  )
-                                                ],
-                                              ),
-                                            ),
-                                          );
-                                        });
-                                  }
+                              } else {
+                                print("On the last step now");
+                                Timer(Duration(seconds: 2), () {
+                                  gotoSecondPhase();
                                 });
-                              },
-                              child: (stepList().length - 1 == _activeStepIndex)
-                                  ? Text(
-                                      "Go to Next Phase",
-                                      style: TextStyle(color: Colors.white),
-                                    )
-                                  : Text(
-                                      "Complete",
-                                      style: TextStyle(color: Colors.white),
-                                    )),
-
-
+                                showDialog(
+                                    context: context,
+                                    builder: (context) {
+                                      return AlertDialog(
+                                        shape: RoundedRectangleBorder(
+                                            borderRadius: BorderRadius.all(
+                                                Radius.circular(8))),
+                                        contentPadding:
+                                        EdgeInsets.only(top: 10),
+                                        content: Container(
+                                          height: 250,
+                                          child: Column(
+                                            mainAxisAlignment:
+                                            MainAxisAlignment.center,
+                                            crossAxisAlignment:
+                                            CrossAxisAlignment.center,
+                                            children: [
+                                              Lottie.asset(
+                                                  "assets/lottie_animations/welldone.json",
+                                                  height: 200,
+                                                  width: 200,
+                                                  repeat: true),
+                                              Text(
+                                                "You have Completed Phase Two",
+                                                style: TextStyle(
+                                                    fontFamily: 'Poppins'),
+                                              )
+                                            ],
+                                          ),
+                                        ),
+                                      );
+                                    });
+                              }
+                            });
+                          },
+                          child: (stepList().length - 1 == _activeStepIndex)
+                              ? Text(
+                            "Go to Next Phase",
+                            style: TextStyle(color: Colors.white),
+                          )
+                              : Text(
+                            "Complete",
+                            style: TextStyle(color: Colors.white),
+                          )),
                     SizedBox(
                       width: 10,
                     ),
+
                     (stepList().length - 1 == _activeStepIndex ||
                             _activeStepIndex == 0)
                         ? Text("")

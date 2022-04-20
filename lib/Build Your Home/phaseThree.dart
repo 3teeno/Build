@@ -23,7 +23,7 @@ class _phasePageThreeState extends State<phasePageThree> {
           onPressed: () => Navigator.push(context,
               MaterialPageRoute(builder: (context) => HomePageWidget())),
         ),
-        backgroundColor: Color(0xFFF6EFDE),
+        backgroundColor: Color(0xFFffffff),
         elevation: 0,
         title: Text(
           "Build Your Home Last Phase ",
@@ -33,7 +33,7 @@ class _phasePageThreeState extends State<phasePageThree> {
           ),
         ),
       ),
-      backgroundColor: Color(0xFFF6EFDE),
+      backgroundColor: Color(0xFFffffff),
       body: Column(
         mainAxisAlignment: MainAxisAlignment.start,
         crossAxisAlignment: CrossAxisAlignment.center,
@@ -56,10 +56,10 @@ SizedBox(height: 15,),
               options: FFButtonOptions(
                 width: MediaQuery.of(context).size.width * 0.5,
                 height: 45,
-                color: Color(0xFF282828),
+                color: Color(0xFF115ba6),
                 textStyle: FlutterFlowTheme.subtitle2.override(
                   fontFamily: 'Poppins',
-                  color: Color(0xFFFFB700),
+                  color: Color(0xFFFFFFFF),
                   fontWeight: FontWeight.normal,
                 ),
                 borderSide: BorderSide(
