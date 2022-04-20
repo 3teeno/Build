@@ -1,6 +1,6 @@
 import 'dart:ffi';
 
-import 'package:build_i_t/VendorServicesModel.dart';
+import 'package:build_i_t/Vendor_Services/Model_Services.dart';
 import 'package:build_i_t/flutter_flow/flutter_flow_drop_down.dart';
 import 'package:build_i_t/flutter_flow/flutter_flow_theme.dart';
 import 'package:build_i_t/flutter_flow/flutter_flow_widgets.dart';
@@ -301,7 +301,7 @@ class _Services_CRUDState extends State<Services_CRUD> {
                         onPressed: () {
                           if(task == "New Service")
                           {
-                            Database.addItem(
+                            Services.addItem(
                                 Service_Name: Service_Name.text.toString(),
                                 Service_Description: Service_Description.text.toString(),
                                 Service_HourlyRate: Service_HourlyRate.text.toString(),
@@ -309,14 +309,14 @@ class _Services_CRUDState extends State<Services_CRUD> {
                           }
                           else if (task =="Update Service")
                           {
-                            Database.updateItem(
+                            Services.updateItem(
                                 Service_Name: Service_Name.text.toString(),
                                 Service_Description: Service_Description.text.toString(),
                                 Service_HourlyRate: Service_HourlyRate.text.toString(),
                                 Service_Category: Service_Category.text.toString());
                           }
                           else {
-                            Database.deleteItem(docId : auth.currentUser.uid);
+                            Services.deleteItem(docId : auth.currentUser.uid);
                           }
                         },
                         text: 'Submit',
