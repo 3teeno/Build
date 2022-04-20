@@ -9,6 +9,7 @@ import 'package:build_i_t/home_page/serviceProvidersCard.dart';
 import 'package:build_i_t/search_page/search_page_widget.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import '../Build Your Home/BuildYourHome_Main.dart';
+import '../Products/Model_Products.dart';
 import '../auth/firebase_user_provider.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
@@ -32,7 +33,34 @@ class HomePageWidget extends StatefulWidget {
 
 class _HomePageWidgetState extends State<HomePageWidget> {
   //This is the function for Service list extraction
-  Future<List> vendor_list = Services.receiveData();
+  List<Products> products = [];
+  List my_products = [];
+  Future<void> initialise() async {
+    await Products.fetch_product().then((value) => setState(() {
+      my_products = value;
+      print(value);
+      for (var i = 0; i < my_products.length; i++) {
+        Products temp = Products(
+          Product_Hash: my_products[i]['Product_Hash'],
+          Product_Title: my_products[i]['Product_Title'],
+          Product_Description: my_products[i]['Product_Description'],
+          Product_Quantity: my_products[i]['Product_Quantity'],
+          Product_Price: my_products[i]['Product_Price'],
+          Product_Vendor_id: my_products[i]['Product_Vendor_id'],
+        );
+        products.add(temp);
+        print("Products");
+      }
+    }));
+    print("Maa aa gaya");
+    print(my_products);
+    if (my_products.isEmpty) {
+      print("Empty Products Against Vendor");
+    }
+
+
+  }
+  // Future<List> vendor_list = Services.receiveData();
   TextEditingController textController;
   Random random = new Random();
   double ratingBarValue1;
@@ -47,9 +75,10 @@ class _HomePageWidgetState extends State<HomePageWidget> {
   final scaffoldKey = GlobalKey<ScaffoldState>();
   MediaQueryData size;
 
-  void initState() {
-    super.initState();
+  Future<void> initState() {
+    print("Product init is called from Home");
     textController = TextEditingController();
+    initialise();
   }
 
   final List services = ['Electricion', 'Plumber', 'Carpenter', 'Painter'];
@@ -65,257 +94,115 @@ class _HomePageWidgetState extends State<HomePageWidget> {
     return StreamBuilder<UsersRecord>(
         stream: UsersRecord.getDocument(userdata),
         builder: (context, snapshot) {
-          return Scaffold(
-            key: scaffoldKey,
-            backgroundColor: Color(0xFFF2F2F2),
-            drawer: Customer_menuBar(),
-            body: SafeArea(
-              child: Column(
-                mainAxisSize: MainAxisSize.max,
-                mainAxisAlignment: MainAxisAlignment.start,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Container(
-                    height: 150,
-                    child: homePageHeader(),
-                  ),
-                  Expanded(
-                    child: ListView(
-                      padding: EdgeInsets.zero,
-                      scrollDirection: Axis.vertical,
-                      children: [
-                        //Build Your Home
-                        Padding(
-                          padding:
-                              EdgeInsetsDirectional.fromSTEB(20, 10, 20, 10),
-                          child: FFButtonWidget(
-                            onPressed: () async {
-                              print('Build Your Home(Button pressed)');
-                              String uid = currentUser.user.uid;
-                              DocumentReference doc =
-                                  FirebaseFirestore.instance.doc('users/$uid');
-                              DocumentSnapshot snapshot = await doc.get();
-                              if (snapshot['Activated'] == 0) {
-                                Navigator.pushReplacement(
-                                    context,
-                                    MaterialPageRoute(
-                                        builder: (context) =>
-                                            phasesPageMain()));
-                              } else {
-                                Navigator.pushReplacement(
-                                    context,
-                                    MaterialPageRoute(
-                                        builder: (context) =>
-                                            startingScreen()));
-                              }
-                            },
-                            text: 'Build Your Home',
-                            options: FFButtonOptions(
-                              width: MediaQuery.of(context).size.width,
-                              height: 45,
-                              color: Color(0xFFFFFFFF),
-                              textStyle: FlutterFlowTheme.subtitle2.override(
-                                fontFamily: 'Poppins',
-                                color: Color(0xFF000000),
-                                fontWeight: FontWeight.normal,
-                              ),
-                              borderSide: BorderSide(
-                                color: Colors.transparent,
-                                width: 1,
-                              ),
-                              borderRadius: 10,
-                            ),
-                          ),
-                        ),
-                        //
-                        // serviceProvidersCard(
-                        //     context,
-                        //     serviceName: services[0]),
-                        //Maekrt Places (Text Row)
-                        Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(21, 0, 21, 0),
-                          child: Row(
-                            mainAxisSize: MainAxisSize.max,
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              Padding(
-                                padding:
-                                    EdgeInsetsDirectional.fromSTEB(0, 1, 0, 0),
-                                child: AutoSizeText(
-                                  'Market Places',
-                                  textAlign: TextAlign.start,
-                                  style: FlutterFlowTheme.title3.override(
-                                    fontFamily: 'Poppins',
-                                    fontSize: 14,
-                                  ),
-                                ),
-                              ),
-                              InkWell(
-                                onTap: () {
-                                  showSearch(
-                                      context: context,
-                                      delegate: DataSearch(ratingBarValue1));
-                                },
-                                child: Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
-                                      0, 1, 0, 0),
-                                  child: AutoSizeText(
-                                    'See all',
-                                    textAlign: TextAlign.start,
-                                    style: FlutterFlowTheme.title3.override(
-                                      fontFamily: 'Poppins',
-                                      color: Color(0xFF4F4F4F),
-                                      fontSize: 14,
-                                    ),
-                                  ),
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-
-                        GridView.extent(
-                          primary: false,
-                          padding: const EdgeInsets.all(16),
-                          crossAxisSpacing: 10,
-                          mainAxisSpacing: 10,
-                          maxCrossAxisExtent: 400.0,
-                          children: [
-                            marketPlaceCard(
-                                ratingValue: ratingBarValue1,
-                                ratingNo: random.nextInt(5).toDouble(),
-                                context: context,
-                                ImageLink: data.imagesServices().toString(),
-                                shopName: data.names().toString(),
-                                shopLocation: "Loney Wala",
-                                Email: "abc@gmail.com",
-                                Contact: "+92-13456789",
-                                HRate: random.nextInt(3000).toString()),
-                            marketPlaceCard(
-                                ratingValue: ratingBarValue1,
-                                ratingNo: random.nextInt(5).toDouble(),
-                                context: context,
-                                ImageLink: data.imagesServices().toString(),
-                                shopName: data.names().toString(),
-                                shopLocation: "Loney Wala",
-                                Email: "abc@gmail.com",
-                                Contact: "+92-13456789",
-                                HRate: random.nextInt(3000).toString()),
-                          ],
-                        ),
-
-                        SingleChildScrollView(
-                          scrollDirection: Axis.vertical,
-                          child: Padding(
-                            padding: EdgeInsets.all(10),
-                            child: Row(
-                              mainAxisSize: MainAxisSize.max,
-                              children: [
-                                //Market Places
-
-                                marketPlaceCard(
-                                    ratingValue: ratingBarValue1,
-                                    ratingNo: random.nextInt(5).toDouble(),
-                                    context: context,
-                                    ImageLink: data.imagesServices().toString(),
-                                    shopName: data.names().toString(),
-                                    shopLocation: "Loney Wala",
-                                    Email: "abc@gmail.com",
-                                    Contact: "+92-13456789",
-                                    HRate: random.nextInt(3000).toString()),
-                                SizedBox(
-                                  width: 10,
-                                ),
-                                marketPlaceCard(
-                                    ratingValue: ratingBarValue1,
-                                    ratingNo: random.nextInt(5).toDouble(),
-                                    context: context,
-                                    ImageLink: data.imagesServices().toString(),
-                                    shopName: data.names().toString(),
-                                    shopLocation: "Loney Wala",
-                                    Email: "abc@gmail.com",
-                                    Contact: "+92-13456789",
-                                    HRate: random.nextInt(3000).toString()),
-                                SizedBox(
-                                  width: 10,
-                                ),
-                                marketPlaceCard(
-                                    ratingValue: ratingBarValue1,
-                                    ratingNo: random.nextInt(5).toDouble(),
-                                    context: context,
-                                    ImageLink: data.imagesServices().toString(),
-                                    shopName: data.names().toString(),
-                                    shopLocation: "Loney Wala",
-                                    Email: "abc@gmail.com",
-                                    Contact: "+92-13456789",
-                                    HRate: random.nextInt(3000).toString()),
-                                SizedBox(
-                                  width: 10,
-                                ),
-                                marketPlaceCard(
-                                    ratingValue: ratingBarValue1,
-                                    ratingNo: random.nextInt(5).toDouble(),
-                                    context: context,
-                                    ImageLink: data.imagesServices().toString(),
-                                    shopName: data.names().toString(),
-                                    shopLocation: "Loney Wala",
-                                    Email: "abc@gmail.com",
-                                    Contact: "+92-13456789",
-                                    HRate: random.nextInt(3000).toString()),
-                                SizedBox(
-                                  width: 10,
-                                ),
-                                marketPlaceCard(
-                                    ratingValue: ratingBarValue1,
-                                    ratingNo: random.nextInt(5).toDouble(),
-                                    context: context,
-                                    ImageLink: data.imagesServices().toString(),
-                                    shopName: data.names().toString(),
-                                    shopLocation: "Loney Wala",
-                                    Email: "abc@gmail.com",
-                                    Contact: "+92-13456789",
-                                    HRate: random.nextInt(3000).toString()),
-                                SizedBox(
-                                  width: 10,
-                                ),
-                              ],
-                            ),
-                          ),
-                        ),
-
-                        //Recent Chat
-                      ],
+          return SafeArea(
+            child: Scaffold(
+              key: scaffoldKey,
+              backgroundColor: Color(0xFFF2F2F2),
+              drawer: Customer_menuBar(),
+              body: SingleChildScrollView(
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Container(
+                      height: 150,
+                      child: homePageHeader(),
                     ),
-                  ),
-                  Padding(
-                    padding: EdgeInsetsDirectional.fromSTEB(0, 5, 0, 0),
-                    child: InkWell(
-                      onTap: () async {
-                        await Navigator.push(
-                          context,
-                          PageTransition(
-                            type: PageTransitionType.rightToLeft,
-                            duration: Duration(milliseconds: 300),
-                            reverseDuration: Duration(milliseconds: 300),
-                            child: ChatDetailsWidget(
-                              chatUser: snapshot.data,
-                            ),
+                    Padding(
+                      padding:
+                          EdgeInsetsDirectional.fromSTEB(20, 10, 20, 10),
+                      child: FFButtonWidget(
+                        onPressed: () async {
+                          print('Build Your Home(Button pressed)');
+                          String uid = currentUser.user.uid;
+                          DocumentReference doc =
+                              FirebaseFirestore.instance.doc('users/$uid');
+                          DocumentSnapshot snapshot = await doc.get();
+                          if (snapshot['Activated'] == 0) {
+                            Navigator.pushReplacement(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) =>
+                                        phasesPageMain()));
+                          } else {
+                            Navigator.pushReplacement(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) =>
+                                        startingScreen()));
+                          }
+                        },
+                        text: 'Build Your Home',
+                        options: FFButtonOptions(
+                          width: MediaQuery.of(context).size.width,
+                          height: 45,
+                          color: Color(0xFFFFFFFF),
+                          textStyle: FlutterFlowTheme.subtitle2.override(
+                            fontFamily: 'Poppins',
+                            color: Color(0xFF000000),
+                            fontWeight: FontWeight.normal,
                           ),
-                        );
-                      },
-                      child: Text(
-                        'Chatt?',
-                        style: FlutterFlowTheme.title2.override(
-                          fontFamily: 'Poppins',
-                          fontSize: 16,
+                          borderSide: BorderSide(
+                            color: Colors.transparent,
+                            width: 1,
+                          ),
+                          borderRadius: 10,
                         ),
                       ),
                     ),
-                  ),
-                ],
+                    Padding(
+                      padding: EdgeInsetsDirectional.fromSTEB(21, 0, 21, 0),
+                      child: Row(
+                        mainAxisSize: MainAxisSize.max,
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Padding(
+                            padding:
+                                EdgeInsetsDirectional.fromSTEB(0, 1, 0, 0),
+                            child: AutoSizeText(
+                              'Market Places',
+                              textAlign: TextAlign.start,
+                              style: FlutterFlowTheme.title3.override(
+                                fontFamily: 'Poppins',
+                                fontSize: 14,
+                              ),
+                            ),
+                          ),
+                          InkWell(
+                            onTap: () {
+                              showSearch(
+                                  context: context,
+                                  delegate: DataSearch(ratingBarValue1));
+                            },
+                            child: Padding(
+                              padding: EdgeInsetsDirectional.fromSTEB(
+                                  0, 1, 0, 0),
+                              child: AutoSizeText(
+                                'See all',
+                                textAlign: TextAlign.start,
+                                style: FlutterFlowTheme.title3.override(
+                                  fontFamily: 'Poppins',
+                                  color: Color(0xFF4F4F4F),
+                                  fontSize: 14,
+                                ),
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                    Column(
+                      children: products.map((e) => marketPlaceCard(
+                      quantity: e.Product_Quantity,
+                      price: e.Product_Price,
+                      imageUrl: "https://images.pexels.com/photos/159306/construction-site-build-construction-work-159306.jpeg?cs=srgb&dl=pexels-pixabay-159306.jpg&fm=jpg",
+                      description: e.Product_Description,
+                      title: e.Product_Title,
+                      context: context)).toList(),
+                    ),
+                ]),
               ),
-            ),
-          );
+          ));
         });
   }
 }

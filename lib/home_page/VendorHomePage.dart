@@ -194,68 +194,16 @@ class _VendorHomePageWidgetState extends State<VendorHomePageWidget> {
                         children: [
                           //Market Places
 
-                          marketPlaceCard(
-                              ratingValue: ratingBarValue1,
-                              ratingNo: random.nextInt(5).toDouble(),
-                              context: context,
-                              ImageLink: data.imagesServices().toString(),
-                              shopName: data.names().toString(),
-                              shopLocation: "Loney Wala",
-                              Email: "abc@gmail.com",
-                              Contact: "+92-13456789",
-                              HRate: random.nextInt(3000).toString()),
-                          SizedBox(
-                            width: 10,
-                          ),
-                          marketPlaceCard(
-                              ratingValue: ratingBarValue1,
-                              ratingNo: random.nextInt(5).toDouble(),
-                              context: context,
-                              ImageLink: data.imagesServices().toString(),
-                              shopName: data.names().toString(),
-                              shopLocation: "Loney Wala",
-                              Email: "abc@gmail.com",
-                              Contact: "+92-13456789",
-                              HRate: random.nextInt(3000).toString()),
-                          SizedBox(
-                            width: 10,
-                          ),
-                          marketPlaceCard(
-                              ratingValue: ratingBarValue1,
-                              ratingNo: random.nextInt(5).toDouble(),
-                              context: context,
-                              ImageLink: data.imagesServices().toString(),
-                              shopName: data.names().toString(),
-                              shopLocation: "Loney Wala",
-                              Email: "abc@gmail.com",
-                              Contact: "+92-13456789",
-                              HRate: random.nextInt(3000).toString()),
-                          SizedBox(
-                            width: 10,
-                          ),
-                          marketPlaceCard(
-                              ratingValue: ratingBarValue1,
-                              ratingNo: random.nextInt(5).toDouble(),
-                              context: context,
-                              ImageLink: data.imagesServices().toString(),
-                              shopName: data.names().toString(),
-                              shopLocation: "Loney Wala",
-                              Email: "abc@gmail.com",
-                              Contact: "+92-13456789",
-                              HRate: random.nextInt(3000).toString()),
-                          SizedBox(
-                            width: 10,
-                          ),
-                          marketPlaceCard(
-                              ratingValue: ratingBarValue1,
-                              ratingNo: random.nextInt(5).toDouble(),
-                              context: context,
-                              ImageLink: data.imagesServices().toString(),
-                              shopName: data.names().toString(),
-                              shopLocation: "Loney Wala",
-                              Email: "abc@gmail.com",
-                              Contact: "+92-13456789",
-                              HRate: random.nextInt(3000).toString()),
+                          // marketPlaceCard(
+                          //     ratingValue: ratingBarValue1,
+                          //     ratingNo: random.nextInt(5).toDouble(),
+                          //     context: context,
+                          //     ImageLink: data.imagesServices().toString(),
+                          //     shopName: data.names().toString(),
+                          //     shopLocation: "Loney Wala",
+                          //     Email: "abc@gmail.com",
+                          //     Contact: "+92-13456789",
+                          //     HRate: random.nextInt(3000).toString()),
                           SizedBox(
                             width: 10,
                           ),

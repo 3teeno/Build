@@ -83,8 +83,8 @@ class Products {
     print("Tryna Fetch");
     try {
       Query query = await _mainCollection.where(
-          'Product_Vendor_id', isEqualTo: user.uid);
-      query.get().then((querySnapshot) =>
+          'Product_Category', isEqualTo: 'Construction');
+      await query.get().then((querySnapshot) =>
       {
         querySnapshot.docs.toList().forEach((doc) {
           Map my_products = {
@@ -98,8 +98,10 @@ class Products {
             "Product_Images": doc['Product_Images'],
           };
           docs.add(my_products);
-          // print(my_products);
-        })
+           print(docs);
+        }),
+
+
       });
       return docs;
     }
