@@ -1,5 +1,6 @@
 
 import 'package:build_i_t/Products/Active_Products.dart';
+import 'package:build_i_t/Products/Product_Firestore.dart';
 import 'package:build_i_t/Products/Update_Product_Page.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -83,7 +84,8 @@ class _Product_Page_VendorState extends State<Product_Page_Vendor> {
                       await Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (context) => New_Product_Page(),
+                          // builder: (context) => New_Product_Page(), official
+                          builder: (context) => Product_Firestore_CRUDS(), // temporary
                         ),
                       );
                     },

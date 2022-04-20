@@ -1,6 +1,6 @@
 import 'package:build_i_t/Build%20Your%20Home/phasesPage.dart';
 import 'package:build_i_t/MenuBar/menubar_customer.dart';
-import 'package:build_i_t/VendorServicesModel.dart';
+import 'package:build_i_t/Vendor_Services/Model_Services.dart';
 import 'package:build_i_t/all_market_places/Search_Material.dart';
 import 'package:build_i_t/all_service_providers/search_serviceProviders.dart';
 import 'package:build_i_t/backend/backend.dart';
@@ -32,7 +32,7 @@ class HomePageWidget extends StatefulWidget {
 
 class _HomePageWidgetState extends State<HomePageWidget> {
   //This is the function for Service list extraction
-  Future<List> vendor_list = Database.receiveData();
+  Future<List> vendor_list = Services.receiveData();
   TextEditingController textController;
   Random random = new Random();
   double ratingBarValue1;

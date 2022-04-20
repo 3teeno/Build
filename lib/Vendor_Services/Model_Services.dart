@@ -1,3 +1,4 @@
+import 'package:build_i_t/auth/firebase_user_provider.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -20,7 +21,8 @@ Future<List<dynamic>> getCollection(CollectionReference collection) async {
 }
 final CollectionReference _mainCollection = _firestore.collection('Services');
 
-class Database {
+class Services {
+
   static String userUid;
   static Future<void> addItem({String Service_Name, String Service_Description, String Service_HourlyRate, String Service_Category,}) async {
     DocumentReference documentReferencer = _mainCollection.doc();
@@ -29,7 +31,7 @@ class Database {
       "S_Description": Service_Description,
       "S_HourlyRate": Service_HourlyRate,
       "S_Category": Service_Category,
-      "S_uid":user.uid,
+      "S_uid":currentUser.user.uid,
     };
     await documentReferencer
         .set(data)
@@ -59,7 +61,7 @@ class Database {
       "S_Description": Service_Description,
       "S_HourlyRate": Service_HourlyRate,
       "S_Category": Service_Category,
-      "S_uid":user.uid,
+      "S_uid":currentUser.user.uid,
     };
     await documentReferencer
         .update(data)
@@ -85,7 +87,6 @@ class Database {
   }
 
   static Future<List> receiveData() async {
-
     // Get docs from collection reference
     QuerySnapshot querySnapshot = await _mainCollection.get();
     // Get data from docs and convert map to List
