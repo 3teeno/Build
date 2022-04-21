@@ -19,8 +19,7 @@ class Order_Firestore_CRUDS extends StatefulWidget {
 
 
   @override
-  State<Order_Firestore_CRUDS> createState() =>
-      _Order_Firestore_CRUDSState(hashCode,hashcode);
+  State<Order_Firestore_CRUDS> createState() => _Order_Firestore_CRUDSState(hashCode,hashcode);
 }
 
 class _Order_Firestore_CRUDSState extends State<Order_Firestore_CRUDS> {

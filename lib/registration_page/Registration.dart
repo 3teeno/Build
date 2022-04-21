@@ -210,7 +210,7 @@ class _RegistrationPageCopyWidgetState
                 Padding(
                   padding: EdgeInsetsDirectional.fromSTEB(30, 15, 30, 0),
                   child: FlutterFlowDropDown(
-                    options: ['Customer', 'Vendor', 'Admin'].toList(),
+                    options: ['Customer', 'Vendor'].toList(),
                     onChanged: (val) => (setState(() {
                       dropDownValue = val;
                       Type = val;

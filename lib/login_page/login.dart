@@ -1,4 +1,3 @@
-import 'package:build_i_t/Chat/Chat_Model.dart';
 import 'package:build_i_t/auth/auth_util.dart';
 import 'package:build_i_t/backend/backend.dart';
 import 'package:build_i_t/home_page/AdminHomePage.dart';
@@ -10,7 +9,6 @@ import 'package:build_i_t/search_page/search_page_widget.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:lottie/lottie.dart';
 import 'package:provider/provider.dart';
-import '../Chat/chat_home.dart';
 import '../auth/email_auth.dart';
 import '../auth/firebase_user_provider.dart';
 import '../authentication_service.dart';
@@ -386,32 +384,6 @@ class _logInState extends State<logIn> {
                         ),
 
 
-
-
-                        //for bebugging chat
-                        Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(0, 5, 0, 0),
-                          child: InkWell(
-                            onTap: () async {
-                              await Navigator.push(
-                              context,
-                              PageTransition(
-                                type: PageTransitionType.rightToLeft,
-                                duration: Duration(milliseconds: 300),
-                                reverseDuration: Duration(milliseconds: 300),
-                                child: ChatScreen(),
-                              ),
-                            );
-                            },
-                            child: Text(
-                              'Chatt?',
-                              style: FlutterFlowTheme.title2.override(
-                                fontFamily: 'Poppins',
-                                fontSize: 16,
-                              ),
-                            ),
-                          ),
-                        ),
                       ],
                     ),
                   ),

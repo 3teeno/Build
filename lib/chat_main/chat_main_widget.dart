@@ -1,6 +1,8 @@
 import '../auth/auth_util.dart';
 import '../backend/backend.dart';
 import '../chat_details/chat_details_widget.dart';
+import '../flutter_flow/chat/flutter_flow_chat_manager.dart';
+import '../flutter_flow/chat/flutter_flow_chat_preview.dart';
 import '../flutter_flow/chat/index.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';

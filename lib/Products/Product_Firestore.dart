@@ -7,18 +7,24 @@ import 'package:build_i_t/auth/firebase_user_provider.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
-
 import '../flutter_flow/flutter_flow_theme.dart';
 
+String hash;
 class Product_Firestore_CRUDS extends StatefulWidget {
-  const Product_Firestore_CRUDS({Key key}) : super(key: key);
+  final String hashcode;
+  const Product_Firestore_CRUDS({Key key, hashCode, this.hashcode}) : super(key: key);
 
   @override
-  State<Product_Firestore_CRUDS> createState() =>
-      _Product_Firestore_CRUDSState();
+  State<Product_Firestore_CRUDS> createState() => _Product_Firestore_CRUDSState(hashCode,hashcode);
 }
 
 class _Product_Firestore_CRUDSState extends State<Product_Firestore_CRUDS> {
+  String hashcode;
+  _Product_Firestore_CRUDSState(hashCode, String hcode) {
+    this.hashcode = hcode;
+    print("I have recieved the hash : ");
+    print(hashcode);
+  }
   final TextEditingController _DescriptionController = TextEditingController();
   final TextEditingController _QuantityController = TextEditingController();
   final TextEditingController _PriceController = TextEditingController();
@@ -245,9 +251,7 @@ class _Product_Firestore_CRUDSState extends State<Product_Firestore_CRUDS> {
                     path = 'productImages/$new_hash/',
                     print(path),
                     reference = FirebaseStorage.instance.ref().child(path),
-                    reference
-                        .putFile(image)
-                        .whenComplete(() => print("Image uploaded")),
+                    reference.putFile(image).whenComplete(() => print("Image uploaded")),
                     Products.add_product(
                       Product_Hash: new_hash.toString(),
                       Product_Title: _TitleController.text.toString(),
@@ -279,11 +283,12 @@ class _Product_Firestore_CRUDSState extends State<Product_Firestore_CRUDS> {
                     Products.update_product(
                       Product_Description: _DescriptionController.text.toString(),
                       Product_Quantity: _QuantityController.text.toString(),
-                      Product_Hash: new_hash.toString(),
+                      my_hash: hashcode.toString(),
                       Product_Vendor_id: currentUser.user.uid.toString(),
                       Product_Price: _PriceController.text.toString(),
                       Product_Title: _TitleController.text.toString(),
                     ),
+                    print(hashcode),
                     print("Update Products Pressed")
                   },
                   child: Text("Update Product",style: TextStyle(color: Colors.white),),
@@ -302,7 +307,9 @@ class _Product_Firestore_CRUDSState extends State<Product_Firestore_CRUDS> {
               SizedBox(
                 width: MediaQuery.of(context).size.width,
                 child: RaisedButton(
-                  onPressed: () => {print("Delete Products Pressed")},
+                  onPressed: () => {
+                    Products.delete_product(hashcode.toString()),
+                    print("Delete Products Pressed")},
                   child: Text("Delete",style: TextStyle(color: Colors.white),),
                   color: Color(0xFF115ba6),
                 ),
@@ -327,7 +334,7 @@ class _Product_Firestore_CRUDSState extends State<Product_Firestore_CRUDS> {
                     // print("Checking the final final"),
                     // print(docs),
                   },
-                  child: Text("Fetch My Products",style: TextStyle(color: Colors.white),),
+                  child: Text("Back",style: TextStyle(color: Colors.white),),
                   style: ButtonStyle(
                       backgroundColor:
                           MaterialStateProperty.all<Color>(Color(0xFF115ba6)),
@@ -338,7 +345,6 @@ class _Product_Firestore_CRUDSState extends State<Product_Firestore_CRUDS> {
                 width: 50.0,
                 height: 10.0,
               ),
-
             ],
           ),
         ),

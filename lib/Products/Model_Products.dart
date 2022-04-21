@@ -51,15 +51,16 @@ class Products {
         .catchError((e) => print(e));
   }
 
-  static Future<void> update_product({String Product_Hash,String Product_Title,String Product_Description,String Product_Price,String Product_Quantity,String Product_Vendor_id,String Product_Category,String Product_Images}) async
+  static Future<void> update_product({String my_hash,String Product_Title,String Product_Description,String Product_Price,String Product_Quantity,String Product_Vendor_id,String Product_Category,String Product_Images}) async
   {
+    String doc_ref_up;
     QuerySnapshot querySnapshot = await _mainCollection.get();
-    Query query = await _mainCollection.where('Product_Hash',isEqualTo: Product_Hash);
+    Query query = await _mainCollection.where('Product_Hash',isEqualTo: my_hash);
     query.get().then((querySnapshot) => { querySnapshot.docs.forEach((element) {
+      doc_ref_up=element.reference.id.toString();
       print(element.reference.id);})
     });
-
-    DocumentReference documentReferencer = _mainCollection.doc();
+    DocumentReference documentReferencer = _mainCollection.doc(doc_ref_up);
     Map<String, dynamic> data = <String, dynamic>{
       "Product_Title": Product_Title,
       "Product_Description": Product_Description,
@@ -70,6 +71,7 @@ class Products {
       // "Product_Hash" : Product_Hash,  # Not Needed to Update. Fixed Value
       // "Product_Vendor_id": Product_Vendor_id, # Not Needed to Update. Fixed Value
     };
+
     await documentReferencer
         .update(data)
         .whenComplete(() => print("Updated product on the database"))
@@ -110,7 +112,7 @@ class Products {
     }
   }
 
-  static Future<List> delete_order(String my_hash) async
+  static Future<List> delete_product(String my_hash) async
   {
         String doc_ref;
         Query query = await _mainCollection.where('Product_Hash', isEqualTo: my_hash);
@@ -119,8 +121,9 @@ class Products {
           querySnapshot.docs.toList().forEach((doc) {
             doc_ref=doc.reference.id.toString();
           })});
+        print(doc_ref);
         DocumentReference documentReference = _mainCollection.doc(doc_ref);
-        await documentReference.delete().whenComplete(() => print("Product Hash : "+my_hash+"item deleted from the database"))
+        await documentReference.delete().whenComplete(() => print("Product Hash : "+my_hash+" item deleted from the database"))
             .catchError((e) => print(e));
       }
 }

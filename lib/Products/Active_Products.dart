@@ -5,7 +5,8 @@ import '../Orders/Model_Orders.dart';
 import 'Product_Firestore.dart';
 
 class Active_Products_Page extends StatefulWidget {
-  const Active_Products_Page({Key key}) : super(key: key);
+  final String hashcode;
+  const Active_Products_Page({Key key, this.hashcode}) : super(key: key);
 
   @override
   State<Active_Products_Page> createState() => _Active_Products_PageState();
@@ -44,7 +45,7 @@ class _Active_Products_PageState extends State<Active_Products_Page> {
   Widget Product_Card_Template_Active(my_product) {
     return InkWell(
       onTap: (){
-        Navigator.push(context, MaterialPageRoute(builder: (context)=>Product_Firestore_CRUDS()));
+        Navigator.push(context, MaterialPageRoute(builder: (context)=>Product_Firestore_CRUDS(hashcode: my_product.Product_Hash)));
       },
       enableFeedback: true,
       child: Card(
