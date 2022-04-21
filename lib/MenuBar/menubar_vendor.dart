@@ -3,6 +3,7 @@ import 'package:build_i_t/Products/Products_Page_Customer.dart';
 import 'package:build_i_t/Vendor_Services/ServicePage.dart';
 import 'package:build_i_t/flutter_flow/flutter_flow_theme.dart';
 import 'package:build_i_t/flutter_flow/flutter_flow_util.dart';
+import 'package:build_i_t/home_page/VendorHomePage.dart';
 import 'package:build_i_t/login_page/Google_signIn.dart';
 import 'package:flutter/material.dart';
 import 'package:build_i_t/authentication_service.dart';
@@ -18,6 +19,7 @@ import 'package:provider/provider.dart';
 import 'package:firebase_core/firebase_core.dart';
 
 import '../chat_main/chat_main_widget.dart';
+import '../home_page/homepage_header_vendor.dart';
 
 
 class Vendor_menuBar extends StatefulWidget {
@@ -71,7 +73,7 @@ class _Vendor_menuBarState extends State<Vendor_menuBar> {
                         await Navigator.push(
                           context,
                           MaterialPageRoute(
-                            builder: (context) => HomePageWidget(),
+                            builder: (context) => VendorHomePageWidget(),
                           ),
                         );
                       },
@@ -117,7 +119,7 @@ class _Vendor_menuBarState extends State<Vendor_menuBar> {
                         await Navigator.push(
                           context,
                           MaterialPageRoute(
-                            builder: (context) => HomePageWidget(),
+                            builder: (context) => VendorHomePageWidget(),
                           ),
                         );
                       },

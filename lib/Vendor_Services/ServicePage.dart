@@ -5,11 +5,14 @@ import 'package:build_i_t/flutter_flow/flutter_flow_drop_down.dart';
 import 'package:build_i_t/flutter_flow/flutter_flow_theme.dart';
 import 'package:build_i_t/flutter_flow/flutter_flow_widgets.dart';
 import 'package:build_i_t/home_page/CustomerHomePage.dart';
+import 'package:build_i_t/home_page/homepage_header_vendor.dart';
 import 'package:build_i_t/login_page/login_page_widget.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+
+import '../home_page/VendorHomePage.dart';
 
 
 class Services_CRUD extends StatefulWidget {
@@ -48,7 +51,7 @@ class _Services_CRUDState extends State<Services_CRUD> {
     return SafeArea(
       child: Scaffold(
         key: scaffoldKey,
-        backgroundColor: Color(0xFFF6EFDE),
+        backgroundColor: Color(0xFFffffff),
         body: SingleChildScrollView (
           child: Column(
             mainAxisSize: MainAxisSize.max,
@@ -77,13 +80,13 @@ class _Services_CRUDState extends State<Services_CRUD> {
                             await Navigator.push(
                               context,
                               MaterialPageRoute(
-                                builder: (context) => HomePageWidget(),
+                                builder: (context) => VendorHomePageWidget(),
                               ),
                             );
                           },
                           child: Icon(
                             Icons.arrow_back_ios,
-                            color: Color(0xFF282828),
+                            color: Color(0xFF115ba6),
                             size: 24,
                           ),
                         ),
@@ -106,7 +109,7 @@ class _Services_CRUDState extends State<Services_CRUD> {
                 width: MediaQuery.of(context).size.width,
                 height: MediaQuery.of(context).size.height * 1,
                 decoration: BoxDecoration(
-                  color: Color(0xFFF6EFDE),
+                  color: Color(0xFFffffff),
                 ),
                 child: Column(
                   mainAxisSize: MainAxisSize.max,
@@ -125,7 +128,7 @@ class _Services_CRUDState extends State<Services_CRUD> {
                         fontFamily: 'Poppins',
                         color: Colors.white,
                       ),
-                      fillColor: Color(0xFF282828),
+                      fillColor: Color(0xFF115ba6),
                       elevation: 2,
                       borderColor: Colors.transparent,
                       borderWidth: 1.5,
@@ -142,23 +145,23 @@ class _Services_CRUDState extends State<Services_CRUD> {
                           labelText: 'Service Name',
                           labelStyle: FlutterFlowTheme.bodyText1.override(
                             fontFamily: 'Poppins',
-                            color: Color(0xFF282828),
+                            color: Color(0xFF115ba6),
                           ),
                           hintText: 'Enter Name For Your Service',
                           hintStyle: FlutterFlowTheme.bodyText1.override(
                             fontFamily: 'Poppins',
-                            color: Color(0xFF282828),
+                            color: Color(0xFF115ba6),
                           ),
                           enabledBorder: OutlineInputBorder(
                             borderSide: BorderSide(
-                              color: Color(0xFF282828),
+                              color: Color(0xFF115ba6),
                               width: 1.5,
                             ),
                             borderRadius: BorderRadius.circular(0),
                           ),
                           focusedBorder: OutlineInputBorder(
                             borderSide: BorderSide(
-                              color: Color(0xFF282828),
+                              color: Color(0xFF115ba6),
                               width: 1.5,
                             ),
                             borderRadius: BorderRadius.circular(0),
@@ -168,7 +171,7 @@ class _Services_CRUDState extends State<Services_CRUD> {
                         ),
                         style: FlutterFlowTheme.bodyText1.override(
                           fontFamily: 'Poppins',
-                          color: Color(0xFF282828),
+                          color: Color(0xFF115ba6),
                         ),
                         textAlign: TextAlign.start,
                       ),
@@ -182,7 +185,7 @@ class _Services_CRUDState extends State<Services_CRUD> {
                           labelText: 'Service Description',
                           labelStyle: FlutterFlowTheme.bodyText1.override(
                             fontFamily: 'Poppins',
-                            color: Color(0xFF282828),
+                            color: Color(0xFF115ba6),
                           ),
                           hintText: 'Describe your Service',
                           hintStyle: FlutterFlowTheme.bodyText1.override(
@@ -191,14 +194,14 @@ class _Services_CRUDState extends State<Services_CRUD> {
                           ),
                           enabledBorder: OutlineInputBorder(
                             borderSide: BorderSide(
-                              color: Color(0xFF282828),
+                              color: Color(0xFF115ba6),
                               width: 1.5,
                             ),
                             borderRadius: BorderRadius.circular(0),
                           ),
                           focusedBorder: OutlineInputBorder(
                             borderSide: BorderSide(
-                              color: Color(0xFF282828),
+                              color: Color(0xFF115ba6),
                               width: 1.5,
                             ),
                             borderRadius: BorderRadius.circular(0),
@@ -208,7 +211,7 @@ class _Services_CRUDState extends State<Services_CRUD> {
                         ),
                         style: FlutterFlowTheme.bodyText1.override(
                           fontFamily: 'Poppins',
-                          color: Color(0xFF282828),
+                          color: Color(0xFF115ba6),
                         ),
                         textAlign: TextAlign.start,
                       ),
@@ -222,23 +225,23 @@ class _Services_CRUDState extends State<Services_CRUD> {
                           labelText: 'Hourly Rate',
                           labelStyle: FlutterFlowTheme.bodyText1.override(
                             fontFamily: 'Poppins',
-                            color: Color(0xFF282828),
+                            color: Color(0xFF115ba6),
                           ),
                           hintText: 'Enter your hourly Rate',
                           hintStyle: FlutterFlowTheme.bodyText1.override(
                             fontFamily: 'Poppins',
-                            color: Color(0xFF282828),
+                            color: Color(0xFF115ba6),
                           ),
                           enabledBorder: OutlineInputBorder(
                             borderSide: BorderSide(
-                              color: Color(0xFF282828),
+                              color: Color(0xFF115ba6),
                               width: 1.5,
                             ),
                             borderRadius: BorderRadius.circular(0),
                           ),
                           focusedBorder: OutlineInputBorder(
                             borderSide: BorderSide(
-                              color: Color(0xFF282828),
+                              color: Color(0xFF115ba6),
                               width: 1.5,
                             ),
                             borderRadius: BorderRadius.circular(0),
@@ -248,7 +251,7 @@ class _Services_CRUDState extends State<Services_CRUD> {
                         ),
                         style: FlutterFlowTheme.bodyText1.override(
                           fontFamily: 'Poppins',
-                          color: Color(0xFF282828),
+                          color: Color(0xFF115ba6),
                         ),
                         textAlign: TextAlign.start,
                         keyboardType: TextInputType.emailAddress,
@@ -263,23 +266,23 @@ class _Services_CRUDState extends State<Services_CRUD> {
                           labelText: 'Category',
                           labelStyle: FlutterFlowTheme.bodyText1.override(
                             fontFamily: 'Poppins',
-                            color: Color(0xFF282828),
+                            color: Color(0xFF115ba6),
                           ),
                           hintText: 'Type (Cleaning,Repairing,Maintenance)',
                           hintStyle: FlutterFlowTheme.bodyText1.override(
                             fontFamily: 'Poppins',
-                            color: Color(0xFF282828),
+                            color: Color(0xFF115ba6),
                           ),
                           enabledBorder: OutlineInputBorder(
                             borderSide: BorderSide(
-                              color: Color(0xFF282828),
+                              color: Color(0xFF115ba6),
                               width: 1.5,
                             ),
                             borderRadius: BorderRadius.circular(0),
                           ),
                           focusedBorder: OutlineInputBorder(
                             borderSide: BorderSide(
-                              color: Color(0xFF282828),
+                              color: Color(0xFF115ba6),
                               width: 1.5,
                             ),
                             borderRadius: BorderRadius.circular(0),
@@ -289,7 +292,7 @@ class _Services_CRUDState extends State<Services_CRUD> {
                         ),
                         style: FlutterFlowTheme.bodyText1.override(
                           fontFamily: 'Poppins',
-                          color: Color(0xFF282828),
+                          color: Color(0xFF115ba6),
                         ),
                         textAlign: TextAlign.start,
                         keyboardType: TextInputType.phone,
@@ -323,10 +326,10 @@ class _Services_CRUDState extends State<Services_CRUD> {
                         options: FFButtonOptions(
                           width: 275,
                           height: 45,
-                          color: Color(0xFF282828),
+                          color: Color(0xFF115ba6),
                           textStyle: FlutterFlowTheme.subtitle2.override(
                             fontFamily: 'Poppins',
-                            color: Color(0xFFFFB700),
+                            color: Colors.white,
                           ),
                           borderSide: BorderSide(
                             color: Colors.transparent,
