@@ -134,7 +134,7 @@ class _RegistrationPageCopyWidgetState
             options: FFButtonOptions(
               width: MediaQuery.of(context).size.width,
               height: 60,
-              color: Color(0xFF282828),
+              color: Color(0xFF115ba6),
               textStyle: FlutterFlowTheme.subtitle2.override(
                 fontFamily: 'Poppins',
                 color: Color(0xFFFFB700),
@@ -189,17 +189,17 @@ class _RegistrationPageCopyWidgetState
       key: scaffoldKey,
       appBar: AppBar(
         title: Text("Register"),
-        backgroundColor: Color(0xFFF6EFDE),
+        backgroundColor: Color(0xFFffffff),
         foregroundColor: Colors.black,
         elevation: 0,
       ),
-      backgroundColor: Color(0xFFF6EFDE),
+      backgroundColor: Color(0xFFffffff),
       body: SingleChildScrollView(
         child: Container(
           width: MediaQuery.of(context).size.width,
           height: MediaQuery.of(context).size.height * 1,
           decoration: BoxDecoration(
-            color: Color(0xFFF6EFDE),
+            color: Color(0xFFffffff),
           ),
           child: Form(
             key: _formKey,
@@ -221,7 +221,7 @@ class _RegistrationPageCopyWidgetState
                       fontFamily: 'Poppins',
                       color: Colors.white,
                     ),
-                    fillColor: Color(0xFF282828),
+                    fillColor: Color(0xFF115ba6),
                     elevation: 2,
                     borderColor: Colors.transparent,
                     borderWidth: 1.5,
@@ -245,23 +245,23 @@ class _RegistrationPageCopyWidgetState
                       labelText: 'Full Name',
                       labelStyle: FlutterFlowTheme.bodyText1.override(
                         fontFamily: 'Poppins',
-                        color: Color(0xFF282828),
+                        color: Color(0xFF115ba6),
                       ),
                       hintText: 'Enter your full name',
                       hintStyle: FlutterFlowTheme.bodyText1.override(
                         fontFamily: 'Poppins',
-                        color: Color(0xFF282828),
+                        color: Color(0xFF115ba6),
                       ),
                       enabledBorder: OutlineInputBorder(
                         borderSide: BorderSide(
-                          color: Color(0xFF282828),
+                          color: Color(0xFF115ba6),
                           width: 1.5,
                         ),
                         borderRadius: BorderRadius.circular(0),
                       ),
                       focusedBorder: OutlineInputBorder(
                         borderSide: BorderSide(
-                          color: Color(0xFF282828),
+                          color: Color(0xFF115ba6),
                           width: 1.5,
                         ),
                         borderRadius: BorderRadius.circular(0),
@@ -271,7 +271,7 @@ class _RegistrationPageCopyWidgetState
                     ),
                     style: FlutterFlowTheme.bodyText1.override(
                       fontFamily: 'Poppins',
-                      color: Color(0xFF282828),
+                      color: Color(0xFF115ba6),
                     ),
                     textAlign: TextAlign.start,
                   ),
@@ -293,23 +293,23 @@ class _RegistrationPageCopyWidgetState
                       labelText: 'Email',
                       labelStyle: FlutterFlowTheme.bodyText1.override(
                         fontFamily: 'Poppins',
-                        color: Color(0xFF282828),
+                        color: Color(0xFF115ba6),
                       ),
                       hintText: 'Enter your email',
                       hintStyle: FlutterFlowTheme.bodyText1.override(
                         fontFamily: 'Poppins',
-                        color: Color(0xFF282828),
+                        color: Color(0xFF115ba6),
                       ),
                       enabledBorder: OutlineInputBorder(
                         borderSide: BorderSide(
-                          color: Color(0xFF282828),
+                          color: Color(0xFF115ba6),
                           width: 1.5,
                         ),
                         borderRadius: BorderRadius.circular(0),
                       ),
                       focusedBorder: OutlineInputBorder(
                         borderSide: BorderSide(
-                          color: Color(0xFF282828),
+                          color: Color(0xFF115ba6),
                           width: 1.5,
                         ),
                         borderRadius: BorderRadius.circular(0),
@@ -319,7 +319,7 @@ class _RegistrationPageCopyWidgetState
                     ),
                     style: FlutterFlowTheme.bodyText1.override(
                       fontFamily: 'Poppins',
-                      color: Color(0xFF282828),
+                      color: Color(0xFF115ba6),
                     ),
                     textAlign: TextAlign.start,
                     keyboardType: TextInputType.emailAddress,
@@ -342,23 +342,23 @@ class _RegistrationPageCopyWidgetState
                       labelText: 'Phone',
                       labelStyle: FlutterFlowTheme.bodyText1.override(
                         fontFamily: 'Poppins',
-                        color: Color(0xFF282828),
+                        color: Color(0xFF115ba6),
                       ),
                       hintText: 'Enter your phone number',
                       hintStyle: FlutterFlowTheme.bodyText1.override(
                         fontFamily: 'Poppins',
-                        color: Color(0xFF282828),
+                        color: Color(0xFF115ba6),
                       ),
                       enabledBorder: OutlineInputBorder(
                         borderSide: BorderSide(
-                          color: Color(0xFF282828),
+                          color: Color(0xFF115ba6),
                           width: 1.5,
                         ),
                         borderRadius: BorderRadius.circular(0),
                       ),
                       focusedBorder: OutlineInputBorder(
                         borderSide: BorderSide(
-                          color: Color(0xFF282828),
+                          color: Color(0xFF115ba6),
                           width: 1.5,
                         ),
                         borderRadius: BorderRadius.circular(0),
@@ -368,7 +368,7 @@ class _RegistrationPageCopyWidgetState
                     ),
                     style: FlutterFlowTheme.bodyText1.override(
                       fontFamily: 'Poppins',
-                      color: Color(0xFF282828),
+                      color: Color(0xFF115ba6),
                     ),
                     textAlign: TextAlign.start,
                     keyboardType: TextInputType.phone,
@@ -389,23 +389,23 @@ class _RegistrationPageCopyWidgetState
                       labelText: 'Password',
                       labelStyle: FlutterFlowTheme.bodyText1.override(
                         fontFamily: 'Poppins',
-                        color: Color(0xFF282828),
+                        color: Color(0xFF115ba6),
                       ),
                       hintText: 'Enter your password',
                       hintStyle: FlutterFlowTheme.bodyText1.override(
                         fontFamily: 'Poppins',
-                        color: Color(0xFF282828),
+                        color: Color(0xFF115ba6),
                       ),
                       enabledBorder: OutlineInputBorder(
                         borderSide: BorderSide(
-                          color: Color(0xFF282828),
+                          color: Color(0xFF115ba6),
                           width: 1.5,
                         ),
                         borderRadius: BorderRadius.circular(0),
                       ),
                       focusedBorder: OutlineInputBorder(
                         borderSide: BorderSide(
-                          color: Color(0xFF282828),
+                          color: Color(0xFF115ba6),
                           width: 1.5,
                         ),
                         borderRadius: BorderRadius.circular(0),
@@ -427,7 +427,7 @@ class _RegistrationPageCopyWidgetState
                     ),
                     style: FlutterFlowTheme.bodyText1.override(
                       fontFamily: 'Poppins',
-                      color: Color(0xFF282828),
+                      color: Color(0xFF115ba6),
                     ),
                     textAlign: TextAlign.start,
                     keyboardType: TextInputType.visiblePassword,
@@ -448,23 +448,23 @@ class _RegistrationPageCopyWidgetState
                       labelText: 'Confirm Password',
                       labelStyle: FlutterFlowTheme.bodyText1.override(
                         fontFamily: 'Poppins',
-                        color: Color(0xFF282828),
+                        color: Color(0xFF115ba6),
                       ),
                       hintText: 'Enter your password',
                       hintStyle: FlutterFlowTheme.bodyText1.override(
                         fontFamily: 'Poppins',
-                        color: Color(0xFF282828),
+                        color: Color(0xFF115ba6),
                       ),
                       enabledBorder: OutlineInputBorder(
                         borderSide: BorderSide(
-                          color: Color(0xFF282828),
+                          color: Color(0xFF115ba6),
                           width: 1.5,
                         ),
                         borderRadius: BorderRadius.circular(0),
                       ),
                       focusedBorder: OutlineInputBorder(
                         borderSide: BorderSide(
-                          color: Color(0xFF282828),
+                          color: Color(0xFF115ba6),
                           width: 1.5,
                         ),
                         borderRadius: BorderRadius.circular(0),
@@ -486,7 +486,7 @@ class _RegistrationPageCopyWidgetState
                     ),
                     style: FlutterFlowTheme.bodyText1.override(
                       fontFamily: 'Poppins',
-                      color: Color(0xFF282828),
+                      color: Color(0xFF115ba6),
                     ),
                     textAlign: TextAlign.start,
                     keyboardType: TextInputType.visiblePassword,
@@ -642,7 +642,7 @@ class _RegistrationPageCopyWidgetState
                           options: FFButtonOptions(
                             width: MediaQuery.of(context).size.width,
                             height: 55,
-                            color: Color(0xFF282828),
+                            color: Color(0xFF115ba6),
                             textStyle: FlutterFlowTheme.subtitle2.override(
                               fontFamily: 'Poppins',
                               color: Color(0xFFFFB700),

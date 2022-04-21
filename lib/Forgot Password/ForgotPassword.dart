@@ -42,7 +42,7 @@ class _RegistrationPageWidgetState extends State<RegistrationPageWidget> {
   Widget build(BuildContext context) {
     return Scaffold(
       key: scaffoldKey,
-      backgroundColor: Color(0xFFF6EFDE),
+      backgroundColor: Color(0xFFffffff),
       body: SafeArea(
         child: SingleChildScrollView(
           child: Column(
@@ -78,7 +78,7 @@ class _RegistrationPageWidgetState extends State<RegistrationPageWidget> {
                           },
                           child: Icon(
                             Icons.arrow_back_ios,
-                            color: Color(0xFF282828),
+                            color: Color(0xFF115ba6),
                             size: 24,
                           ),
                         ),
@@ -101,7 +101,7 @@ class _RegistrationPageWidgetState extends State<RegistrationPageWidget> {
                 width: MediaQuery.of(context).size.width,
                 height: MediaQuery.of(context).size.height * 1,
                 decoration: BoxDecoration(
-                  color: Color(0xFFF6EFDE),
+                  color: Color(0xFFffffff),
                 ),
                 child: Form(
                   key: _formKey,
@@ -127,23 +127,23 @@ class _RegistrationPageWidgetState extends State<RegistrationPageWidget> {
                             labelText: 'Email',
                             labelStyle: FlutterFlowTheme.bodyText1.override(
                               fontFamily: 'Poppins',
-                              color: Color(0xFF282828),
+                              color: Color(0xFF115ba6),
                             ),
                             hintText: 'Enter your email',
                             hintStyle: FlutterFlowTheme.bodyText1.override(
                               fontFamily: 'Poppins',
-                              color: Color(0xFF282828),
+                              color: Color(0xFF115ba6),
                             ),
                             enabledBorder: OutlineInputBorder(
                               borderSide: BorderSide(
-                                color: Color(0xFF282828),
+                                color: Color(0xFF115ba6),
                                 width: 1.5,
                               ),
                               borderRadius: BorderRadius.circular(0),
                             ),
                             focusedBorder: OutlineInputBorder(
                               borderSide: BorderSide(
-                                color: Color(0xFF282828),
+                                color: Color(0xFF115ba6),
                                 width: 1.5,
                               ),
                               borderRadius: BorderRadius.circular(0),
@@ -153,7 +153,7 @@ class _RegistrationPageWidgetState extends State<RegistrationPageWidget> {
                           ),
                           style: FlutterFlowTheme.bodyText1.override(
                             fontFamily: 'Poppins',
-                            color: Color(0xFF282828),
+                            color: Color(0xFF115ba6),
                           ),
                           textAlign: TextAlign.start,
                         ),
@@ -171,7 +171,7 @@ class _RegistrationPageWidgetState extends State<RegistrationPageWidget> {
                           options: FFButtonOptions(
                             width: MediaQuery.of(context).size.width,
                             height: 45,
-                            color: Color(0xFF282828),
+                            color: Color(0xFF115ba6),
                             textStyle: FlutterFlowTheme.subtitle2.override(
                               fontFamily: 'Poppins',
                               color: Color(0xFFFFB700),
