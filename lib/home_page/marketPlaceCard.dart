@@ -1,3 +1,4 @@
+import 'package:build_i_t/Products/Product_Page.dart';
 import 'package:build_i_t/backend/backend.dart';
 import 'package:build_i_t/flutter_flow/flutter_flow_theme.dart';
 import 'package:build_i_t/flutter_flow/flutter_flow_util.dart';
@@ -7,39 +8,50 @@ import 'package:build_i_t/chat_details/chat_details_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 
+import '../Products/Model_Products.dart';
+
 //Market Places
 Widget marketPlaceCard(
     {BuildContext context,
-    String title,
-    String description,
-    String quantity,
-    String price,
-    String imageUrl,
-    String vendorID}) {
+      String hash,
+      String title,
+      String description,
+      String quantity,
+      String price,
+      String imageUrl,
+      String vendorID}) {
   final userdata = FirebaseFirestore.instance
       .collection('users')
       .doc(vendorID);
-  return StreamBuilder<UsersRecord>(
-      stream: UsersRecord.getDocument(userdata),
-      builder: (context, snapshot) {
         return InkWell(
             onTap: () async {
-              final userdata = FirebaseFirestore.instance
-                  .collection('users')
-                  .doc(vendorID);
-              var ref = UsersRecord.getDocument(userdata);
-              await Navigator.push(
-                context,
-                PageTransition(
-                  type: PageTransitionType.scale,
-                  alignment: Alignment.bottomCenter,
-                  duration: Duration(milliseconds: 300),
-                  reverseDuration: Duration(milliseconds: 300),
-                  child: ChatDetailsWidget(
-                    chatUser: snapshot.data,
-                  ),
-                ),
-              );
+              //await print(hash+imageUrl+price+quantity+vendorID+title+description);
+              await Navigator.pushReplacement(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) =>
+                          ProductPage(
+                            Product: new Products(Product_Images: "",Product_Price: price.toString(),Product_Quantity: quantity.toString(),Product_Vendor_id: vendorID.toString(),Product_Title:title.toString(),Product_Description:description.toString(),Product_Category: ""),
+                          ),
+                  ));
+
+
+              // final userdata = FirebaseFirestore.instance
+              //     .collection('users')
+              //     .doc(vendorID);
+              // var ref = UsersRecord.getDocument(userdata);
+              // await Navigator.push(
+              //   context,
+              //   PageTransition(
+              //     type: PageTransitionType.scale,
+              //     alignment: Alignment.bottomCenter,
+              //     duration: Duration(milliseconds: 300),
+              //     reverseDuration: Duration(milliseconds: 300),
+              //     child: ChatDetailsWidget(
+              //       chatUser: snapshot.data,
+              //     ),
+              //   ),
+              // );
             },
             child: Padding(
               padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
@@ -132,5 +144,4 @@ Widget marketPlaceCard(
                 ),
               ),
             ));
-      });
 }
