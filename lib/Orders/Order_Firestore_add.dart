@@ -30,9 +30,10 @@ class _add_OrderFireBaseState extends State<add_OrderFireBase> {
   final TextEditingController _DurationController = TextEditingController();
   final TextEditingController _PriceController = TextEditingController();
   final TextEditingController _TitleController = TextEditingController();
-  final TextEditingController _VendoridController = TextEditingController();
+  final TextEditingController _TransectionID = TextEditingController();
   final TextEditingController _HashController = TextEditingController();
   Order myorder;
+  bool istransectionId = false;
   @override
   Widget build(BuildContext context) {
     String new_hash;
@@ -58,6 +59,90 @@ class _add_OrderFireBaseState extends State<add_OrderFireBase> {
           ],
         ),
       ),
+    );
+  }
+
+  Widget _buildPopupDialog(BuildContext context) {
+    return new AlertDialog(
+      title: const Text('Transection Details'),
+      content: new Column(
+        mainAxisSize: MainAxisSize.min,
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: <Widget>[
+          TextFormField(
+            controller: _TransectionID,
+            obscureText: false,
+            validator: (value) {
+              if (value = null) {
+                return "please enter transection ID";
+              }
+            },
+            decoration: InputDecoration(
+              labelText: "Transection ID",
+              labelStyle: FlutterFlowTheme.bodyText1.override(
+                fontFamily: 'Poppins',
+                color: Color(0xFF282828),
+              ),
+              hintText: '1234....',
+              hintStyle: FlutterFlowTheme.bodyText1.override(
+                fontFamily: 'Poppins',
+                color: Color(0xFF282828),
+              ),
+              enabledBorder: OutlineInputBorder(
+                borderSide: BorderSide(
+                  color: Color(0xFF282828),
+                  width: 1.5,
+                ),
+                borderRadius: BorderRadius.circular(0),
+              ),
+              focusedBorder: OutlineInputBorder(
+                borderSide: BorderSide(
+                  color: Color(0xFF282828),
+                  width: 1.5,
+                ),
+                borderRadius: BorderRadius.circular(0),
+              ),
+              filled: true,
+              fillColor: Colors.white,
+            ),
+            style: FlutterFlowTheme.bodyText1.override(
+              fontFamily: 'Poppins',
+              color: Color(0xFF282828),
+            ),
+            textAlign: TextAlign.start,
+          ),
+          SizedBox(
+            height: 8,
+          ),
+          InkWell(
+            onTap: () {
+              //yaha par cheema na uplod image ka code karna
+
+
+            },
+            child: Container(
+              child: Center(child: Text("Uplaod Image",style: TextStyle(color: Color(0xFFFFFFFF),fontWeight: FontWeight.bold),)),
+              width: MediaQuery.of(context).size.width,
+              height: MediaQuery.of(context).size.height * 0.07,
+              decoration: BoxDecoration(color: Color(0xFF123456)),
+            ),
+          )
+        ],
+      ),
+      actions: <Widget>[
+        new FlatButton(
+          onPressed: () {
+            if (_TransectionID.text != null) {
+              setState(() {
+                istransectionId = true;
+              });
+            }
+            Navigator.of(context).pop();
+          },
+          textColor: Color(0xFF123456),
+          child: const Text('Close',style: TextStyle(fontSize: 15),),
+        ),
+      ],
     );
   }
 
@@ -278,9 +363,13 @@ class _add_OrderFireBaseState extends State<add_OrderFireBase> {
                       _PriceController.text.isEmpty &&
                       _TitleController.text.toString() != null) {
                     scaffoldKey.currentState.showSnackBar(SnackBar(
-                        content:
-                            Text("Please fill all fields first!")));
+                        content: Text("Please fill all fields first!")));
                   } else {
+                    showDialog(
+                      context: context,
+                      builder: (BuildContext context) =>
+                          _buildPopupDialog(context),
+                    );
                     if (int.parse(_DurationController.text) > 0 &&
                         int.parse(_DurationController.text) <= 10) {
                       random_hash = random.nextInt(9999) + 999;
@@ -304,14 +393,14 @@ class _add_OrderFireBaseState extends State<add_OrderFireBase> {
                       _DurationController.clear();
                       _PriceController.clear();
                       _TitleController.clear();
-                    }
-                    else{
+                    } else {
                       _DurationController.clear();
                       scaffoldKey.currentState.showSnackBar(SnackBar(
-                          content:
-                          Text("Please enter duration between 1 - 10 Days")));
+                          content: Text(
+                              "Please enter duration between 1 - 10 Days")));
                     }
                   }
+                  //Pop Up
                 },
                 child: Text(
                   "Add Order",
