@@ -1,4 +1,5 @@
 import 'package:build_i_t/MenuBar/menubar_customer.dart';
+import 'package:build_i_t/Orders/Order_Firestore_add.dart';
 import 'package:build_i_t/Vendor_Services/Model_Services.dart';
 import 'package:build_i_t/all_market_places/Search_Material.dart';
 import 'package:build_i_t/all_service_providers/search_serviceProviders.dart';
@@ -60,8 +61,20 @@ class _ProductPage extends State<ProductPage> {
                 ),
               ),
             );
-          }, style: ButtonStyle(),child: Text("Chat with user"),)
+          }, style: ButtonStyle(),child: Text("Chat with user"),
+          ),
+          TextButton(onPressed: () async {
+            await Navigator.pushReplacement(
+                context,
+                MaterialPageRoute(
+                  builder: (context) =>
+                      add_OrderFireBase(
+                        hashCode: widget.Product.Product_Hash,
+                      ),
+                ));
 
+          }, style: ButtonStyle(),child: Text("Create order user"),
+          )
         ],
       ),
     );
