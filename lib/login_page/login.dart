@@ -81,28 +81,7 @@ class _logInState extends State<logIn> {
                             fit: BoxFit.cover,
                           ),
                         ),
-                        Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(30, 0, 30, 0),
-                          child: FlutterFlowDropDown(
-                            options: ['Customer', 'Vendor', 'Admin'].toList(),
-                            onChanged: (val) =>
-                                setState(() => dropDownValue = val),
-                            width: MediaQuery.of(context).size.width,
-                            height: 60,
-                            textStyle: FlutterFlowTheme.bodyText1.override(
-                              fontFamily: 'Poppins',
-                              color: Colors.black87,
-                            ),
-                            fillColor: Color(0xFFFFFFFF),
-                            elevation: 2,
-                            borderColor: Colors.black87,
-                            borderWidth: 1.5,
-                            borderRadius: 5,
-                            margin:
-                                EdgeInsetsDirectional.fromSTEB(12, 4, 12, 4),
-                            hidesUnderline: true,
-                          ),
-                        ),
+
                         Padding(
                           padding:
                               EdgeInsetsDirectional.fromSTEB(30, 12, 30, 0),
