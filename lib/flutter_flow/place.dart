@@ -1,3 +1,5 @@
+import 'package:google_maps_flutter/google_maps_flutter.dart';
+
 import 'lat_lng.dart';
 
 class FFPlace {
@@ -36,11 +38,11 @@ class FFPlace {
   @override
   bool operator ==(other) =>
       other is FFPlace &&
-      latLng == other.latLng &&
-      name == name &&
-      address == address &&
-      city == city &&
-      state == state &&
-      country == country &&
-      zipCode == zipCode;
+          latLng == other.latLng &&
+          name == name &&
+          address == address &&
+          city == city &&
+          state == state &&
+          country == country &&
+          zipCode == zipCode;
 }

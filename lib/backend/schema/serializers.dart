@@ -1,4 +1,5 @@
 import 'package:built_value/standard_json_plugin.dart';
+import 'package:google_maps_flutter/google_maps_flutter.dart';
 
 import 'users_record.dart';
 import 'chats_record.dart';
