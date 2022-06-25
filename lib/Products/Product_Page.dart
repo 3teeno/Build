@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:build_i_t/MenuBar/menubar_customer.dart';
 import 'package:build_i_t/Orders/Order_Firestore_add.dart';
 import 'package:build_i_t/Vendor_Services/Model_Services.dart';
@@ -8,6 +10,7 @@ import 'package:build_i_t/home_page/serviceProvidersCard.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:get/get.dart';
+import 'package:google_maps_flutter/google_maps_flutter.dart';
 import '../backend/schema/users_record.dart';
 import '../chat_details/chat_details_widget.dart';
 import '../flutter_flow/chat/index.dart';
@@ -32,6 +35,19 @@ class _ProductPage extends State<ProductPage> {
   void initState() {
     super.initState();
   }
+
+  Completer<GoogleMapController> _controller = Completer();
+  static final CameraPosition _kGooglePlex = CameraPosition(
+    target: LatLng(37.42796133580664, -122.085749655962),
+    zoom: 14.4746,
+  );
+
+  static final CameraPosition _kLake = CameraPosition(
+      bearing: 192.8334901395799,
+      target: LatLng(37.43296265331129, -122.08832357078792),
+      tilt: 59.440717697143555,
+      zoom: 19.151926040649414);
+
 
   int x = 0;
   @override
@@ -364,6 +380,23 @@ class _ProductPage extends State<ProductPage> {
                                 ),
                               ),
                             ),
+                            InkWell(
+                              child: Container(
+                                child: Row(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    GoogleMap(
+                                      mapType: MapType.hybrid,
+                                      initialCameraPosition: _kGooglePlex,
+                                      onMapCreated: (GoogleMapController controller) {
+                                        _controller.complete(controller);
+                                      },
+                                    ),
+
+                                  ],
+                                ),
+                              ),
+                            ),
 
                             // TextButton(
                             //   onPressed: () async {
@@ -378,7 +411,10 @@ class _ProductPage extends State<ProductPage> {
                             //   style: ButtonStyle(),
                             //   child: Text("Create order user"),
                             // )
+
+
                           ],
+
                         ),
                       )
                     ]),

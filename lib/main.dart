@@ -2,11 +2,13 @@ import 'package:build_i_t/authentication_service.dart';
 import 'package:build_i_t/login_page/Google_signIn.dart';
 import 'package:build_i_t/login_page/login_page_widget.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:build_i_t/home_page/CustomerHomePage.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:lottie/lottie.dart';
 import 'package:provider/provider.dart';
 import 'auth/auth_util.dart';
@@ -36,8 +38,12 @@ class _MyAppState extends State<MyApp> {
   Stream<ChatFirebaseUser> userStream;
   ChatFirebaseUser initialUser;
   final authUserSub = authenticatedUserStream.listen((_) {});
+
   void initState() {
     super.initState();
+    if (defaultTargetPlatform == TargetPlatform.android) {
+      AndroidGoogleMapsFlutter.useAndroidViewSurface = true;
+    }
     userStream = chatFirebaseUserStream()
       ..listen((user) => initialUser ?? setState(() => initialUser = user));
 
