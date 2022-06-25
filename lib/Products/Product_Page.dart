@@ -288,7 +288,25 @@ class _ProductPage extends State<ProductPage> {
                                     ),
                                   ),
                                 ]),
-
+                            SizedBox(height: 10,),
+                            Center(
+                              child: Container(
+                                width: MediaQuery.of(context).size.width*0.88,
+                                height: MediaQuery.of(context).size.height*0.2,
+                                child: InkWell(
+                                  child: Container(
+                                    child: GoogleMap(
+                                      mapType: MapType.hybrid,
+                                      initialCameraPosition: _kGooglePlex,
+                                      onMapCreated: (GoogleMapController controller) {
+                                        _controller.complete(controller);
+                                      },
+                                    ),
+                                  ),
+                                ),
+                                decoration: BoxDecoration(color: Color(0xFF123456),borderRadius: BorderRadius.circular(10)),
+                              ),
+                            )
                             //Text("IDR Furqan na data dalna hai using Product ka object "+widget.Product.Product_Title),
                           ],
                         ),
@@ -380,23 +398,7 @@ class _ProductPage extends State<ProductPage> {
                                 ),
                               ),
                             ),
-                            InkWell(
-                              child: Container(
-                                child: Row(
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  children: [
-                                    GoogleMap(
-                                      mapType: MapType.hybrid,
-                                      initialCameraPosition: _kGooglePlex,
-                                      onMapCreated: (GoogleMapController controller) {
-                                        _controller.complete(controller);
-                                      },
-                                    ),
 
-                                  ],
-                                ),
-                              ),
-                            ),
 
                             // TextButton(
                             //   onPressed: () async {
