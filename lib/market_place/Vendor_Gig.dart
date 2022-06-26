@@ -1,4 +1,7 @@
+import 'dart:async';
+
 import 'package:flutter/scheduler.dart';
+import 'package:google_maps_flutter/google_maps_flutter.dart';
 
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
@@ -7,6 +10,8 @@ import '../home_page/CustomerHomePage.dart';
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+
+import 'Google_Maps.dart';
 
 class MarketPlaceWidget extends StatefulWidget {
   final String materialName,Email,Contact,HRate,imgaeURL;
@@ -18,6 +23,21 @@ class MarketPlaceWidget extends StatefulWidget {
 
 class _MarketPlaceWidgetState extends State<MarketPlaceWidget> {
   final scaffoldKey = GlobalKey<ScaffoldState>();
+  Completer<GoogleMapController> _controller = Completer();
+  static final CameraPosition _kGooglePlex = CameraPosition(
+    target: LatLng(37.42796133580664, -122.085749655962),
+    zoom: 14.4746,
+  );
+
+  static final CameraPosition _kLake = CameraPosition(
+      bearing: 192.8334901395799,
+      target: LatLng(37.43296265331129, -122.08832357078792),
+      tilt: 59.440717697143555,
+      zoom: 19.151926040649414);
+
+
+
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -336,22 +356,42 @@ class _MarketPlaceWidgetState extends State<MarketPlaceWidget> {
                               padding:
                                   EdgeInsetsDirectional.fromSTEB(0, 0, 0, 10),
                               child: Container(
-                                width: double.infinity,
-                                height: 150,
-                                constraints: BoxConstraints(
-                                  maxHeight: 150,
-                                ),
-                                decoration: BoxDecoration(
-                                  color: Color(0xFF212121),
-                                  image: DecorationImage(
-                                    fit: BoxFit.cover,
-                                    image: Image.asset(
-                                      'assets/images/GoogleMapTA.jpg',
-                                    ).image,
+                                  child: Row(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: [
+                                      FFButtonWidget(
+                                        onPressed: () async {
+                                          print("Han ho gaya");
+                                          await Navigator.pushReplacement(
+                                              context,
+                                          MaterialPageRoute(
+                                              builder: (context) => Google_Map()
+                                          ));
+                                        },
+                                        text: 'Map',
+                                        icon: Icon(
+                                          Icons.call_rounded,
+                                          size: 18,
+                                        ),
+                                        options: FFButtonOptions(
+                                          width: 150,
+                                          height: 40,
+                                          color: Color(0xFF212121),
+                                          textStyle: FlutterFlowTheme.subtitle2.override(
+                                            fontFamily: 'Poppins',
+                                            color: Color(0xFFF4BB03),
+                                          ),
+                                          borderSide: BorderSide(
+                                            color: Colors.transparent,
+                                            width: 1,
+                                          ),
+                                          borderRadius: 10,
+                                        ),
+                                      ),
+
+                                    ],
                                   ),
-                                  borderRadius: BorderRadius.circular(10),
                                 ),
-                              ),
                             ),
                           ],
                         ),
