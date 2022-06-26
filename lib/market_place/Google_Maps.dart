@@ -1,3 +1,4 @@
+
 import 'dart:async';
 
 import 'package:flutter/material.dart';
@@ -25,6 +26,7 @@ class Google_MapState extends State<Google_Map> {
   @override
   Widget build(BuildContext context) {
     return new Scaffold(
+      appBar: AppBar(leading: IconButton(icon: Icon(Icons.arrow_back),onPressed: ()=>Navigator.pop(context),) ,title: Text("Google Map"),),
       body: GoogleMap(
         mapType: MapType.hybrid,
         initialCameraPosition: _kGooglePlex,

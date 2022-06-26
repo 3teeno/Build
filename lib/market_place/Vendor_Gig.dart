@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:build_i_t/backend/backend.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 
@@ -14,8 +15,10 @@ import 'package:google_fonts/google_fonts.dart';
 import 'Google_Maps.dart';
 
 class MarketPlaceWidget extends StatefulWidget {
-  final String materialName,Email,Contact,HRate,imgaeURL;
-  const MarketPlaceWidget({Key key,@required this.materialName,@required this.imgaeURL,@required this.Email,@required this.Contact,@required this.HRate}) : super(key: key);
+  final String vendorID, Name,Email,Contact,hRate,imageUrl;
+
+  final double Lat,Lng;
+  const MarketPlaceWidget({Key key,@required this.vendorID ,@required this.Name,@required this.Email,@required this.Contact,@required this.hRate,@required this.imageUrl,this.Lat,this.Lng}) : super(key: key);
 
   @override
   _MarketPlaceWidgetState createState() => _MarketPlaceWidgetState();
@@ -24,10 +27,6 @@ class MarketPlaceWidget extends StatefulWidget {
 class _MarketPlaceWidgetState extends State<MarketPlaceWidget> {
   final scaffoldKey = GlobalKey<ScaffoldState>();
   Completer<GoogleMapController> _controller = Completer();
-  static final CameraPosition _kGooglePlex = CameraPosition(
-    target: LatLng(37.42796133580664, -122.085749655962),
-    zoom: 14.4746,
-  );
 
   static final CameraPosition _kLake = CameraPosition(
       bearing: 192.8334901395799,
@@ -40,6 +39,8 @@ class _MarketPlaceWidgetState extends State<MarketPlaceWidget> {
 
   @override
   Widget build(BuildContext context) {
+    DocumentReference doc=FirebaseFirestore.instance.doc("users/"+widget.vendorID);
+
     return Scaffold(
       key: scaffoldKey,
       appBar: AppBar(
@@ -86,7 +87,7 @@ class _MarketPlaceWidgetState extends State<MarketPlaceWidget> {
                                   padding:
                                       EdgeInsetsDirectional.fromSTEB(5, 0, 0, 0),
                                   child: Text(
-                                    widget.materialName,
+                                    widget.Name,
                                     //'John Ehlia',
                                     style: FlutterFlowTheme.bodyText1,
                                   ),
@@ -152,7 +153,7 @@ class _MarketPlaceWidgetState extends State<MarketPlaceWidget> {
                                   padding:
                                       EdgeInsetsDirectional.fromSTEB(5, 0, 0, 0),
                                   child: Text(
-                                    'PKR '+widget.HRate,
+                                    'PKR '+widget.hRate,
                                     style: FlutterFlowTheme.bodyText1,
                                   ),
                                 ),
@@ -172,7 +173,7 @@ class _MarketPlaceWidgetState extends State<MarketPlaceWidget> {
                                       image: DecorationImage(
                                         fit: BoxFit.cover,
                                         image: Image.network(
-                                          widget.imgaeURL,
+                                          widget.imageUrl,
 //                                          'https://nationaleconomyplumber.com/wp-content/uploads/2020/10/Different-Types-of-Plumbers.jpg',
                                         ).image,
                                       ),
@@ -365,7 +366,18 @@ class _MarketPlaceWidgetState extends State<MarketPlaceWidget> {
                                           await Navigator.pushReplacement(
                                               context,
                                           MaterialPageRoute(
-                                              builder: (context) => Google_Map()
+                                              builder: (context) => GoogleMap(
+                                                mapType: MapType.hybrid,
+                                                initialCameraPosition: CameraPosition(
+                                                    bearing: 192.8334901395799,
+                                                    target: LatLng(widget.Lat, widget.Lng),
+                                                    tilt: 59.440717697143555,
+                                                    zoom: 19.151926040649414),
+                                                onMapCreated: (GoogleMapController controller) {
+                                                  _controller.complete(controller);
+                                                },
+                                              ),
+
                                           ));
                                         },
                                         text: 'Map',

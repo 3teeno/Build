@@ -8,6 +8,7 @@ import 'package:build_i_t/all_service_providers/search_serviceProviders.dart';
 import 'package:build_i_t/home_page/CustomerHomePage.dart';
 import 'package:build_i_t/home_page/serviceProvidersCard.dart';
 import 'package:build_i_t/market_place/Google_Maps.dart';
+import 'package:build_i_t/market_place/Vendor_Gig.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:get/get.dart';
@@ -289,7 +290,41 @@ class _ProductPage extends State<ProductPage> {
                                     ),
                                   ),
                                 ]),
+                            InkWell(
+                              onTap: () async {
+                                DocumentSnapshot doc=await FirebaseFirestore.instance.doc("users/"+widget.Product.Product_Vendor_id).get();
+                                print("ma aa gaya");
+                                await Navigator.pushReplacement(
+                                    context,
+                                    MaterialPageRoute(
 
+                                        builder: (context) => MarketPlaceWidget(vendorID: doc.get("uid"), Name: doc.get("displayName"), Email: doc.get("email"), Contact: doc.get("phone"), hRate: "Yet to be decided", imageUrl: doc.get("photoUrl"),Lat: doc.get("Lat"),Lng:doc.get("Lng"))
+
+                                    ));
+                              },
+                              child: Container(
+                                decoration: BoxDecoration(
+                                    color: Color(0xFF123456),
+                                    borderRadius:
+                                    BorderRadius.all(Radius.circular(10))),
+                                width: MediaQuery.of(context).size.width * 0.42,
+                                height:
+                                MediaQuery.of(context).size.height * 0.06,
+                                child: Row(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    Text(
+                                      "Chal mela nu chalia",
+                                      style: TextStyle(
+                                          color: Color(
+                                            0xFFFFFFFF,
+                                          ),
+                                          fontWeight: FontWeight.bold),
+                                    )
+                                  ],
+                                ),
+                              ),
+                            ),
                             //Text("IDR Furqan na data dalna hai using Product ka object "+widget.Product.Product_Title),
                           ],
                         ),
@@ -381,38 +416,7 @@ class _ProductPage extends State<ProductPage> {
                                 ),
                               ),
                             ),
-                            InkWell(
-                              onTap: () async {
-                                await Navigator.pushReplacement(
-                                    context,
-                                    MaterialPageRoute(
-                                      builder: (context) => Google_Map()
 
-                                    ));
-                              },
-                              child: Container(
-                                decoration: BoxDecoration(
-                                    color: Color(0xFF123456),
-                                    borderRadius:
-                                    BorderRadius.all(Radius.circular(10))),
-                                width: MediaQuery.of(context).size.width * 0.42,
-                                height:
-                                MediaQuery.of(context).size.height * 0.06,
-                                child: Row(
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  children: [
-                                    Text(
-                                      "Chal mela nu chalia",
-                                      style: TextStyle(
-                                          color: Color(
-                                            0xFFFFFFFF,
-                                          ),
-                                          fontWeight: FontWeight.bold),
-                                    )
-                                  ],
-                                ),
-                              ),
-                            ),
 
 
                             // TextButton(

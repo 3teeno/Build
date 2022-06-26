@@ -80,6 +80,7 @@ class _RegistrationPageCopyWidgetState
     // print(emailAuth.validateOtp(
     //     recipientMail: EmailController.value.text,
     //     userOtp: otpControllet.value.text));
+    print(EmailController.value.text);
     if (emailAuth.validateOtp(
         recipientMail: EmailController.value.text,
         userOtp: otpControllet.value.text)) {
