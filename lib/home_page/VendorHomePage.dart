@@ -3,8 +3,12 @@ import 'package:build_i_t/MenuBar/menubar_vendor.dart';
 import 'package:build_i_t/Vendor_Services/Model_Services.dart';
 import 'package:build_i_t/all_market_places/Search_Material.dart';
 import 'package:build_i_t/all_service_providers/search_serviceProviders.dart';
+import 'package:build_i_t/auth/firebase_user_provider.dart';
+import 'package:build_i_t/backend/backend.dart';
 import 'package:build_i_t/home_page/serviceProvidersCard.dart';
 import 'package:build_i_t/search_page/search_page_widget.dart';
+import 'package:google_maps_flutter/google_maps_flutter.dart';
+import 'package:google_maps_place_picker_mb/google_maps_place_picker.dart';
 import '../Products/Active_Products.dart';
 import '../Products/Product_Firestore.dart';
 import '../Products/Update_Product_Page.dart';
@@ -190,7 +194,35 @@ class _VendorHomePageWidgetState extends State<VendorHomePageWidget> {
                           ]),
                     ),
                     //Feedback
-                    Container(
+                    InkWell(
+                      splashColor: Colors.green,
+                      onTap: () async {
+
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => PlacePicker(
+                              apiKey: "AIzaSyAzuV8gbm7i5pPKnyiNs4YQgIVTaPxNI2E",   // Put YOUR OWN KEY here.
+                              onPlacePicked: (result) {
+                                print("Latitude:"+result.geometry.location.lat.toString()+"Longitude: "+result.geometry.location.lng.toString());
+                                Map<String, dynamic> data = <String, dynamic>{
+                                  "Lat":result.geometry.location.lat,
+                                  "Lng":result.geometry.location.lng,
+                                };
+
+                                DocumentReference doc=FirebaseFirestore.instance.doc("users/"+currentUser.user.uid);
+                                doc.update(data);
+                                Navigator.of(context).pop();
+
+                              },
+                              initialPosition: getCurrentLocation(),
+                            ),
+                          ),
+                        );
+
+
+                      },
+                      child: Container(
                       padding: const EdgeInsets.all(8),
                       child: Column(
                           crossAxisAlignment: CrossAxisAlignment.center,
@@ -201,7 +233,7 @@ class _VendorHomePageWidgetState extends State<VendorHomePageWidget> {
                           ),
                             SizedBox(
                               height: 20,
-                            ) ,Text('Help', style: TextStyle(fontSize: 20, fontFamily: 'Poppins'))]),
+                            ) ,Text('Add Location', style: TextStyle(fontSize: 20, fontFamily: 'Poppins'))]),
                       decoration: BoxDecoration(
                           color: Colors.white,
                           borderRadius: BorderRadius.all(Radius.circular(8)),
@@ -213,7 +245,7 @@ class _VendorHomePageWidgetState extends State<VendorHomePageWidget> {
                               offset: Offset(0, 3),
                             ),
                           ]),
-                    ),
+                    ),)
                   ],
 
 
@@ -222,5 +254,9 @@ class _VendorHomePageWidgetState extends State<VendorHomePageWidget> {
             ),
       ),
     );
+  }
+
+  LatLng getCurrentLocation() {
+    return LatLng(31.601526082132683, 73.03575159999998);
   }
 }
