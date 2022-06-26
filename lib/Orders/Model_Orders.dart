@@ -40,7 +40,7 @@ class Order {
   static Future<void> add_order({String Order_Hash,String Order_Vendor_id, String Order_Title, String Order_Description, String Order_Duration, String Order_Price}) async
   {
     DocumentReference documentReferencer = _mainCollection.doc();
-    Map<String, dynamic> data = <String, dynamic>{
+    Map<String, dynamic> data = {
       "Order_Hash" : Order_Hash,
       "Order_Title": Order_Title,
       "Order_Description": Order_Description,

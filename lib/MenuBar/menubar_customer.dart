@@ -1,4 +1,5 @@
 import 'package:build_i_t/Orders/Order_Page_Customer.dart';
+import 'package:build_i_t/Payments/Payments_Page.dart';
 import 'package:build_i_t/Vendor_Services/ServicePage.dart';
 import 'package:build_i_t/auth/firebase_user_provider.dart';
 import 'package:build_i_t/chat_main/chat_main_widget.dart';
@@ -19,7 +20,9 @@ import 'package:provider/provider.dart';
 import 'package:build_i_t/Orders/Order_Firestore.dart';
 import 'package:firebase_core/firebase_core.dart';
 
+import '../GoogleMaps/MapsFirst.dart';
 import '../Orders/Model_Orders.dart';
+import '../Profiles/ProfilePage.dart';
 
 
 
@@ -116,7 +119,7 @@ class _Customer_menuBarState extends State<Customer_menuBar> {
                         await Navigator.push(
                           context,
                           MaterialPageRoute(
-                            builder: (context) => HomePageWidget(),
+                            builder: (context) => ProfilePageWidget(),
                           ),
                         );
                       },
@@ -248,7 +251,98 @@ class _Customer_menuBarState extends State<Customer_menuBar> {
                       ),
                     ),
                   ),
-                  // 
+                  Padding(
+                    padding: EdgeInsetsDirectional.fromSTEB(10, 0, 10, 5),
+                    child: InkWell(
+                      onTap: () async {
+                        print("Order button navigation");
+                        await Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            // builder: (context) => ShowMaps(), //official
+                          ),
+                        );
+                      },
+                      child: Container(
+                        width: MediaQuery.of(context).size.width,
+                        height: 50,
+                        decoration: BoxDecoration(
+                          color: Color(0xFF115ba6),
+                          borderRadius: BorderRadius.circular(5),
+                        ),
+                        child: Padding(
+                          padding: EdgeInsetsDirectional.fromSTEB(10, 0, 10, 0),
+                          child: Row(
+                            mainAxisSize: MainAxisSize.max,
+                            children: [
+                              Icon(
+                                Icons.map_outlined,
+                                color: Colors.white,
+                                size: 24,
+                              ),
+                              Padding(
+                                padding:
+                                EdgeInsetsDirectional.fromSTEB(10, 0, 0, 0),
+                                child: Text(
+                                  'Maps',
+                                  style: FlutterFlowTheme.bodyText1.override(
+                                    fontFamily: 'Poppins',
+                                    color: Colors.white,
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                  Padding(
+                    padding: EdgeInsetsDirectional.fromSTEB(10, 0, 10, 5),
+                    child: InkWell(
+                      onTap: () async {
+                        print("Order button navigation");
+                        await Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => Payments_Page(), //official
+                          ),
+                        );
+                      },
+                      child: Container(
+                        width: MediaQuery.of(context).size.width,
+                        height: 50,
+                        decoration: BoxDecoration(
+                          color: Color(0xFF115ba6),
+                          borderRadius: BorderRadius.circular(5),
+                        ),
+                        child: Padding(
+                          padding: EdgeInsetsDirectional.fromSTEB(10, 0, 10, 0),
+                          child: Row(
+                            mainAxisSize: MainAxisSize.max,
+                            children: [
+                              Icon(
+                                Icons.paypal_outlined,
+                                color: Colors.white,
+                                size: 24,
+                              ),
+                              Padding(
+                                padding:
+                                EdgeInsetsDirectional.fromSTEB(10, 0, 0, 0),
+                                child: Text(
+                                  'Pay Now',
+                                  style: FlutterFlowTheme.bodyText1.override(
+                                    fontFamily: 'Poppins',
+                                    color: Colors.white,
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
                   Padding(
                     padding: EdgeInsetsDirectional.fromSTEB(10, 0, 10, 5),
                     child: Container(
