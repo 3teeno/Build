@@ -22,7 +22,6 @@ import 'package:flutter/material.dart';
 import 'package:build_i_t/data.dart';
 import 'dart:math';
 
-import '../market_place/Vendor_Gig.dart';
 import 'Model_Products.dart';
 
 class ProductPage extends StatefulWidget {
@@ -36,6 +35,18 @@ class _ProductPage extends State<ProductPage> {
   void initState() {
     super.initState();
   }
+
+  Completer<GoogleMapController> _controller = Completer();
+  static final CameraPosition _kGooglePlex = CameraPosition(
+    target: LatLng(37.42796133580664, -122.085749655962),
+    zoom: 14.4746,
+  );
+
+  static final CameraPosition _kLake = CameraPosition(
+      bearing: 192.8334901395799,
+      target: LatLng(37.43296265331129, -122.08832357078792),
+      tilt: 59.440717697143555,
+      zoom: 19.151926040649414);
 
 
   int x = 0;
@@ -369,25 +380,23 @@ class _ProductPage extends State<ProductPage> {
                                 ),
                               ),
                             ),
+                            InkWell(
+                              child: Container(
+                                child: Row(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    GoogleMap(
+                                      mapType: MapType.hybrid,
+                                      initialCameraPosition: _kGooglePlex,
+                                      onMapCreated: (GoogleMapController controller) {
+                                        _controller.complete(controller);
+                                      },
+                                    ),
 
-                            // InkWell(
-                            //   child: Container(
-                            //     child: Row(
-                            //       mainAxisAlignment: MainAxisAlignment.center,
-                            //       children: [
-                            //         GoogleMap(
-                            //           mapType: MapType.hybrid,
-                            //           initialCameraPosition: _kLake,
-                            //           onMapCreated: (GoogleMapController controller) {
-                            //             _controller.complete(controller);
-                            //           },
-                            //         ),
-                            //
-                            //
-                            //       ],
-                            //     ),
-                            //   ),
-                            // ),
+                                  ],
+                                ),
+                              ),
+                            ),
 
                             // TextButton(
                             //   onPressed: () async {
@@ -407,46 +416,7 @@ class _ProductPage extends State<ProductPage> {
                           ],
 
                         ),
-                      ),
-                      InkWell(
-                        onTap: () async {
-
-                          await Navigator.pushReplacement(
-                              context,
-                              MaterialPageRoute(
-                                builder: (context) => MarketPlaceWidget(
-                                  materialName: "Hello world",
-                                  Email: "mateencheema3@gmail.com",
-                                  HRate: "5star",
-                                  Contact: "03015207003",
-                                  imgaeURL: "https://images.ctfassets.net/cjwb7umaxoxv/713rPUyTZ0bvn5YcwjLiN0/0013ddf191cba9084aa06c86d561ab01/1_Sqb5VpjIx7EcJkngTRSNFA__1_.png",
-                                ),
-                              ));
-                        },
-                        child: Container(
-                          decoration: BoxDecoration(
-                              color: Color(0xFF123456),
-                              borderRadius:
-                              BorderRadius.all(Radius.circular(10))),
-                          width: MediaQuery.of(context).size.width * 0.42,
-                          height:
-                          MediaQuery.of(context).size.height * 0.06,
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Text(
-                                "Chal mela nu chalia",
-                                style: TextStyle(
-                                    color: Color(
-                                      0xFFFFFFFF,
-                                    ),
-                                    fontWeight: FontWeight.bold),
-                              )
-                            ],
-                          ),
-                        ),
-                      ),
-
+                      )
                     ]),
               ),
             ),
