@@ -31,7 +31,8 @@ class _Manage_UsersState extends State<Manage_Users> {
         users_name: mydocs[i]['users_name'],
         users_email: mydocs[i]['users_email'],
         users_role: mydocs[i]['users_role'],
-        users_phone: mydocs[i]['users_phone'],);
+        users_phone: mydocs[i]['users_phone'],
+        users_status: mydocs[i]['users_status']);
       users.add(temp);
     }
   }
@@ -118,7 +119,8 @@ class _Manage_UsersState extends State<Manage_Users> {
                                       TextButton(
                                         onPressed: () =>
                                         {
-                                          print("User Confirmed Button")},
+                                          Users.deactivate_vendors(my_users.users_id),
+                                          print("Vendor Deactivated")},
                                         child: Text("Deactivate"),
                                         style: TextButton.styleFrom(
                                             primary: Colors.white,
@@ -132,6 +134,14 @@ class _Manage_UsersState extends State<Manage_Users> {
                               ))
                     },
                   ),
+                  Text(
+                    (my_users.users_status==null?'Loading':my_users.users_status),
+                    style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                      fontSize: 20.0,
+                      color: Colors.green,
+                    ),
+                  ),
                 ],
               ),
             ],
@@ -140,7 +150,6 @@ class _Manage_UsersState extends State<Manage_Users> {
       ),
     );
   }
-
   @override
   Widget build(BuildContext context) {
     if(mydocs.isNotEmpty)

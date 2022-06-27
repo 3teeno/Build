@@ -1,9 +1,14 @@
 import 'package:build_i_t/Admin/Manage_Orders.dart';
 import 'package:build_i_t/home_page/homePageHeader_Admin.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import '../Admin/Manage_Payments.dart';
 import '../Admin/Manage_Users.dart';
 import 'package:flutter/material.dart';
 import 'dart:math';
+
+import '../auth/firebase_user_provider.dart';
+import '../flutter_flow/chat/index.dart';
+import '../login_page/login_page_widget.dart';
 
 class AdminHomePageWidget extends StatefulWidget {
   const AdminHomePageWidget({Key key}) : super(key: key);
@@ -199,7 +204,23 @@ class _AdminHomePageWidgetState extends State<AdminHomePageWidget> {
                                 offset: Offset(0, 3),
                               ),
                             ]),
-                      ),)
+                      ),),
+                    ElevatedButton(onPressed: () async {
+                      await FirebaseAuth.instance.signOut();
+                      currentUser=null;
+                      // final provider = Provider.of<GoogleSignInProvider>(context,listen: false);
+                      // await provider.logout();
+                      await Navigator.push(
+                        context,
+                        PageTransition(
+                          type: PageTransitionType.rightToLeft,
+                          duration: Duration(milliseconds: 300),
+                          reverseDuration: Duration(milliseconds: 300),
+                          child: LoginPageWidget(),
+                        ),
+                      );
+                    },
+                        child: Text("Logout"))
                   ],
 
 

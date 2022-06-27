@@ -213,23 +213,8 @@ class _Delivered_Orders_PageState extends State<Delivered_Orders_Page> {
                                       width: 20,
                                     ),
                                     TextButton(
-                                      onPressed: () => () {
-                                        Map<String, String> data;
-                                        //code to send feedback to firebase
-                                        print("Order Confirmed Button");
-                                        print(feedbackController.value.text);
-                                        data = {
-                                          "feedback":
-                                              feedbackController.value.text
-                                        };
-                                        DocumentReference doc =
-                                            FirebaseFirestore.instance.doc(
-                                                "orders/" + myorder.Order_ID);
-                                        doc.update(data);
-                                        scaffoldKey.currentState.showSnackBar(
-                                            SnackBar(
-                                                content: Text(
-                                                    "Feedback Submitted.")));
+                                      onPressed: () => {
+                                        print("Feedback Submitted"),
                                       },
                                       child: Text("Submit"),
                                       style: TextButton.styleFrom(
