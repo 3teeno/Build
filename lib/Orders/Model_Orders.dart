@@ -143,7 +143,6 @@ class Order {
     }
   }
 
-
   static Future<List> fetch_vendor_order(String Vendor_ID) async
   {
     QuerySnapshot querySnapshot;
@@ -175,7 +174,6 @@ class Order {
       print(e);
     }
   }
-
 
   static Future<List> fetch_completed_order() async
   {

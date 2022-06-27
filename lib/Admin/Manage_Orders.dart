@@ -109,31 +109,34 @@ class _Manage_OrdersState extends State<Manage_Orders> {
                             context: context,
                             builder: (_) =>
                                 AlertDialog(
-                                  title: Text('Confirm Order',style: TextStyle(color: Color(0xFF115ba6)),),
+                                  title: Text('Order Status',style: TextStyle(color: Color(0xFF115ba6)),),
                                   content:
-                                  Text('Order is Active',textAlign: TextAlign.start,),
+                                  Text('Order is '+myorder.Order_Status+'\nOrder Hash is '+myorder.Order_Hash,textAlign: TextAlign.start,),
                                   actions: [
                                     Row(
                                       mainAxisAlignment:
                                       MainAxisAlignment.end,
                                       children: [
-                                        TextButton(
-                                          onPressed: () =>
-                                          {
-                                            print("Cancel Dialog Button"),
-                                            Navigator.pop(context)
-                                          },
-                                          child: Text("Cancel"),
-                                          style: TextButton.styleFrom(
-                                              primary: Colors.grey,
-                                              // backgroundColor: Colors.grey[200],
-                                              minimumSize: Size(30, 30)),
-                                        ),
+                                        // TextButton(
+                                        //   onPressed: () =>
+                                        //   {
+                                        //     print("Okay"),
+                                        //     Navigator.pop(context)
+                                        //   },
+                                        //   child: Text(""),
+                                        //   style: TextButton.styleFrom(
+                                        //       primary: Colors.grey,
+                                        //       // backgroundColor: Colors.grey[200],
+                                        //       minimumSize: Size(30, 30)),
+                                        // ),
                                         SizedBox(width: 20,),
                                         TextButton(
                                           onPressed: () =>
-                                          {print("Order Confirmed Button")},
-                                          child: Text("Confirm"),
+                                          {
+                                            Navigator.pop(context),
+                                            print("Order Confirmed Button")
+                                          },
+                                          child: Text("Okay"),
                                           style: TextButton.styleFrom(
                                               primary: Colors.white,
                                               backgroundColor: Color(0xFF115ba6),
