@@ -143,6 +143,40 @@ class Order {
     }
   }
 
+  static Future<List> fetch_pending_vendor_order() async
+  {
+    QuerySnapshot querySnapshot;
+    List docs=[];
+    print("Fetching From Firestore");
+    try {
+      Query query = await _mainCollection.where('Order_Vendor_id', isEqualTo: currentUser.user.uid).where('Order_Status',isEqualTo: 'Pending');
+      await query.get().then((querySnapshot) =>
+      {
+        querySnapshot.docs.toList().forEach((doc) {
+          Map my_orders = {
+            "Order_ID": doc.id,
+            "Order_Hash": doc['Order_Hash'],
+            "Order_Title": doc['Order_Title'],
+            "Order_Description": doc['Order_Description'],
+            "Order_Duration": doc['Order_Duration'],
+            "Order_Price": doc['Order_Price'],
+            "Order_Status": doc['Order_Status'],
+            "Order_Customer_id": doc['Order_Customer_id'],
+            "Order_Vendor_id": doc['Order_Vendor_id'],
+          };
+          docs.add(my_orders);
+        })
+      });
+      return docs;
+    }
+    catch (e) {
+      print(e);
+    }
+  }
+
+
+
+
   static Future<List> fetch_vendor_order(String Vendor_ID) async
   {
     QuerySnapshot querySnapshot;

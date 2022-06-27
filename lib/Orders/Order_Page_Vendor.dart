@@ -1,4 +1,5 @@
 import 'package:build_i_t/Orders/Pending_Order.dart';
+import 'package:build_i_t/Orders/Pending_Vendor_Order.dart';
 import 'package:flutter/material.dart';
 
 import 'Active_Orders_Customer.dart';
@@ -82,7 +83,7 @@ class _Order_Page_VendorState extends State<Order_Page_Vendor> {
                       await Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (context) => Pending_Orders(),
+                          builder: (context) => Pending_Vendor_Order(),
                         ),
                       );
                     },
