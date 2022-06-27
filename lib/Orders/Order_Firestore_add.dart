@@ -1,6 +1,7 @@
 import 'dart:math';
 
 import 'package:build_i_t/Orders/Order_Page_Customer.dart';
+import 'package:build_i_t/Payments/Payments_Page.dart';
 import 'package:build_i_t/home_page/CustomerHomePage.dart';
 import 'package:flutter/material.dart';
 import 'Model_Orders.dart';
@@ -367,11 +368,11 @@ class _add_OrderFireBaseState extends State<add_OrderFireBase> {
                     scaffoldKey.currentState.showSnackBar(SnackBar(
                         content: Text("Please fill all fields first!")));
                   } else {
-                    showDialog(
-                      context: context,
-                      builder: (BuildContext context) =>
-                          _buildPopupDialog(context),
-                    );
+                    // showDialog(
+                    //   context: context,
+                    //   builder: (BuildContext context) =>
+                    //       _buildPopupDialog(context),
+                    // );
                     if (int.parse(_DurationController.text) > 0 &&
                         int.parse(_DurationController.text) <= 10) {
                       random_hash = random.nextInt(9999) + 999;
@@ -389,15 +390,7 @@ class _add_OrderFireBaseState extends State<add_OrderFireBase> {
 
                       );
                       print("Add Orders Pressed");
-
-                      scaffoldKey.currentState.showSnackBar(SnackBar(
-                        content: Text("Order Added Successfully!"),
-                        backgroundColor: Colors.lightGreen,
-                      ));
-                      _DescriptionController.clear();
-                      _DurationController.clear();
-                      _PriceController.clear();
-                      _TitleController.clear();
+                      Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=>Payments_Page(price: _PriceController.value.text,)));
                     } else {
                       _DurationController.clear();
                       scaffoldKey.currentState.showSnackBar(SnackBar(

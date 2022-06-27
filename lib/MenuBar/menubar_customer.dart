@@ -253,52 +253,52 @@ class _Customer_menuBarState extends State<Customer_menuBar> {
                       ),
                     ),
                   ),
-                  Padding(
-                    padding: EdgeInsetsDirectional.fromSTEB(10, 0, 10, 5),
-                    child: InkWell(
-                      onTap: () async {
-                        print("Order button navigation");
-                        await Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => Payments_Page(), //official
-                          ),
-                        );
-                      },
-                      child: Container(
-                        width: MediaQuery.of(context).size.width,
-                        height: 50,
-                        decoration: BoxDecoration(
-                          color: Color(0xFF115ba6),
-                          borderRadius: BorderRadius.circular(5),
-                        ),
-                        child: Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(10, 0, 10, 0),
-                          child: Row(
-                            mainAxisSize: MainAxisSize.max,
-                            children: [
-                              Icon(
-                                Icons.paypal_outlined,
-                                color: Colors.white,
-                                size: 24,
-                              ),
-                              Padding(
-                                padding:
-                                EdgeInsetsDirectional.fromSTEB(10, 0, 0, 0),
-                                child: Text(
-                                  'Pay Now',
-                                  style: FlutterFlowTheme.bodyText1.override(
-                                    fontFamily: 'Poppins',
-                                    color: Colors.white,
-                                  ),
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                      ),
-                    ),
-                  ),
+                  // Padding(
+                  //   padding: EdgeInsetsDirectional.fromSTEB(10, 0, 10, 5),
+                  //   child: InkWell(
+                  //     onTap: () async {
+                  //       print("Order button navigation");
+                  //       await Navigator.push(
+                  //         context,
+                  //         MaterialPageRoute(
+                  //           builder: (context) => Payments_Page(), //official
+                  //         ),
+                  //       );
+                  //     },
+                  //     child: Container(
+                  //       width: MediaQuery.of(context).size.width,
+                  //       height: 50,
+                  //       decoration: BoxDecoration(
+                  //         color: Color(0xFF115ba6),
+                  //         borderRadius: BorderRadius.circular(5),
+                  //       ),
+                  //       child: Padding(
+                  //         padding: EdgeInsetsDirectional.fromSTEB(10, 0, 10, 0),
+                  //         child: Row(
+                  //           mainAxisSize: MainAxisSize.max,
+                  //           children: [
+                  //             Icon(
+                  //               Icons.paypal_outlined,
+                  //               color: Colors.white,
+                  //               size: 24,
+                  //             ),
+                  //             Padding(
+                  //               padding:
+                  //               EdgeInsetsDirectional.fromSTEB(10, 0, 0, 0),
+                  //               child: Text(
+                  //                 'Pay Now',
+                  //                 style: FlutterFlowTheme.bodyText1.override(
+                  //                   fontFamily: 'Poppins',
+                  //                   color: Colors.white,
+                  //                 ),
+                  //               ),
+                  //             ),
+                  //           ],
+                  //         ),
+                  //       ),
+                  //     ),
+                  //   ),
+                  // ),
                   Padding(
                     padding: EdgeInsetsDirectional.fromSTEB(10, 0, 10, 5),
                     child: Container(
