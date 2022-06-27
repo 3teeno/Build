@@ -2,7 +2,6 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import '../Orders/Model_Orders.dart';
 import '../Orders/Order_Firestore.dart';
-import '../auth/firebase_user_provider.dart';
 
 final FirebaseAuth auth = FirebaseAuth.instance;
 final User user = auth.currentUser;
@@ -99,14 +98,14 @@ class _Manage_OrdersState extends State<Manage_Orders> {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: <Widget>[
                     TextButton(
-                      child: Text("Active"),
+                      child: Text(myorder.Order_Status),
                       style: TextButton.styleFrom(
                         primary: Color(0xFF115ba6),
                         backgroundColor: Color(0xFFF2F2F2),
                       ),
                       onPressed: () =>
                       {
-                        print("Active Status Button Clicked"),
+                        print("Status Button Clicked"),
                         showDialog(
                             context: context,
                             builder: (_) =>
