@@ -1,9 +1,12 @@
+
+
 import 'package:build_i_t/Orders/Order_Firestore_add.dart';
 import 'package:build_i_t/Payments/Payments_Controller.dart';
 import 'package:build_i_t/flutter_flow/chat/index.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_stripe/flutter_stripe.dart';
 import 'package:get/get.dart';
+import 'dart:async';
 final scaffoldKey = GlobalKey<ScaffoldState>();
 final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 void mainx() async
@@ -21,7 +24,7 @@ class Payments_Page extends StatefulWidget {
 }
 
 class _Payments_PageState extends State<Payments_Page> {
-
+  bool payCheck=false;
   @override
   Widget build(BuildContext context) {
     mainx();
@@ -60,13 +63,23 @@ class _Payments_PageState extends State<Payments_Page> {
               children:[
                 Text("PKR"),
                 SizedBox(height: 15,),
-                ElevatedButton(
+                payCheck?CircularProgressIndicator(): ElevatedButton(
                   style: ElevatedButton.styleFrom(textStyle: TextStyle(color: Colors.amber),minimumSize: Size(250, 40)),
                   onPressed: ()  async {
-                    scaffoldKey.currentState.showSnackBar(SnackBar(
-                      content: Text("Order Added Successfully!"),
-                      backgroundColor: Colors.lightGreen,
-                    ));
+                    setState(() {
+                      payCheck=true;
+                    });
+                    Timer(Duration(seconds: 3), () {
+                      setState(() {
+                        payCheck=false;
+                      });
+                      scaffoldKey.currentState.showSnackBar(SnackBar(
+                        content: Text("Order Added Successfully!"),
+                        backgroundColor: Colors.lightGreen,
+                      ));
+
+                    });
+
                     //creating payment method
                     // await paymentController.makePayment(amount:'50',currency: 'USD');
                     final paymentMethod = await Stripe.instance.createPaymentMethod(PaymentMethodParams.card());
