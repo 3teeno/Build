@@ -196,7 +196,7 @@ class _AdminHomePageWidgetState extends State<AdminHomePageWidget> {
                             ),
                               SizedBox(
                                 height: 20,
-                              ) ,Text('Manage Payment', style: TextStyle(fontSize: 20, fontFamily: 'Poppins'))]),
+                              ) ,Text('Support', style: TextStyle(fontSize: 20, fontFamily: 'Poppins'))]),
                         decoration: BoxDecoration(
                             color: Colors.white,
                             borderRadius: BorderRadius.all(Radius.circular(8)),

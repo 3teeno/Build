@@ -1,29 +1,16 @@
 import 'package:build_i_t/MenuBar/menubar_customer.dart';
 import 'package:build_i_t/MenuBar/menubar_vendor.dart';
 import 'package:build_i_t/Vendor_Services/Model_Services.dart';
-import 'package:build_i_t/all_market_places/Search_Material.dart';
-import 'package:build_i_t/all_service_providers/search_serviceProviders.dart';
 import 'package:build_i_t/auth/firebase_user_provider.dart';
 import 'package:build_i_t/backend/backend.dart';
-import 'package:build_i_t/home_page/serviceProvidersCard.dart';
-import 'package:build_i_t/search_page/search_page_widget.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:google_maps_place_picker_mb/google_maps_place_picker.dart';
 import '../Products/Active_Products.dart';
 import '../Products/Product_Firestore.dart';
-import '../Products/Update_Product_Page.dart';
-import '../flutter_flow/flutter_flow_theme.dart';
-import '../flutter_flow/flutter_flow_util.dart';
-import '../flutter_flow/flutter_flow_widgets.dart';
-import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_rating_bar/flutter_rating_bar.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:lottie/lottie.dart';
+
 import 'package:build_i_t/data.dart';
-import 'homepage_header.dart';
 import 'homepage_header_vendor.dart';
-import 'marketPlaceCard.dart';
 import 'dart:math';
 
 class VendorHomePageWidget extends StatefulWidget {

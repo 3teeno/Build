@@ -1,23 +1,22 @@
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import '../Orders/Model_Orders.dart';
-import '../Orders/Order_Firestore.dart';
+import '../auth/firebase_user_provider.dart';
+import 'Model_Orders.dart';
+import 'Order_Firestore.dart';
 
-final FirebaseAuth auth = FirebaseAuth.instance;
-final User user = auth.currentUser;
-
-class Manage_Orders extends StatefulWidget {
-  const Manage_Orders({Key key}) : super(key: key);
+class Pending_Orders extends StatefulWidget {
+  const Pending_Orders({Key key}) : super(key: key);
 
   @override
-  State<Manage_Orders> createState() => _Manage_OrdersState();
+  State<Pending_Orders> createState() => _Pending_OrdersState();
 }
 
-class _Manage_OrdersState extends State<Manage_Orders> {
+class _Pending_OrdersState extends State<Pending_Orders> {
   List<Order> orders = [];
   List mydocs = [];
   Future<void> initialise() async {
-    await Order.fetch_order_admin().then ((value) => setState((){ mydocs=value; } ) );
+    await Order.fetch_pending_order().then ((value) => setState((){ mydocs=value; } ) );
+    print(currentUser.user.uid);
+    print(user.uid);
     for (var i = 0; i < mydocs.length; i++) {
       Order temp = Order(
         Order_Hash: mydocs[i]['Order_Hash'],
@@ -33,7 +32,7 @@ class _Manage_OrdersState extends State<Manage_Orders> {
     print("Init is called ");
     initialise();
   }
-  Widget Order_Card_Template_Active_Customer(myorder) {
+  Widget Order_Card_Template_Pending_Customer(myorder) {
     return Padding(
       padding: EdgeInsets.symmetric(vertical: 5),
       child: InkWell(
@@ -105,14 +104,14 @@ class _Manage_OrdersState extends State<Manage_Orders> {
                       ),
                       onPressed: () =>
                       {
-                        print("Status Button Clicked"),
+                        print("Active Status Button Clicked"),
                         showDialog(
                             context: context,
                             builder: (_) =>
                                 AlertDialog(
                                   title: Text('Confirm Order',style: TextStyle(color: Color(0xFF115ba6)),),
                                   content:
-                                  Text('Order is Active',textAlign: TextAlign.start,),
+                                  Text('''If you have completed the work as per clients requirements. You may deliver''',textAlign: TextAlign.start,),
                                   actions: [
                                     Row(
                                       mainAxisAlignment:
@@ -173,13 +172,13 @@ class _Manage_OrdersState extends State<Manage_Orders> {
           debugShowCheckedModeBanner: false,
           home: Scaffold(
               appBar: AppBar(
-                title: Text("Manage Orders"),
+                title: Text("Pending Orders"),
                 leading: IconButton(icon:Icon(Icons.arrow_back),onPressed: ()=>Navigator.pop(context) ,),
                 backgroundColor: Color(0xFF115ba6),
               ),
               body: SingleChildScrollView(
                 child: Column(
-                  children: orders.map((myorder) => Order_Card_Template_Active_Customer(myorder)).toList(),
+                  children: orders.map((myorder) => Order_Card_Template_Pending_Customer(myorder)).toList(),
                 ),
               )
           )
@@ -190,7 +189,7 @@ class _Manage_OrdersState extends State<Manage_Orders> {
           debugShowCheckedModeBanner: false,
           home: Scaffold(
             appBar: AppBar(
-              title: Text("Manage Orders"),
+              title: Text('Pending'),
               leading: IconButton(icon:Icon(Icons.arrow_back),onPressed: ()=>Navigator.pop(context) ,),
               backgroundColor: Color(0xFF115ba6),
             ),
@@ -200,7 +199,7 @@ class _Manage_OrdersState extends State<Manage_Orders> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
                   Text(
-                    "No Active Orders Yet",
+                    "No Pending Orders Yet",
                     style: TextStyle(
                       fontFamily:"Poppins",
                       fontWeight: FontWeight.normal,
@@ -215,5 +214,3 @@ class _Manage_OrdersState extends State<Manage_Orders> {
     }
   }
 }
-
-

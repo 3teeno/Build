@@ -1,6 +1,6 @@
 import 'package:build_i_t/Orders/Delivered_Orders.dart';
 import 'package:build_i_t/Orders/Order_Firestore_add.dart';
-import 'package:build_i_t/Orders/pendingOrdersPage.dart';
+import 'package:build_i_t/Orders/Pending_Order.dart';
 import 'package:build_i_t/home_page/CustomerHomePage.dart';
 import 'package:build_i_t/main.dart';
 import 'package:flutter/cupertino.dart';
@@ -92,13 +92,13 @@ class _Order_Page_CustomerState extends State<Order_Page_Customer> {
                 ),
               ),
               //Pending Orders
-              InkWell(
+                InkWell(
                 splashColor: Colors.green,
                 onTap: () async {
                   await Navigator.push(
                     context,
                     MaterialPageRoute(
-                      builder: (context) => pendingOrdersPage(),
+                      builder: (context) => Pending_Orders(),
                     ),
                   );
                 },
