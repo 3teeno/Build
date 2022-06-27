@@ -16,7 +16,9 @@ class _Delivered_Orders_PageState extends State<Delivered_Orders_Page> {
   List<Order> orders = [];
   List mydocs = [];
   Future<void> initialise() async {
-    await Order.fetch_completed_order().then ((value) => setState((){ mydocs=value; } ) );
+    await Order.fetch_completed_order().then((value) => setState(() {
+          mydocs = value;
+        }));
     for (var i = 0; i < mydocs.length; i++) {
       Order temp = Order(
         Order_Hash: mydocs[i]['Order_Hash'],
@@ -30,10 +32,12 @@ class _Delivered_Orders_PageState extends State<Delivered_Orders_Page> {
       orders.add(temp);
     }
   }
+
   Future<void> initState() {
     print("Init is called ");
     initialise();
   }
+
   Widget Feedback_Popup_Template(myorder) {
     return Card(
       margin: EdgeInsets.fromLTRB(15.0, 10.0, 15.0, 0),
@@ -149,12 +153,14 @@ class _Delivered_Orders_PageState extends State<Delivered_Orders_Page> {
                                 decoration: InputDecoration(
                                   isDense: true,
                                   labelText: 'Feedback',
-                                  labelStyle: FlutterFlowTheme.bodyText1.override(
+                                  labelStyle:
+                                      FlutterFlowTheme.bodyText1.override(
                                     fontFamily: 'Poppins',
                                     color: Color(0xFF282828),
                                     lineHeight: 2,
                                   ),
-                                  hintStyle: FlutterFlowTheme.bodyText1.override(
+                                  hintStyle:
+                                      FlutterFlowTheme.bodyText1.override(
                                     fontFamily: 'Poppins',
                                     color: Color(0xFF282828),
                                     lineHeight: 2,
@@ -207,17 +213,24 @@ class _Delivered_Orders_PageState extends State<Delivered_Orders_Page> {
                                       width: 20,
                                     ),
                                     TextButton(
-                                      onPressed: () => ( )
-                                          {
-                                            Map<String,String> data;
-                                            //code to send feedback to firebase
-                                            print("Order Confirmed Button");
-                                            print(feedbackController.value.text);
-                                            data={"feedback": feedbackController.value.text};
-                                            DocumentReference doc=FirebaseFirestore.instance.doc("orders/"+myorder.Order_ID);
-                                            doc.update(data);
-scaffoldKey.currentState.showSnackBar(SnackBar(content: Text("Feedback Submitted.")));
-                                          },
+                                      onPressed: () => () {
+                                        Map<String, String> data;
+                                        //code to send feedback to firebase
+                                        print("Order Confirmed Button");
+                                        print(feedbackController.value.text);
+                                        data = {
+                                          "feedback":
+                                              feedbackController.value.text
+                                        };
+                                        DocumentReference doc =
+                                            FirebaseFirestore.instance.doc(
+                                                "orders/" + myorder.Order_ID);
+                                        doc.update(data);
+                                        scaffoldKey.currentState.showSnackBar(
+                                            SnackBar(
+                                                content: Text(
+                                                    "Feedback Submitted.")));
+                                      },
                                       child: Text("Submit"),
                                       style: TextButton.styleFrom(
                                           primary: Colors.white,
