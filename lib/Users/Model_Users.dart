@@ -74,4 +74,22 @@ class Users {
           .whenComplete(() => print("Updated data to the database"))
           .catchError((e) => print(e));
     }
+  static Future<List> reactivate_vendors(String users_id) async {
+    // QuerySnapshot querySnapshot = await _mainCollection.get();
+    // Query query = await _mainCollection.where('uid', isEqualTo: users_id);
+    // query.get().then((querySnapshot) =>
+    // { querySnapshot.docs.forEach((element) {
+    //   print(element.reference.id);
+    // })
+    // });
+    DocumentReference documentReferencer = _mainCollection.doc(users_id);
+    Map<String, dynamic> data = <String, dynamic>{
+      "userStatus": 'Activated',
+    };
+    await documentReferencer
+        .update(data)
+        .whenComplete(() => print("Updated data to the database"))
+        .catchError((e) => print(e));
+  }
+
 }

@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -96,7 +98,7 @@ class _Manage_UsersState extends State<Manage_Users> {
                           context: context,
                           builder: (_) =>
                               AlertDialog(
-                                title: Text('Delete?',style: TextStyle(color: Color(0xFF115ba6)),),
+                                title: Text('User Status?',style: TextStyle(color: Color(0xFF115ba6)),),
                                 content:
                                 Text(my_users.users_id,textAlign: TextAlign.start,),
                                 actions: [
@@ -119,6 +121,7 @@ class _Manage_UsersState extends State<Manage_Users> {
                                       TextButton(
                                         onPressed: () =>
                                         {
+                                          //Firestore function called
                                           Users.deactivate_vendors(my_users.users_id),
                                           print("Vendor Deactivated")},
                                         child: Text("Deactivate"),
@@ -134,12 +137,59 @@ class _Manage_UsersState extends State<Manage_Users> {
                               ))
                     },
                   ),
-                  Text(
-                    (my_users.users_status==null?'Loading':my_users.users_status),
-                    style: TextStyle(
-                      fontWeight: FontWeight.bold,
-                      fontSize: 20.0,
-                      color: Colors.green,
+                  InkWell(
+                    onTap: ()
+                    {
+                      showDialog(
+                          context: context,
+                          builder: (_) =>
+                          AlertDialog(
+                              title: Text('User Status?',style: TextStyle(color: Color(0xFF115ba6)),),
+                              content:
+                              Text(my_users.users_id,textAlign: TextAlign.start,),
+                              actions: [
+                                Row(
+                                  mainAxisAlignment:
+                                  MainAxisAlignment.end,
+                                  children: [
+                                    TextButton(
+                                      onPressed: () =>
+                                      {
+                                        print("Cancel Dialog Button"),
+                                        Navigator.pop(context)
+                                      },
+                                      child: Text("Cancel"),
+                                      style: TextButton.styleFrom(
+                                          primary: Colors.grey,
+                                          minimumSize: Size(30, 30)),
+                                    ),
+                                    SizedBox(width: 20,),
+                                    TextButton(
+                                      onPressed: () =>
+                                      {
+                                        //Firestore function called
+                                        Users.reactivate_vendors(my_users.users_id),
+                                        print("Vendor ReActivated")},
+                                      child: Text("Re-Activate"),
+                                      style: TextButton.styleFrom(
+                                          primary: Colors.white,
+                                          backgroundColor: Color(0xFF115ba6),
+                                          minimumSize: Size(60, 30)),
+                                    ),
+                                    SizedBox(width: 20,),
+                                  ],
+                                )
+                              ]));
+                      print("user status tapped");
+                    },
+                    child: Text(
+                      (my_users.users_status==null?'Loading':my_users.users_status),
+                      style: TextStyle(
+                        decoration: TextDecoration.underline,
+                        fontWeight: FontWeight.bold,
+                        fontSize: 20.0,
+                        color: my_users.users_status=="Deactivated" ? Colors.red : Colors.green
+                      ),
                     ),
                   ),
                 ],
