@@ -1,3 +1,4 @@
+import 'package:build_i_t/backend/backend.dart';
 import 'package:flutter/material.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import 'Model_Orders.dart';
@@ -22,7 +23,9 @@ class _Delivered_Orders_PageState extends State<Delivered_Orders_Page> {
         Order_Duration: mydocs[i]['Order_Duration'],
         Order_Description: mydocs[i]['Order_Description'],
         Order_Price: mydocs[i]['Order_Price'],
-        Order_Status: mydocs[i]['Order_Status'],);
+        Order_Status: mydocs[i]['Order_Status'],
+        Order_ID: mydocs[i]['Order_ID'],
+      );
       orders.add(temp);
     }
   }
@@ -203,9 +206,18 @@ class _Delivered_Orders_PageState extends State<Delivered_Orders_Page> {
                                       width: 20,
                                     ),
                                     TextButton(
-                                      onPressed: () =>
-                                          {print("Order Confirmed Button")},
-                                      child: Text("Submit"),
+                                      onPressed: () => ( )
+                                          {
+                                            Map<String,String> data;
+                                            //code to send feedback to firebase
+                                            print("Order Confirmed Button");
+                                            print(feedbackController.value.text);
+                                            data={"feedback": feedbackController.value.text};
+                                            DocumentReference doc=FirebaseFirestore.instance.doc("orders/"+myorder.Order_ID);
+                                            doc.update(data);
+
+                                          },
+                                      child: Text("Submit snackbar pa da successful da"),
                                       style: TextButton.styleFrom(
                                           primary: Colors.white,
                                           backgroundColor: Color(0XFF115ba6),

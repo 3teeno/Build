@@ -26,8 +26,10 @@ class Order {
   String Order_Vendor_id; //Currently Used as Userid
   String Order_Status;
   String Order_Customer_id;
+  String Order_ID;
 
-  Order({this.Order_Hash, this.Order_Title, this.Order_Description, this.Order_Duration, this.Order_Price, this.Order_Vendor_id,this.Order_Status }) {
+
+  Order({this.Order_ID,this.Order_Hash, this.Order_Title, this.Order_Description, this.Order_Duration, this.Order_Price, this.Order_Vendor_id,this.Order_Status }) {
     this.Order_Hash = Order_Hash;
     this.Order_Title = Order_Title;
     this.Order_Price = Order_Price;
@@ -36,6 +38,7 @@ class Order {
     this.Order_Vendor_id = user.uid;
     this.Order_Customer_id = user.uid;
     this.Order_Status= Order_Status;
+    this.Order_ID=Order_ID;
   }
   static Future<void> add_order({String Order_Hash,String Order_Vendor_id, String Order_Title, String Order_Description, String Order_Duration, String Order_Price}) async
   {
@@ -146,7 +149,8 @@ class Order {
       {
         querySnapshot.docs.toList().forEach((doc) {
           Map my_orders = {
-            "Vendor_id": doc.id,
+            "Vendor_id": doc['Order_Vender_id'],
+            "Order_id": doc.id,
             "Order_Hash": doc['Order_Hash'],
             "Order_Title": doc['Order_Title'],
             "Order_Description": doc['Order_Description'],
