@@ -63,7 +63,7 @@ class _RegistrationPageCopyWidgetState
   void sendOTP() async {
     print("In send otp");
     emailAuth = new EmailAuth(
-      sessionName: "Sample session",
+      sessionName: "Test session",
     );
     bool result = await emailAuth.sendOtp(
         recipientMail: EmailController.value.text, otpLength: 5);
