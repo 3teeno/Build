@@ -135,6 +135,34 @@ class Order {
       print(e);
     }
   }
+  static Future<List> fetch_completed_order() async
+  {
+    QuerySnapshot querySnapshot;
+    List docs=[];
+    print("Fetching From Firestore");
+    try {
+      Query query = await _mainCollection.where('Order_Vendor_id', isEqualTo: currentUser.user.uid).where('Order_Status',isEqualTo: 'Completed');
+      await query.get().then((querySnapshot) =>
+      {
+        querySnapshot.docs.toList().forEach((doc) {
+          Map my_orders = {
+            "Vendor_id": doc.id,
+            "Order_Hash": doc['Order_Hash'],
+            "Order_Title": doc['Order_Title'],
+            "Order_Description": doc['Order_Description'],
+            "Order_Duration": doc['Order_Duration'],
+            "Order_Price": doc['Order_Price'],
+            "Order_Status": doc['Order_Status'],
+          };
+          docs.add(my_orders);
+        })
+      });
+      return docs;
+    }
+    catch (e) {
+      print(e);
+    }
+  }
   static Future<List> delete_order(String my_hash) async
   {
     String doc_ref;
@@ -155,7 +183,7 @@ class Order {
     print("Fetching From Firestore");
     try {
       _mainCollection.doc('orders');
-      Query query = await _mainCollection.where('Order_Status',whereIn: ['Active','Pending','Delivered']);
+      Query query = await _mainCollection.where('Order_Status',whereIn: ['Active','Pending','Completed','Delivered']);
       await query.get().then((querySnapshot) =>
       {
         querySnapshot.docs.toList().forEach((doc) {

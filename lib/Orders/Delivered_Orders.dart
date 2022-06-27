@@ -10,50 +10,26 @@ class Delivered_Orders_Page extends StatefulWidget {
 }
 
 class _Delivered_Orders_PageState extends State<Delivered_Orders_Page> {
-  TextEditingController feedbackCOntroller;
-  List<Order> orders = [
-    Order(
-        Order_Hash: '#14251',
-        Order_Title: "Painting Service",
-        Order_Description:
-            "I will paint your entire house that includes 3 Rooms , 1 Dining etc",
-        Order_Duration: "5 days",
-        Order_Price: "PKR 1040"),
-    Order(
-        Order_Hash: '#19421',
-        Order_Title: "Cleaning Service",
-        Order_Description:
-            "I will clean your entire house that includes 3 Rooms , 1 Dining etc",
-        Order_Duration: "7 days",
-        Order_Price: "PKR 9640"),
-    Order(
-        Order_Hash: '#11251',
-        Order_Title: "Electrician Service",
-        Order_Description: "I will fix electricity of your house",
-        Order_Duration: "3 days",
-        Order_Price: "PKR 1040"),
-    Order(
-        Order_Hash: '#11251',
-        Order_Title: "Electrician Service",
-        Order_Description: "I will fix electricity of your house",
-        Order_Duration: "3 days",
-        Order_Price: "PKR 1040"),
-    Order(
-        Order_Hash: '#11251',
-        Order_Title: "Electrician Service",
-        Order_Description: "I will fix electricity of your house",
-        Order_Duration: "3 days",
-        Order_Price: "PKR 1040"),
-  ];
-
-  List Order_Grids = [
-    "Active",
-    "Delivered",
-    "Pending",
-    "Feedback",
-    "Spent",
-    "Help"
-  ];
+  TextEditingController feedbackController;
+  List<Order> orders = [];
+  List mydocs = [];
+  Future<void> initialise() async {
+    await Order.fetch_completed_order().then ((value) => setState((){ mydocs=value; } ) );
+    for (var i = 0; i < mydocs.length; i++) {
+      Order temp = Order(
+        Order_Hash: mydocs[i]['Order_Hash'],
+        Order_Title: mydocs[i]['Order_Title'],
+        Order_Duration: mydocs[i]['Order_Duration'],
+        Order_Description: mydocs[i]['Order_Description'],
+        Order_Price: mydocs[i]['Order_Price'],
+        Order_Status: mydocs[i]['Order_Status'],);
+      orders.add(temp);
+    }
+  }
+  Future<void> initState() {
+    print("Init is called ");
+    initialise();
+  }
   Widget Feedback_Popup_Template(myorder) {
     return Card(
       margin: EdgeInsets.fromLTRB(15.0, 10.0, 15.0, 0),
@@ -83,11 +59,6 @@ class _Delivered_Orders_PageState extends State<Delivered_Orders_Page> {
               color: Colors.grey,
               thickness: 1,
             ),
-            // RatingBar(
-            //
-            //
-            //
-            // )
           ],
         ),
       ),
@@ -162,7 +133,7 @@ class _Delivered_Orders_PageState extends State<Delivered_Orders_Page> {
                                 style: TextStyle(color: Color(0XFF115ba6)),
                               ),
                               content: TextFormField(
-                                controller: feedbackCOntroller,
+                                controller: feedbackController,
                                 obscureText: false,
                                 maxLines: 2,
                                 validator: (value) {
