@@ -29,14 +29,14 @@ class Order {
   String Order_ID;
 
 
-  Order({this.Order_ID,this.Order_Hash, this.Order_Title, this.Order_Description, this.Order_Duration, this.Order_Price, this.Order_Vendor_id,this.Order_Status }) {
+  Order({this.Order_ID,this.Order_Customer_id,this.Order_Hash, this.Order_Title, this.Order_Description, this.Order_Duration, this.Order_Price, this.Order_Vendor_id,this.Order_Status }) {
     this.Order_Hash = Order_Hash;
     this.Order_Title = Order_Title;
     this.Order_Price = Order_Price;
     this.Order_Duration = Order_Duration;
     this.Order_Description = Order_Description;
-    this.Order_Vendor_id = user.uid;
-    this.Order_Customer_id = user.uid;
+    this.Order_Vendor_id = Order_Vendor_id;
+    this.Order_Customer_id = Order_Customer_id;
     this.Order_Status= Order_Status;
     this.Order_ID=Order_ID;
   }
@@ -50,6 +50,7 @@ class Order {
       "Order_Duration": Order_Duration,
       "Order_Price": Order_Price,
       "Order_Vendor_id": Order_Vendor_id,
+      "Order_Customer_id": user.uid,
       "Order_Status":'Active',
     };
     await documentReferencer
@@ -93,13 +94,15 @@ class Order {
       {
         querySnapshot.docs.toList().forEach((doc) {
           Map my_orders = {
-            "Vendor_id": doc.id,
+            "Order_ID": doc.id,
             "Order_Hash": doc['Order_Hash'],
             "Order_Title": doc['Order_Title'],
             "Order_Description": doc['Order_Description'],
             "Order_Duration": doc['Order_Duration'],
             "Order_Price": doc['Order_Price'],
             "Order_Status": doc['Order_Status'],
+            "Order_Customer_id": doc['Order_Customer_id'],
+            "Order_Vendor_id": doc['Order_Vendor_id'],
           };
           docs.add(my_orders);
         })
@@ -121,13 +124,15 @@ class Order {
       {
         querySnapshot.docs.toList().forEach((doc) {
           Map my_orders = {
-            "Vendor_id": doc.id,
+            "Order_ID": doc.id,
             "Order_Hash": doc['Order_Hash'],
             "Order_Title": doc['Order_Title'],
             "Order_Description": doc['Order_Description'],
             "Order_Duration": doc['Order_Duration'],
             "Order_Price": doc['Order_Price'],
             "Order_Status": doc['Order_Status'],
+            "Order_Customer_id": doc['Order_Customer_id'],
+            "Order_Vendor_id": doc['Order_Vendor_id'],
           };
           docs.add(my_orders);
         })
@@ -144,19 +149,20 @@ class Order {
     List docs=[];
     print("Fetching From Firestore");
     try {
-      Query query = await _mainCollection.where('Order_Vendor_id', isEqualTo: currentUser.user.uid).where('Order_Status',isEqualTo: 'Completed');
+      Query query = await _mainCollection.where('Order_Customer_id', isEqualTo: currentUser.user.uid).where('Order_Status',isEqualTo: 'Completed');
       await query.get().then((querySnapshot) =>
       {
         querySnapshot.docs.toList().forEach((doc) {
           Map my_orders = {
-            "Vendor_id": doc['Order_Vender_id'],
-            "Order_id": doc.id,
+            "Order_ID": doc.id,
             "Order_Hash": doc['Order_Hash'],
             "Order_Title": doc['Order_Title'],
             "Order_Description": doc['Order_Description'],
             "Order_Duration": doc['Order_Duration'],
             "Order_Price": doc['Order_Price'],
             "Order_Status": doc['Order_Status'],
+            "Order_Customer_id": doc['Order_Customer_id'],
+            "Order_Vendor_id": doc['Order_Vendor_id'],
           };
           docs.add(my_orders);
         })
@@ -192,13 +198,15 @@ class Order {
       {
         querySnapshot.docs.toList().forEach((doc) {
           Map my_orders = {
-            "Vendor_id": doc.id,
+            "Order_ID": doc.id,
             "Order_Hash": doc['Order_Hash'],
             "Order_Title": doc['Order_Title'],
             "Order_Description": doc['Order_Description'],
             "Order_Duration": doc['Order_Duration'],
             "Order_Price": doc['Order_Price'],
             "Order_Status": doc['Order_Status'],
+            "Order_Customer_id": doc['Order_Customer_id'],
+            "Order_Vendor_id": doc['Order_Vendor_id'],
           };
           docs.add(my_orders);
         })

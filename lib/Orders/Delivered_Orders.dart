@@ -206,18 +206,17 @@ class _Delivered_Orders_PageState extends State<Delivered_Orders_Page> {
                                       width: 20,
                                     ),
                                     TextButton(
-                                      onPressed: () => ( )
-                                          {
-                                            Map<String,String> data;
+                                      onPressed: () => ()
+                                          async {
+                                            print("Order Dialog Button");
                                             //code to send feedback to firebase
                                             print("Order Confirmed Button");
-                                            print(feedbackController.value.text);
-                                            data={"feedback": feedbackController.value.text};
-                                            DocumentReference doc=FirebaseFirestore.instance.doc("orders/"+myorder.Order_ID);
-                                            doc.update(data);
+                                            //print(feedbackController.value.text);
+                                            //DocumentReference doc=FirebaseFirestore.instance.doc("orders/"+myorder.Order_ID);
+                                            //await doc.update({"feedback": feedbackController.value.text});
 
                                           },
-                                      child: Text("Submit snackbar pa da successful da"),
+                                      child: Text("Submit snackbar"),
                                       style: TextButton.styleFrom(
                                           primary: Colors.white,
                                           backgroundColor: Color(0XFF115ba6),
