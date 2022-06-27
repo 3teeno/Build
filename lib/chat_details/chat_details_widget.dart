@@ -58,25 +58,26 @@ class _ChatDetailsWidgetState extends State<ChatDetailsWidget> {
       appBar: AppBar(
         backgroundColor: FlutterFlowTheme.primaryColor,
         automaticallyImplyLeading: false,
-        leading: Icon(
-          Icons.arrow_back_rounded,
+        leading: IconButton(
+          onPressed: ()=>Navigator.pop(context),
+          icon: Icon(Icons.arrow_back),
           color: FlutterFlowTheme.tertiaryColor,
-          size: 24,
+
         ),
         title: Text(
           widget.chatUser.displayName,
           style: FlutterFlowTheme.subtitle2,
         ),
-        actions: [
-          Padding(
-            padding: EdgeInsetsDirectional.fromSTEB(0, 0, 16, 0),
-            child: Icon(
-              Icons.more_vert,
-              color: FlutterFlowTheme.tertiaryColor,
-              size: 24,
-            ),
-          ),
-        ],
+        // actions: [
+        //   Padding(
+        //     padding: EdgeInsetsDirectional.fromSTEB(0, 0, 16, 0),
+        //     child: Icon(
+        //       Icons.more_vert,
+        //       color: FlutterFlowTheme.tertiaryColor,
+        //       size: 24,
+        //     ),
+        //   ),
+        // ],
         centerTitle: true,
         elevation: 3,
       ),
@@ -87,7 +88,7 @@ class _ChatDetailsWidgetState extends State<ChatDetailsWidget> {
           width: 100,
           height: 100,
           decoration: BoxDecoration(
-            color: FlutterFlowTheme.dark900,
+            color: Color(0xFFf2f2f2),
           ),
           child: StreamBuilder<UsersRecord>(
             stream: UsersRecord.getDocument(widget.chatUser.reference),
@@ -108,27 +109,7 @@ class _ChatDetailsWidgetState extends State<ChatDetailsWidget> {
               return Column(
                 mainAxisSize: MainAxisSize.min,
                 children: [
-                  Row(
-                    mainAxisSize: MainAxisSize.max,
-                    children: [
-                      Padding(
-                        padding: EdgeInsetsDirectional.fromSTEB(12, 36, 0, 0),
-                        child: FlutterFlowIconButton(
-                          borderColor: Colors.transparent,
-                          borderRadius: 30,
-                          buttonSize: 48,
-                          icon: Icon(
-                            Icons.close_rounded,
-                            color: FlutterFlowTheme .grayIcon,
-                            size: 30,
-                          ),
-                          onPressed: () {
-                            print('IconButton pressed ...');
-                          },
-                        ),
-                      ),
-                    ],
-                  ),
+                  SizedBox(height: 80,),
                   Padding(
                     padding: EdgeInsetsDirectional.fromSTEB(0, 10, 0, 20),
                     child: Row(
@@ -153,7 +134,7 @@ class _ChatDetailsWidgetState extends State<ChatDetailsWidget> {
                               child: CachedNetworkImage(
                                 imageUrl: valueOrDefault<String>(
                                   columnUsersRecord.photoUrl,
-                                  'https://image.flaticon.com/icons/png/512/2922/2922510.png',
+                                  'https://media.istockphoto.com/vectors/user-icon-flat-isolated-on-white-background-user-symbol-vector-vector-id1300845620?k=20&m=1300845620&s=612x612&w=0&h=f4XTZDAv7NPuZbG0habSpU0sNgECM0X7nbKzTUta3n8=',
                                 ),
                               ),
                             ),
@@ -272,6 +253,11 @@ class _ChatDetailsWidgetState extends State<ChatDetailsWidget> {
           ),
         ),
       ),
+
+
+
+
+
       body: SafeArea(
         child: StreamBuilder<FFChatInfo>(
           stream: FFChatManager.instance.getChatInfo(
@@ -285,7 +271,7 @@ class _ChatDetailsWidgetState extends State<ChatDetailsWidget> {
                   backgroundColor: FlutterFlowTheme .background,
                   timeDisplaySetting: TimeDisplaySetting.visibleOnTap,
                   currentUserBoxDecoration: BoxDecoration(
-                    color: FlutterFlowTheme.dark900,
+                    color: FlutterFlowTheme.grayIcon,
                     border: Border.all(
                       color: Colors.transparent,
                     ),
@@ -329,7 +315,7 @@ class _ChatDetailsWidgetState extends State<ChatDetailsWidget> {
                     width: 50,
                     height: 50,
                     child: CircularProgressIndicator(
-                      color: FlutterFlowTheme .primaryColor,
+                      color: Color(0XFF123456),
                     ),
                   ),
                 ),
