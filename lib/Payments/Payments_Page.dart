@@ -3,10 +3,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_stripe/flutter_stripe.dart';
 import 'package:get/get.dart';
 
-void main() async
+void mainx() async
 {
   WidgetsFlutterBinding.ensureInitialized();
-  Stripe.publishableKey="pk_test_51LEco2LPOi7sC4PNJH5i50go7WI7n9kCthth0aeegovTl6iAFk2pIb2oaFjahXeEUmUiikH1maucBZ3NggbD2MdA00KvUTag1o";
+  Stripe.publishableKey="pk_test_51LEk1MICXIf9GqmCMvQOSxOdLuYfUJNnTAqpwhyhZGpOSthkjCIJBTQqnHbI9gI38kEk0BktX9PtY5Hbz0mXrWjG00lK4iOIaN";
   print("Called publishableKey");
 }
 class Payments_Page extends StatefulWidget {
@@ -20,7 +20,7 @@ class _Payments_PageState extends State<Payments_Page> {
 
   @override
   Widget build(BuildContext context) {
-    main();
+    mainx();
     final paymentController = Get.put(PaymentController());
     return Scaffold(
       appBar: AppBar(
@@ -28,20 +28,34 @@ class _Payments_PageState extends State<Payments_Page> {
       ),
       body: Column(
         children: <Widget>[
+          Icon(
+              Icons.credit_card,
+            size: 150,
+            color: Colors.grey,
+          ),
           CardField(
-            onCardChanged: (card) {
-              print(card);
+            onCardChanged: (card) async {
+             await  print(card);
             },
           ),
+          Padding(
+            padding: const EdgeInsets.all(15.0),
+            child: Text(
+              "£10",
+              style: TextStyle(fontSize: 50),
+            ),
+          ),
+
           Center(
             child: ElevatedButton(
               style: ElevatedButton.styleFrom(textStyle: TextStyle(color: Colors.amber),minimumSize: Size(250, 40)),
-              onPressed: () async {
+              onPressed: ()  async {
                 //creating payment method
+                // await paymentController.makePayment(amount:'50',currency: 'USD');
                 final paymentMethod = await Stripe.instance.createPaymentMethod(PaymentMethodParams.card());
-                // paymentController.makePayment(amount:'5',currency: 'USD');
+                paymentMethod.printError();
+
                 print("Pay Now Clicked");
-                await Stripe.instance.presentPaymentSheet();
                 },
               child: Text("Pay Now"),),
           )

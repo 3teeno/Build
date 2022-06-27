@@ -120,7 +120,35 @@ class Order {
     await documentReference.delete().whenComplete(() => print("Order Hash : "+my_hash+"item deleted from the database"))
     .catchError((e) => print(e));
     }
-
+  static Future<List> fetch_order_admin() async
+  {
+    QuerySnapshot querySnapshot;
+    List docs=[];
+    print("Fetching From Firestore");
+    try {
+      _mainCollection.doc('orders');
+      Query query = await _mainCollection.where('Order_Status',whereIn: ['Active','Pending','Delivered']);
+      await query.get().then((querySnapshot) =>
+      {
+        querySnapshot.docs.toList().forEach((doc) {
+          Map my_orders = {
+            "Vendor_id": doc.id,
+            "Order_Hash": doc['Order_Hash'],
+            "Order_Title": doc['Order_Title'],
+            "Order_Description": doc['Order_Description'],
+            "Order_Duration": doc['Order_Duration'],
+            "Order_Price": doc['Order_Price'],
+            "Order_Status": doc['Order_Status'],
+          };
+          docs.add(my_orders);
+        })
+      });
+      return docs;
+    }
+    catch (e) {
+      print(e);
+    }
+  }
 }
 
 

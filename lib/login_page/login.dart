@@ -233,9 +233,6 @@ class _logInState extends State<logIn> {
                                                   emailController.text.trim(),
                                               password: passwordController.text
                                                   .trim());
-
-
-
                                       print(FirebaseAuth.instance.currentUser.uid);
                                       if(FirebaseAuth.instance.currentUser.uid!=null) {
                                         DocumentSnapshot data = await FirebaseFirestore.instance.collection('users')
