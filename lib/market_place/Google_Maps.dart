@@ -69,6 +69,8 @@ class Google_MapState extends State<Google_Map> {
             },
           ),
         ),
+
+
         // GoogleMap(
         //   mapType: MapType.normal,
         //   initialCameraPosition: _kGooglePlex,
