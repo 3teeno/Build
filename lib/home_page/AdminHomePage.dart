@@ -1,17 +1,8 @@
 import 'package:build_i_t/Admin/Manage_Orders.dart';
-import 'package:build_i_t/MenuBar/menubar_vendor.dart';
-import 'package:build_i_t/Vendor_Services/Model_Services.dart';
-import 'package:build_i_t/auth/firebase_user_provider.dart';
-import 'package:build_i_t/backend/backend.dart';
-import 'package:google_maps_flutter/google_maps_flutter.dart';
-import 'package:google_maps_place_picker_mb/google_maps_place_picker.dart';
+import 'package:build_i_t/home_page/homePageHeader_Admin.dart';
 import '../Admin/Manage_Payments.dart';
 import '../Admin/Manage_Users.dart';
-import '../Products/Active_Products.dart';
-import '../Products/Product_Firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:build_i_t/data.dart';
-import 'homepage_header_vendor.dart';
 import 'dart:math';
 
 class AdminHomePageWidget extends StatefulWidget {
@@ -50,11 +41,11 @@ class _AdminHomePageWidgetState extends State<AdminHomePageWidget> {
       body: SafeArea(
         child:
         Column(
-            children:[Container(
-              height: 150,
-              child: homePageHeader_vendor(),
+            children:[
+              Container(
+                height: 150,
+                child: homePageHeader_Admin(),
             ),
-
               Expanded(
                 child: GridView.extent(
                   shrinkWrap: true,
@@ -114,7 +105,7 @@ class _AdminHomePageWidgetState extends State<AdminHomePageWidget> {
                           context,
                           MaterialPageRoute(
                             // builder: (context) => New_Product_Page(), official
-                            builder: (context) => Manage_Users(), // temporary
+                            builder: (context) => Manage_Users(),
                           ),
                         );
                       },

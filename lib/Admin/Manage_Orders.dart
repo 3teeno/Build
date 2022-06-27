@@ -51,7 +51,6 @@ class _Manage_OrdersState extends State<Manage_Orders> {
                 Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-
                       Text(
                         myorder.Order_Hash,
                         style: TextStyle(

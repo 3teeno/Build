@@ -1,9 +1,3 @@
-import 'package:build_i_t/MenuBar/menubar_customer.dart';
-import 'package:build_i_t/all_market_places/Search_Material.dart';
-import 'package:build_i_t/flutter_flow/flutter_flow_theme.dart';
-import 'package:build_i_t/flutter_flow/flutter_flow_util.dart';
-import 'package:build_i_t/flutter_flow/flutter_flow_widgets.dart';
-import 'package:build_i_t/market_place/Vendor_Gig.dart';
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
 

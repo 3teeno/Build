@@ -58,7 +58,6 @@ class Order {
         .whenComplete(() => print("New Order added to the database"))
         .catchError((e) => print(e));
   }
-
   static Future<void> update_order({String my_hash,String Order_Vendor_id, String Order_Title, String Order_Description, String Order_Duration, String Order_Price}) async
   {
     QuerySnapshot querySnapshot = await _mainCollection.get();
@@ -82,7 +81,6 @@ class Order {
         .whenComplete(() => print("Updated data to the database"))
         .catchError((e) => print(e));
   }
-
   static Future<List> fetch_order() async
   {
     QuerySnapshot querySnapshot;
@@ -198,15 +196,12 @@ class Order {
       {
         querySnapshot.docs.toList().forEach((doc) {
           Map my_orders = {
-            "Order_ID": doc.id,
             "Order_Hash": doc['Order_Hash'],
             "Order_Title": doc['Order_Title'],
             "Order_Description": doc['Order_Description'],
             "Order_Duration": doc['Order_Duration'],
             "Order_Price": doc['Order_Price'],
             "Order_Status": doc['Order_Status'],
-            "Order_Customer_id": doc['Order_Customer_id'],
-            "Order_Vendor_id": doc['Order_Vendor_id'],
           };
           docs.add(my_orders);
         })

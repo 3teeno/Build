@@ -31,11 +31,9 @@ class _Order_Firestore_CRUDSState extends State<Order_Firestore_CRUDS> {
     print(hashcode);
   }
   final TextEditingController _DescriptionController = TextEditingController();
-  final TextEditingController _DurationController = TextEditingController();
+  final TextEditingController _DurationController= TextEditingController();
   final TextEditingController _PriceController = TextEditingController();
   final TextEditingController _TitleController = TextEditingController();
-  final TextEditingController _VendoridController = TextEditingController();
-  final TextEditingController _HashController = TextEditingController();
   Order myorder;
   @override
   Widget build(BuildContext context) {
