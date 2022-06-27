@@ -52,6 +52,7 @@ class Order {
       "Order_Vendor_id": Order_Vendor_id,
       "Order_Customer_id": user.uid,
       "Order_Status":'Active',
+      "feedback":"",
     };
     await documentReferencer
         .set(data)
@@ -141,6 +142,41 @@ class Order {
       print(e);
     }
   }
+
+
+  static Future<List> fetch_vendor_order(String Vendor_ID) async
+  {
+    QuerySnapshot querySnapshot;
+    List docs=[];
+    print("Fetching From Firestore");
+    try {
+      Query query = await _mainCollection.where('Order_Vendor_id', isEqualTo: Vendor_ID).where('Order_Status',isEqualTo: "Completed");
+      await query.get().then((querySnapshot) =>
+      {
+        querySnapshot.docs.toList().forEach((doc) {
+          Map my_orders = {
+            "Order_ID": doc.id,
+            "Order_Hash": doc['Order_Hash'],
+            "Order_Title": doc['Order_Title'],
+            "Order_Description": doc['Order_Description'],
+            "Order_Duration": doc['Order_Duration'],
+            "Order_Price": doc['Order_Price'],
+            "Order_Status": doc['Order_Status'],
+            "Order_Customer_id": doc['Order_Customer_id'],
+            "Order_Vendor_id": doc['Order_Vendor_id'],
+            "feedback": doc['feedback'],
+          };
+          docs.add(my_orders);
+        })
+      });
+      return docs;
+    }
+    catch (e) {
+      print(e);
+    }
+  }
+
+
   static Future<List> fetch_completed_order() async
   {
     QuerySnapshot querySnapshot;

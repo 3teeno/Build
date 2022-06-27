@@ -11,7 +11,7 @@ class Delivered_Orders_Page extends StatefulWidget {
 }
 
 class _Delivered_Orders_PageState extends State<Delivered_Orders_Page> {
-  TextEditingController feedbackController;
+  TextEditingController feedbackController=new TextEditingController();
   final scaffoldKey = GlobalKey<ScaffoldState>();
   List<Order> orders = [];
   List mydocs = [];
@@ -215,6 +215,12 @@ class _Delivered_Orders_PageState extends State<Delivered_Orders_Page> {
                                     TextButton(
                                       onPressed: () => {
                                         print("Feedback Submitted"),
+                                      //code to send feedback to firebase
+                                      print("Order Confirmed Button"),
+                                      //print(feedbackController.value.text),
+                                      FirebaseFirestore.instance.doc(
+                                          "orders/" + myorder.Order_ID).update({"feedback":feedbackController.value.text}),
+                                        Navigator.pop(context),
                                       },
                                       child: Text("Submit"),
                                       style: TextButton.styleFrom(

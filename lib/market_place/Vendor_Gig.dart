@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:build_i_t/Orders/Model_Orders.dart';
 import 'package:build_i_t/Products/Product_Page.dart';
 import 'package:build_i_t/backend/backend.dart';
 import 'package:flutter/scheduler.dart';
@@ -41,7 +42,7 @@ class _MarketPlaceWidgetState extends State<MarketPlaceWidget> {
   @override
   Widget build(BuildContext context) {
     DocumentReference doc=FirebaseFirestore.instance.doc("users/"+widget.vendorID);
-
+    List reviews;
     return Scaffold(
       key: scaffoldKey,
       appBar: AppBar(
@@ -322,10 +323,40 @@ class _MarketPlaceWidgetState extends State<MarketPlaceWidget> {
                           SizedBox(height: 15,),
 
                         ],
+
+                      ),
+                    ),
+
+                    FFButtonWidget(
+                      onPressed: () async {
+                        Order orders=new Order();
+                        reviews=await Order.fetch_vendor_order(widget.vendorID);
+                        print(reviews);
+
+                      },
+                      text: 'Show Reviews',
+                      icon: Icon(
+                        Icons.chat_bubble,
+                        size: 18,
+                      ),
+                      options: FFButtonOptions(
+                        width: 150,
+                        height: 40,
+                        color: Color(0xFF212121),
+                        textStyle: FlutterFlowTheme.subtitle2.override(
+                          fontFamily: 'Poppins',
+                          color: Color(0xFFffffff),
+                        ),
+                        borderSide: BorderSide(
+                          color: Colors.transparent,
+                          width: 1,
+                        ),
+                        borderRadius: 10,
                       ),
                     ),
 
                   ],
+
                 ),
               ),
             ),
