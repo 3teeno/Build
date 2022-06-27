@@ -17,10 +17,20 @@ import 'package:google_fonts/google_fonts.dart';
 import 'Google_Maps.dart';
 
 class MarketPlaceWidget extends StatefulWidget {
-  final String vendorID, Name,Email,Contact,hRate,imageUrl;
+  final String vendorID, Name, Email, Contact, hRate, imageUrl;
 
-  final double Lat,Lng;
-  const MarketPlaceWidget({Key key,@required this.vendorID ,@required this.Name,@required this.Email,@required this.Contact,@required this.hRate,@required this.imageUrl,this.Lat,this.Lng}) : super(key: key);
+  final double Lat, Lng;
+  const MarketPlaceWidget(
+      {Key key,
+      @required this.vendorID,
+      @required this.Name,
+      @required this.Email,
+      @required this.Contact,
+      @required this.hRate,
+      @required this.imageUrl,
+      this.Lat,
+      this.Lng})
+      : super(key: key);
 
   @override
   _MarketPlaceWidgetState createState() => _MarketPlaceWidgetState();
@@ -36,21 +46,24 @@ class _MarketPlaceWidgetState extends State<MarketPlaceWidget> {
       tilt: 59.440717697143555,
       zoom: 19.151926040649414);
 
-
-
-
   @override
   Widget build(BuildContext context) {
-    DocumentReference doc=FirebaseFirestore.instance.doc("users/"+widget.vendorID);
+    DocumentReference doc =
+        FirebaseFirestore.instance.doc("users/" + widget.vendorID);
     List reviews;
+    bool reviewCheck = false;
     return Scaffold(
       key: scaffoldKey,
       appBar: AppBar(
-        title: Text("Material Profile"),
+        title: Text("Vendor Profile"),
         backgroundColor: Color(0xFFffffff),
         elevation: 0,
         foregroundColor: Colors.black,
-        leading: IconButton(onPressed: ()=>Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=>HomePageWidget())),icon: Icon(Icons.arrow_back),),
+        leading: IconButton(
+          onPressed: () => Navigator.pushReplacement(context,
+              MaterialPageRoute(builder: (context) => HomePageWidget())),
+          icon: Icon(Icons.arrow_back),
+        ),
       ),
       backgroundColor: Color(0xFFffffff),
       body: SafeArea(
@@ -65,7 +78,6 @@ class _MarketPlaceWidgetState extends State<MarketPlaceWidget> {
                   mainAxisAlignment: MainAxisAlignment.start,
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-
                     Padding(
                       padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 10),
                       child: Row(
@@ -156,7 +168,7 @@ class _MarketPlaceWidgetState extends State<MarketPlaceWidget> {
                                 padding:
                                     EdgeInsetsDirectional.fromSTEB(5, 0, 0, 0),
                                 child: Text(
-                                  'PKR '+widget.hRate,
+                                  'PKR ' + widget.hRate,
                                   style: FlutterFlowTheme.bodyText1,
                                 ),
                               ),
@@ -187,7 +199,6 @@ class _MarketPlaceWidgetState extends State<MarketPlaceWidget> {
                               Padding(
                                 padding:
                                     EdgeInsetsDirectional.fromSTEB(0, 10, 0, 0),
-
                               ),
                             ],
                           ),
@@ -320,43 +331,27 @@ class _MarketPlaceWidgetState extends State<MarketPlaceWidget> {
                               ],
                             ),
                           ),
-                          SizedBox(height: 15,),
-
+                          SizedBox(
+                            height: 10,
+                          )
                         ],
-
                       ),
                     ),
-
-                    FFButtonWidget(
-                      onPressed: () async {
-                        Order orders=new Order();
-                        reviews=await Order.fetch_vendor_order(widget.vendorID);
-                        print(reviews);
-
-                      },
-                      text: 'Show Reviews',
-                      icon: Icon(
-                        Icons.chat_bubble,
-                        size: 18,
-                      ),
-                      options: FFButtonOptions(
-                        width: 150,
-                        height: 40,
-                        color: Color(0xFF212121),
-                        textStyle: FlutterFlowTheme.subtitle2.override(
-                          fontFamily: 'Poppins',
-                          color: Color(0xFFffffff),
-                        ),
-                        borderSide: BorderSide(
-                          color: Colors.transparent,
-                          width: 1,
-                        ),
-                        borderRadius: 10,
-                      ),
-                    ),
-
+                    TextButton(
+                        onPressed: () async {
+                          setState(() {
+                            reviewCheck = true;
+                          });
+                          print(reviewCheck);
+                          print("reviews");
+                          Order orders = new Order();
+                          reviews =
+                              await Order.fetch_vendor_order(widget.vendorID);
+                          print(reviews);
+                        },
+                        child: Text("Show Reviews")),
+                    reviewCheck ? Text("ajksd") : Text(""),
                   ],
-
                 ),
               ),
             ),
@@ -367,8 +362,7 @@ class _MarketPlaceWidgetState extends State<MarketPlaceWidget> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Padding(
-                    padding:
-                    EdgeInsetsDirectional.fromSTEB(0, 0, 0, 10),
+                    padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 10),
                     child: Container(
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.center,
@@ -380,11 +374,9 @@ class _MarketPlaceWidgetState extends State<MarketPlaceWidget> {
                               await Navigator.pushReplacement(
                                   context,
                                   MaterialPageRoute(
-                                    builder: (context) => Google_Map(widget.Lat,widget.Lng)
-
-                                  ));
+                                      builder: (context) =>
+                                          Google_Map(widget.Lat, widget.Lng)));
                             },
-
                             text: 'Show on Map',
                             icon: Icon(
                               Icons.map,
@@ -405,7 +397,6 @@ class _MarketPlaceWidgetState extends State<MarketPlaceWidget> {
                               borderRadius: 10,
                             ),
                           ),
-
                         ],
                       ),
                     ),
