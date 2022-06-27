@@ -116,19 +116,19 @@ class _add_OrderFireBaseState extends State<add_OrderFireBase> {
           SizedBox(
             height: 8,
           ),
-          InkWell(
-            onTap: () {
-              //yaha par cheema na uplod image ka code karna
-
-
-            },
-            child: Container(
-              child: Center(child: Text("Uplaod Image",style: TextStyle(color: Color(0xFFFFFFFF),fontWeight: FontWeight.bold),)),
-              width: MediaQuery.of(context).size.width,
-              height: MediaQuery.of(context).size.height * 0.07,
-              decoration: BoxDecoration(color: Color(0xFF123456)),
-            ),
-          )
+          // InkWell(
+          //   onTap: () {
+          //     //yaha par cheema na uplod image ka code karna
+          //
+          //
+          //   },
+          //   child: Container(
+          //     child: Center(child: Text("Uplaod Image",style: TextStyle(color: Color(0xFFFFFFFF),fontWeight: FontWeight.bold),)),
+          //     width: MediaQuery.of(context).size.width,
+          //     height: MediaQuery.of(context).size.height * 0.07,
+          //     decoration: BoxDecoration(color: Color(0xFF123456)),
+          //   ),
+          // )
         ],
       ),
       actions: <Widget>[
