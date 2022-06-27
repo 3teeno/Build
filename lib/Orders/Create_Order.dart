@@ -36,7 +36,8 @@ class _CreateOrder extends State<CreateOrder> {
     final userdata = FirebaseFirestore.instance
         .collection('users')
         .doc(widget.Product.Product_Vendor_id);
-    return StreamBuilder<UsersRecord>(
+    return
+      StreamBuilder<UsersRecord>(
         stream: UsersRecord.getDocument(userdata),
         builder: (context, snapshot) {
           return Scaffold(

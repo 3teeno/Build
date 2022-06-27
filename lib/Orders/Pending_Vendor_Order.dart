@@ -1,23 +1,23 @@
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import '../Orders/Model_Orders.dart';
-import '../Orders/Order_Firestore.dart';
+import '../auth/firebase_user_provider.dart';
+import 'Model_Orders.dart';
+import 'Order_Firestore.dart';
 
-final FirebaseAuth auth = FirebaseAuth.instance;
-final User user = auth.currentUser;
-
-class Manage_Orders extends StatefulWidget {
-  const Manage_Orders({Key key}) : super(key: key);
+class Pending_Vendor_Order extends StatefulWidget {
+  const Pending_Vendor_Order({Key key}) : super(key: key);
 
   @override
-  State<Manage_Orders> createState() => _Manage_OrdersState();
+  State<Pending_Vendor_Order> createState() => _Pending_Vendor_OrdersState();
 }
 
-class _Manage_OrdersState extends State<Manage_Orders> {
+class _Pending_Vendor_OrdersState extends State<Pending_Vendor_Order> {
   List<Order> orders = [];
   List mydocs = [];
   Future<void> initialise() async {
-    await Order.fetch_order_admin().then ((value) => setState((){ mydocs=value; } ) );
+    await Order.fetch_pending_vendor_order().then ((value) => setState((){ print (value);mydocs=value; } ) );
+    print(currentUser.user.uid);
+    print(user.uid);
+    print(mydocs);
     for (var i = 0; i < mydocs.length; i++) {
       Order temp = Order(
         Order_Hash: mydocs[i]['Order_Hash'],
@@ -33,7 +33,7 @@ class _Manage_OrdersState extends State<Manage_Orders> {
     print("Init is called ");
     initialise();
   }
-  Widget Order_Card_Template_Active_Customer(myorder) {
+  Widget Order_Card_Template_Pending_Customer(myorder) {
     return Padding(
       padding: EdgeInsets.symmetric(vertical: 5),
       child: InkWell(
@@ -51,6 +51,7 @@ class _Manage_OrdersState extends State<Manage_Orders> {
                 Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
+
                       Text(
                         myorder.Order_Hash,
                         style: TextStyle(
@@ -104,39 +105,36 @@ class _Manage_OrdersState extends State<Manage_Orders> {
                       ),
                       onPressed: () =>
                       {
-                        print("Status Button Clicked"),
+                        print("Active Status Button Clicked"),
                         showDialog(
                             context: context,
                             builder: (_) =>
                                 AlertDialog(
-                                  title: Text('Order Status',style: TextStyle(color: Color(0xFF115ba6)),),
+                                  title: Text('Confirm Order',style: TextStyle(color: Color(0xFF115ba6)),),
                                   content:
-                                  Text('Order is '+myorder.Order_Status+'\nOrder Hash is '+myorder.Order_Hash,textAlign: TextAlign.start,),
+                                  Text('''If you have completed the work as per clients requirements. You may deliver''',textAlign: TextAlign.start,),
                                   actions: [
                                     Row(
                                       mainAxisAlignment:
                                       MainAxisAlignment.end,
                                       children: [
-                                        // TextButton(
-                                        //   onPressed: () =>
-                                        //   {
-                                        //     print("Okay"),
-                                        //     Navigator.pop(context)
-                                        //   },
-                                        //   child: Text(""),
-                                        //   style: TextButton.styleFrom(
-                                        //       primary: Colors.grey,
-                                        //       // backgroundColor: Colors.grey[200],
-                                        //       minimumSize: Size(30, 30)),
-                                        // ),
-                                        SizedBox(width: 20,),
                                         TextButton(
                                           onPressed: () =>
                                           {
-                                            Navigator.pop(context),
-                                            print("Order Confirmed Button")
+                                            print("Cancel Dialog Button"),
+                                            Navigator.pop(context)
                                           },
-                                          child: Text("Okay"),
+                                          child: Text("Cancel"),
+                                          style: TextButton.styleFrom(
+                                              primary: Colors.grey,
+                                              // backgroundColor: Colors.grey[200],
+                                              minimumSize: Size(30, 30)),
+                                        ),
+                                        SizedBox(width: 20,),
+                                        TextButton(
+                                          onPressed: () =>
+                                          {print("Order Confirmed Button")},
+                                          child: Text("Confirm"),
                                           style: TextButton.styleFrom(
                                               primary: Colors.white,
                                               backgroundColor: Color(0xFF115ba6),
@@ -175,13 +173,13 @@ class _Manage_OrdersState extends State<Manage_Orders> {
           debugShowCheckedModeBanner: false,
           home: Scaffold(
               appBar: AppBar(
-                title: Text("Manage Orders"),
+                title: Text("Pending Orders"),
                 leading: IconButton(icon:Icon(Icons.arrow_back),onPressed: ()=>Navigator.pop(context) ,),
                 backgroundColor: Color(0xFF115ba6),
               ),
               body: SingleChildScrollView(
                 child: Column(
-                  children: orders.map((myorder) => Order_Card_Template_Active_Customer(myorder)).toList(),
+                  children: orders.map((myorder) => Order_Card_Template_Pending_Customer(myorder)).toList(),
                 ),
               )
           )
@@ -192,7 +190,7 @@ class _Manage_OrdersState extends State<Manage_Orders> {
           debugShowCheckedModeBanner: false,
           home: Scaffold(
             appBar: AppBar(
-              title: Text("Manage Orders"),
+              title: Text('Pending'),
               leading: IconButton(icon:Icon(Icons.arrow_back),onPressed: ()=>Navigator.pop(context) ,),
               backgroundColor: Color(0xFF115ba6),
             ),
@@ -202,7 +200,7 @@ class _Manage_OrdersState extends State<Manage_Orders> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
                   Text(
-                    "No Active Orders Yet",
+                    "No Pending Orders Yet",
                     style: TextStyle(
                       fontFamily:"Poppins",
                       fontWeight: FontWeight.normal,
@@ -217,5 +215,3 @@ class _Manage_OrdersState extends State<Manage_Orders> {
     }
   }
 }
-
-

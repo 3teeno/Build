@@ -69,7 +69,7 @@ class _ChatMainWidgetState extends State<ChatMainWidget> {
                     builder: (context, snapshot) {
                       // Customize what your widget looks like when it's loading.
                       print(currentUserReference);
-                      print(snapshot.data);
+                      print("check this out "+snapshot.data.toString());
                       if (!snapshot.hasData) {
 
                         return Center(
@@ -111,6 +111,7 @@ class _ChatMainWidgetState extends State<ChatMainWidget> {
                                           MaterialPageRoute(
                                             builder: (context) =>
                                                 ChatDetailsWidget(
+
                                               chatUser:
                                                   chatInfo.otherUsers.length ==
                                                           1

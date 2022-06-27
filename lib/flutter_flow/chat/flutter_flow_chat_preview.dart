@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'index.dart';
 
 import 'package:flutter/material.dart';
@@ -39,7 +41,9 @@ class FFChatPreview extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final chatTitle = title.isNotEmpty ? title : 'Friend';
+    Random random = new Random();
+    int random_hash = random.nextInt(100) + 99;
+    final chatTitle = title.isNotEmpty ? 'Vendor : '+random_hash.toString() : 'Friend';
     return InkWell(
       onTap: onTap,
       child: Column(
