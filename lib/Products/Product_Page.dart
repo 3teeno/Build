@@ -20,7 +20,7 @@ import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_widgets.dart';
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
-
+import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:build_i_t/data.dart';
 import 'dart:math';
 
@@ -290,42 +290,43 @@ class _ProductPage extends State<ProductPage> {
                                     ),
                                   ),
                                 ]),
-                            InkWell(
-                              onTap: () async {
-                                DocumentSnapshot doc=await FirebaseFirestore.instance.doc("users/"+widget.Product.Product_Vendor_id).get();
-                                print("ma aa gaya");
-                                await Navigator.pushReplacement(
-                                    context,
-                                    MaterialPageRoute(
+                            SizedBox(height: 15,),
+                            Center(
+                              child: InkWell(
+                                onTap: () async {
+                                  DocumentSnapshot doc=await FirebaseFirestore.instance.doc("users/"+widget.Product.Product_Vendor_id).get();
+                                  await Navigator.pushReplacement(
+                                      context,
+                                      MaterialPageRoute(
 
-                                        builder: (context) => MarketPlaceWidget(vendorID: doc.get("uid"), Name: doc.get("displayName"), Email: doc.get("email"), Contact: doc.get("phone"), hRate: "Yet to be decided", imageUrl: doc.get("photoUrl"),Lat: doc.get("Lat"),Lng:doc.get("Lng"))
+                                          builder: (context) => MarketPlaceWidget(vendorID: doc.get("uid"), Name: doc.get("displayName"), Email: doc.get("email"), Contact: doc.get("phone"), hRate: "Yet to be decided", imageUrl: doc.get("photoUrl"),Lat: doc.get("Lat"),Lng:doc.get("Lng"))
 
-                                    ));
-                              },
-                              child: Container(
-                                decoration: BoxDecoration(
-                                    color: Color(0xFF123456),
-                                    borderRadius:
-                                    BorderRadius.all(Radius.circular(10))),
-                                width: MediaQuery.of(context).size.width * 0.42,
-                                height:
-                                MediaQuery.of(context).size.height * 0.06,
-                                child: Row(
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  children: [
-                                    Text(
-                                      "Chal mela nu chalia",
+                                      ));
+                                },
+                                child: Container(
+                                  decoration: BoxDecoration(
+                                      color: Color(0xFF123456),
+                                      borderRadius:
+                                      BorderRadius.all(Radius.circular(10))),
+                                  width: MediaQuery.of(context).size.width * 0.42,
+                                  height:
+                                  MediaQuery.of(context).size.height * 0.06,
+                                  child: Center(
+                                    child: Text(
+                                      "View Vendor Profile",
                                       style: TextStyle(
                                           color: Color(
                                             0xFFFFFFFF,
                                           ),
                                           fontWeight: FontWeight.bold),
-                                    )
-                                  ],
+                                    ),
+                                  ),
                                 ),
                               ),
                             ),
-                            //Text("IDR Furqan na data dalna hai using Product ka object "+widget.Product.Product_Title),
+
+
+
                           ],
                         ),
                       ),
