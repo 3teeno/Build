@@ -41,7 +41,6 @@ Future<void> initialise() async {
     }
   });
   print("Maa aa gaya");
-  //print(my_products);
   if (my_products.isEmpty) {
     print("Empty Products Against Vendor");
   }}
