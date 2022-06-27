@@ -14,9 +14,10 @@ class _Pending_OrdersState extends State<Pending_Orders> {
   List<Order> orders = [];
   List mydocs = [];
   Future<void> initialise() async {
-    await Order.fetch_pending_order().then ((value) => setState((){ mydocs=value; } ) );
+    await Order.fetch_pending_order().then ((value) => setState((){ print (value);mydocs=value; } ) );
     print(currentUser.user.uid);
     print(user.uid);
+    print(mydocs);
     for (var i = 0; i < mydocs.length; i++) {
       Order temp = Order(
         Order_Hash: mydocs[i]['Order_Hash'],

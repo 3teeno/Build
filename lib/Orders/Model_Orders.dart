@@ -89,7 +89,7 @@ class Order {
     List docs=[];
     print("Fetching From Firestore");
     try {
-      Query query = await _mainCollection.where('Order_Vendor_id', isEqualTo: currentUser.user.uid).where('Order_Status',isEqualTo: 'Active');
+      Query query = await _mainCollection.where('Order_Customer_id', isEqualTo: currentUser.user.uid).where('Order_Status',isEqualTo: 'Active');
       await query.get().then((querySnapshot) =>
       {
         querySnapshot.docs.toList().forEach((doc) {
@@ -119,7 +119,7 @@ class Order {
     List docs=[];
     print("Fetching From Firestore");
     try {
-      Query query = await _mainCollection.where('Order_Vendor_id', isEqualTo: currentUser.user.uid).where('Order_Status',isEqualTo: 'Pending');
+      Query query = await _mainCollection.where('Order_Customer_id', isEqualTo: currentUser.user.uid).where('Order_Status',isEqualTo: 'Pending');
       await query.get().then((querySnapshot) =>
       {
         querySnapshot.docs.toList().forEach((doc) {

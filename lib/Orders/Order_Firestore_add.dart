@@ -384,6 +384,9 @@ class _add_OrderFireBaseState extends State<add_OrderFireBase> {
                         Order_Vendor_id: user.uid.toString(),
                         Order_Price: _PriceController.text.toString(),
                         Order_Title: _TitleController.text.toString(),
+
+
+
                       );
                       print("Add Orders Pressed");
 
