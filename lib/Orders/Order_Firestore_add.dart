@@ -1,6 +1,7 @@
 import 'dart:math';
 
 import 'package:build_i_t/Orders/Order_Page_Customer.dart';
+import 'package:build_i_t/home_page/CustomerHomePage.dart';
 import 'package:flutter/material.dart';
 import 'Model_Orders.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -42,6 +43,7 @@ class _add_OrderFireBaseState extends State<add_OrderFireBase> {
       child: Scaffold(
         key: scaffoldKey,
         appBar: AppBar(
+          leading: IconButton(onPressed: ()=>Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=>HomePageWidget())),icon: Icon(Icons.arrow_back),),
           title: Text("Add Order"),
           backgroundColor: Color(0xFF115ba6),
         ),

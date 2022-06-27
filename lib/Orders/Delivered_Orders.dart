@@ -12,6 +12,7 @@ class Delivered_Orders_Page extends StatefulWidget {
 
 class _Delivered_Orders_PageState extends State<Delivered_Orders_Page> {
   TextEditingController feedbackController;
+  final scaffoldKey = GlobalKey<ScaffoldState>();
   List<Order> orders = [];
   List mydocs = [];
   Future<void> initialise() async {
@@ -206,17 +207,18 @@ class _Delivered_Orders_PageState extends State<Delivered_Orders_Page> {
                                       width: 20,
                                     ),
                                     TextButton(
-                                      onPressed: () => ()
-                                          async {
-                                            print("Order Dialog Button");
+                                      onPressed: () => ( )
+                                          {
+                                            Map<String,String> data;
                                             //code to send feedback to firebase
                                             print("Order Confirmed Button");
-                                            //print(feedbackController.value.text);
-                                            //DocumentReference doc=FirebaseFirestore.instance.doc("orders/"+myorder.Order_ID);
-                                            //await doc.update({"feedback": feedbackController.value.text});
-
+                                            print(feedbackController.value.text);
+                                            data={"feedback": feedbackController.value.text};
+                                            DocumentReference doc=FirebaseFirestore.instance.doc("orders/"+myorder.Order_ID);
+                                            doc.update(data);
+scaffoldKey.currentState.showSnackBar(SnackBar(content: Text("Feedback Submitted.")));
                                           },
-                                      child: Text("Submit snackbar"),
+                                      child: Text("Submit"),
                                       style: TextButton.styleFrom(
                                           primary: Colors.white,
                                           backgroundColor: Color(0XFF115ba6),
