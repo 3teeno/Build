@@ -1,4 +1,5 @@
 import 'package:build_i_t/Admin/Manage_Orders.dart';
+import 'package:build_i_t/chat_main/chat_main_widget.dart';
 import 'package:build_i_t/home_page/homePageHeader_Admin.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import '../Admin/Manage_Payments.dart';
@@ -7,6 +8,7 @@ import 'package:flutter/material.dart';
 import 'dart:math';
 
 import '../auth/firebase_user_provider.dart';
+import '../chat_details/chat_details_widget.dart';
 import '../flutter_flow/chat/index.dart';
 import '../login_page/login_page_widget.dart';
 
@@ -40,6 +42,13 @@ class _AdminHomePageWidgetState extends State<AdminHomePageWidget> {
   @override
   Widget build(BuildContext context) {
     size = MediaQuery.of(context);
+    final userdata = FirebaseFirestore.instance
+        .collection('users')
+        .doc("lIxDGfBtMAQKTm3f98VbSg3ktJz1");
+    return
+      StreamBuilder<UsersRecord>(
+        stream: UsersRecord.getDocument(userdata),
+    builder: (context, snapshot) {
     return Scaffold(
       key: scaffoldKey,
       backgroundColor: Color(0xFFffffff),
@@ -176,10 +185,17 @@ class _AdminHomePageWidgetState extends State<AdminHomePageWidget> {
                       splashColor: Colors.green,
                       onTap: () async {
 
-                        Navigator.push(
+                        await Navigator.push(
                           context,
-                          MaterialPageRoute(
-                            builder: (context) => Manage_Payments()));
+                          PageTransition(
+                            type: PageTransitionType.scale,
+                            alignment: Alignment.bottomCenter,
+                            duration: Duration(milliseconds: 300),
+                            reverseDuration: Duration(milliseconds: 300),
+                            child: ChatMainWidget()
+                          ),
+                        );
+
                       },
                       child: Container(
                         padding: const EdgeInsets.all(8),
@@ -229,6 +245,7 @@ class _AdminHomePageWidgetState extends State<AdminHomePageWidget> {
         ),
       ),
     );
+    });
   }
 
 }

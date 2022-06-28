@@ -339,7 +339,7 @@ class _ProductPage extends State<ProductPage> {
                                 final userdata = FirebaseFirestore.instance
                                     .collection('users')
                                     .doc(widget.Product.Product_Vendor_id);
-                                var ref = UsersRecord.getDocument(userdata);
+                                var ref = await UsersRecord.getDocument(userdata);
                                 await Navigator.push(
                                   context,
                                   PageTransition(

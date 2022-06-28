@@ -1,9 +1,11 @@
+import 'package:build_i_t/Orders/Active_Order_Vendor.dart';
 import 'package:build_i_t/Orders/Pending_Order.dart';
 import 'package:build_i_t/Orders/Pending_Vendor_Order.dart';
 import 'package:flutter/material.dart';
 
 import 'Active_Orders_Customer.dart';
 import 'Delivered_Orders.dart';
+import 'Delivered_Vendor_Orders.dart';
 
 class Order_Page_Vendor extends StatefulWidget {
   const Order_Page_Vendor({Key key}) : super(key: key);
@@ -41,7 +43,7 @@ class _Order_Page_VendorState extends State<Order_Page_Vendor> {
                       await Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (context) => Active_Orders_Page_Customer(),
+                          builder: (context) => Active_Orders_Page_Vendor(),
                         ),
                       );
                     },
@@ -121,7 +123,7 @@ class _Order_Page_VendorState extends State<Order_Page_Vendor> {
                   InkWell(
                     onTap: () {
                       Navigator.push(context, MaterialPageRoute(
-                          builder: (context) => Delivered_Orders_Page()));
+                          builder: (context) => Delivered_Vendor_Orders_Page()));
                     },
                     child: Container(
                       padding: const EdgeInsets.all(8),
