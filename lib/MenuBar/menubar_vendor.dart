@@ -21,6 +21,8 @@ import 'package:provider/provider.dart';
 import 'package:firebase_core/firebase_core.dart';
 
 import '../Products/Model_Products.dart';
+import '../backend/schema/users_record.dart';
+import '../chat_details/chat_details_widget.dart';
 import '../chat_main/chat_main_widget.dart';
 import '../home_page/homepage_header_vendor.dart';
 
@@ -115,54 +117,65 @@ class _Vendor_menuBarState extends State<Vendor_menuBar> {
                       ),
                     ),
                   ),
-                  // Padding(
-                  //   padding: EdgeInsetsDirectional.fromSTEB(10, 0, 10, 5),
-                  //   child: InkWell(
-                  //     onTap: () async {
-                  //       DocumentSnapshot doc=await FirebaseFirestore.instance.doc("users/"+widget.Product.Product_Vendor_id).get();
-                  //       await Navigator.pushReplacement(
-                  //           context,
-                  //           MaterialPageRoute(
-                  //
-                  //               builder: (context) => MarketPlaceWidget(vendorID: doc.get("uid"), Name: doc.get("displayName"), Email: doc.get("email"), Contact: doc.get("phone"), hRate: "Yet to be decided", imageUrl: doc.get("photoUrl"),Lat: doc.get("Lat"),Lng:doc.get("Lng"))
-                  //
-                  //           ));
-                  //     },
-                  //     child: Container(
-                  //       width: MediaQuery.of(context).size.width,
-                  //       height: 50,
-                  //       decoration: BoxDecoration(
-                  //         color: Color(0xFF115ba6),
-                  //         borderRadius: BorderRadius.circular(5),
-                  //       ),
-                  //       child: Padding(
-                  //         padding:
-                  //         EdgeInsetsDirectional.fromSTEB(10, 0, 10, 0),
-                  //         child: Row(
-                  //           mainAxisSize: MainAxisSize.max,
-                  //           children: [
-                  //             Icon(
-                  //               Icons.person,
-                  //               color: Colors.white,
-                  //               size: 24,
-                  //             ),
-                  //             Padding(
-                  //               padding: EdgeInsetsDirectional.fromSTEB(
-                  //                   10, 0, 0, 0),
-                  //               child: Text(
-                  //                 'Profile',
-                  //                 style: FlutterFlowTheme.bodyText1.override(
-                  //                   fontFamily: 'Poppins',
-                  //                   color: Colors.white,
-                  //                 ),
-                  //               ),
-                  //             ),
-                  //           ],
-                  //         ),
-                  //       ),
-                  //     ),
-                  //   ),
-                  // ),
+                  Padding(
+                    padding: EdgeInsetsDirectional.fromSTEB(10, 0, 10, 5),
+                    child: InkWell(
+                      onTap: () async {
+                        final userdata = FirebaseFirestore.instance
+                            .collection('users')
+                            .doc("lIxDGfBtMAQKTm3f98VbSg3ktJz1");
+                        var ref = await UsersRecord.getDocument(userdata);
+                        var data=await ref.first;
+
+                        await Navigator.push(
+                          context,
+                          PageTransition(
+                            type: PageTransitionType.scale,
+                            alignment: Alignment.bottomCenter,
+                            duration: Duration(milliseconds: 300),
+                            reverseDuration:
+                            Duration(milliseconds: 300),
+                            child: ChatDetailsWidget(
+                              chatUser: data,
+                            ),
+                          ),
+                        );
+                      },
+                      child: Container(
+                        width: MediaQuery.of(context).size.width,
+                        height: 50,
+                        decoration: BoxDecoration(
+                          color: Color(0xFF115ba6),
+                          borderRadius: BorderRadius.circular(5),
+                        ),
+                        child: Padding(
+                          padding:
+                          EdgeInsetsDirectional.fromSTEB(10, 0, 10, 0),
+                          child: Row(
+                            mainAxisSize: MainAxisSize.max,
+                            children: [
+                              Icon(
+                                Icons.person,
+                                color: Colors.white,
+                                size: 24,
+                              ),
+                              Padding(
+                                padding: EdgeInsetsDirectional.fromSTEB(
+                                    10, 0, 0, 0),
+                                child: Text(
+                                  'Support',
+                                  style: FlutterFlowTheme.bodyText1.override(
+                                    fontFamily: 'Poppins',
+                                    color: Colors.white,
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
                   Padding(
                     padding: EdgeInsetsDirectional.fromSTEB(10, 0, 10, 5),
                     child: InkWell(
