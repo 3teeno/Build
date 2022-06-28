@@ -5,6 +5,8 @@ import 'package:build_i_t/flutter_flow/flutter_flow_theme.dart';
 import 'package:build_i_t/flutter_flow/flutter_flow_util.dart';
 import 'package:build_i_t/home_page/VendorHomePage.dart';
 import 'package:build_i_t/login_page/Google_signIn.dart';
+import 'package:build_i_t/market_place/Vendor_Gig.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:build_i_t/authentication_service.dart';
 import 'package:build_i_t/login_page/login_page_widget.dart';
@@ -18,13 +20,14 @@ import 'package:lottie/lottie.dart';
 import 'package:provider/provider.dart';
 import 'package:firebase_core/firebase_core.dart';
 
+import '../Products/Model_Products.dart';
 import '../chat_main/chat_main_widget.dart';
 import '../home_page/homepage_header_vendor.dart';
 
 
 class Vendor_menuBar extends StatefulWidget {
-  const Vendor_menuBar({Key key}) : super(key: key);
-
+  const Vendor_menuBar({Key key,this.Product}) : super(key: key);
+  final Products Product;
   @override
   _Vendor_menuBarState createState() => _Vendor_menuBarState();
 }
@@ -112,52 +115,54 @@ class _Vendor_menuBarState extends State<Vendor_menuBar> {
                       ),
                     ),
                   ),
-                  Padding(
-                    padding: EdgeInsetsDirectional.fromSTEB(10, 0, 10, 5),
-                    child: InkWell(
-                      onTap: () async {
-                        await Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => VendorHomePageWidget(),
-                          ),
-                        );
-                      },
-                      child: Container(
-                        width: MediaQuery.of(context).size.width,
-                        height: 50,
-                        decoration: BoxDecoration(
-                          color: Color(0xFF115ba6),
-                          borderRadius: BorderRadius.circular(5),
-                        ),
-                        child: Padding(
-                          padding:
-                          EdgeInsetsDirectional.fromSTEB(10, 0, 10, 0),
-                          child: Row(
-                            mainAxisSize: MainAxisSize.max,
-                            children: [
-                              Icon(
-                                Icons.person,
-                                color: Colors.white,
-                                size: 24,
-                              ),
-                              Padding(
-                                padding: EdgeInsetsDirectional.fromSTEB(
-                                    10, 0, 0, 0),
-                                child: Text(
-                                  'Profile',
-                                  style: FlutterFlowTheme.bodyText1.override(
-                                    fontFamily: 'Poppins',
-                                    color: Colors.white,
-                                  ),
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                      ),
-                    ),
-                  ),
+                  // Padding(
+                  //   padding: EdgeInsetsDirectional.fromSTEB(10, 0, 10, 5),
+                  //   child: InkWell(
+                  //     onTap: () async {
+                  //       DocumentSnapshot doc=await FirebaseFirestore.instance.doc("users/"+widget.Product.Product_Vendor_id).get();
+                  //       await Navigator.pushReplacement(
+                  //           context,
+                  //           MaterialPageRoute(
+                  //
+                  //               builder: (context) => MarketPlaceWidget(vendorID: doc.get("uid"), Name: doc.get("displayName"), Email: doc.get("email"), Contact: doc.get("phone"), hRate: "Yet to be decided", imageUrl: doc.get("photoUrl"),Lat: doc.get("Lat"),Lng:doc.get("Lng"))
+                  //
+                  //           ));
+                  //     },
+                  //     child: Container(
+                  //       width: MediaQuery.of(context).size.width,
+                  //       height: 50,
+                  //       decoration: BoxDecoration(
+                  //         color: Color(0xFF115ba6),
+                  //         borderRadius: BorderRadius.circular(5),
+                  //       ),
+                  //       child: Padding(
+                  //         padding:
+                  //         EdgeInsetsDirectional.fromSTEB(10, 0, 10, 0),
+                  //         child: Row(
+                  //           mainAxisSize: MainAxisSize.max,
+                  //           children: [
+                  //             Icon(
+                  //               Icons.person,
+                  //               color: Colors.white,
+                  //               size: 24,
+                  //             ),
+                  //             Padding(
+                  //               padding: EdgeInsetsDirectional.fromSTEB(
+                  //                   10, 0, 0, 0),
+                  //               child: Text(
+                  //                 'Profile',
+                  //                 style: FlutterFlowTheme.bodyText1.override(
+                  //                   fontFamily: 'Poppins',
+                  //                   color: Colors.white,
+                  //                 ),
+                  //               ),
+                  //             ),
+                  //           ],
+                  //         ),
+                  //       ),
+                  //     ),
+                  //   ),
+                  // ),
                   Padding(
                     padding: EdgeInsetsDirectional.fromSTEB(10, 0, 10, 5),
                     child: InkWell(
