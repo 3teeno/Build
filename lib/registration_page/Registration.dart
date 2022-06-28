@@ -125,11 +125,11 @@ class _RegistrationPageCopyWidgetState
           ),
           FFButtonWidget(
             onPressed: () async {
-              if(await emailAuth.validateOtp(recipientMail: EmailController.value.text, userOtp: otpControllet.value.text)){
+              //if(await emailAuth.validateOtp(recipientMail: EmailController.value.text, userOtp: otpControllet.value.text)){
                 await addUser();
                 Navigator.pop(context);
 
-              }
+             // }
             },
             text: 'Verify OTP',
             options: FFButtonOptions(
